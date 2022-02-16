@@ -65,11 +65,7 @@ const CoinInfo = ({ coin }) => {
     <ThemeProvider theme={darkTheme}>
       <div className={classes.container}>
         {!historicData | (flag === false) ? (
-          <CircularProgress
-            style={{ color: 'aquamarine' }}
-            size={250}
-            thickness={1}
-          />
+          <CircularProgress style={{ color: 'red' }} size={250} thickness={1} />
         ) : (
           <>
             <Line
