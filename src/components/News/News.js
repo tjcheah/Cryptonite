@@ -3,14 +3,14 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./News.css";
 import { CardActionArea } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Slider from "react-slick";
-import { useStyles } from "./NewsResponsiveness";
+import "./News.css";
+import { Container, makeStyles, Typography } from "@material-ui/core";
 
-export default function News() {
+export default function SimpleSlider() {
   const [post, setPost] = useState([]);
   const [error, setError] = useState([]);
 
@@ -20,7 +20,7 @@ export default function News() {
       .get("https://min-api.cryptocompare.com/data/v2/news/?lang=EN")
       .then((response) => {
         console.log(response.data.Data);
-        setPost(response.data.Data.splice(0, 9));
+        setPost(response.data.Data.splice(0, 10));
       })
       .catch((error) => {
         setError(error);
@@ -28,34 +28,24 @@ export default function News() {
     return () => {};
   }, []);
 
-  // function SampleNextArrow(props) {
-  //   const { className, style, onClick } = props;
-  //   return (
-  //     <div
-  //       className={className}
-  //       style={{ ...style, display: "block", background: "red" }}
-  //       onClick={onClick}
-  //     />
-  //   );
-  // }
-
-  // function SamplePrevArrow(props) {
-  //   const { className, style, onClick } = props;
-  //   return (
-  //     <div
-  //       className={className}
-  //       style={{ ...style, display: "block", background: "green" }}
-  //       onClick={onClick}
-  //     />
-  //   );
-  // }
+  function Arrow(props) {
+    let className = props.type === "next" ? "nextArrow" : "prevArrow";
+    className += " arrow";
+    const char = props.type === "next" ? ">" : "<";
+    return (
+      <span className={className} onClick={props.onClick}>
+        {char}
+      </span>
+    );
+  }
 
   const sliderSettings = {
     // removes default buttons
 
     arrows: true,
-
-    slidesToShow: 3,
+    dots: true,
+    slidesToShow: 5,
+    slidesToScroll: 1,
     autoplay: true,
     speed: 500,
     autoplaySpeed: 4000,
@@ -76,6 +66,9 @@ export default function News() {
     },
     card: {
       position: "relative",
+      borderRadius: "5%",
+      marginLeft: "8px",
+      marginRight: "7px",
     },
     overlay: {
       position: "absolute",
@@ -90,7 +83,7 @@ export default function News() {
 
   const renderSlides = () =>
     post.map((posts) => (
-      <div>
+      <div className="news-content">
         <CardActionArea href={posts.url}>
           <Card style={styles.card}>
             <CardMedia image={posts.imageurl} style={styles.media} />
@@ -103,17 +96,42 @@ export default function News() {
 
   return (
     <div className="News">
-      <div className="slider-wrapper">
-        <div className="news-text">
-          <h1 className="crypto-news">Crypto News</h1>
-          <p className="crypto-newsDesc">
-            Get the latest financial news and updates on cryptocurrency platform
-            such as Bitcoin,Ethereum, Dogecoin, NFTs and more. See articles on
-            price updates, future trends, mining and blockchain related stories.
-          </p>
-        </div>
-        <Slider {...sliderSettings}>{renderSlides()}</Slider>
+      <div className="news-text">
+        <Typography
+          variant="h3"
+          style={{
+            fontWeight: "bold",
+            marginBottom: 15,
+            fontFamily: "Antonio",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          Crypto News
+        </Typography>
+
+        <Typography
+          variant="subtitle2"
+          style={{
+            color: "darkgrey",
+            fontweight: "light",
+            textTransform: "capitalize",
+            fontFamily: "Antonio",
+            textAlign: "start",
+            paddingTop: "10px",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          Get the latest financial news and updates on cryptocurrency platform
+          such as Bitcoin,Ethereum, Dogecoin, NFTs and more. See articles on
+          price updates, future trends, mining and blockchain related stories.
+        </Typography>
       </div>
+      <div className="slider-wrapper"></div>
+      <Slider {...sliderSettings}>{renderSlides()}</Slider>
     </div>
   );
 }
