@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NavLogo from "./Cryptonite Title Cropped.png";
 import loginStone from "./Gray Stone.png";
 import {
@@ -16,53 +16,60 @@ import {
 import { CryptoState } from "../CryptoContext";
 import { useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
+import { AiFillCloseCircle } from "react-icons/ai";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   navContainer: {
     position: "static",
-    top: 0,
     display: "flex",
+    top: 0,
     width: "100%",
+    justifyContent: "center",
+    flexWrap: "wrap",
   },
   nav: {
     position: "static",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "flex-start",
     width: "95%",
     paddingTop: 20,
     paddingBottom: 10,
     backgroundColor: "#ffffff",
     top: 0,
-    // left: 2,
-    marginLeft:30,
+    marginRight: 0,
+    paddingRight: 0,
     borderBottomLeftRadius: 35,
     borderBottomRightRadius: 35,
     boxShadow: "0px 4px 4px 2px #aaa",
     flexWrap: "wrap",
   },
+
   navLogo: {
     display: "flex",
-    flex: 1,
     width: 280,
     height: 70,
-    marginRight: 100,
+    marginRight: 50,
+    [theme.breakpoints.down("sm")]: {
+      width: 240,
+      height: 60,
+    },
   },
   title: {
-    flex: 1,
     display: "flex",
-    alignItems: "flex-end",
     fontSize: 18,
     color: "#7c7c7c",
     fontWeight: "bold",
+    whiteSpace: "nowrap",
     letterSpacing: 3,
-    flexWrap: "wrap",
     cursor: "pointer",
     fontFamily: "Antonio",
-    marginRight: 10,
+    marginRight: 15,
     "&:hover": {
       color: "#233c25",
       fontWeight: 550,
+    },
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
     },
   },
   loginButton: {
@@ -79,6 +86,9 @@ const useStyles = makeStyles(() => ({
       backgroundColor: "#80b4b6",
       boxShadow: "2px 2px 4px 2px #aaa",
       fontWeight: 550,
+    },
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
     },
   },
   currencyButton: {
@@ -97,13 +107,16 @@ const useStyles = makeStyles(() => ({
     },
     "&:hover": {
       color: "#555",
-      // boxShadow: "1px 1px 1px 1px #888",
       fontWeight: 550,
       "& .MuiSvgIcon-root": {
         color: "gray",
       },
+      [theme.breakpoints.down("sm")]: {
+        display: "flex",
+      },
     },
   },
+
   menuItem: {
     fontSize: 12,
     color: "#fff",
@@ -118,6 +131,61 @@ const useStyles = makeStyles(() => ({
       height: 95,
     },
   },
+  hamburger: {
+    display: "none",
+    [theme.breakpoints.down("sm")]: {
+      display: "flex",
+      width: 20,
+      height: 20,
+      marginLeft: "auto",
+    },
+  },
+  burgerFrame: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-end",
+    position: "absolute",
+    boxShadow: "1px 1px 1px 1px #888",
+    top: 15,
+    right: 5,
+    borderRadius: 30,
+    backgroundColor: "#f2f2f2",
+    paddingBottom: 10,
+    flex: 1,
+    width: 150,
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
+  },
+  burgerItem: {
+    border: "#aaa",
+    color: "#555",
+    fontSize: 14,
+    fontFamily: "Antonio",
+    padding: 10,
+    width: "100%",
+    textAlign: "right",
+    "&:hover": {
+      color: "#000",
+    },
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
+  },
+  close: {
+    width: 20,
+    height: 20,
+    color: "#000",
+    backgroundColor: "#f2f2f2",
+    marginTop: 10,
+    marginBottom: 10,
+    display: "flex",
+    right: 0,
+    // width: "100%",
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
+  },
 }));
 
 const Header = () => {
@@ -126,6 +194,8 @@ const Header = () => {
   const navigate = useNavigate();
 
   const { currency, setcurrency } = CryptoState();
+
+  const [openHamburger, setOpenHamburger] = useState(false);
 
   console.log(currency);
 
@@ -192,6 +262,40 @@ const Header = () => {
                   alt="login"
                 />
               </Button>
+              <FaBars
+                onClick={() => setOpenHamburger(!openHamburger)}
+                className={classes.hamburger}
+              />
+              {openHamburger && (
+                <Container className={classes.burgerFrame}>
+                  <Typography>
+                    <AiFillCloseCircle
+                      onClick={() => setOpenHamburger(!openHamburger)}
+                      className={classes.close}
+                    />
+                  </Typography>
+
+                  <Typography
+                    onClick={() => navigate("/market")}
+                    className={classes.burgerItem}
+                  >
+                    MARKET
+                  </Typography>
+                  <Typography
+                    onClick={() => navigate("/about")}
+                    className={classes.burgerItem}
+                  >
+                    ABOUT US
+                  </Typography>
+                  <Typography
+                    onClick={() => navigate("/help")}
+                    className={classes.burgerItem}
+                  >
+                    HELP
+                  </Typography>
+                  <Typography className={classes.burgerItem}>LOGIN</Typography>
+                </Container>
+              )}
             </Toolbar>
           </Container>
         </AppBar>
