@@ -1,0 +1,57 @@
+.News {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.news-text {
+  padding-bottom: 20px;
+  font-family: Montserrat;
+}
+
+.crypto-news {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.crypto-newsDesc {
+  text-align: start;
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.slick-prev,
+.slick-next {
+  top: auto;
+  bottom: 25px;
+  right: 35px;
+  z-index: 10;
+  color: black;
+}
+
+.slick-prev {
+  left: 20px;
+}
+
+.slick-next {
+  right: 35px;
+}
+
+.slick-prev:before {
+  color: black;
+  font-size: 40px;
+}
+
+.slick-next:before {
+  color: black;
+  font-size: 40px;
+}
+
+.slick-dots li button {
+  text-indent: -9999px;
+  overflow: hidden;
+  color: white;
+  /* more CSS */
+}
