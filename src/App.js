@@ -1,22 +1,20 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import './App.css'
-import Header from './components/Header'
-import Homepage from './Pages/Homepage'
-import Coinpage from './Pages/Coinpage'
-import { makeStyles } from '@material-ui/core'
-import Footer from './components/Footer'
-import Alert from './components/Alert'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Header from "./components/Header";
+import Homepage from "./Pages/Homepage";
+import Coinpage from "./Pages/Coinpage";
+import { makeStyles } from "@material-ui/core";
 
 function App() {
   const useStyles = makeStyles(() => ({
     App: {
-      backgroundColor: '#14161a',
-      color: 'white',
-      minHeight: '100vh',
+      backgroundColor: "#f2f2f2",
+      color: "white",
+      minHeight: "100vh",
     },
-  }))
+  }));
 
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <>
@@ -33,7 +31,7 @@ function App() {
         <Alert />
       </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
