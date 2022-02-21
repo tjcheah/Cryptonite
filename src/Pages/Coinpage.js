@@ -4,15 +4,22 @@ import axios from 'axios'
 import { CryptoState } from '../CryptoContext'
 import { SingleCoin } from '../config/api'
 import { useEffect, useState } from 'react'
-import { LinearProgress, makeStyles, Typography } from '@material-ui/core'
+import {
+  LinearProgress,
+  makeStyles,
+  Typography,
+  Button,
+} from '@material-ui/core'
 import CoinInfo from '../components/CoinInfo'
 import { numberWithCommas } from '../components/CoinsTable'
+import { doc, setDoc } from '@firebase/firestore'
+import { db } from '../firebase'
 
 const Coinpage = () => {
   const { id } = useParams()
   const [coin, setCoin] = useState()
 
-  const { currency, symbol } = CryptoState()
+  const { currency, symbol, user, favoriteslist, setAlert } = CryptoState()
 
   const fetchCoin = async () => {
     const { data } = await axios.get(SingleCoin(id))
@@ -64,9 +71,6 @@ const Coinpage = () => {
       width: '100%',
       [theme.breakpoints.down('md')]: {
         display: 'flex',
-        justifyContent: 'space-around',
-      },
-      [theme.breakpoints.down('sm')]: {
         flexDirection: 'column',
         alignItems: 'center',
       },
@@ -75,6 +79,53 @@ const Coinpage = () => {
       },
     },
   }))
+
+  const inFavoriteslist = favoriteslist.includes(coin?.id)
+
+  const addToFavorites = async () => {
+    const coinRef = doc(db, 'favoriteslist', user.uid)
+
+    try {
+      await setDoc(coinRef, {
+        coins: favoriteslist ? [...favoriteslist, coin?.id] : [coin?.id],
+      })
+
+      setAlert({
+        open: true,
+        message: `${coin.name} Added to Favorites`,
+        type: 'success',
+      })
+    } catch (error) {
+      setAlert({
+        open: true,
+        message: error.message,
+        type: 'error',
+      })
+    }
+  }
+
+  const removeFromFavoriteslist = async (coin) => {
+    const coinRef = doc(db, 'favoriteslist', user.uid)
+    try {
+      await setDoc(
+        coinRef,
+        { coins: favoriteslist.filter((wish) => wish !== coin?.id) },
+        { merge: true },
+      )
+
+      setAlert({
+        open: true,
+        message: `${coin.name} Removed from the Favorites !`,
+        type: 'success',
+      })
+    } catch (error) {
+      setAlert({
+        open: true,
+        message: error.message,
+        type: 'error',
+      })
+    }
+  }
 
   const classes = useStyles()
 
@@ -92,63 +143,79 @@ const Coinpage = () => {
         <Typography variant="h3" className={classes.heading}>
           {coin?.name}
         </Typography>
-      </div>
-      <Typography variant="subtitle1" className={classes.description}>
-        {coin?.description.en.split('. ')[0]}.
-      </Typography>
-      <div className={classes.marketData}>
-        <span style={{ display: 'flex' }}>
-          <Typography variant="h5" className={classes.heading}>
-            Rank:
-          </Typography>
-          &nbsp; &nbsp;
-          <Typography
-            variant="h5"
-            style={{
-              fontFamily: 'Montserrat',
-            }}
-          >
-            {numberWithCommas(coin?.market_cap_rank)}
-          </Typography>
-        </span>
+        <Typography variant="subtitle1" className={classes.description}>
+          {coin?.description.en.split('. ')[0]}.
+        </Typography>
+        <div className={classes.marketData}>
+          <span style={{ display: 'flex' }}>
+            <Typography variant="h5" className={classes.heading}>
+              Rank:
+            </Typography>
+            &nbsp; &nbsp;
+            <Typography
+              variant="h5"
+              style={{
+                fontFamily: 'Montserrat',
+              }}
+            >
+              {numberWithCommas(coin?.market_cap_rank)}
+            </Typography>
+          </span>
 
-        <span style={{ display: 'flex' }}>
-          <Typography variant="h5" className={classes.heading}>
-            Current Price:
-          </Typography>
-          &nbsp; &nbsp;
-          <Typography
-            variant="h5"
-            style={{
-              fontFamily: 'Montserrat',
-            }}
-          >
-            {symbol}{' '}
-            {numberWithCommas(
-              coin?.market_data.current_price[currency.toLowerCase()],
-            )}
-          </Typography>
-        </span>
-        <span style={{ display: 'flex' }}>
-          <Typography variant="h5" className={classes.heading}>
-            Market Cap:
-          </Typography>
-          &nbsp; &nbsp;
-          <Typography
-            variant="h5"
-            style={{
-              fontFamily: 'Montserrat',
-            }}
-          >
-            {symbol}{' '}
-            {numberWithCommas(
-              coin?.market_data.market_cap[currency.toLowerCase()]
-                .toString()
-                .slice(0, -6),
-            )}
-            M
-          </Typography>
-        </span>
+          <span style={{ display: 'flex' }}>
+            <Typography variant="h5" className={classes.heading}>
+              Current Price:
+            </Typography>
+            &nbsp; &nbsp;
+            <Typography
+              variant="h5"
+              style={{
+                fontFamily: 'Montserrat',
+              }}
+            >
+              {symbol}{' '}
+              {numberWithCommas(
+                coin?.market_data.current_price[currency.toLowerCase()],
+              )}
+            </Typography>
+          </span>
+          <span style={{ display: 'flex' }}>
+            <Typography variant="h5" className={classes.heading}>
+              Market Cap:
+            </Typography>
+            &nbsp; &nbsp;
+            <Typography
+              variant="h5"
+              style={{
+                fontFamily: 'Montserrat',
+              }}
+            >
+              {symbol}{' '}
+              {numberWithCommas(
+                coin?.market_data.market_cap[currency.toLowerCase()]
+                  .toString()
+                  .slice(0, -6),
+              )}
+              M
+            </Typography>
+          </span>
+          {user && (
+            <Button
+              variant="outlined"
+              style={{
+                width: '100%',
+                height: '40',
+                backgroundColor: inFavoriteslist ? 'red' : '#49FF00',
+                color: 'black',
+              }}
+              onClick={
+                inFavoriteslist ? removeFromFavoriteslist : addToFavorites
+              }
+            >
+              {inFavoriteslist ? 'Remove from Favorites' : 'Add To Favorites'}
+            </Button>
+          )}
+        </div>
       </div>
       {/* Chart */}
       <CoinInfo coin={coin} />
