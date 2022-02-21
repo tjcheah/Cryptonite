@@ -4,11 +4,13 @@ import Header from './components/Header'
 import Homepage from './Pages/Homepage'
 import Coinpage from './Pages/Coinpage'
 import { makeStyles } from '@material-ui/core'
+import Alert from './components/Alert'
+import Footer from './components/Footer'
 
 function App() {
   const useStyles = makeStyles(() => ({
     App: {
-      backgroundColor: '#14161a',
+      backgroundColor: '#f2f2f2',
       color: 'white',
       minHeight: '100vh',
     },
@@ -20,12 +22,15 @@ function App() {
     <>
       <Router>
         <div className={classes.App}>
+          {/* <NavBar/> */}
           <Header />
           <Routes>
             <Route path="/" element={<Homepage />} exact />
             <Route path="/coins/:id" element={<Coinpage />} />
           </Routes>
+          <Footer />
         </div>
+        <Alert />
       </Router>
     </>
   )

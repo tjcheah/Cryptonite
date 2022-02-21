@@ -27,23 +27,12 @@ export function numberWithCommas(x) {
 }
 
 const CoinsTable = () => {
-  const [coins, setCoins] = useState([])
-  const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState('')
   const [page, setPage] = useState(1)
 
-  const { currency, symbol } = CryptoState()
+  const { currency, symbol, coins, loading, fetchCoins } = CryptoState()
 
   const history = useNavigate()
-
-  const fetchCoins = async () => {
-    setLoading(true)
-    const { data } = await axios.get(CoinList(currency))
-    console.log(data)
-
-    setCoins(data)
-    setLoading(false)
-  }
 
   useEffect(() => {
     fetchCoins()
@@ -86,7 +75,7 @@ const CoinsTable = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <Container style={{ textAlign: 'center' }}>
+      <Container style={{ textAlign: 'center', paddingTop: 40 }}>
         <Typography
           variant="h4"
           style={{ margin: 18, fontFamily: 'Montserrat' }}
@@ -203,7 +192,7 @@ const CoinsTable = () => {
           count={(handleSearch()?.length / 10).toFixed(0)}
           onChange={(_, value) => {
             setPage(value)
-            window.scroll(0, 100)
+            window.scroll(0, 400)
           }}
         ></Pagination>
       </Container>
