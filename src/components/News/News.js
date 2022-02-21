@@ -10,7 +10,7 @@ import Slider from "react-slick";
 import "./News.css";
 import { Container, makeStyles, Typography } from "@material-ui/core";
 
-export default function SimpleSlider() {
+export default function News() {
   const [post, setPost] = useState([]);
   const [error, setError] = useState([]);
 
@@ -84,7 +84,7 @@ export default function SimpleSlider() {
   const renderSlides = () =>
     post.map((posts) => (
       <div className="news-content">
-        <CardActionArea href={posts.url}>
+        <CardActionArea href={posts.url} target="_blank">
           <Card style={styles.card}>
             <CardMedia image={posts.imageurl} style={styles.media} />
             <div style={styles.overlay}>{posts.title}</div>
