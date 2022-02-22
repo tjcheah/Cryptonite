@@ -148,7 +148,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     [theme.breakpoints.up("xs")]: {
       flexDirection: "column",
-      marginRight: "1rem",
+      gigight: "1rem",
     },
     [theme.breakpoints.up("sm")]: {
       flexDirection: "column",
@@ -277,11 +277,11 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up("md")]: {
       width: 250,
-      fontSize: 50,
+      fontSize: 48,
     },
     [theme.breakpoints.up("lg")]: {
       width: 250,
-      fontSize: 55,
+      fontSize: 48,
     },
   },
   coinChange: {
@@ -297,11 +297,11 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up("md")]: {
       marginLeft: 33,
-      fontSize: 50,
+      fontSize: 48,
     },
     [theme.breakpoints.up("lg")]: {
-      marginLeft: 45,
-      fontSize: 55,
+      marginLeft: 40,
+      fontSize: 48,
     },
   },
   volTitle: {
