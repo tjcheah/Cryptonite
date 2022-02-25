@@ -1,133 +1,185 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { HistoricalChart } from '../config/api'
-import { Line } from 'react-chartjs-2'
+// import axios from "axios";
+import { useEffect, useState } from "react";
+// import { HistoricalChart } from "../config/api";
+import { Line } from "react-chartjs-2";
 import {
   CircularProgress,
   createTheme,
   makeStyles,
   ThemeProvider,
-} from '@material-ui/core'
-import SelectButton from './SelectButton'
-import { chartDays } from '../config/data'
-import { CryptoState } from '../CryptoContext'
-import 'chart.js/auto'
+} from "@material-ui/core";
+// import SelectButton from "./SelectButton";
+// import { chartDays } from "../config/data";
+// import { CryptoState } from "../CryptoContext";
+import "chart.js/auto";
 
 const CoinInfo = ({ coin }) => {
-  const [historicData, setHistoricData] = useState()
-  const [days, setDays] = useState(1)
-  const { currency } = CryptoState()
-  const [flag, setflag] = useState(false)
+  const [historicData, setHistoricData] = useState();
+  // const [days, setDays] = useState(1)
+  // const { currency } = CryptoState()
+  const [flag, setflag] = useState(false);
 
   const useStyles = makeStyles((theme) => ({
     container: {
-      width: '75%',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
+      width: "75%",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
       marginTop: 25,
       padding: 40,
-      [theme.breakpoints.down('md')]: {
-        width: '100%',
+      [theme.breakpoints.down("md")]: {
+        width: "100%",
         marginTop: 0,
         padding: 20,
         paddingTop: 0,
       },
     },
-  }))
+  }));
 
-  const classes = useStyles()
+  const classes = useStyles();
 
-  const fetchHistoricData = async () => {
-    const { data } = await axios.get(HistoricalChart(coin.id, days, currency))
-    setflag(true)
-    setHistoricData(data.prices)
-  }
+  // const fetchHistoricData = async () => {
+  //   const { data } = await axios.get(HistoricalChart(coin.id, days, currency))
+  //   setflag(true)
+  //   setHistoricData(data.prices)
+  // }
 
-  console.log(coin)
+  // console.log(coin)
 
-  useEffect(() => {
-    fetchHistoricData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [days])
+  // useEffect(() => {
+  //   fetchHistoricData()
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [days])
 
   const darkTheme = createTheme({
     palette: {
       primary: {
-        main: '#fff',
+        main: "#fff",
       },
-      type: 'dark',
+      type: "dark",
     },
-  })
+  });
+
+  function EpochToDate(epoch) {
+    if (epoch < 10000000000) epoch *= 1000; // convert to milliseconds (Epoch is usually expressed in seconds, but Javascript uses Milliseconds)
+    var epoch = epoch + new Date().getTimezoneOffset() * -1;
+    var date = new Date(epoch); //for timeZone
+    return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  }
+  const [price, setPrice] = useState([]);
+  const [tick, setTick] = useState([]);
+
+  var lineChart = {
+    labels: tick,
+    datasets: [
+      {
+        data: price,
+        label: ``,
+        borderColor: "aquamarine",
+      },
+    ],
+  };
+  var chartOptions = {
+    responsive: true,
+    showLine: true,
+    showtooltip: true,
+    animation: {
+      duration: "speed * 1.5",
+      easing: "linear",
+    },
+    elements: {
+      line: {
+        tension: 0.5,
+      },
+      point: {
+        pointStyle: "circular",
+        radius: 5,
+        pointHoverRadius: 10,
+      },
+    },
+    interaction: {
+      mode: "nearest",
+      intersect: false,
+    },
+    scale: {
+      x: {
+        min: tick[tick.length - 11],
+        max: tick[tick.length - 1],
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  };
+  var api_call = "wss://ws.binaryws.com/websockets/v3?app_id=1089";
+
+  useEffect(() => {
+    var ws = new WebSocket(api_call);
+
+    ws.onopen = (evt) => {
+      ws.send(
+        JSON.stringify({
+          ticks_history: "cryBTCUSD",
+          adjust_start_time: 1,
+          count: 10,
+          end: "latest",
+          start: 1,
+          style: "ticks",
+        })
+      );
+      ws.send(JSON.stringify({ ticks: "cryBTCUSD" }));
+    };
+
+    ws.onmessage = function (evt) {
+      var data = JSON.parse(evt.data);
+      if (data.history != null) {
+        var tickHist = data.history;
+        setHistoricData(tickHist);
+        for (let i = 0; i < 10; i++) {
+          setTick((currentTick) => [
+            ...currentTick,
+            EpochToDate(tickHist.times[i]),
+          ]);
+        }
+        console.log("ticks: %o", tick);
+        setPrice(tickHist.prices);
+        setflag(true);
+      }
+      if (data.tick != null) {
+        var tickInfo = data.tick;
+        console.log(tickInfo);
+        if (tickInfo.quote != null && tickInfo.epoch != null) {
+          setTick((currentTick) => [
+            ...currentTick,
+            EpochToDate(tickInfo.epoch),
+          ]);
+          setPrice((currentPrice) => [...currentPrice, tickInfo.quote]);
+        }
+      }
+    };
+
+    return () =>
+      (ws.onclose = function (evt) {
+        console.log("connection close");
+      });
+  }, []);
 
   return (
     <ThemeProvider theme={darkTheme}>
       <div className={classes.container}>
         {!historicData | (flag === false) ? (
-          <CircularProgress style={{ color: 'red' }} size={250} thickness={1} />
+          <CircularProgress style={{ color: "red" }} size={250} thickness={1} />
         ) : (
           <>
-            <Line
-              data={{
-                labels: historicData.map((coin) => {
-                  let date = new Date(coin[0])
-                  let time =
-                    date.getHours() > 12
-                      ? `${date.getHours() - 12}:${date.getMinutes()} PM`
-                      : `${date.getHours()}:${date.getMinutes()} AM`
-                  return days === 1 ? time : date.toLocaleDateString()
-                }),
-
-                datasets: [
-                  {
-                    data: historicData.map((coin) => coin[1]),
-                    label: `Price ( Past ${days} Days ) in ${currency}`,
-                    borderColor: 'aquamarine',
-                  },
-                ],
-              }}
-              options={{
-                responsive: true,
-                showLine: true,
-                showtooltip: true,
-                elements: {
-                  line: {
-                    tension: 0.5,
-                  },
-                  point: {
-                    radius: 1,
-                  },
-                },
-              }}
-            />
-
-            <div
-              style={{
-                display: 'flex',
-                marginTop: 20,
-                justifyContent: 'space-around',
-                width: '100%',
-              }}
-            >
-              {chartDays.map((day) => (
-                <SelectButton
-                  key={day.value}
-                  onClick={() => {
-                    setDays(day.value)
-                    setflag(false)
-                  }}
-                  selected={day.value === days}
-                >
-                  {day.label}
-                </SelectButton>
-              ))}
-            </div>
+            <Line data={lineChart} options={chartOptions}></Line>
           </>
         )}
       </div>
     </ThemeProvider>
-  )
-}
+  );
+};
 
-export default CoinInfo
+export default CoinInfo;
