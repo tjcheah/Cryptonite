@@ -64,7 +64,6 @@ export default function News() {
       borderRadius: 20,
       marginLeft: "5px",
       marginRight: "5px",
-      boxShadow: "0px 4px 4px 2px #aaa",
     },
   };
 

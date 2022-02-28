@@ -14,13 +14,14 @@ const CoinInfo = ({ coin }) => {
 
   const useStyles = makeStyles((theme) => ({
     container: {
-      width: "75%",
+      // backgroundColor: "pink",
+      // color: "black",
+      marginBottom: 30,
+      width: "95%",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      margin: "40px 40px 40px 0px",
-      marginTop: 25,
       padding: 20,
       [theme.breakpoints.down("md")]: {
         width: "90%",

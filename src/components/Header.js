@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 25,
     borderBottomLeftRadius: 35,
     borderBottomRightRadius: 35,
-    boxShadow: "0px 4px 4px 2px #aaa",
+    boxShadow: "0px 2px 2px 1px #aaa",
   },
   nav1: {
     // backgroundColor: "red",
@@ -64,14 +64,15 @@ const useStyles = makeStyles((theme) => ({
   },
   navLogo: {
     display: "flex",
-    width: 280,
+    width: 380,
     height: 70,
     marginRight: 50,
     cursor: "pointer",
     [theme.breakpoints.down("sm")]: {
       // backgroundColor: "red",
-      margin: "0% 0% 0% 20%",
-      width: "50%",
+      float: "left",
+      padding: 0,
+      width: "40%",
       height: "100%",
     },
   },
@@ -112,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "1px 1px 1px 1px #888",
     top: 15,
     right: 5,
-    borderRadius: 30,
+    borderRadius: 20,
     backgroundColor: "#f2f2f2",
     paddingBottom: 10,
     flex: 1,
@@ -122,8 +123,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   burgerItem: {
-    border: "#aaa",
-    color: "#7c7c7c",
+    // border: "#aaa",
+    color: "#a9aaa9",
     fontSize: 14,
     fontFamily: "Antonio",
     padding: 5,
@@ -139,13 +140,16 @@ const useStyles = makeStyles((theme) => ({
   close: {
     width: 20,
     height: 20,
-    color: "#afaaaf",
+    color: "#a9aaa9",
     backgroundColor: "#f2f2f2",
     marginTop: 10,
     marginBottom: 10,
     display: "flex",
     right: 0,
-    // width: "100%",
+    cursor: "pointer",
+    "&:hover": {
+      color: "#174f1a",
+    },
     [theme.breakpoints.up("md")]: {
       display: "none",
     },
@@ -156,7 +160,11 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor: "red",
 
     [theme.breakpoints.down("sm")]: {
-      display: "none",
+      // backgroundColor: "red",
+      display: "flex",
+      justifyContent: "flex-end",
+      margin: "0px 20px",
+      width: "50%",
     },
   },
   // ----------------------------------------------------------------------------------
@@ -244,6 +252,13 @@ const Header = () => {
               >
                 HELP
               </Typography>
+
+              {/* --------------------------------------------------------------------- */}
+              <div className={classes.loginBtn}>
+                {user ? <UserSidebar /> : <AuthModal />}
+              </div>
+              {/* --------------------------------------------------------------------- */}
+
               <FaBars
                 onClick={() => setOpenHamburger(!openHamburger)}
                 className={classes.hamburger}
@@ -257,7 +272,6 @@ const Header = () => {
                       className={classes.close}
                     />
                   </Typography>
-
                   <Typography
                     onClick={() => navigate("/market")}
                     className={classes.burgerItem}
@@ -276,15 +290,9 @@ const Header = () => {
                   >
                     HELP
                   </Typography>
-                  <Typography className={classes.burgerItem}>LOGIN</Typography>
+                  {/* <Typography className={classes.burgerItem}>LOGIN</Typography> */}
                 </Container>
               )}
-
-              {/* --------------------------------------------------------------------- */}
-              <div className={classes.loginBtn}>
-                {user ? <UserSidebar /> : <AuthModal />}
-              </div>
-              {/* --------------------------------------------------------------------- */}
             </Toolbar>
           </Container>
         </AppBar>
