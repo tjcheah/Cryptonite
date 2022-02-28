@@ -15,8 +15,6 @@ import "chart.js/auto";
 
 const CoinInfo = ({ coin }) => {
   const [historicData, setHistoricData] = useState();
-  // const [days, setDays] = useState(1)
-  // const { currency } = CryptoState()
   const [flag, setflag] = useState(false);
 
   const useStyles = makeStyles((theme) => ({
@@ -38,19 +36,6 @@ const CoinInfo = ({ coin }) => {
   }));
 
   const classes = useStyles();
-
-  // const fetchHistoricData = async () => {
-  //   const { data } = await axios.get(HistoricalChart(coin.id, days, currency))
-  //   setflag(true)
-  //   setHistoricData(data.prices)
-  // }
-
-  // console.log(coin)
-
-  // useEffect(() => {
-  //   fetchHistoricData()
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [days])
 
   const darkTheme = createTheme({
     palette: {
@@ -111,6 +96,11 @@ const CoinInfo = ({ coin }) => {
     plugins: {
       legend: {
         display: false,
+      },
+    },
+    tooltips: {
+      callbacks: {
+        title: function () {},
       },
     },
   };
