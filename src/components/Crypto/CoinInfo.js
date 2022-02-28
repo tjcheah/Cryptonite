@@ -1,4 +1,3 @@
-// import axios from "axios";
 import { useEffect, useState } from "react";
 // import { HistoricalChart } from "../config/api";
 import { Line } from "react-chartjs-2";
@@ -8,9 +7,6 @@ import {
   makeStyles,
   ThemeProvider,
 } from "@material-ui/core";
-// import SelectButton from "./SelectButton";
-// import { chartDays } from "../config/data";
-// import { CryptoState } from "../CryptoContext";
 import "chart.js/auto";
 
 const CoinInfo = ({ coin }) => {
@@ -24,13 +20,13 @@ const CoinInfo = ({ coin }) => {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
+      margin: "40px 40px 40px 0px",
       marginTop: 25,
-      padding: 40,
+      padding: 20,
       [theme.breakpoints.down("md")]: {
-        width: "100%",
-        marginTop: 0,
-        padding: 20,
-        paddingTop: 0,
+        width: "90%",
+        margin: 0,
+        // padding: 20,
       },
     },
   }));

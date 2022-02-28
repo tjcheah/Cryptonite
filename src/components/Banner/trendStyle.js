@@ -1,25 +1,31 @@
 import { makeStyles } from "@material-ui/core";
+import WhiteCard from "../../media/card.png";
 
 const useStyles = makeStyles((theme) => ({
   //Banner
   bannerContent: {
+    // margin: 0,
+    // padding: 0,
+    // backgroundColor: "green",
+    // backgroundColor: "#f2f2f2",
     display: "flex",
     flexDirection: "column",
-    paddingTop: 25,
+    paddingTop: 40,
     justifyContent: "space-around",
+    alignItems: "center",
     [theme.breakpoints.up("xs")]: {
-      height: 700,
-      marginTop: 20,
+      // backgroundColor: "red",
+      height: 800,
+      paddingTop: 40,
     },
     [theme.breakpoints.up("sm")]: {
-      height: 650,
-      marginTop: 20,
+      // backgroundColor: "blue",
+      height: 800,
+      paddingTop: 40,
     },
     [theme.breakpoints.up("md")]: {
-      height: 700,
-    },
-    [theme.breakpoints.up("lg")]: {
-      height: 700,
+      // backgroundColor: "yellow",
+      height: 570,
     },
   },
   card: {
@@ -27,98 +33,96 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundImage: "url(./card.png)",
-    borderRadius: 25,
-    boxShadow: "0 3px 5px 2px rgba(0, 0, 0, 0.3)",
+    backgroundImage: `url(${WhiteCard})`,
+    // backgroundColor: "red",
+    borderRadius: 30,
+    boxShadow: "0px 4px 4px 2px #aaa",
+    marginTop: 40,
+    marginBottom: 40,
     [theme.breakpoints.up("xs")]: {
-      height: "100%",
-      width: "100%",
-      marginTop: 50,
-      marginBottom: 50,
+      backgroundColor: "brown",
+      height: "75%",
+      width: "90%",
     },
     [theme.breakpoints.up("sm")]: {
-      height: "100%",
-      width: "100%",
-      marginTop: 50,
-      marginBottom: 50,
+      backgroundColor: "pink",
+      height: "75%",
+      width: "90%",
     },
     [theme.breakpoints.up("md")]: {
-      height: "90%",
+      backgroundColor: "green",
+      height: "65%",
       width: "80%",
-      marginTop: 50,
-      marginBottom: 50,
     },
     [theme.breakpoints.up("lg")]: {
-      height: "80%",
+      backgroundColor: "cyan",
+      height: "90%",
       width: "80%",
-      marginTop: 40,
-      marginBottom: 40,
     },
   },
   tagline: {
+    marginTop: 5,
+    // backgroundColor: "pink",
     display: "flex",
     flexDirection: "column",
-    textAlign: "center",
     [theme.breakpoints.up("xs")]: {
-      height: "10%",
+      // marginTop: 10,
+      width: "90%",
+      // height: "20%",
     },
     [theme.breakpoints.up("sm")]: {
-      height: "10%",
+      // marginTop: 10,
+      width: "90%",
+      // height: "17%",
     },
     [theme.breakpoints.up("md")]: {
-      height: "20%",
+      width: "80%",
+      // height: "17%",
     },
     [theme.breakpoints.up("lg")]: {
-      height: "20%",
+      width: "80%",
+      // height: "15%",
     },
   },
   trendTitle: {
+    // backgroundColor: "gray",
     fontWeight: "bold",
-    marginBottom: 15,
     fontFamily: "Antonio",
-    color: "black",
+    color: "white",
     textTransform: "uppercase",
-    [theme.breakpoints.up("xs")]: {
-      fontSize: "1.8rem",
-      letterSpacing: "0.5rem",
-    },
-    [theme.breakpoints.up("sm")]: {
-      fontSize: "1.8rem",
-      letterSpacing: "0.5rem",
-    },
-    [theme.breakpoints.up("md")]: {
-      fontSize: "2.4rem",
-      letterSpacing: "0.5rem",
-    },
-    [theme.breakpoints.up("lg")]: {
-      fontSize: "4.1rem",
-      letterSpacing: "0.5rem",
-    },
+    fontSize: 45,
+    letterSpacing: 5,
+    lineHeight: 1,
   },
   trendTagline: {
-    color: "black",
+    // backgroundColor: "purple",
+    paddingTop: 15,
+    color: "white",
     fontweight: "light",
-    textTransform: "capitalize",
-    fontFamily: "Antonio",
+    // textTransform: "capitalize",
+    fontFamily: "garamond",
+    lineHeight: 1,
+    textAlign: "justify",
     [theme.breakpoints.up("xs")]: {
-      fontSize: "1.0rem",
+      fontSize: 18,
+      paddingBottom: 5,
     },
     [theme.breakpoints.up("sm")]: {
-      fontSize: "1.2rem",
+      fontSize: 18,
     },
     [theme.breakpoints.up("md")]: {
-      fontSize: "1.5rem",
+      fontSize: 18,
     },
     [theme.breakpoints.up("lg")]: {
-      fontSize: "1.5rem",
+      fontSize: 18,
     },
   },
   //Carousel
   carousel: {
+    // backgroundColor: "gray",
     display: "flex",
     alignItems: "center",
-    flexWrap: "wrap",
-    flexDirection: "row",
+
     justifyContent: "center",
     [theme.breakpoints.up("xs")]: {
       width: "95%",
@@ -134,97 +138,108 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up("md")]: {
       width: "100%",
-      height: "50%",
+      height: "90%",
     },
     [theme.breakpoints.up("lg")]: {
       width: "100%",
-      height: "60%",
+      height: "90%",
     },
   },
   carouselItem: {
+    // backgroundColor: "pink",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
+
     [theme.breakpoints.up("xs")]: {
       flexDirection: "column",
-      gigight: "1rem",
+      marginLeft: "0.5rem",
+      marginRight: "0.5rem",
     },
     [theme.breakpoints.up("sm")]: {
       flexDirection: "column",
-      marginRight: "1rem",
     },
     [theme.breakpoints.up("md")]: {
       flexDirection: "row",
-      marginRight: 0,
     },
     [theme.breakpoints.up("lg")]: {
       flexDirection: "row",
-      marginRight: 0,
     },
   },
   coinImage: {
+    // backgroundColor: "white",
     display: "flex",
     flexDirection: "column",
     color: "white",
     alignItems: "center",
     justifyContent: "flex-start",
+
     [theme.breakpoints.up("xs")]: {
-      width: 180,
-      height: 180,
+      // backgroundColor: "red",
+      width: "auto",
+      height: "auto",
     },
     [theme.breakpoints.up("sm")]: {
-      width: 250,
-      height: 250,
+      // backgroundColor: "green",
+      width: "auto",
+      height: "auto",
     },
     [theme.breakpoints.up("md")]: {
+      // backgroundColor: "orange",
+      marginRight: 40,
       width: "auto",
       height: "35%",
     },
     [theme.breakpoints.up("lg")]: {
+      // backgroundColor: "gray",
+      marginRight: 40,
       width: "auto",
       height: "40%",
     },
   },
   coinDetails: {
+    // backgroundColor: "orange",
     display: "flex",
     flexDirection: "column",
     textTransform: "uppercase",
     color: "white",
+    // paddingTop: 5,
+
     [theme.breakpoints.up("xs")]: {
       width: "100%",
       justifyContent: "center",
       alignItems: "center",
-      marginTop: 70,
     },
     [theme.breakpoints.up("sm")]: {
       width: "100%",
       justifyContent: "center",
       alignItems: "center",
-      marginTop: 0,
     },
     [theme.breakpoints.up("md")]: {
       marginLeft: 23,
       width: "60%",
       justifyContent: "flex-start",
       alignItems: "flex-start",
-      marginTop: 0,
     },
     [theme.breakpoints.up("lg")]: {
       marginLeft: 15,
       width: "60%",
       justifyContent: "flex-start",
       alignItems: "flex-start",
-      marginTop: 0,
     },
   },
   coinHighlight: {
+    // backgroundColor: "yellow",
     display: "flex",
     flexDirection: "row",
+    justifyContent: "space-between",
     marginBottom: 10,
+    marginTop: 10,
     width: "100%",
   },
   coinInfo: {
+    // backgroundColor: "green",
     display: "flex",
     flexDirection: "row",
     width: "100%",
@@ -243,145 +258,172 @@ const useStyles = makeStyles((theme) => ({
   },
   //Carousel Texts
   coinTitle: {
-    fontWeight: 500,
+    // backgroundColor: "cyan",
+    margin: 10,
+    fontWeight: 600,
     fontFamily: "Antonio",
-    color: "rgb(169, 170, 169)",
+    color: "#a9aaa9",
+    letterSpacing: "0.5rem",
+
     [theme.breakpoints.up("xs")]: {
       fontSize: 30,
-      letterSpacing: "1.5rem",
     },
     [theme.breakpoints.up("sm")]: {
       fontSize: 40,
-      letterSpacing: "1.5rem",
     },
     [theme.breakpoints.up("md")]: {
       fontSize: 55,
-      letterSpacing: "1.5rem",
     },
     [theme.breakpoints.up("lg")]: {
       fontSize: 66,
-      letterSpacing: "1.5rem",
     },
   },
   coinPrice: {
+    // backgroundColor: "white",
     fontWeight: 500,
     fontFamily: "Antonio",
     color: "black",
+    marginLeft: 5,
+
     [theme.breakpoints.up("xs")]: {
-      width: "100%",
       fontSize: 30,
     },
     [theme.breakpoints.up("sm")]: {
-      width: "100%",
       fontSize: 35,
     },
     [theme.breakpoints.up("md")]: {
-      width: 250,
-      fontSize: 48,
+      fontSize: 45,
     },
     [theme.breakpoints.up("lg")]: {
-      width: 250,
-      fontSize: 48,
+      fontSize: 55,
     },
   },
   coinChange: {
-    fontWeight: 500,
+    // backgroundColor: "gray",
+    fontWeight: 600,
     fontFamily: "Antonio",
+    marginRight: 5,
+
     [theme.breakpoints.up("xs")]: {
-      marginLeft: 25,
       fontSize: 30,
     },
     [theme.breakpoints.up("sm")]: {
-      marginLeft: 25,
       fontSize: 35,
     },
     [theme.breakpoints.up("md")]: {
-      marginLeft: 33,
-      fontSize: 48,
+      fontSize: 45,
     },
     [theme.breakpoints.up("lg")]: {
-      marginLeft: 40,
-      fontSize: 48,
+      fontSize: 55,
     },
   },
   volTitle: {
+    // backgroundColor: "indigo",
+    width: "40%",
+    marginLeft: 5,
     display: "flex",
-    color: "rgb(169, 170, 169)",
-    fontWeight: 500,
+    color: "#a9aaa9",
     fontFamily: "Antonio",
+
     [theme.breakpoints.up("xs")]: {
-      fontSize: 22,
+      // backgroundColor: "gray",
+      fontSize: 24,
     },
     [theme.breakpoints.up("sm")]: {
-      fontSize: 25,
+      // backgroundColor: "yellow",
+      fontSize: 24,
     },
     [theme.breakpoints.up("md")]: {
-      fontSize: 25,
+      // backgroundColor: "green",
+      fontSize: 24,
     },
     [theme.breakpoints.up("lg")]: {
+      // backgroundColor: "cyan",
       fontSize: 30,
     },
   },
   coinVol: {
+    // backgroundColor: "gray",
+    width: "60%",
+    marginRight: 5,
     display: "flex",
-    fontWeight: 500,
     fontFamily: "Antonio",
     color: "black",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignItems: "center",
+
     [theme.breakpoints.up("xs")]: {
-      fontSize: 22,
-      marginLeft: 0,
+      // backgroundColor: "gray",
+      fontSize: 24,
     },
     [theme.breakpoints.up("sm")]: {
-      fontSize: 25,
-      marginLeft: 0,
+      // backgroundColor: "yellow",
+      fontSize: 24,
     },
     [theme.breakpoints.up("md")]: {
-      fontSize: 25,
-      marginLeft: 139,
+      // backgroundColor: "green",
+      fontSize: 24,
     },
     [theme.breakpoints.up("lg")]: {
+      // backgroundColor: "cyan",
       fontSize: 30,
-      marginLeft: 130,
     },
   },
   capitalTitle: {
+    // backgroundColor: "yellow",
+    width: "40%",
+    marginLeft: 5,
     display: "flex",
-    color: "rgb(169, 170, 169)",
-    fontWeight: 500,
+    color: "#a9aaa9",
     fontFamily: "Antonio",
+
     [theme.breakpoints.up("xs")]: {
-      fontSize: 22,
+      // backgroundColor: "gray",
+      fontSize: 24,
     },
     [theme.breakpoints.up("sm")]: {
-      fontSize: 25,
+      // backgroundColor: "yellow",
+      fontSize: 24,
     },
     [theme.breakpoints.up("md")]: {
-      fontSize: 25,
+      // backgroundColor: "green",
+      fontSize: 24,
     },
     [theme.breakpoints.up("lg")]: {
+      // backgroundColor: "cyan",
       fontSize: 30,
     },
   },
   capital: {
+    // backgroundColor: "pink",
+    width: "60%",
+    marginRight: 5,
     display: "flex",
-    fontWeight: 500,
     fontFamily: "Antonio",
     color: "black",
+
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignItems: "center",
+
     [theme.breakpoints.up("xs")]: {
-      fontSize: 22,
-      marginLeft: 0,
+      // backgroundColor: "gray",
+      fontSize: 24,
     },
     [theme.breakpoints.up("sm")]: {
-      fontSize: 25,
-      marginLeft: 0,
+      // backgroundColor: "yellow",
+      fontSize: 24,
     },
     [theme.breakpoints.up("md")]: {
-      fontSize: 25,
-      marginLeft: 180,
+      // backgroundColor: "green",
+      fontSize: 24,
     },
     [theme.breakpoints.up("lg")]: {
+      // backgroundColor: "cyan",
       fontSize: 30,
-      marginLeft: 180,
     },
   },
 }));
