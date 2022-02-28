@@ -7,13 +7,33 @@ import { makeStyles } from "@material-ui/core";
 import Alert from "./components/Alert";
 import Footer from "./components/Footer";
 import AboutUs from "./Pages/AboutUs";
+import Topo from "./media/topo.jpg";
 
 function App() {
   const useStyles = makeStyles(() => ({
-    App: {
+    AppF2: {
+      margin: 0,
+      padding: 0,
       backgroundColor: "#f2f2f2",
+      // backgroundColor: "gold",
       color: "white",
-      minHeight: "100vh",
+      minHeight: "100%",
+    },
+    AppLgreen: {
+      margin: 0,
+      padding: 0,
+      backgroundColor: "#c6cec6",
+      // backgroundColor: "cyan",
+      color: "white",
+      minHeight: "100%",
+    },
+    AppTopo: {
+      margin: 0,
+      padding: 0,
+      backgroundImage: `url(${Topo})`,
+      // backgroundColor: "purple",
+      color: "white",
+      minHeight: "100%",
     },
   }));
 

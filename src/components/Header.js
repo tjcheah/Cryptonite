@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 25,
     borderBottomLeftRadius: 35,
     borderBottomRightRadius: 35,
-    boxShadow: "0px 4px 4px 2px #aaa",
+    boxShadow: "0px 2px 2px 1px #aaa",
   },
   nav1: {
     // backgroundColor: "red",
