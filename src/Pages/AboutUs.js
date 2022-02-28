@@ -7,10 +7,10 @@ import BehindCryptonite from "../components/AboutUs/BehindCryptonite";
 
 const useStyles = makeStyles((theme) => ({
   dummy: {
-    height: 200,
+    height: 180,
     backgroundColor: "#c6cec6",
     // zIndex: 1,
-    marginTop: -100,
+    marginTop: -120,
     [theme.breakpoints.down("sm")]: {
       height: 130,
     },
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     backgroundImage: "url(./topo.jpg)",
     overflowX: "hidden",
-    overflowY: "visible",
+    marginBottom: -50,
   },
   ourStoryContainer: {
     display: "flex",

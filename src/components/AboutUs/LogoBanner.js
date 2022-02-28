@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
 import logo from "../Cryptonite Logo.png";
-import logoTitle from "../Cryptonite Title Cropped.png";
+import logoTitle from "./Cryptonite Title Cropped.png";
 
 const useStyles = makeStyles((theme) => ({
   logoContainer: {
@@ -25,10 +25,11 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     width: 200,
     height: 200,
+    zIndex: 2,
     [theme.breakpoints.down("sm")]: {
       width: 150,
       height: 150,
-      marginRight:50,
+      marginRight: 50,
     },
   },
   logoTitle: {
