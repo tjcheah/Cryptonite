@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import { HistoricalChart } from "../config/api";
 import { Line } from "react-chartjs-2";
 import {
   CircularProgress,
@@ -93,10 +92,13 @@ const CoinInfo = ({ coin }) => {
       legend: {
         display: false,
       },
-    },
-    tooltips: {
-      callbacks: {
-        title: function () {},
+      tooltip: {
+        displayColors: false,
+        callbacks: {
+          label: function (context) {
+            return `Price: ${context.parsed.y}`;
+          },
+        },
       },
     },
   };
