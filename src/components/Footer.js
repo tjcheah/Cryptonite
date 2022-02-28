@@ -1,5 +1,5 @@
 import React from "react";
-import bottomLogo from "./Cryptonite Title 2.png";
+import bottomLogo from "../media/Cryptonite Title 2.png";
 import {
   BottomNavigation,
   Container,
@@ -13,31 +13,44 @@ import { FaRegCopyright } from "react-icons/fa";
 
 const useStyles = makeStyles((theme) => ({
   footerContainer: {
+    // backgroundColor: "green",
     display: "flex",
-    bottom: 0,
+    // height: "239px",
     width: "100%",
     justifyContent: "center",
     flexWrap: "wrap",
+    position: "static",
+    left: 0,
+    bottom: 0,
+    right: 0,
+    paddingTop: 50,
   },
+  // The footer itself
   footer: {
+    // backgroundColor: "yellow",
     display: "flex",
     flexDirection: "row",
     width: "95%",
+    height: "100%",
+    position: "static",
+    left: 0,
+    bottom: 0,
+    right: 0,
     backgroundColor: "#ffffff",
     color: "#000",
     bottom: 0,
     paddingTop: 25,
-    paddingBottom: 220,
     borderTopLeftRadius: 35,
     borderTopRightRadius: 35,
     boxShadow: "0px -4px 4px 2px #aaa",
     lineHeight: 18,
     flexWrap: "wrap",
     [theme.breakpoints.down("sm")]: {
-      paddingBottom: 350,
+      // paddingBottom: 300,
     },
   },
   footerTop: {
+    // backgroundColor: "green",
     display: "flex",
     flexDirection: "row",
     width: "100%",
@@ -47,84 +60,123 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   footerTopLeft: {
+    // backgroundColor: "cyan",
     display: "flex",
     flexDirection: "column",
+    alignContent: "center",
+    justifyContent: "center",
+    alignItems: "center",
     width: "50%",
-    marginLeft: 50,
+    // marginLeft: 50,
     [theme.breakpoints.down("sm")]: {
       width: "100%",
       marginLeft: 0,
     },
   },
   footerTopRight: {
+    // backgroundColor: "violet",
+    // paddingTop: 20,
     width: "50%",
-    marginTop: 15,
-    marginRight: 50,
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
     [theme.breakpoints.down("sm")]: {
       width: "100%",
-      marginTop: 20,
-      paddingLeft: 0,
+      // marginTop: 20,
+      paddingLeft: 40,
       marginLeft: 0,
     },
   },
   footerBottom: {
+    // backgroundColor: "yellow",
     display: "flex",
+    justifyContent: "center",
+    alignContent: "center",
     flexDirection: "column",
     width: "100%",
-    paddingTop: 25,
-    paddingBottom: 20,
-    marginLeft: 75,
+    // height: 80,
+    // marginBottom: 30,
+    // paddingTop: 25,
+    // paddingBottom: 30,
+    // marginLeft: 75,
     [theme.breakpoints.down("sm")]: {
       marginLeft: 15,
       marginRight: 25,
     },
   },
+  footerBottomLeft: {
+    // backgroundColor: "pink",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: 10,
+    paddingBottom: 10,
+
+    width: "100%",
+    [theme.breakpoints.down("sm")]: {
+      // marginLeft: 15,
+      // marginRight: 25,
+    },
+  },
 
   bottomLogo: {
-    width: 305,
-    height: 70,
+    // backgroundColor: "blue",
+    width: "75%",
+    height: "auto",
     [theme.breakpoints.down("sm")]: {
       width: 260,
       height: 60,
     },
   },
   subtitle: {
+    // backgroundColor: "red",
+    display: "flex",
+    justifyContent: "center",
+    textAlign: "justify",
     fontSize: 12,
     fontFamily: "Antonio",
-    paddingTop: 5,
+    padding: 10,
     width: "90%",
   },
   bottomTitle: {
+    // backgroundColor: "gray",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+
+    textAlign: "justify",
     fontSize: 10,
     fontFamily: "Antonio",
     fontWeight: 700,
     letterSpacing: 1,
-    width: "40%",
+    width: "95%",
     [theme.breakpoints.down("sm")]: {
+      textAlign: "center",
       width: "100%",
-      paddingBottom: 5,
     },
   },
   miniTitle: {
-    fontSize: 13,
+    // backgroundColor: "Red",
+    fontSize: 14,
     fontFamily: "Antonio",
-    lineHeight: 2,
+    lineHeight: 1.5,
     letterSpacing: 1,
+    cursor: "pointer",
     "&:hover": {
-      fontWeight: 550,
+      fontWeight: "bold",
+      color: "#a9aaa9",
     },
     [theme.breakpoints.down("sm")]: {
+      textAlign: "center",
+      fontSize: 12,
       lineHeight: 1.6,
     },
   },
-  column1: {
-    width: "50%",
-    flex: 2,
-  },
-  column2: { width: "50%", flex: 5 },
+  column1: { width: "50%", flex: 2 },
+  column2: { width: "50%", flex: 4 },
 }));
 
 const Footer = () => {
@@ -151,11 +203,12 @@ const Footer = () => {
                 alt="Logo"
                 className={classes.bottomLogo}
               />
-              <Typography className={classes.subtitle}>
+
+              {/* <Typography className={classes.subtitle}>
                 Cryptonite came with a mission to provide actual real-time
                 crypto data for users to make their best, rewarding investment
                 decisions in the cryptocurrency world.
-              </Typography>
+              </Typography> */}
             </Container>
             <Container className={classes.footerTopRight}>
               <Container className={classes.column1}>
@@ -213,13 +266,15 @@ const Footer = () => {
             </Container>
           </Container>
           <Container className={classes.footerBottom}>
-            <Typography className={classes.bottomTitle}>
-              Help Center | Contact | Bug Bounty | Disclaimer | Terms of Service
-              | Privacy Policy | Ad Policy
-            </Typography>
-            <Typography className={classes.bottomTitle}>
-              <FaRegCopyright /> Cryptonite. All Rights Reserved.
-            </Typography>
+            <Container className={classes.footerBottomLeft}>
+              <Typography className={classes.bottomTitle}>
+                Help Center | Contact | Bug Bounty | Disclaimer | Terms of
+                Service | Privacy Policy | Ad Policy
+              </Typography>
+              <Typography className={classes.bottomTitle}>
+                <FaRegCopyright /> Cryptonite. All Rights Reserved.
+              </Typography>
+            </Container>
           </Container>
         </BottomNavigation>
       </Container>

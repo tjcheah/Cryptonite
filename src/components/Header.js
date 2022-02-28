@@ -1,11 +1,23 @@
+import NavLogo from "../media/Cryptonite Title Cropped.png";
+import UserSidebar from "./Authentication/UserSidebar";
+import AuthModal from "./Authentication/AuthModal";
+import loginStone from "../media/Gray Stone.png";
+
 import React, { useState } from "react";
-import NavLogo from "./Cryptonite Title Cropped.png";
-import loginStone from "./Gray Stone.png";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+import Login from "./Authentication/Login";
+import Signup from "./Authentication/Signup";
+import GoogleButton from "react-google-button";
 import {
   AppBar,
   Container,
+  Tab,
+  Tabs,
   Toolbar,
   Button,
+  Box,
   Typography,
   Select,
   MenuItem,
@@ -17,9 +29,14 @@ import { CryptoState } from "../CryptoContext";
 import { useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../firebase";
 
 const useStyles = makeStyles((theme) => ({
   navContainer: {
+    // margin: 0,
+    // padding: 0,
+    // backgroundColor: "red",
     position: "static",
     display: "flex",
     top: 0,
@@ -32,26 +49,30 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     width: "95%",
-    paddingTop: 20,
+    paddingTop: 10,
     paddingBottom: 10,
     backgroundColor: "#ffffff",
-    top: 0,
-    marginRight: 0,
-    paddingRight: 0,
+    // backgroundColor: "green",
+    marginBottom: 25,
     borderBottomLeftRadius: 35,
     borderBottomRightRadius: 35,
     boxShadow: "0px 4px 4px 2px #aaa",
-    flexWrap: "wrap",
   },
-
+  nav1: {
+    // backgroundColor: "red",
+    // padding: 0,
+  },
   navLogo: {
     display: "flex",
     width: 280,
     height: 70,
     marginRight: 50,
+    cursor: "pointer",
     [theme.breakpoints.down("sm")]: {
-      width: 240,
-      height: 60,
+      // backgroundColor: "red",
+      margin: "0% 0% 0% 20%",
+      width: "50%",
+      height: "100%",
     },
   },
   title: {
@@ -60,75 +81,18 @@ const useStyles = makeStyles((theme) => ({
     color: "#7c7c7c",
     fontWeight: "bold",
     whiteSpace: "nowrap",
-    letterSpacing: 3,
+    letterSpacing: 2,
     cursor: "pointer",
     fontFamily: "Antonio",
-    marginRight: 15,
+    marginRight: 20,
+
     "&:hover": {
       color: "#233c25",
-      fontWeight: 550,
+      // fontWeight: 1000,
     },
-    [theme.breakpoints.down("sm")]: {
-      display: "none",
-    },
-  },
-  loginButton: {
-    borderRadius: 50,
-    backgroundColor: "#233c25",
-    color: "#ffffff",
-    padding: 10,
-    fontSize: 20,
-    fontFamily: "Antonio",
-    height: 50,
-    marginLeft: "auto",
-    "&:hover": {
-      // color: "#000",
-      backgroundColor: "#80b4b6",
-      boxShadow: "2px 2px 4px 2px #aaa",
-      fontWeight: 550,
-    },
-    [theme.breakpoints.down("sm")]: {
-      display: "none",
-    },
-  },
-  currencyButton: {
-    marginRight: 10,
-    borderRadius: 30,
-    fontSize: 15,
-    color: "#7c7c7c",
-    backgroundColor: "#f2f2f2",
-    letterSpacing: 1,
-    fontWeight: "bold",
-    fontFamily: "Antonio",
-    height: 35,
-    label: "#aaa",
-    "& .MuiSvgIcon-root": {
-      color: "lightgray",
-    },
-    "&:hover": {
-      color: "#555",
-      fontWeight: 550,
-      "& .MuiSvgIcon-root": {
-        color: "gray",
-      },
-      [theme.breakpoints.down("sm")]: {
-        display: "flex",
-      },
-    },
-  },
 
-  menuItem: {
-    fontSize: 12,
-    color: "#fff",
-    letterSpacing: 1,
-    fontFamily: "Antonio",
-    fontWeight: "bold",
-  },
-  loginStone: {
-    height: 90,
-    padding: 10,
-    "&:hover": {
-      height: 95,
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
     },
   },
   hamburger: {
@@ -159,14 +123,14 @@ const useStyles = makeStyles((theme) => ({
   },
   burgerItem: {
     border: "#aaa",
-    color: "#555",
+    color: "#7c7c7c",
     fontSize: 14,
     fontFamily: "Antonio",
-    padding: 10,
-    width: "100%",
+    padding: 5,
+    cursor: "pointer",
     textAlign: "right",
     "&:hover": {
-      color: "#000",
+      color: "#174f1a",
     },
     [theme.breakpoints.up("md")]: {
       display: "none",
@@ -175,7 +139,7 @@ const useStyles = makeStyles((theme) => ({
   close: {
     width: 20,
     height: 20,
-    color: "#000",
+    color: "#afaaaf",
     backgroundColor: "#f2f2f2",
     marginTop: 10,
     marginBottom: 10,
@@ -186,19 +150,58 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  // ----------------------------------------------------------------------------------
+  loginBtn: {
+    width: "100%",
+    // backgroundColor: "red",
+
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
+  // ----------------------------------------------------------------------------------
 }));
 
 const Header = () => {
   const classes = useStyles();
-
   const navigate = useNavigate();
-
-  const { currency, setcurrency } = CryptoState();
-
+  const { currency, setcurrency, user } = CryptoState();
   const [openHamburger, setOpenHamburger] = useState(false);
-
+  // ----------------------------------------------------------------------------------
+  // const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const [value, setValue] = React.useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  const { setAlert } = CryptoState();
+  const googleProvider = new GoogleAuthProvider();
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((res) => {
+        setAlert({
+          open: true,
+          message: `Sign up Successful. Welcome ${res.user.email}`,
+          type: "success",
+        });
+        handleClose();
+      })
+      .catch((error) => {
+        setAlert({
+          open: true,
+          message: error.message,
+          type: "error",
+        });
+      });
+  };
+  // ----------------------------------------------------------------------------------
   console.log(currency);
-
   const darkTheme = createTheme({
     palette: {
       primary: {
@@ -212,7 +215,7 @@ const Header = () => {
     <ThemeProvider theme={darkTheme}>
       <Container className={classes.navContainer}>
         <AppBar className={classes.nav}>
-          <Container>
+          <Container className={classes.nav1}>
             <Toolbar>
               <img
                 onClick={() => navigate("/")}
@@ -241,31 +244,11 @@ const Header = () => {
               >
                 HELP
               </Typography>
-              <Button className={classes.loginButton}>
-                <Select
-                  variant="outlined"
-                  className={classes.currencyButton}
-                  value={currency}
-                  onChange={(e) => setcurrency(e.target.value)}
-                >
-                  <MenuItem className={classes.menuItem} value={"USD"}>
-                    USD
-                  </MenuItem>
-                  <MenuItem className={classes.menuItem} value={"MYR"}>
-                    MYR
-                  </MenuItem>
-                </Select>
-                LOGIN
-                <img
-                  className={classes.loginStone}
-                  src={loginStone}
-                  alt="login"
-                />
-              </Button>
               <FaBars
                 onClick={() => setOpenHamburger(!openHamburger)}
                 className={classes.hamburger}
               />
+
               {openHamburger && (
                 <Container className={classes.burgerFrame}>
                   <Typography>
@@ -296,6 +279,12 @@ const Header = () => {
                   <Typography className={classes.burgerItem}>LOGIN</Typography>
                 </Container>
               )}
+
+              {/* --------------------------------------------------------------------- */}
+              <div className={classes.loginBtn}>
+                {user ? <UserSidebar /> : <AuthModal />}
+              </div>
+              {/* --------------------------------------------------------------------- */}
             </Toolbar>
           </Container>
         </AppBar>
