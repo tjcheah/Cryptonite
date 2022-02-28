@@ -4,13 +4,35 @@ import Header from "./components/Header";
 import Homepage from "./Pages/Homepage";
 import Coinpage from "./Pages/Coinpage";
 import { makeStyles } from "@material-ui/core";
+import Alert from "./components/Alert";
+import Footer from "./components/Footer";
+import Topo from "./media/topo.jpg";
 
 function App() {
   const useStyles = makeStyles(() => ({
-    App: {
+    AppF2: {
+      margin: 0,
+      padding: 0,
       backgroundColor: "#f2f2f2",
+      // backgroundColor: "gold",
       color: "white",
-      minHeight: "100vh",
+      minHeight: "100%",
+    },
+    AppLgreen: {
+      margin: 0,
+      padding: 0,
+      backgroundColor: "#c6cec6",
+      // backgroundColor: "cyan",
+      color: "white",
+      minHeight: "100%",
+    },
+    AppTopo: {
+      margin: 0,
+      padding: 0,
+      backgroundImage: `url(${Topo})`,
+      // backgroundColor: "purple",
+      color: "white",
+      minHeight: "100%",
     },
   }));
 
@@ -19,13 +41,19 @@ function App() {
   return (
     <>
       <Router>
-        <div className={classes.App}>
+        <div className={classes.AppF2}>{/* <NavBar/> */}</div>
+        <div className={classes.AppLgreen}>
+          <Routes></Routes>
+        </div>
+        <div className={classes.AppTopo}>
           <Header />
           <Routes>
             <Route path="/" element={<Homepage />} exact />
             <Route path="/coins/:id" element={<Coinpage />} />
           </Routes>
+          <Footer />
         </div>
+        <Alert />
       </Router>
     </>
   );
