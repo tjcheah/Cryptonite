@@ -10,7 +10,6 @@ import Fade from "@material-ui/core/Fade";
 import Login from "./Authentication/Login";
 import Signup from "./Authentication/Signup";
 import GoogleButton from "react-google-button";
-
 import {
   AppBar,
   Container,
@@ -26,7 +25,6 @@ import {
   createTheme,
   ThemeProvider,
 } from "@material-ui/core";
-
 import { CryptoState } from "../CryptoContext";
 import { useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
@@ -246,7 +244,6 @@ const Header = () => {
               >
                 HELP
               </Typography>
-
               <FaBars
                 onClick={() => setOpenHamburger(!openHamburger)}
                 className={classes.hamburger}
