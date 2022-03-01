@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     bottom: 0,
     right: 0,
-    paddingTop: 50,
+    paddingTop: 30,
   },
   // The footer itself
   footer: {
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: 25,
     borderTopLeftRadius: 35,
     borderTopRightRadius: 35,
-    boxShadow: "0px -4px 4px 2px #aaa",
+    boxShadow: "0px -2px 2px 1px #aaa",
     lineHeight: 18,
     flexWrap: "wrap",
     [theme.breakpoints.down("sm")]: {

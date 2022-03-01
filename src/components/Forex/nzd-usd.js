@@ -7,21 +7,21 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 import "chart.js/auto";
+import { Typography } from "@material-ui/core";
 
-const CoinInfo = ({ coin }) => {
+const NzdUsd = ({ coin }) => {
   const [historicData, setHistoricData] = useState();
   const [flag, setflag] = useState(false);
 
   const useStyles = makeStyles((theme) => ({
     container: {
-      // backgroundColor: "pink",
-      // color: "black",
-      marginBottom: 30,
-      width: "95%",
+      width: "75%",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
+      margin: "40px 40px 40px 0px",
+      marginTop: 25,
       padding: 20,
       [theme.breakpoints.down("md")]: {
         width: "90%",
@@ -56,7 +56,7 @@ const CoinInfo = ({ coin }) => {
     datasets: [
       {
         data: price,
-        label: ``,
+        label: `Tick Stream for NZD/USD`,
         borderColor: "aquamarine",
       },
     ],
@@ -111,7 +111,7 @@ const CoinInfo = ({ coin }) => {
     ws.onopen = (evt) => {
       ws.send(
         JSON.stringify({
-          ticks_history: "cryBTCUSD",
+          ticks_history: "frxNZDUSD",
           adjust_start_time: 1,
           count: 10,
           end: "latest",
@@ -119,7 +119,7 @@ const CoinInfo = ({ coin }) => {
           style: "ticks",
         })
       );
-      ws.send(JSON.stringify({ ticks: "cryBTCUSD" }));
+      ws.send(JSON.stringify({ ticks: "frxNZDUSD" }));
     };
 
     ws.onmessage = function (evt) {
@@ -159,6 +159,7 @@ const CoinInfo = ({ coin }) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <div className={classes.container}>
+        <Typography variant="h3">Tick Stream for NZD/USD</Typography>
         {!historicData | (flag === false) ? (
           <CircularProgress style={{ color: "red" }} size={250} thickness={1} />
         ) : (
@@ -171,4 +172,4 @@ const CoinInfo = ({ coin }) => {
   );
 };
 
-export default CoinInfo;
+export default NzdUsd;
