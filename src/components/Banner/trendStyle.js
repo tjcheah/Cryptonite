@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${WhiteCard})`,
     // backgroundColor: "red",
     borderRadius: 30,
-    boxShadow: "0px 4px 4px 2px #aaa",
+    // boxShadow: "0px 4px 4px 2px #aaa",
     marginTop: 40,
     marginBottom: 40,
     [theme.breakpoints.up("xs")]: {
