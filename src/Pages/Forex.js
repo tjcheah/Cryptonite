@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 
-import BtcUsd from "../components/Forex/btc-usd.js";
-import EurUsd from "../components/Forex/eur-usd.js";
-import UsdJpy from "../components/Forex/usd-jpy.js";
+import BtcUsd from '../components/Forex/btc-usd.js'
+import EurUsd from '../components/Forex/eur-usd.js'
+import UsdJpy from '../components/Forex/usd-jpy.js'
 
 export default function Forex() {
   return (
@@ -11,5 +11,5 @@ export default function Forex() {
       <UsdJpy />
       <EurUsd />
     </div>
-  );
+  )
 }
