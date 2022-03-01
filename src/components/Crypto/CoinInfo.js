@@ -17,7 +17,7 @@ const CoinInfo = ({ coin }) => {
       // backgroundColor: "pink",
       // color: "black",
       marginBottom: 30,
-      width: "95%",
+      width: 1200,
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
@@ -25,8 +25,7 @@ const CoinInfo = ({ coin }) => {
       padding: 20,
       [theme.breakpoints.down("md")]: {
         width: "90%",
-        margin: 0,
-        // padding: 20,
+        marginBottom: 20,
       },
     },
   }));

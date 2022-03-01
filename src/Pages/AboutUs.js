@@ -7,39 +7,50 @@ import BehindCryptonite from "../components/AboutUs/BehindCryptonite";
 
 const useStyles = makeStyles((theme) => ({
   dummy: {
-    height: 180,
+    height: 160,
     backgroundColor: "#c6cec6",
     // zIndex: 1,
     marginTop: -120,
     [theme.breakpoints.down("sm")]: {
-      height: 130,
+      height: 120,
     },
   },
   background: {
+    // backgroundColor: "red",
+    overflow: "hidden",
     display: "flex",
     flexDirection: "column",
-    backgroundImage: "url(./topo.jpg)",
+    // backgroundImage: "url(./topo.jpg)",
     overflowX: "hidden",
     marginBottom: -50,
   },
   ourStoryContainer: {
+    // overflow: "hidden",
     display: "flex",
     width: "100%",
     flexDirection: "column",
     alignItems: "center",
   },
   bottomLogoContainer: {
+    // backgroundColor: "red",
     display: "flex",
-    width: "100%",
-    marginTop: -600,
+    width: 1500,
+    marginLeft: "10vw",
+    marginTop: -990,
     justifyContent: "flex-end",
     alignItems: "flex-end",
 
     [theme.breakpoints.down("md")]: {
-      marginTop: -550,
+      // backgroundColor: "yellow",
+      marginLeft: -300,
+      marginTop: -990,
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: -200,
+      height: 1050,
+      width: 1300,
+      // backgroundColor: "pink",
+      marginLeft: -300,
+      marginTop: -990,
     },
   },
   bottomLogo: {
