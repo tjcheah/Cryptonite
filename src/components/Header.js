@@ -20,6 +20,7 @@ import {
   Box,
   Typography,
   Select,
+  Menu,
   MenuItem,
   makeStyles,
   createTheme,
@@ -92,6 +93,11 @@ const useStyles = makeStyles((theme) => ({
       // fontWeight: 1000,
     },
 
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
+  market: {
     [theme.breakpoints.down("sm")]: {
       display: "none",
     },
@@ -173,6 +179,7 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const { currency, setcurrency, user } = CryptoState();
   const [openHamburger, setOpenHamburger] = useState(false);
   // ----------------------------------------------------------------------------------
@@ -219,6 +226,14 @@ const Header = () => {
     },
   });
 
+  const expand = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleMinimize = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <ThemeProvider theme={darkTheme}>
       <Container className={classes.navContainer}>
@@ -232,11 +247,18 @@ const Header = () => {
                 className={classes.navLogo}
               />
               <Typography
-                onClick={() => navigate("/market")}
+                onClick={() => navigate("/crypto")}
                 className={classes.title}
                 variant="h6"
               >
-                MARKET
+                CRYPTO
+              </Typography>
+              <Typography
+                onClick={() => navigate("/forex")}
+                className={classes.title}
+                variant="h6"
+              >
+                FOREX
               </Typography>
               <Typography
                 onClick={() => navigate("/about")}
@@ -273,10 +295,28 @@ const Header = () => {
                     />
                   </Typography>
                   <Typography
-                    onClick={() => navigate("/market")}
-                    className={classes.burgerItem}
+                    style={{
+                      color: "#a9aaa9",
+                      fontSize: 14,
+                      fontFamily: "Antonio",
+                      fontWeight: 600,
+                      padding: 5,
+                      textAlign: "right",
+                    }}
                   >
                     MARKET
+                  </Typography>
+                  <Typography
+                    onClick={() => navigate("/crypto")}
+                    className={classes.burgerItem}
+                  >
+                    CRYPTO
+                  </Typography>
+                  <Typography
+                    onClick={() => navigate("/forex")}
+                    className={classes.burgerItem}
+                  >
+                    FOREX
                   </Typography>
                   <Typography
                     onClick={() => navigate("/about")}

@@ -7,25 +7,55 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 import "chart.js/auto";
+import { Typography } from "@material-ui/core";
 
-const CoinInfo = ({ coin }) => {
+const UsdJpy = ({ coin }) => {
   const [historicData, setHistoricData] = useState();
   const [flag, setflag] = useState(false);
 
   const useStyles = makeStyles((theme) => ({
     container: {
-      // backgroundColor: "pink",
-      // color: "black",
-      marginBottom: 30,
-      width: 1200,
+      // backgroundColor: "yellow",
+      width: "100%",
+      height: "100%",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      padding: 20,
+      margin: "20px 10px",
+      color: "black",
+      fontFamily: "antonio",
+      padding: "0px 10px 100px 10px",
       [theme.breakpoints.down("md")]: {
+        // backgroundColor: "green",
         width: "90%",
-        marginBottom: 20,
+        padding: 0,
+      },
+      [theme.breakpoints.down("xs")]: {
+        // backgroundColor: "blue",
+        width: "90%",
+        padding: 0,
+      },
+    },
+    containerLabel: {
+      // backgroundColor: "purple",
+      backgroundColor: "#fff",
+      fontFamily: "antonio",
+      fontSize: 30,
+      width: "90%",
+      textAlign: "center",
+      padding: 10,
+      margin: "50px 10px",
+      boxShadow: "0px 2px 2px 1px #aaa",
+      borderRadius: 40,
+      [theme.breakpoints.down("md")]: {
+        // backgroundColor: "pink",
+        margin: "20px 10px",
+      },
+      [theme.breakpoints.down("xs")]: {
+        // backgroundColor: "red",
+        fontSize: 20,
+        margin: "20px 10px",
       },
     },
   }));
@@ -55,7 +85,8 @@ const CoinInfo = ({ coin }) => {
     datasets: [
       {
         data: price,
-        label: ``,
+        label: `Tick Stream for EUR/USD`,
+        color: "black",
         borderColor: "#174f1a",
       },
     ],
@@ -110,7 +141,7 @@ const CoinInfo = ({ coin }) => {
     ws.onopen = (evt) => {
       ws.send(
         JSON.stringify({
-          ticks_history: "cryBTCUSD",
+          ticks_history: "frxUSDJPY",
           adjust_start_time: 1,
           count: 10,
           end: "latest",
@@ -118,7 +149,7 @@ const CoinInfo = ({ coin }) => {
           style: "ticks",
         })
       );
-      ws.send(JSON.stringify({ ticks: "cryBTCUSD" }));
+      ws.send(JSON.stringify({ ticks: "frxUSDJPY" }));
     };
 
     ws.onmessage = function (evt) {
@@ -157,7 +188,11 @@ const CoinInfo = ({ coin }) => {
 
   return (
     <ThemeProvider theme={darkTheme}>
+      <div></div>
       <div className={classes.container}>
+        <Typography className={classes.containerLabel} variant="h3">
+          Tick Stream for USD/JPY
+        </Typography>
         {!historicData | (flag === false) ? (
           <CircularProgress
             style={{ color: "#c6cec6" }}
@@ -174,4 +209,4 @@ const CoinInfo = ({ coin }) => {
   );
 };
 
-export default CoinInfo;
+export default UsdJpy;
