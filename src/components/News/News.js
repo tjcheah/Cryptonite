@@ -28,66 +28,45 @@ export default function News() {
     return () => {};
   }, []);
 
-  function Arrow(props) {
-    let className = props.type === "next" ? "nextArrow" : "prevArrow";
-    className += " arrow";
-    const char = props.type === "next" ? ">" : "<";
-    return (
-      <span className={className} onClick={props.onClick}>
-        {char}
-      </span>
-    );
-  }
-
   const sliderSettings = {
     // removes default buttons
-
     arrows: true,
     dots: true,
-    slidesToShow: 5,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     speed: 500,
     autoplaySpeed: 4000,
-    // nextArrow: <SampleNextArrow />,
-    // prevArrow: <SamplePrevArrow />,
-    // focusOnSelect: true,
-    // centerPadding: "15px",
     pauseOnHover: true,
     infinite: true,
     swipeToSlide: true,
   };
-
   const styles = {
     media: {
       height: 0,
-      paddingTop: "56.25%", // 16:9
-      opacity: 0.5,
+      paddingTop: "50%", // 16:9
+      opacity: 0.3,
     },
     card: {
+      backgroundColor: "black",
       position: "relative",
-      borderRadius: "5%",
-      marginLeft: "8px",
-      marginRight: "7px",
-    },
-    overlay: {
-      position: "absolute",
-      top: "20px",
-
-      color: "black",
-      fontFamily: "Antonio",
-      fontSize: "18px",
-      fontWeight: "Bold",
+      borderRadius: 20,
+      marginLeft: "5px",
+      marginRight: "5px",
+      boxShadow: "0px 4px 4px 2px #aaa",
     },
   };
 
   const renderSlides = () =>
     post.map((posts) => (
-      <div className="news-content">
+      <div style={{ backgroundColor: "blue" }}>
         <CardActionArea href={posts.url} target="_blank">
           <Card style={styles.card}>
             <CardMedia image={posts.imageurl} style={styles.media} />
-            <div style={styles.overlay}>{posts.title}</div>
+
+            <div>
+              <div className="overlay">{posts.title}</div>
+            </div>
           </Card>
           <span></span>
         </CardActionArea>
@@ -95,43 +74,58 @@ export default function News() {
     ));
 
   return (
-    <div className="News">
-      <div className="news-text">
-        <Typography
-          variant="h3"
-          style={{
-            fontWeight: "bold",
-            marginBottom: 15,
-            fontFamily: "Antonio",
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-          }}
-        >
-          Crypto News
-        </Typography>
-
-        <Typography
-          variant="subtitle2"
-          style={{
-            color: "darkgrey",
-            fontweight: "light",
-            textTransform: "capitalize",
-            fontFamily: "Antonio",
-            textAlign: "start",
-            paddingTop: "10px",
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-          }}
-        >
-          Get the latest financial news and updates on cryptocurrency platform
-          such as Bitcoin,Ethereum, Dogecoin, NFTs and more. See articles on
-          price updates, future trends, mining and blockchain related stories.
-        </Typography>
+    <div className="newsContContainer">
+      <div className="newsContainer">
+        <div className="News">
+          {/* News title and foreword */}
+          <div className="news-text">
+            {" "}
+            <Typography
+              variant="h3"
+              style={{
+                // backgroundColor: "green",
+                width: "100%",
+                fontWeight: "bold",
+                marginBottom: 10,
+                color: "black",
+                fontFamily: "Antonio",
+                textTransform: "uppercase",
+                fontSize: 45,
+                letterSpacing: 5,
+                lineHeight: 0.9,
+              }}
+            >
+              Crypto News
+            </Typography>
+            <Typography
+              // variant="subtitle2"
+              style={{
+                // backgroundColor: "pink",
+                fontweight: "light",
+                fontFamily: "garamond",
+                color: "black",
+                fontSize: 18,
+                textAlign: "justify",
+                lineHeight: 1,
+                paddingTop: 5,
+                paddingBottom: 20,
+                justifyContent: "center",
+              }}
+            >
+              Get the latest financial news and updates on cryptocurrency
+              platform such as Bitcoin,Ethereum, Dogecoin, NFTs and more. See
+              articles on price updates, future trends, mining and blockchain
+              related stories.
+            </Typography>
+          </div>
+        </div>
+        {/* News slider */}
+        <div className="sliderContainer">
+          <Slider className="sliderWrapper" {...sliderSettings}>
+            {renderSlides()}
+          </Slider>
+        </div>
       </div>
-      <div className="slider-wrapper"></div>
-      <Slider {...sliderSettings}>{renderSlides()}</Slider>
     </div>
   );
 }

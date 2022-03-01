@@ -10,17 +10,15 @@ import {
   Typography,
   Button,
 } from "@material-ui/core";
-import CoinInfo from "../components/CoinInfo";
-import { numberWithCommas } from "../components/CoinsTable";
+import CoinInfo from "../components/Crypto/CoinInfo.js";
+import { numberWithCommas } from "../components/Crypto/CoinsTable.js";
 import { doc, setDoc } from "@firebase/firestore";
 import { db } from "../firebase";
 
 const Coinpage = () => {
   const { id } = useParams();
   const [coin, setCoin] = useState();
-
   const { currency, symbol, user, favoriteslist, setAlert } = CryptoState();
-
   const fetchCoin = async () => {
     const { data } = await axios.get(SingleCoin(id));
     setCoin(data);
@@ -34,48 +32,140 @@ const Coinpage = () => {
 
   const useStyles = makeStyles((theme) => ({
     container: {
+      // backgroundColor: "green",
+      width: "100%",
+      // paddingTop: 20,
       display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
       [theme.breakpoints.down("md")]: {
         flexDirection: "column",
         alignItems: "center",
       },
     },
     sidebar: {
-      width: "40%",
+      // backgroundColor: "red",
+      backgroundColor: "#f2f2f2",
+      margin: 40,
+      padding: 20,
+      width: "1180px",
+      display: "flex",
+      alignItems: "center",
+      alignContent: "center",
+      justifyContent: "center",
+      marginTop: 10,
+      borderRadius: 30,
+      boxShadow: "0px 4px 4px 2px #aaa",
+      // borderRight: "2px solid grey",
       [theme.breakpoints.down("md")]: {
-        width: "100%",
+        // backgroundColor: "green",
+        width: "90%",
       },
+      [theme.breakpoints.down("xs")]: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignContent: "center",
+        alignItems: "center",
+        // backgroundColor: "blue",
+      },
+    },
+
+    coinName: {
+      // backgroundColor: "orange",
+      width: "20%",
       display: "flex",
       flexDirection: "column",
-      alignItems: "center",
-      marginTop: 25,
-      borderRight: "2px solid grey",
+      justifyContent: "center",
+      alignContent: "center",
+
+      [theme.breakpoints.down("md")]: {
+        // backgroundColor: "yellow",
+        width: "90%",
+        margin: "20px 50px",
+      },
+      [theme.breakpoints.down("xs")]: {
+        // backgroundColor: "indigo",
+        width: "60%",
+      },
     },
     heading: {
+      // backgroundColor: "cyan",
       fontWeight: "bold",
-      marginBottom: 20,
-      fontFamily: "Montserrat",
+      fontSize: 30,
+      // marginBottom: 20,
+      color: "black",
+      fontFamily: "antonio",
+      textAlign: "center",
+    },
+    headingChild: {
+      // backgroundColor: "green",
+      fontWeight: "bold",
+      fontSize: 30,
+      // marginBottom: 20,
+      color: "black",
+      fontFamily: "antonio",
+      textAlign: "center",
+      [theme.breakpoints.down("md")]: {
+        // backgroundColor: "yellow",
+        fontSize: 24,
+      },
+      [theme.breakpoints.down("xs")]: {
+        // backgroundColor: "red",
+        fontSize: 24,
+      },
+    },
+    childContent: {
+      // backgroundColor: "indigo",
+      color: "black",
+      fontSize: 30,
+      fontFamily: "antonio",
+      textAlign: "center",
+      [theme.breakpoints.down("md")]: {
+        // backgroundColor: "yellow",
+        fontSize: 24,
+      },
+      [theme.breakpoints.down("xs")]: {
+        // backgroundColor: "red",
+        fontSize: 24,
+      },
     },
     description: {
+      // backgroundColor: "indigo",
+      color: "black",
       width: "100%",
-      fontFamily: "Montserrat",
-      padding: 25,
-      paddingBottom: 15,
-      paddingTop: 0,
+      fontFamily: "garamond",
+      fontSize: 20,
+      lineHeight: 1,
+      margin: "0px 0px",
+      padding: "10px 25px",
       textAlign: "justify",
+      [theme.breakpoints.down("md")]: {
+        // backgroundColor: "yellow",
+        width: "100%",
+      },
+      [theme.breakpoints.down("xs")]: {
+        // backgroundColor: "indigo",
+        width: "100%",
+      },
     },
     marketData: {
+      // backgroundColor: "lightgreen",
       alignSelf: "start",
-      padding: 25,
-      paddingTop: 10,
+      padding: "10px 25px",
       width: "100%",
+      color: "#f2f2f2",
+      lineHeight: 1,
       [theme.breakpoints.down("md")]: {
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
+        alignItems: "start",
+        width: "100%",
       },
       [theme.breakpoints.down("xs")]: {
         alignItems: "start",
+        width: "100%",
       },
     },
   }));
@@ -104,7 +194,7 @@ const Coinpage = () => {
     }
   };
 
-  const removeFromFavoriteslist = async () => {
+  const removeFromFavoriteslist = async (coin) => {
     const coinRef = doc(db, "favoriteslist", user.uid);
     try {
       await setDoc(
@@ -115,7 +205,7 @@ const Coinpage = () => {
 
       setAlert({
         open: true,
-        message: `${coin.name} Removed from the Watchlist !`,
+        message: `${coin.name} Removed from the Favorites !`,
         type: "success",
       });
     } catch (error) {
@@ -129,82 +219,84 @@ const Coinpage = () => {
 
   const classes = useStyles();
 
-  if (!coin)
-    return <LinearProgress style={{ backgroundColor: "aquamarine" }} />;
+  if (!coin) return <LinearProgress style={{ backgroundColor: "#a9aaa9" }} />;
 
   return (
     <div className={classes.container}>
       <div className={classes.sidebar}>
-        <img
-          src={coin?.image.large}
-          alt={coin?.name}
-          height="200"
-          style={{ marginBottom: 20 }}
-        />
-        <Typography variant="h3" className={classes.heading}>
-          {coin?.name}
-        </Typography>
-        <Typography variant="subtitle1" className={classes.description}>
-          {coin?.description.en.split(". ")[0]}.
-        </Typography>
-        <div className={classes.marketData}>
-          <span style={{ display: "flex" }}>
-            <Typography variant="h5" className={classes.heading}>
-              Rank:
-            </Typography>
-            &nbsp; &nbsp;
-            <Typography
-              variant="h5"
-              style={{
-                fontFamily: "Montserrat",
-              }}
-            >
-              {numberWithCommas(coin?.market_cap_rank)}
-            </Typography>
-          </span>
+        {/* Image and name*/}
+        <div className={classes.coinName}>
+          <img
+            src={coin?.image.large}
+            alt={coin?.name}
+            height="auto"
+            style={{ margin: 10 }}
+          />
+          <Typography variant="h3" className={classes.heading}>
+            {coin?.name}
+          </Typography>
+        </div>
 
-          <span style={{ display: "flex" }}>
-            <Typography variant="h5" className={classes.heading}>
-              Current Price:
-            </Typography>
-            &nbsp; &nbsp;
-            <Typography
-              variant="h5"
-              style={{
-                fontFamily: "Montserrat",
-              }}
-            >
-              {symbol}{" "}
-              {numberWithCommas(
-                coin?.market_data.current_price[currency.toLowerCase()]
-              )}
-            </Typography>
-          </span>
-          <span style={{ display: "flex" }}>
-            <Typography variant="h5" className={classes.heading}>
-              Market Cap:
-            </Typography>
-            &nbsp; &nbsp;
-            <Typography
-              variant="h5"
-              style={{
-                fontFamily: "Montserrat",
-              }}
-            >
-              {symbol}{" "}
-              {numberWithCommas(
-                coin?.market_data.market_cap[currency.toLowerCase()]
-                  .toString()
-                  .slice(0, -6)
-              )}
-              M
-            </Typography>
-          </span>
+        <div>
+          {/* Rank and etc */}
+          <div className={classes.marketData}>
+            <span style={{ display: "flex" }}>
+              <Typography variant="h5" className={classes.headingChild}>
+                Rank:
+              </Typography>
+              &nbsp; &nbsp;
+              {/* Rank */}
+              <Typography className={classes.childContent} variant="h5">
+                {numberWithCommas(coin?.market_cap_rank)}
+              </Typography>
+            </span>
+
+            <span style={{ display: "flex" }}>
+              <Typography variant="h5" className={classes.headingChild}>
+                Current Price:
+              </Typography>
+              &nbsp; &nbsp;
+              {/* Current Price */}
+              <Typography className={classes.childContent} variant="h5">
+                {symbol}{" "}
+                {numberWithCommas(
+                  coin?.market_data.current_price[currency.toLowerCase()]
+                )}
+              </Typography>
+            </span>
+            <span style={{ display: "flex" }}>
+              <Typography variant="h5" className={classes.headingChild}>
+                Market Cap:
+              </Typography>
+              &nbsp; &nbsp;
+              {/* Market Cap */}
+              <Typography className={classes.childContent} variant="h5">
+                {symbol}{" "}
+                {numberWithCommas(
+                  coin?.market_data.market_cap[currency.toLowerCase()]
+                    .toString()
+                    .slice(0, -6)
+                )}
+                M
+              </Typography>
+            </span>
+          </div>
+          {/* Description */}
+          <Typography variant="subtitle1" className={classes.description}>
+            {coin?.description.en.split(". ")[0]}.
+          </Typography>
           {user && (
             <Button
               variant="outlined"
               style={{
-                width: "100%",
+                margin: "0px 25px",
+                marginTop: 10,
+                fontFamily: "Antonio",
+                fontSize: 20,
+                fontWeight: 600,
+                borderRadius: 30,
+                boxShadow: "0px 4px 4px 2px #aaa",
+                width: "95%",
                 height: "40",
                 backgroundColor: inFavoriteslist ? "red" : "#49FF00",
                 color: "black",

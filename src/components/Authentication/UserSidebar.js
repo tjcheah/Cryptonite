@@ -1,138 +1,148 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Drawer from '@material-ui/core/Drawer'
-import { CryptoState } from '../../CryptoContext'
-import { Avatar, Button } from '@material-ui/core'
-import { signOut } from 'firebase/auth'
-import { auth, db } from '../../firebase'
-import { numberWithCommas } from '../CoinsTable'
-import { AiFillDelete } from 'react-icons/ai'
-import { doc, setDoc } from 'firebase/firestore'
-
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Drawer from "@material-ui/core/Drawer";
+import { CryptoState } from "../../CryptoContext";
+import { Avatar, Button } from "@material-ui/core";
+import { signOut } from "firebase/auth";
+import { auth, db } from "../../firebase";
+import { numberWithCommas } from "../Crypto/CoinsTable";
+import { AiFillDelete } from "react-icons/ai";
+import { doc, setDoc } from "firebase/firestore";
+// -------------------------------------------------------------------------------------
 const useStyles = makeStyles({
   container: {
+    backgroundColor: "#c6cec6",
     width: 350,
-    padding: 25,
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    fontFamily: 'antonio',
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    fontFamily: "antonio",
     fontSize: 22,
   },
   profile: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '20px',
-    height: '92%',
+    padding: 25,
+    paddingTop: 50,
+    width: "100%",
+    backgroundColor: "white",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "20px",
+  },
+  avtContainer: {
+    height: 50,
+    width: 50,
+    float: "right",
+    cursor: "pointer",
+    // backgroundColor: "aquamarine",
+    boxShadow: "0px 4px 4px 2px #aaa",
   },
   picture: {
-    width: 40,
-    height: 40,
-    cursor: 'pointer',
-    backgroundColor: 'aquamarine',
-    objectFit: 'contain',
-  },
-  logout: {
-    height: '5%',
-    width: '100%',
-    backgroundColor: 'aquamarine',
-    marginTop: 20,
+    width: 150,
+    height: 150,
+    backgroundColor: "aquamarine",
+    objectFit: "contain",
   },
   favorites: {
     flex: 1,
-    width: '100%',
-    backgroundColor: 'black',
-    borderRadius: 10,
+    width: "100%",
+    backgroundColor: "#c6cec6",
     padding: 15,
     paddingTop: 10,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: 12,
-    overflow: 'scroll',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 10,
+    overflow: "scroll",
+    msOverflowStyle: "none",
   },
   coin: {
-    padding: 10,
-    borderRadius: 5,
-    color: 'black',
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: 'aquamarine',
-    boxShadow: '0 0 3px black',
+    padding: 12,
+    borderRadius: 30,
+    color: "black",
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "white",
+    boxShadow: "0px 4px 4px 2px #aaa",
   },
-})
+  logout: {
+    margin: 20,
+    height: 40,
+    width: 150,
+    borderRadius: 20,
+    backgroundColor: "#174f1a",
+    color: "white",
+    fontFamily: "antonio",
+    fontSize: 20,
+    fontWeight: 500,
 
+    "&:hover": {
+      color: "#233c25",
+      fontWeight: 1000,
+    },
+  },
+});
+// -------------------------------------------------------------------------------------
 export default function UserSidebar() {
-  const classes = useStyles()
+  const classes = useStyles();
   const [state, setState] = React.useState({
     right: false,
-  })
-
-  const { user, setAlert, favoriteslist, coins, symbol } = CryptoState()
-
+  });
+  const { user, setAlert, favoriteslist, coins, symbol } = CryptoState();
   const toggleDrawer = (anchor, open) => (event) => {
     if (
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
     ) {
-      return
+      return;
     }
 
-    setState({ ...state, [anchor]: open })
-  }
-
+    setState({ ...state, [anchor]: open });
+  };
   const removeFromFavoriteslist = async (coin) => {
-    const coinRef = doc(db, 'favoriteslist', user.uid)
+    const coinRef = doc(db, "favoriteslist", user.uid);
     try {
       await setDoc(
         coinRef,
         { coins: favoriteslist.filter((wish) => wish !== coin?.id) },
-        { merge: true },
-      )
+        { merge: true }
+      );
 
       setAlert({
         open: true,
         message: `${coin.name} Removed from the Favorites !`,
-        type: 'success',
-      })
+        type: "success",
+      });
     } catch (error) {
       setAlert({
         open: true,
         message: error.message,
-        type: 'error',
-      })
+        type: "error",
+      });
     }
-  }
-
+  };
   const logout = () => {
-    signOut(auth)
-
+    signOut(auth);
     setAlert({
       open: true,
-      type: 'success',
-      message: 'Successfully logged out !',
-    })
+      type: "success",
+      message: "Successfully logged out !",
+    });
 
-    toggleDrawer()
-  }
-
+    toggleDrawer();
+  };
+  // -------------------------------------------------------------------------------------
   return (
     <div>
-      {['right'].map((anchor) => (
+      {["right"].map((anchor) => (
         <React.Fragment key={anchor}>
+          {/* Profile Homepage */}
           <Avatar
+            className={classes.avtContainer}
             onClick={toggleDrawer(anchor, true)}
-            style={{
-              height: 38,
-              width: 38,
-              marginLeft: 15,
-              cursor: 'pointer',
-              backgroundColor: 'aquamarine',
-            }}
             src={user.photoURL}
             alt={user.displayName || user.email}
           />
@@ -141,66 +151,147 @@ export default function UserSidebar() {
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
           >
+            {/* Profile Sidebar Container */}
             <div className={classes.container}>
               <div className={classes.profile}>
-                <Avatar>
+                {/* Profile Picture Sidebar */}
+                <Avatar
+                  style={{
+                    height: 150,
+                    width: 150,
+                    boxShadow: "0px 4px 4px 2px #aaa",
+                    // backgroundColor: "aquamarine",
+                  }}
+                >
+                  {/* Profile Image */}
                   <img
                     className={classes.picture}
                     src={user.photoURL}
                     alt={user.displayName || user.email}
                   />
                 </Avatar>
+              </div>
+              {/* ------------------------------------------------------ */}
+              {/* Username container */}
+              <span
+                style={{
+                  marginBottom: 10,
+                  backgroundColor: "#f2f2f2",
+                  // backgroundColor: "red",
+                  color: "black",
+                  width: "100%",
+                  height: 60,
+                  fontSize: "25",
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontFamily: "antonio",
+                  fontWeight: 400,
+                  wordWrap: "break-word",
+                  boxShadow: "0px 4px 4px 2px #aaa",
+                }}
+              >
+                {user.displayName || user.email}
+              </span>
+              {/* ---------------------------------------------------------- */}
+              {/* My favourite container */}
+              <div className={classes.favorites}>
                 <span
                   style={{
-                    width: '100%',
-                    fontSize: '25',
-                    textAlign: 'center',
-                    fontWeight: 'bolder',
-                    wordWrap: 'break-word',
+                    margin: 10,
+                    backgroundColor: "transparent",
+                    fontFamily: "antonio",
+                    fontSize: 25,
+                    fontWeight: 600,
+                    color: "black",
                   }}
                 >
-                  {user.displayName || user.email}
+                  My Favorites
                 </span>
-                <div className={classes.favorites}>
-                  <span
-                    style={{
-                      fontSize: '1.6rem',
-                      textShadow: '1 1 5px black',
-                      color: 'red',
-                    }}
-                  >
-                    My Favorites
-                  </span>
-                  {coins.map((coin) => {
-                    if (favoriteslist.includes(coin.id))
-                      return (
-                        <div className={classes.coin}>
-                          <img src={coin.image} height="40" />
-                          <span>{coin.name}</span>
-                          <span style={{ display: 'flex', gap: 8 }}></span>
+                {/* ------------------------------------------------------- */}
+                {/* Favourite details */}
+                {coins.map((coin) => {
+                  if (favoriteslist.includes(coin.id))
+                    return (
+                      // Card container
+                      <div className={classes.coin}>
+                        {/* Coin image */}
+                        <div
+                          style={{
+                            width: 50,
+                            // backgroundColor: "blue",
+                          }}
+                        >
+                          <img src={coin.image} height="40" width="40" />
+                        </div>
+
+                        {/* Coin Name */}
+                        <div
+                          style={{
+                            width: "35%",
+                            // backgroundColor: "blue",
+                          }}
+                        >
+                          <span
+                            style={
+                              {
+                                // marginLeft: 20,
+                                // backgroundColor: "red",
+                              }
+                            }
+                          >
+                            {coin.name}
+                          </span>
+                        </div>
+
+                        {/* Coin Price */}
+                        <div
+                          style={{
+                            fontWeight: 600,
+                            width: "35%",
+                            // backgroundColor: "cyan",
+                          }}
+                        >
+                          <span
+                            style={{
+                              // display: "flex",
+                              gap: 10,
+                            }}
+                          ></span>
                           {symbol}
                           {numberWithCommas(coin.current_price.toFixed(2))}
-                          <AiFillDelete
-                            style={{ cursor: 'pointer' }}
-                            fontSize="20"
-                            onClick={() => removeFromFavoriteslist(coin)}
-                          />
                         </div>
-                      )
-                  })}
-                </div>
+
+                        {/* Delete Symbol */}
+                        <AiFillDelete
+                          style={{
+                            cursor: "pointer",
+                            // display: "flex",
+                            // justifyContent: "flex-end",
+                            right: 0,
+                          }}
+                          fontSize="20"
+                          onClick={() => removeFromFavoriteslist(coin)}
+                        />
+                      </div>
+                    );
+                })}
               </div>
+              {/* ---------------------------------------------------------- */}
+
+              {/* ----------------------------------------------------- */}
               <Button
                 variant="contained"
                 className={classes.logout}
                 onClick={logout}
               >
-                Log Out
+                Logout
               </Button>
             </div>
           </Drawer>
         </React.Fragment>
       ))}
     </div>
-  )
+  );
 }
