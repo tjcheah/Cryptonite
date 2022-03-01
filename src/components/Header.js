@@ -246,30 +246,20 @@ const Header = () => {
                 alt="Logo"
                 className={classes.navLogo}
               />
-              <div className={classes.market}>
-                <Button
-                  aria-controls={open ? "basic-menu" : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={open ? "true" : undefined}
-                  onClick={handleClick}
-                >
-                  <Typography className={classes.title} variant="h6">
-                    MARKET
-                  </Typography>
-                </Button>
-                <Menu
-                  id="basic-menu"
-                  anchorEl={anchorEl}
-                  open={expand}
-                  onClose={handleMinimize}
-                  MenuListProps={{
-                    "aria-labelledby": "basic-button",
-                  }}
-                >
-                  <MenuItem onClick={handleMinimize}>Cryptocurrency</MenuItem>
-                  <MenuItem onClick={() => navigate("/forex")}>Forex</MenuItem>
-                </Menu>
-              </div>
+              <Typography
+                onClick={() => navigate("/crypto")}
+                className={classes.title}
+                variant="h6"
+              >
+                CRYPTO
+              </Typography>
+              <Typography
+                onClick={() => navigate("/forex")}
+                className={classes.title}
+                variant="h6"
+              >
+                FOREX
+              </Typography>
               <Typography
                 onClick={() => navigate("/about")}
                 className={classes.title}
@@ -305,10 +295,28 @@ const Header = () => {
                     />
                   </Typography>
                   <Typography
-                    onClick={() => navigate("/market")}
-                    className={classes.burgerItem}
+                    style={{
+                      color: "#a9aaa9",
+                      fontSize: 14,
+                      fontFamily: "Antonio",
+                      fontWeight: 600,
+                      padding: 5,
+                      textAlign: "right",
+                    }}
                   >
                     MARKET
+                  </Typography>
+                  <Typography
+                    onClick={() => navigate("/crypto")}
+                    className={classes.burgerItem}
+                  >
+                    CRYPTO
+                  </Typography>
+                  <Typography
+                    onClick={() => navigate("/forex")}
+                    className={classes.burgerItem}
+                  >
+                    FOREX
                   </Typography>
                   <Typography
                     onClick={() => navigate("/about")}
