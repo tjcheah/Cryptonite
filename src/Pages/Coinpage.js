@@ -46,16 +46,17 @@ const Coinpage = () => {
     },
     contContainer: {
       display: "flex",
+      width: "100%",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
       alignContent: "center",
-      borderRadius: 40,
-      boxShadow: "0px 4px 4px 2px #aaa",
+      // borderRadius: 40,
+      // boxShadow: "0px 4px 4px 2px #aaa",
       backgroundColor: "white",
       [theme.breakpoints.down("md")]: {
         // backgroundColor: "green",
-        width: "90%",
+        width: "100%",
       },
       [theme.breakpoints.down("xs")]: {
         borderRadius: 0,
@@ -75,7 +76,7 @@ const Coinpage = () => {
       justifyContent: "center",
       // marginTop: 10,
       borderRadius: 30,
-      boxShadow: "0px 4px 4px 2px #aaa",
+      boxShadow: "0px 2px 2px 1px #aaa",
       // borderRight: "2px solid grey",
       [theme.breakpoints.down("md")]: {
         // backgroundColor: "green",
@@ -245,98 +246,110 @@ const Coinpage = () => {
   if (!coin) return <LinearProgress style={{ backgroundColor: "#a9aaa9" }} />;
 
   return (
-    <div className={classes.container}>
-      <div className={classes.contContainer}>
-        {" "}
-        <div className={classes.itemsBar}>
-          {/* Image and name*/}
-          <div className={classes.coinName}>
-            <img
-              src={coin?.image.large}
-              alt={coin?.name}
-              height="auto"
-              style={{ margin: 10 }}
-            />
-            <Typography variant="h3" className={classes.heading}>
-              {coin?.name}
-            </Typography>
-          </div>
-
-          <div>
-            {/* Rank and etc */}
-            <div className={classes.marketData}>
-              <span style={{ display: "flex" }}>
-                <Typography variant="h5" className={classes.headingChild}>
-                  Rank:
-                </Typography>
-                &nbsp; &nbsp;
-                {/* Rank */}
-                <Typography className={classes.childContent} variant="h5">
-                  {numberWithCommas(coin?.market_cap_rank)}
-                </Typography>
-              </span>
-
-              <span style={{ display: "flex" }}>
-                <Typography variant="h5" className={classes.headingChild}>
-                  Current Price:
-                </Typography>
-                &nbsp; &nbsp;
-                {/* Current Price */}
-                <Typography className={classes.childContent} variant="h5">
-                  {symbol}{" "}
-                  {numberWithCommas(
-                    coin?.market_data.current_price[currency.toLowerCase()]
-                  )}
-                </Typography>
-              </span>
-              <span style={{ display: "flex" }}>
-                <Typography variant="h5" className={classes.headingChild}>
-                  Market Cap:
-                </Typography>
-                &nbsp; &nbsp;
-                {/* Market Cap */}
-                <Typography className={classes.childContent} variant="h5">
-                  {symbol}{" "}
-                  {numberWithCommas(
-                    coin?.market_data.market_cap[currency.toLowerCase()]
-                      .toString()
-                      .slice(0, -6)
-                  )}
-                  M
-                </Typography>
-              </span>
+    <div>
+      <div
+        style={{
+          height: 120,
+          backgroundColor: "#c6cec6",
+          // zIndex: 1,
+          marginTop: -120,
+        }}
+      ></div>
+      <div className={classes.container}>
+        <div className={classes.contContainer}>
+          {" "}
+          <div className={classes.itemsBar}>
+            {/* Image and name*/}
+            <div className={classes.coinName}>
+              <img
+                src={coin?.image.large}
+                alt={coin?.name}
+                height="auto"
+                style={{ margin: 10 }}
+              />
+              <Typography variant="h3" className={classes.heading}>
+                {coin?.name}
+              </Typography>
             </div>
-            {/* Description */}
-            <Typography variant="subtitle1" className={classes.description}>
-              {coin?.description.en.split(". ")[0]}.
-            </Typography>
-            {user && (
-              <Button
-                variant="outlined"
-                style={{
-                  margin: "0px 25px",
-                  marginTop: 10,
-                  fontFamily: "Antonio",
-                  fontSize: 20,
-                  fontWeight: 600,
-                  borderRadius: 30,
-                  boxShadow: "0px 4px 4px 2px #aaa",
-                  width: "95%",
-                  height: "40",
-                  backgroundColor: inFavoriteslist ? "red" : "#49FF00",
-                  color: "black",
-                }}
-                onClick={
-                  inFavoriteslist ? removeFromFavoriteslist : addToFavorites
-                }
-              >
-                {inFavoriteslist ? "Remove from Favorites" : "Add To Favorites"}
-              </Button>
-            )}
+
+            <div>
+              {/* Rank and etc */}
+              <div className={classes.marketData}>
+                <span style={{ display: "flex" }}>
+                  <Typography variant="h5" className={classes.headingChild}>
+                    Rank:
+                  </Typography>
+                  &nbsp; &nbsp;
+                  {/* Rank */}
+                  <Typography className={classes.childContent} variant="h5">
+                    {numberWithCommas(coin?.market_cap_rank)}
+                  </Typography>
+                </span>
+
+                <span style={{ display: "flex" }}>
+                  <Typography variant="h5" className={classes.headingChild}>
+                    Current Price:
+                  </Typography>
+                  &nbsp; &nbsp;
+                  {/* Current Price */}
+                  <Typography className={classes.childContent} variant="h5">
+                    {symbol}{" "}
+                    {numberWithCommas(
+                      coin?.market_data.current_price[currency.toLowerCase()]
+                    )}
+                  </Typography>
+                </span>
+                <span style={{ display: "flex" }}>
+                  <Typography variant="h5" className={classes.headingChild}>
+                    Market Cap:
+                  </Typography>
+                  &nbsp; &nbsp;
+                  {/* Market Cap */}
+                  <Typography className={classes.childContent} variant="h5">
+                    {symbol}{" "}
+                    {numberWithCommas(
+                      coin?.market_data.market_cap[currency.toLowerCase()]
+                        .toString()
+                        .slice(0, -6)
+                    )}
+                    M
+                  </Typography>
+                </span>
+              </div>
+              {/* Description */}
+              <Typography variant="subtitle1" className={classes.description}>
+                {coin?.description.en.split(". ")[0]}.
+              </Typography>
+              {user && (
+                <Button
+                  variant="outlined"
+                  style={{
+                    margin: "0px 25px",
+                    marginTop: 10,
+                    fontFamily: "Antonio",
+                    fontSize: 20,
+                    fontWeight: 600,
+                    borderRadius: 30,
+                    boxShadow: "0px 4px 4px 2px #aaa",
+                    width: "95%",
+                    height: "40",
+                    backgroundColor: inFavoriteslist ? "red" : "#49FF00",
+                    color: "black",
+                  }}
+                  onClick={
+                    inFavoriteslist ? removeFromFavoriteslist : addToFavorites
+                  }
+                >
+                  {inFavoriteslist
+                    ? "Remove from Favorites"
+                    : "Add To Favorites"}
+                </Button>
+              )}
+            </div>
           </div>
+          {/* Chart */}
+          <CoinInfo coin={coin} />
         </div>
-        {/* Chart */}
-        <CoinInfo coin={coin} />
       </div>
     </div>
   );

@@ -8,8 +8,9 @@ import { auth, db } from "../../firebase";
 import { numberWithCommas } from "../Crypto/CoinsTable";
 import { AiFillDelete } from "react-icons/ai";
 import { doc, setDoc } from "firebase/firestore";
+import { Select, MenuItem } from "@material-ui/core";
 // -------------------------------------------------------------------------------------
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   container: {
     backgroundColor: "#c6cec6",
     width: 350,
@@ -35,7 +36,7 @@ const useStyles = makeStyles({
     width: 50,
     float: "right",
     cursor: "pointer",
-    // backgroundColor: "aquamarine",
+    backgroundColor: "aquamarine",
     boxShadow: "0px 4px 4px 2px #aaa",
   },
   picture: {
@@ -84,9 +85,43 @@ const useStyles = makeStyles({
       fontWeight: 1000,
     },
   },
-});
+  // ----------------------------------------------------------------------------
+  currencyButton: {
+    borderRadius: 30,
+    fontSize: 15,
+    color: "#7c7c7c",
+    // backgroundColor: "red",
+    backgroundColor: "#f2f2f2",
+    letterSpacing: 2,
+    fontWeight: "bold",
+    fontFamily: "Antonio",
+    height: 35,
+    label: "#000000",
+    "& .MuiSvgIcon-root": {
+      color: "lightgray",
+    },
+    "&:hover": {
+      color: "#555",
+      fontWeight: 550,
+      "& .MuiSvgIcon-root": {
+        color: "gray",
+      },
+      [theme.breakpoints.down("sm")]: {
+        display: "flex",
+      },
+    },
+  },
+  menuItem: {
+    fontSize: 14,
+    color: "#f2f2f2",
+    letterSpacing: 1,
+    fontFamily: "Antonio",
+    fontWeight: "bold",
+  },
+}));
 // -------------------------------------------------------------------------------------
 export default function UserSidebar() {
+  const { currency, setcurrency } = CryptoState();
   const classes = useStyles();
   const [state, setState] = React.useState({
     right: false,
@@ -139,13 +174,39 @@ export default function UserSidebar() {
     <div>
       {["right"].map((anchor) => (
         <React.Fragment key={anchor}>
-          {/* Profile Homepage */}
-          <Avatar
-            className={classes.avtContainer}
-            onClick={toggleDrawer(anchor, true)}
-            src={user.photoURL}
-            alt={user.displayName || user.email}
-          />
+          <div
+            style={{
+              // backgroundColor: "blue",
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            {/* Currency Button */}
+            <Button>
+              <Select
+                variant="outlined"
+                className={classes.currencyButton}
+                value={currency}
+                onChange={(e) => setcurrency(e.target.value)}
+              >
+                <MenuItem className={classes.menuItem} value={"USD"}>
+                  USD
+                </MenuItem>
+                <MenuItem className={classes.menuItem} value={"MYR"}>
+                  MYR
+                </MenuItem>
+              </Select>
+            </Button>
+
+            {/* Profile Homepage */}
+            <Avatar
+              className={classes.avtContainer}
+              onClick={toggleDrawer(anchor, true)}
+              src={user.photoURL}
+              alt={user.displayName || user.email}
+            />
+          </div>
+
           <Drawer
             anchor={anchor}
             open={state[anchor]}
