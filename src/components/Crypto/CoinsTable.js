@@ -63,7 +63,7 @@ const CoinsTable = () => {
       // margin: 0,
       backgroundColor: "#f2f2f2",
       borderRadius: 40,
-      boxShadow: "0px 4px 4px 2px #aaa",
+      // boxShadow: "0px 4px 4px 2px #aaa",
       // width: "80vw",
       textAlign: "center",
       paddingTop: 40,
@@ -106,7 +106,7 @@ const CoinsTable = () => {
       backgroundColor: "black",
       // color: "red",
       // borderRadius: 40,
-      boxShadow: "0px 4px 4px 2px #aaa",
+      boxShadow: "0px 2px 2px 1px #aaa",
       marginBottom: 20,
       width: "100%",
     },
@@ -173,7 +173,7 @@ const CoinsTable = () => {
             fontFamily: "antonio",
             backgroundColor: "#fff",
             // backgroundColor: "black",
-            boxShadow: "0px 4px 4px 2px #aaa",
+            // boxShadow: "0px 4px 4px 2px #aaa",
             borderRadius: 40,
             padding: "0px 50px",
           }}
@@ -191,7 +191,7 @@ const CoinsTable = () => {
           style={{
             margin: "15px 0px",
             borderRadius: 30,
-            boxShadow: "0px 4px 4px 2px #aaa",
+            boxShadow: "0px 2px 2px 1px #aaa",
           }}
         >
           {loading ? (

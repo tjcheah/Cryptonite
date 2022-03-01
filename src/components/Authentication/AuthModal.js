@@ -65,6 +65,29 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  smLoginBtn: {
+    display: "none",
+    // backgroundColor: "gold",
+    backgroundColor: "#233c25",
+    [theme.breakpoints.down("sm")]: {
+      // backgroundColor: "blue",
+      width: 145,
+      height: 45,
+      borderRadius: 50,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    [theme.breakpoints.down("xs")]: {
+      // backgroundColor: "red",
+      width: 110,
+      height: 33,
+      borderRadius: 50,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+  },
   login: {
     width: 120,
     height: 35,
@@ -123,6 +146,27 @@ const useStyles = makeStyles((theme) => ({
     padding: 10,
     "&:hover": {
       height: 95,
+    },
+    [theme.breakpoints.down("sm")]: {
+      backgroundColor: "transparent",
+      cursor: "pointer",
+      height: 70,
+      padding: 0,
+      margin: 0,
+      "&:hover": {
+        height: 75,
+      },
+    },
+
+    [theme.breakpoints.down("xs")]: {
+      backgroundColor: "transparent",
+      cursor: "pointer",
+      height: 50,
+      padding: 0,
+      margin: 0,
+      "&:hover": {
+        height: 55,
+      },
     },
   },
 }));
@@ -188,6 +232,32 @@ export default function AuthModal() {
           onClick={handleOpen}
         >
           Login
+          <img className={classes.loginStone} src={loginStone} alt="login" />
+        </Button>
+      </div>
+      {/* ------------------------------------------------------------------------------------------- */}
+      <div className={classes.smLoginBtn}>
+        <Button>
+          <Select
+            variant="outlined"
+            className={classes.currencyButton}
+            value={currency}
+            onChange={(e) => setcurrency(e.target.value)}
+          >
+            <MenuItem className={classes.menuItem} value={"USD"}>
+              USD
+            </MenuItem>
+            <MenuItem className={classes.menuItem} value={"MYR"}>
+              MYR
+            </MenuItem>
+          </Select>
+        </Button>
+
+        <Button
+          // className={classes.login}
+          // variant="contained"
+          onClick={handleOpen}
+        >
           <img className={classes.loginStone} src={loginStone} alt="login" />
         </Button>
       </div>

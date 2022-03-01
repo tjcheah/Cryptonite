@@ -6,6 +6,7 @@ import Coinpage from "./Pages/Coinpage";
 import { makeStyles } from "@material-ui/core";
 import Alert from "./components/Alert";
 import Footer from "./components/Footer";
+import AboutUs from "./Pages/AboutUs";
 import Topo from "./media/topo.jpg";
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} exact />
             <Route path="/coins/:id" element={<Coinpage />} />
+            <Route path="/about" element={<AboutUs />} />
           </Routes>
           <Footer />
         </div>
