@@ -3,7 +3,7 @@ import Banner from "../components/Banner/Banner.js";
 import CoinsTable from "../components/Crypto/CoinsTable.js";
 import News from "../components/News/News.js";
 import Topo from "../media/topo.jpg";
-
+import Forex from "./Forex.js";
 const Homepage = () => {
   return (
     <div>
