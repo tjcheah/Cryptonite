@@ -1,15 +1,15 @@
-import NavLogo from "../media/Cryptonite Title Cropped.png";
-import UserSidebar from "./Authentication/UserSidebar";
-import AuthModal from "./Authentication/AuthModal";
-import loginStone from "../media/Gray Stone.png";
+import NavLogo from '../media/Cryptonite Title Cropped.png'
+import UserSidebar from './Authentication/UserSidebar'
+import AuthModal from './Authentication/AuthModal'
+import loginStone from '../media/Gray Stone.png'
 
-import React, { useState } from "react";
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
-import Login from "./Authentication/Login";
-import Signup from "./Authentication/Signup";
-import GoogleButton from "react-google-button";
+import React, { useState } from 'react'
+import Modal from '@material-ui/core/Modal'
+import Backdrop from '@material-ui/core/Backdrop'
+import Fade from '@material-ui/core/Fade'
+import Login from './Authentication/Login'
+import Signup from './Authentication/Signup'
+import GoogleButton from 'react-google-button'
 import {
   AppBar,
   Container,
@@ -24,200 +24,200 @@ import {
   makeStyles,
   createTheme,
   ThemeProvider,
-} from "@material-ui/core";
-import { CryptoState } from "../CryptoContext";
-import { useNavigate } from "react-router-dom";
-import { FaBars } from "react-icons/fa";
-import { AiFillCloseCircle } from "react-icons/ai";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../firebase";
+} from '@material-ui/core'
+import { CryptoState } from '../CryptoContext'
+import { useNavigate } from 'react-router-dom'
+import { FaBars } from 'react-icons/fa'
+import { AiFillCloseCircle } from 'react-icons/ai'
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { auth } from '../firebase'
 
 const useStyles = makeStyles((theme) => ({
   navContainer: {
     // margin: 0,
     // padding: 0,
     // backgroundColor: "red",
-    position: "static",
-    display: "flex",
+    position: 'static',
+    display: 'flex',
     top: 0,
-    width: "100%",
-    justifyContent: "center",
-    flexWrap: "wrap",
+    width: '100%',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
   },
   nav: {
-    position: "static",
-    display: "flex",
-    flexDirection: "row",
-    width: "95%",
+    position: 'static',
+    display: 'flex',
+    flexDirection: 'row',
+    width: '95%',
     paddingTop: 10,
     paddingBottom: 10,
-    backgroundColor: "#ffffff",
+    backgroundColor: '#ffffff',
     // backgroundColor: "green",
     marginBottom: 25,
     borderBottomLeftRadius: 35,
     borderBottomRightRadius: 35,
-    boxShadow: "0px 2px 2px 1px #aaa",
+    boxShadow: '0px 2px 2px 1px #aaa',
   },
   nav1: {
     // backgroundColor: "red",
     // padding: 0,
   },
   navLogo: {
-    display: "flex",
+    display: 'flex',
     width: 380,
     height: 70,
     marginRight: 50,
-    cursor: "pointer",
-    [theme.breakpoints.down("sm")]: {
+    cursor: 'pointer',
+    [theme.breakpoints.down('sm')]: {
       // backgroundColor: "red",
-      float: "left",
+      float: 'left',
       padding: 0,
-      width: "40%",
-      height: "100%",
+      width: '40%',
+      height: '100%',
     },
   },
   title: {
-    display: "flex",
+    display: 'flex',
     fontSize: 18,
-    color: "#7c7c7c",
-    fontWeight: "bold",
-    whiteSpace: "nowrap",
+    color: '#7c7c7c',
+    fontWeight: 'bold',
+    whiteSpace: 'nowrap',
     letterSpacing: 2,
-    cursor: "pointer",
-    fontFamily: "Antonio",
+    cursor: 'pointer',
+    fontFamily: 'Antonio',
     marginRight: 20,
 
-    "&:hover": {
-      color: "#233c25",
+    '&:hover': {
+      color: '#233c25',
       // fontWeight: 1000,
     },
 
-    [theme.breakpoints.down("sm")]: {
-      display: "none",
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
     },
   },
   hamburger: {
-    display: "none",
-    [theme.breakpoints.down("sm")]: {
-      display: "flex",
+    display: 'none',
+    [theme.breakpoints.down('sm')]: {
+      display: 'flex',
       width: 20,
       height: 20,
-      marginLeft: "auto",
+      marginLeft: 'auto',
     },
   },
   burgerFrame: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-end",
-    position: "absolute",
-    boxShadow: "1px 1px 1px 1px #888",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    position: 'absolute',
+    boxShadow: '1px 1px 1px 1px #888',
     top: 15,
     right: 5,
     borderRadius: 20,
-    backgroundColor: "#f2f2f2",
+    backgroundColor: '#f2f2f2',
     paddingBottom: 10,
     flex: 1,
     width: 150,
-    [theme.breakpoints.up("md")]: {
-      display: "none",
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
     },
   },
   burgerItem: {
     // border: "#aaa",
-    color: "#a9aaa9",
+    color: '#a9aaa9',
     fontSize: 14,
-    fontFamily: "Antonio",
+    fontFamily: 'Antonio',
     padding: 5,
-    cursor: "pointer",
-    textAlign: "right",
-    "&:hover": {
-      color: "#174f1a",
+    cursor: 'pointer',
+    textAlign: 'right',
+    '&:hover': {
+      color: '#174f1a',
     },
-    [theme.breakpoints.up("md")]: {
-      display: "none",
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
     },
   },
   close: {
     width: 20,
     height: 20,
-    color: "#a9aaa9",
-    backgroundColor: "#f2f2f2",
+    color: '#a9aaa9',
+    backgroundColor: '#f2f2f2',
     marginTop: 10,
     marginBottom: 10,
-    display: "flex",
+    display: 'flex',
     right: 0,
-    cursor: "pointer",
-    "&:hover": {
-      color: "#174f1a",
+    cursor: 'pointer',
+    '&:hover': {
+      color: '#174f1a',
     },
-    [theme.breakpoints.up("md")]: {
-      display: "none",
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
     },
   },
   // ----------------------------------------------------------------------------------
   loginBtn: {
-    width: "100%",
+    width: '100%',
     // backgroundColor: "red",
 
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       // backgroundColor: "red",
-      display: "flex",
-      justifyContent: "flex-end",
-      margin: "0px 20px",
-      width: "50%",
+      display: 'flex',
+      justifyContent: 'flex-end',
+      margin: '0px 20px',
+      width: '50%',
     },
   },
   // ----------------------------------------------------------------------------------
-}));
+}))
 
 const Header = () => {
-  const classes = useStyles();
-  const navigate = useNavigate();
-  const { currency, setcurrency, user } = CryptoState();
-  const [openHamburger, setOpenHamburger] = useState(false);
+  const classes = useStyles()
+  const navigate = useNavigate()
+  const { currency, setcurrency, user } = CryptoState()
+  const [openHamburger, setOpenHamburger] = useState(false)
   // ----------------------------------------------------------------------------------
   // const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
   const handleOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
   const handleClose = () => {
-    setOpen(false);
-  };
-  const [value, setValue] = React.useState(0);
+    setOpen(false)
+  }
+  const [value, setValue] = React.useState(0)
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-  const { setAlert } = CryptoState();
-  const googleProvider = new GoogleAuthProvider();
+    setValue(newValue)
+  }
+  const { setAlert } = CryptoState()
+  const googleProvider = new GoogleAuthProvider()
   const signInWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
       .then((res) => {
         setAlert({
           open: true,
           message: `Sign up Successful. Welcome ${res.user.email}`,
-          type: "success",
-        });
-        handleClose();
+          type: 'success',
+        })
+        handleClose()
       })
       .catch((error) => {
         setAlert({
           open: true,
           message: error.message,
-          type: "error",
-        });
-      });
-  };
+          type: 'error',
+        })
+      })
+  }
   // ----------------------------------------------------------------------------------
-  console.log(currency);
+  console.log(currency)
   const darkTheme = createTheme({
     palette: {
       primary: {
-        main: "#fff",
+        main: '#fff',
       },
-      type: "dark",
+      type: 'dark',
     },
-  });
+  })
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -226,27 +226,27 @@ const Header = () => {
           <Container className={classes.nav1}>
             <Toolbar>
               <img
-                onClick={() => navigate("/")}
+                onClick={() => navigate('/')}
                 src={NavLogo}
                 alt="Logo"
                 className={classes.navLogo}
               />
               <Typography
-                onClick={() => navigate("/market")}
+                onClick={() => navigate('/market')}
                 className={classes.title}
                 variant="h6"
               >
                 MARKET
               </Typography>
               <Typography
-                onClick={() => navigate("/about")}
+                onClick={() => navigate('/about')}
                 className={classes.title}
                 variant="h6"
               >
                 ABOUT US
               </Typography>
               <Typography
-                onClick={() => navigate("/help")}
+                onClick={() => navigate('/help')}
                 className={classes.title}
                 variant="h6"
               >
@@ -273,19 +273,19 @@ const Header = () => {
                     />
                   </Typography>
                   <Typography
-                    onClick={() => navigate("/market")}
+                    onClick={() => navigate('/market')}
                     className={classes.burgerItem}
                   >
                     MARKET
                   </Typography>
                   <Typography
-                    onClick={() => navigate("/about")}
+                    onClick={() => navigate('/about')}
                     className={classes.burgerItem}
                   >
                     ABOUT US
                   </Typography>
                   <Typography
-                    onClick={() => navigate("/help")}
+                    onClick={() => navigate('/help')}
                     className={classes.burgerItem}
                   >
                     HELP
@@ -298,7 +298,7 @@ const Header = () => {
         </AppBar>
       </Container>
     </ThemeProvider>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
