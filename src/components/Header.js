@@ -20,6 +20,7 @@ import {
   Box,
   Typography,
   Select,
+  Menu,
   MenuItem,
   makeStyles,
   createTheme,
@@ -92,6 +93,11 @@ const useStyles = makeStyles((theme) => ({
       // fontWeight: 1000,
     },
 
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
+  market: {
     [theme.breakpoints.down('sm')]: {
       display: 'none',
     },
@@ -173,6 +179,7 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
   const classes = useStyles()
   const navigate = useNavigate()
+  const [anchorEl, setAnchorEl] = React.useState(null)
   const { currency, setcurrency, user } = CryptoState()
   const [openHamburger, setOpenHamburger] = useState(false)
   // ----------------------------------------------------------------------------------
@@ -219,6 +226,14 @@ const Header = () => {
     },
   })
 
+  const expand = Boolean(anchorEl)
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleMinimize = () => {
+    setAnchorEl(null)
+  }
+
   return (
     <ThemeProvider theme={darkTheme}>
       <Container className={classes.navContainer}>
@@ -231,13 +246,30 @@ const Header = () => {
                 alt="Logo"
                 className={classes.navLogo}
               />
-              <Typography
-                onClick={() => navigate('/market')}
-                className={classes.title}
-                variant="h6"
-              >
-                MARKET
-              </Typography>
+              <div className={classes.market}>
+                <Button
+                  aria-controls={open ? 'basic-menu' : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? 'true' : undefined}
+                  onClick={handleClick}
+                >
+                  <Typography className={classes.title} variant="h6">
+                    MARKET
+                  </Typography>
+                </Button>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={expand}
+                  onClose={handleMinimize}
+                  MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                  }}
+                >
+                  <MenuItem onClick={handleMinimize}>Cryptocurrency</MenuItem>
+                  <MenuItem onClick={() => navigate('/forex')}>Forex</MenuItem>
+                </Menu>
+              </div>
               <Typography
                 onClick={() => navigate('/about')}
                 className={classes.title}

@@ -8,6 +8,7 @@ import Alert from "./components/Alert";
 import Footer from "./components/Footer";
 import AboutUs from "./Pages/AboutUs";
 import Topo from "./media/topo.jpg";
+import Forex from "./Pages/Forex";
 
 function App() {
   const useStyles = makeStyles(() => ({
@@ -52,6 +53,7 @@ function App() {
             <Route path="/" element={<Homepage />} exact />
             <Route path="/coins/:id" element={<Coinpage />} />
             <Route path="/about" element={<AboutUs />} />
+            <Route path="/forex" element={<Forex />} />
           </Routes>
           <Footer />
         </div>
