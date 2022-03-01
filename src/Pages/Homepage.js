@@ -7,6 +7,14 @@ import Topo from "../media/topo.jpg";
 const Homepage = () => {
   return (
     <div>
+      <div
+        style={{
+          height: 120,
+          backgroundColor: "#c6cec6",
+          // zIndex: 1,
+          marginTop: -120,
+        }}
+      ></div>
       {/* {" "} */}
       <div
         style={{
