@@ -98,9 +98,10 @@ export default function Feedback() {
 
   const dynamicSubmit = () => {
     if (
-      rating1 === 0 ||
-      rating2 === 0 ||
-      (like === "white" && dislike === "white")
+      rating1 === 0 &&
+      rating2 === 0 &&
+      like === "white" &&
+      dislike === "white"
     ) {
       alert("Please complete the feedback form before submission!");
     } else {
@@ -160,7 +161,7 @@ export default function Feedback() {
           <Rating
             name="rating2"
             value={rating2}
-            precision={0.5}
+            precision={1}
             onChange={(_, value) => {
               setRating2(value);
             }}

@@ -55,8 +55,8 @@ function App() {
             <Route path="/" element={<Homepage />} exact />
             <Route path="/coins/:id" element={<Coinpage />} />
             <Route path="/about" element={<AboutUs />} />
-            <Route path="/market" element={<Forex />} />
             <Route path="/help" element={<Help />} />
+            <Route path="/forex" element={<Forex />} />
           </Routes>
           <Footer />
         </div>

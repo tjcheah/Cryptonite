@@ -9,7 +9,7 @@ import {
 import "chart.js/auto";
 import { Typography } from "@material-ui/core";
 
-const UsdJpy = ({ coin }) => {
+const NzdUsd = ({ coin }) => {
   const [historicData, setHistoricData] = useState();
   const [flag, setflag] = useState(false);
 
@@ -22,7 +22,7 @@ const UsdJpy = ({ coin }) => {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      margin: "20px 10px",
+      margin: "20px 20px",
       color: "black",
       fontFamily: "antonio",
       padding: "0px 10px 100px 10px",
@@ -141,7 +141,7 @@ const UsdJpy = ({ coin }) => {
     ws.onopen = (evt) => {
       ws.send(
         JSON.stringify({
-          ticks_history: "frxUSDJPY",
+          ticks_history: "frxNZDUSD",
           adjust_start_time: 1,
           count: 10,
           end: "latest",
@@ -149,7 +149,7 @@ const UsdJpy = ({ coin }) => {
           style: "ticks",
         })
       );
-      ws.send(JSON.stringify({ ticks: "frxUSDJPY" }));
+      ws.send(JSON.stringify({ ticks: "frxNZDUSD" }));
     };
 
     ws.onmessage = function (evt) {
@@ -188,10 +188,9 @@ const UsdJpy = ({ coin }) => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <div></div>
       <div className={classes.container}>
         <Typography className={classes.containerLabel} variant="h3">
-          Tick Stream for USD/JPY
+          Tick Stream for NZD/USD
         </Typography>
         {!historicData | (flag === false) ? (
           <CircularProgress
@@ -209,4 +208,4 @@ const UsdJpy = ({ coin }) => {
   );
 };
 
-export default UsdJpy;
+export default NzdUsd;
