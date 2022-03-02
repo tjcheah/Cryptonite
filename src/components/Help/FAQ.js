@@ -12,17 +12,38 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  faqTitle: {
+    fontFamily: "Antonio",
+    fontWeight: 550,
+    letterSpacing: 3,
+  },
+  rootContainer: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     width: "100%",
-
-    padding: 20,
+    padding: "35px 0 35px 0",
+    margin: "50px 0px 50px 0px",
   },
   heading: {
-    fontSize: theme.typography.pxToRem(15),
+    fontSize: 14,
+    fontFamily: "Antonio",
+  },
+  textBody: {
+    fontFamily: "Antonio",
+    fontSize: 12,
+    marginTop: 5,
     fontWeight: theme.typography.fontWeightRegular,
+  },
+  accordionSummary: {
+    backgroundColor: "white",
+    color: "black",
+  },
+  decorativeLine: {
+    width: "100%",
+    backgroundColor: "#eee",
+    justifyContent: "center",
+    height: 1,
   },
 }));
 
@@ -53,19 +74,26 @@ export default function FAQ() {
         flexWrap: "wrap",
         justifyContent: "center",
         backgroundColor: "#C6CEC6",
+        padding: "180px 0px 50px 0px",
+        marginTop:-20,
         "& > :not(style)": {
           width: "800px",
           m: 1,
         },
       }}
     >
-      <Paper elevation={8} className={classes.root}>
-        <Typography variant="h4" className="FAQ-title" align="center">
-          Frequently Asked Questions (FAQ){" "}
+      <Paper
+        style={{ borderRadius: 30 }}
+        elevation={8}
+        className={classes.rootContainer}
+      >
+        <Typography variant="h4" className={classes.faqTitle}>
+          FREQUENTLY ASKED QUESTIONS (FAQ){" "}
         </Typography>
         <div className="accordion-list">
           <Accordion className="accordion-box">
             <AccordionSummary
+              className={classes.accordionSummary}
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
@@ -74,14 +102,26 @@ export default function FAQ() {
                 Why is Cryptonite price different from others?
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Why is Cryptonite price different from others?
+            <div className={classes.decorativeLine}></div>
+            <AccordionDetails className={classes.accordionSummary}>
+              <Typography className={classes.textBody}>
+                Cryptonite calculates a <b>volume-weighted average price</b> by
+                taking data from all major cryptocurrency exchanges and
+                cryptocurrency pairs worldwide.
+                <Typography className={classes.textBody}>
+                  Some cryptocurrency prices are being driven up by large
+                  trading volume by exchanges in certain geographical region
+                  trading them at a large premium from other countries, or by
+                  decentralized exchanges. This may explain why you may see a
+                  difference between our volume-weighted average price as
+                  compared to US exchanges.
+                </Typography>
               </Typography>
             </AccordionDetails>
           </Accordion>
           <Accordion className="accordion-box">
             <AccordionSummary
+              className={classes.accordionSummary}
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
@@ -90,14 +130,21 @@ export default function FAQ() {
                 Can I use Cryptonite data for personal and business use?
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Can I use Cryptonite data for personal and business use?
+            <div className={classes.decorativeLine}></div>
+            <AccordionDetails className={classes.accordionSummary}>
+              <Typography className={classes.textBody}>
+                Yes! we welcome you to use our data or screenshots on anything
+                that you work on be it for your book, website, research report,
+                presentation, etc.{" "}
+                <b>You do not need to request permission from Cryptonite</b> to
+                use any Cryptonite information on any of your publications. Just
+                mention that the data was obtained from Cryptonite.
               </Typography>
             </AccordionDetails>
           </Accordion>
           <Accordion className="accordion-box">
             <AccordionSummary
+              className={classes.accordionSummary}
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
@@ -106,36 +153,60 @@ export default function FAQ() {
                 Does Cryptonite have an official coin?
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
-              <Typography>Does Cryptonite have an official coin?</Typography>
+            <div className={classes.decorativeLine}></div>
+            <AccordionDetails className={classes.accordionSummary}>
+              <Typography className={classes.textBody}>
+                Presently,{" "}
+                <b>Cryptonite does NOT have any official coins issued</b> and we
+                do not have any plans to do so for now. Any projects claiming
+                that their tokens are created by Cryptonite is categorically
+                false, and potentially fraudulent. If you would like to report
+                any scams impersonating our brand, kindly write in to{" "}
+                <b>helpdesk@cryptonite.com.my</b> our team will investigate the
+                matter thoroughly.
+              </Typography>
             </AccordionDetails>
           </Accordion>
           <Accordion className="accordion-box">
             <AccordionSummary
+              className={classes.accordionSummary}
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
               <Typography className={classes.heading}>
-                Is Cryptonite hiring developers? What are the benefits?
+                What is the Timezone used in Cryptonite charts?
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
-              <Typography>Hello</Typography>
+            <div className={classes.decorativeLine}></div>
+            <AccordionDetails className={classes.accordionSummary}>
+              <Typography className={classes.textBody}>
+                Cryptonite uses data adjusted to <b>local Timezones</b> on
+                charts displayed on each asset. To display the coin/market
+                information,
+                <b>hover your mouse over onto the line chart</b>. The time
+                displayed will be adjusted to your local timezone.
+              </Typography>
             </AccordionDetails>
           </Accordion>
           <Accordion className="accordion-box">
             <AccordionSummary
+              className={classes.accordionSummary}
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
               <Typography className={classes.heading}>
-                What are the official channels of Cryptonite?
+                How to change the currency?
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
-              <Typography>Hello</Typography>
+            <div className={classes.decorativeLine}></div>
+            <AccordionDetails className={classes.accordionSummary}>
+              <Typography className={classes.textBody}>
+                Near the <b>top-right corner</b>, there is a dropdown that
+                allows you to change set the currency of your choice,{" "}
+                <b>either in USD or MYR</b>.
+              </Typography>
             </AccordionDetails>
           </Accordion>
         </div>

@@ -1,11 +1,3 @@
-.Help {
-  margin-top: 50px;
-}
-
-.FAQ-background {
-  background-color: #f2f2f2;
-}
-
 .FAQ-title {
   font-family: Antonio;
   padding-top: 30px;
@@ -31,3 +23,5 @@
   display: flex;
   justify-content: center;
 }
+
+

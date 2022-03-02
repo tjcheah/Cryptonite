@@ -15,18 +15,47 @@ const EurUsd = ({ coin }) => {
 
   const useStyles = makeStyles((theme) => ({
     container: {
-      width: "75%",
+      // backgroundColor: "yellow",
+      width: "100%",
+      height: "100%",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      margin: "40px 40px 40px 0px",
-      marginTop: 25,
-      padding: 20,
+      margin: "20px 20px",
+      color: "black",
+      fontFamily: "antonio",
+      padding: "0px 10px 100px 10px",
       [theme.breakpoints.down("md")]: {
+        // backgroundColor: "green",
         width: "90%",
-        margin: 0,
-        // padding: 20,
+        padding: 0,
+      },
+      [theme.breakpoints.down("xs")]: {
+        // backgroundColor: "blue",
+        width: "90%",
+        padding: 0,
+      },
+    },
+    containerLabel: {
+      // backgroundColor: "purple",
+      backgroundColor: "#fff",
+      fontFamily: "antonio",
+      fontSize: 30,
+      width: "90%",
+      textAlign: "center",
+      padding: 10,
+      margin: "50px 10px",
+      boxShadow: "0px 2px 2px 1px #aaa",
+      borderRadius: 40,
+      [theme.breakpoints.down("md")]: {
+        // backgroundColor: "pink",
+        margin: "20px 10px",
+      },
+      [theme.breakpoints.down("xs")]: {
+        // backgroundColor: "red",
+        fontSize: 20,
+        margin: "20px 10px",
       },
     },
   }));
@@ -57,7 +86,8 @@ const EurUsd = ({ coin }) => {
       {
         data: price,
         label: `Tick Stream for EUR/USD`,
-        borderColor: "aquamarine",
+        color: "black",
+        borderColor: "#174f1a",
       },
     ],
   };
@@ -150,18 +180,21 @@ const EurUsd = ({ coin }) => {
       }
     };
 
-    return () =>
-      (ws.onclose = function (evt) {
-        console.log("connection close");
-      });
+    return () => ws.close();
   }, []);
 
   return (
     <ThemeProvider theme={darkTheme}>
       <div className={classes.container}>
-        <Typography variant="h3">Tick Stream for EUR/USD</Typography>
+        <Typography className={classes.containerLabel} variant="h3">
+          Tick Stream for EUR/USD
+        </Typography>
         {!historicData | (flag === false) ? (
-          <CircularProgress style={{ color: "red" }} size={250} thickness={1} />
+          <CircularProgress
+            style={{ color: "#c6cec6" }}
+            size={250}
+            thickness={1}
+          />
         ) : (
           <>
             <Line data={lineChart} options={chartOptions}></Line>
