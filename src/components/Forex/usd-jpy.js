@@ -201,6 +201,10 @@ const UsdJpy = ({ coin }) => {
             <Line data={lineChart} options={chartOptions}></Line>
           </>
         )}
+        <Typography className={classes.containerLabel} variant="subtitle2">
+          {"Current Price: "}
+          {price[price.length - 1]}
+        </Typography>
       </div>
     </ThemeProvider>
   );
