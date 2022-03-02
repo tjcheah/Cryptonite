@@ -11,6 +11,7 @@ import Market from './Pages/Forex'
 import Topo from './media/topo.jpg'
 import Forex from './Pages/Forex'
 import Help from './Pages/Help'
+import Crypto from './Pages/Crypto'
 
 function App() {
   const useStyles = makeStyles(() => ({
