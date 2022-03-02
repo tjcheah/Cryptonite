@@ -14,18 +14,18 @@ const CoinInfo = ({ coin }) => {
 
   const useStyles = makeStyles((theme) => ({
     container: {
-      width: "75%",
+      // backgroundColor: "pink",
+      // color: "black",
+      marginBottom: 30,
+      width: 1200,
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      margin: "40px 40px 40px 0px",
-      marginTop: 25,
       padding: 20,
       [theme.breakpoints.down("md")]: {
         width: "90%",
-        margin: 0,
-        // padding: 20,
+        marginBottom: 20,
       },
     },
   }));
@@ -56,7 +56,7 @@ const CoinInfo = ({ coin }) => {
       {
         data: price,
         label: ``,
-        borderColor: "aquamarine",
+        borderColor: "#174f1a",
       },
     ],
   };
@@ -156,7 +156,11 @@ const CoinInfo = ({ coin }) => {
     <ThemeProvider theme={darkTheme}>
       <div className={classes.container}>
         {!historicData | (flag === false) ? (
-          <CircularProgress style={{ color: "red" }} size={250} thickness={1} />
+          <CircularProgress
+            style={{ color: "#c6cec6" }}
+            size={250}
+            thickness={1}
+          />
         ) : (
           <>
             <Line data={lineChart} options={chartOptions}></Line>
