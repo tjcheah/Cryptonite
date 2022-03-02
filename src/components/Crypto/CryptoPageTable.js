@@ -201,7 +201,14 @@ const CoinsTable = () => {
               {/* Table Head */}
               <TableHead>
                 <TableRow>
-                  {['Coin', 'Price', '24h Change', 'Market Cap'].map((head) => (
+                  {[
+                    'Coin',
+                    'Price',
+                    '24h Change',
+                    'Circulating Supply',
+                    'Market Cap',
+                    'Overall Volume',
+                  ].map((head) => (
                     <TableCell
                       className={classes.tableHead}
                       key={head}
@@ -315,6 +322,20 @@ const CoinsTable = () => {
                           {profit && '+'}
                           {row.price_change_percentage_24h.toFixed(2)}%
                         </TableCell>
+                        <TableCell
+                          style={{
+                            // backgroundColor: "blue",
+                            paddingRight: 40,
+                            fontFamily: 'antonio',
+                            fontSize: 22,
+                          }}
+                          align="right"
+                        >
+                          {symbol}{' '}
+                          {numberWithCommas(
+                            row.circulating_supply.toString().slice(0, -6),
+                          )}
+                        </TableCell>
                         {/* Market Capital Column */}
                         <TableCell
                           style={{
@@ -328,6 +349,20 @@ const CoinsTable = () => {
                           {symbol}{' '}
                           {numberWithCommas(
                             row.market_cap.toString().slice(0, -6),
+                          )}
+                        </TableCell>
+                        <TableCell
+                          style={{
+                            // backgroundColor: "blue",
+                            paddingRight: 40,
+                            fontFamily: 'antonio',
+                            fontSize: 22,
+                          }}
+                          align="right"
+                        >
+                          {symbol}{' '}
+                          {numberWithCommas(
+                            row.total_volume.toString().slice(0, -6),
                           )}
                         </TableCell>
                       </TableRow>
