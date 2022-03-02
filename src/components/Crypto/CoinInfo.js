@@ -149,10 +149,7 @@ const CoinInfo = ({ coin }) => {
       }
     };
 
-    return () =>
-      (ws.onclose = function (evt) {
-        console.log("connection close");
-      });
+    return () => ws.close();
   }, []);
 
   return (
