@@ -181,7 +181,10 @@ const UsdJpy = ({ coin }) => {
       }
     };
 
-    return () => ws.close();
+    return () =>
+      (ws.onclose = function (evt) {
+        console.log("connection close");
+      });
   }, []);
 
   return (
