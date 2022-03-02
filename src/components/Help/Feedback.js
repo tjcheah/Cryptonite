@@ -124,13 +124,10 @@ export default function Feedback() {
   };
   const dynamicSubmit = () => {
     if (
-      rating1 === 0 &&
-      rating2 === 0 &&
-      like === "white" &&
-      dislike === "white"
+      rating1 > 0 &&
+      rating2 > 0 &&
+      (like === "#66ff00" || dislike === "red")
     ) {
-      alert("Please complete the feedback form before submission!");
-    } else {
       alert(
         "Thank you for the feedback! We appreciate your feedback and will continue to improve in the future."
       );
@@ -138,6 +135,8 @@ export default function Feedback() {
       setRating2(0);
       setLike("white");
       setDislike("white");
+    } else {
+      alert("Please complete the feedback form before submission!");
     }
   };
   return (
