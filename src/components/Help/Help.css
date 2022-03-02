@@ -1,0 +1,27 @@
+.FAQ-title {
+  font-family: Antonio;
+  padding-top: 30px;
+}
+
+.accordion-list {
+  padding-top: 20px;
+  width: 80%;
+  padding-left: 0px;
+  padding-right: 0px;
+  justify-content: center;
+}
+.accordion-box {
+  margin-bottom: 10px;
+}
+
+.accordion {
+  width: 80%;
+  justify-content: center;
+}
+
+.contact-us {
+  display: flex;
+  justify-content: center;
+}
+
+

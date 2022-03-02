@@ -7,25 +7,26 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 import "chart.js/auto";
+import { Typography } from "@material-ui/core";
 
-const CoinInfo = ({ coin }) => {
+const BtcUsd = ({ coin }) => {
   const [historicData, setHistoricData] = useState();
   const [flag, setflag] = useState(false);
 
   const useStyles = makeStyles((theme) => ({
     container: {
-      // backgroundColor: "pink",
-      // color: "black",
-      marginBottom: 30,
-      width: 1200,
+      width: "75%",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
+      margin: "40px 40px 40px 0px",
+      marginTop: 25,
       padding: 20,
       [theme.breakpoints.down("md")]: {
         width: "90%",
-        marginBottom: 20,
+        margin: 0,
+        // padding: 20,
       },
     },
   }));
@@ -55,7 +56,7 @@ const CoinInfo = ({ coin }) => {
     datasets: [
       {
         data: price,
-        label: ``,
+        label: `Tick Stream for BTC/USD`,
         borderColor: "aquamarine",
       },
     ],
@@ -158,6 +159,7 @@ const CoinInfo = ({ coin }) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <div className={classes.container}>
+        <Typography variant="h3">Tick Stream for BTC/USD</Typography>
         {!historicData | (flag === false) ? (
           <CircularProgress style={{ color: "red" }} size={250} thickness={1} />
         ) : (
@@ -170,4 +172,4 @@ const CoinInfo = ({ coin }) => {
   );
 };
 
-export default CoinInfo;
+export default BtcUsd;

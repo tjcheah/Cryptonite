@@ -5,7 +5,7 @@ import logoTitle from "./Cryptonite Title Cropped.png";
 
 const useStyles = makeStyles((theme) => ({
   logoContainer: {
-    backgroundColor: "#dcdddb",
+    backgroundColor: "#f2f2f2",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -15,27 +15,39 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 0,
     width: "100%",
     height: 120,
-    boxShadow: "0px -2px 4px 1px #999",
+    // boxShadow: "0px -2px 2px 1px #aaa",
     [theme.breakpoints.down("sm")]: {
-      height: 60,
-      justifyContent: "flex-end",
+      paddingTop: 20,
+      height: 100,
+      justifyContent: "flex-start",
       alignItems: "flex-start",
+    },
+    [theme.breakpoints.down("xs")]: {
+      paddingTop: 30,
+      height: 100,
+      justifyContent: "center",
+      alignItems: "center",
     },
   },
   logo: {
     width: 200,
     height: 200,
     zIndex: 2,
+    margin: "0px 50px",
     [theme.breakpoints.down("sm")]: {
       width: 150,
       height: 150,
       marginRight: 50,
     },
+    [theme.breakpoints.down("xs")]: {
+      width: 150,
+      height: 150,
+      // marginRight: 50,
+    },
   },
   logoTitle: {
-    width: 360,
-    height: 90,
-    marginLeft: 20,
+    // backgroundColor: "red",
+    width: 500,
     [theme.breakpoints.down("sm")]: {
       display: "none",
     },
