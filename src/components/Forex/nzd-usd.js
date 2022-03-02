@@ -16,16 +16,16 @@ const NzdUsd = ({ coin }) => {
   const useStyles = makeStyles((theme) => ({
     container: {
       // backgroundColor: "yellow",
-      width: "100%",
+      width: 1200,
       height: "100%",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      margin: "20px 20px",
+      margin: "10px 10px",
       color: "black",
       fontFamily: "antonio",
-      padding: "0px 10px 100px 10px",
+      padding: "0px 100px 50px 100px",
       [theme.breakpoints.down("md")]: {
         // backgroundColor: "green",
         width: "90%",
@@ -34,6 +34,7 @@ const NzdUsd = ({ coin }) => {
       [theme.breakpoints.down("xs")]: {
         // backgroundColor: "blue",
         width: "90%",
+        // margin: 0,
         padding: 0,
       },
     },
@@ -45,7 +46,7 @@ const NzdUsd = ({ coin }) => {
       width: "90%",
       textAlign: "center",
       padding: 10,
-      margin: "50px 10px",
+      margin: "20px 10px",
       boxShadow: "0px 2px 2px 1px #aaa",
       borderRadius: 40,
       [theme.breakpoints.down("md")]: {
@@ -55,7 +56,7 @@ const NzdUsd = ({ coin }) => {
       [theme.breakpoints.down("xs")]: {
         // backgroundColor: "red",
         fontSize: 20,
-        margin: "20px 10px",
+        margin: "10px 10px",
       },
     },
   }));

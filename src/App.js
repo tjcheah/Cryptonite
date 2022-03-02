@@ -47,10 +47,10 @@ function App() {
       <Router>
         <div className={classes.AppF2}>{/* <NavBar/> */}</div>
         <div className={classes.AppLgreen}>
-          <Routes></Routes>
+          <Header />
+          {/* <Routes></Routes> */}
         </div>
         <div className={classes.AppTopo}>
-          <Header />
           <Routes>
             <Route path="/" element={<Homepage />} exact />
             <Route path="/coins/:id" element={<Coinpage />} />
