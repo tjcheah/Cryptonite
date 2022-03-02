@@ -3,10 +3,18 @@ import Banner from "../components/Banner/Banner.js";
 import CoinsTable from "../components/Crypto/CoinsTable.js";
 import News from "../components/News/News.js";
 import Topo from "../media/topo.jpg";
-
+import Forex from "./Forex.js";
 const Homepage = () => {
   return (
     <div>
+      <div
+        style={{
+          height: 120,
+          backgroundColor: "#c6cec6",
+          // zIndex: 1,
+          marginTop: -120,
+        }}
+      ></div>
       {/* {" "} */}
       <div
         style={{

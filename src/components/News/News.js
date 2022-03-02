@@ -28,17 +28,6 @@ export default function News() {
     return () => {};
   }, []);
 
-  function Arrow(props) {
-    let className = props.type === "next" ? "nextArrow" : "prevArrow";
-    className += " arrow";
-    const char = props.type === "next" ? ">" : "<";
-    return (
-      <span className={className} onClick={props.onClick}>
-        {char}
-      </span>
-    );
-  }
-
   const sliderSettings = {
     // removes default buttons
     arrows: true,
@@ -64,7 +53,6 @@ export default function News() {
       borderRadius: 20,
       marginLeft: "5px",
       marginRight: "5px",
-      boxShadow: "0px 4px 4px 2px #aaa",
     },
   };
 
