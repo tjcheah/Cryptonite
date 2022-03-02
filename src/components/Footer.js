@@ -1,5 +1,5 @@
-import React from 'react'
-import bottomLogo from './Cryptonite Title 2.png'
+import React from "react";
+import bottomLogo from "../media/Cryptonite Title 2.png";
 import {
   BottomNavigation,
   Container,
@@ -7,146 +7,190 @@ import {
   makeStyles,
   createTheme,
   ThemeProvider,
-} from '@material-ui/core'
-import { useNavigate } from 'react-router-dom'
-import { FaRegCopyright } from 'react-icons/fa'
+} from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
+import { FaRegCopyright } from "react-icons/fa";
 
 const useStyles = makeStyles((theme) => ({
   footerContainer: {
-    display: 'flex',
+    // backgroundColor: "green",
+    display: "flex",
+    position: "absolute",
     bottom: 0,
-    width: '100%',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-    position: 'static',
+    width: "100%",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    position: "static",
     left: 0,
     bottom: 0,
     right: 0,
-    paddingTop: 300,
+    paddingTop: 30,
   },
+  // The footer itself
   footer: {
-    display: 'flex',
-    flexDirection: 'row',
-    width: '95%',
-    position: 'static',
-    left: 0,
-    bottom: 0,
-    right: 0,
-    backgroundColor: '#ffffff',
-    color: '#000',
+    // backgroundColor: "yellow",
+    backgroundColor: "#ffffff",
+    display: "flex",
+    flexDirection: "row",
+    width: "95%",
+    height: "10%",
+    position: "static",
+    // left: 0,
+    // bottom: 0,
+    // right: 0,
+    color: "#000",
     bottom: 0,
     paddingTop: 25,
-    paddingBottom: 220,
     borderTopLeftRadius: 35,
     borderTopRightRadius: 35,
-    boxShadow: '0px -4px 4px 2px #aaa',
+    boxShadow: "0px -2px 2px 1px #aaa",
     lineHeight: 18,
-    flexWrap: 'wrap',
-    [theme.breakpoints.down('sm')]: {
-      paddingBottom: 350,
+    flexWrap: "wrap",
+    [theme.breakpoints.down("sm")]: {
+      // paddingBottom: 300,
     },
   },
   footerTop: {
-    display: 'flex',
-    flexDirection: 'row',
-    width: '100%',
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column',
-      flexWrap: 'wrap',
+    // backgroundColor: "green",
+    display: "flex",
+    flexDirection: "row",
+    width: "100%",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      flexWrap: "wrap",
     },
   },
   footerTopLeft: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '50%',
-    marginLeft: 50,
-    [theme.breakpoints.down('sm')]: {
-      width: '100%',
+    // backgroundColor: "cyan",
+    display: "flex",
+    flexDirection: "column",
+    alignContent: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "50%",
+    // marginLeft: 50,
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
       marginLeft: 0,
     },
   },
   footerTopRight: {
-    width: '50%',
-    marginTop: 15,
-    marginRight: 50,
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    [theme.breakpoints.down('sm')]: {
-      width: '100%',
-      marginTop: 20,
-      paddingLeft: 0,
+    // backgroundColor: "violet",
+    // paddingTop: 20,
+    width: "50%",
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      // marginTop: 20,
+      paddingLeft: 40,
       marginLeft: 0,
     },
   },
   footerBottom: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-    paddingTop: 25,
-    paddingBottom: 20,
-    marginLeft: 75,
-    [theme.breakpoints.down('sm')]: {
+    // backgroundColor: "yellow",
+    display: "flex",
+    justifyContent: "center",
+    alignContent: "center",
+    flexDirection: "column",
+    width: "100%",
+    // height: 80,
+    // marginBottom: 30,
+    // paddingTop: 25,
+    // paddingBottom: 30,
+    // marginLeft: 75,
+    [theme.breakpoints.down("sm")]: {
       marginLeft: 15,
       marginRight: 25,
     },
   },
+  footerBottomLeft: {
+    // backgroundColor: "pink",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: 10,
+    paddingBottom: 10,
+
+    width: "100%",
+    [theme.breakpoints.down("sm")]: {
+      // marginLeft: 15,
+      // marginRight: 25,
+    },
+  },
 
   bottomLogo: {
-    width: 305,
-    height: 70,
-    [theme.breakpoints.down('sm')]: {
+    // backgroundColor: "blue",
+    width: "75%",
+    height: "auto",
+    [theme.breakpoints.down("sm")]: {
       width: 260,
       height: 60,
     },
   },
   subtitle: {
+    // backgroundColor: "red",
+    display: "flex",
+    justifyContent: "center",
+    textAlign: "justify",
     fontSize: 12,
-    fontFamily: 'Antonio',
-    paddingTop: 5,
-    width: '90%',
+    fontFamily: "Antonio",
+    padding: 10,
+    width: "90%",
   },
   bottomTitle: {
+    // backgroundColor: "gray",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+
+    textAlign: "justify",
     fontSize: 10,
-    fontFamily: 'Antonio',
+    fontFamily: "Antonio",
     fontWeight: 700,
     letterSpacing: 1,
-    width: '40%',
-    [theme.breakpoints.down('sm')]: {
-      width: '100%',
-      paddingBottom: 5,
+    width: "95%",
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "center",
+      width: "100%",
     },
   },
   miniTitle: {
-    fontSize: 13,
-    fontFamily: 'Antonio',
-    lineHeight: 2,
+    // backgroundColor: "Red",
+    fontSize: 14,
+    fontFamily: "Antonio",
+    lineHeight: 1.5,
     letterSpacing: 1,
-    '&:hover': {
-      fontWeight: 550,
+    cursor: "pointer",
+    "&:hover": {
+      fontWeight: "bold",
+      color: "#a9aaa9",
     },
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "center",
+      fontSize: 12,
       lineHeight: 1.6,
     },
   },
-  column1: {
-    width: '50%',
-    flex: 2,
-  },
-  column2: { width: '50%', flex: 5 },
-}))
+  column1: { width: "50%", flex: 2 },
+  column2: { width: "50%", flex: 4 },
+}));
 
 const Footer = () => {
-  const classes = useStyles()
-  const navigate = useNavigate()
+  const classes = useStyles();
+  const navigate = useNavigate();
   const darkTheme = createTheme({
     palette: {
       primary: {
-        main: '#fff',
+        main: "#fff",
       },
-      type: 'dark',
+      type: "dark",
     },
-  })
+  });
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -155,39 +199,40 @@ const Footer = () => {
           <Container className={classes.footerTop}>
             <Container className={classes.footerTopLeft}>
               <img
-                onClick={() => navigate('/')}
+                onClick={() => navigate("/")}
                 src={bottomLogo}
                 alt="Logo"
                 className={classes.bottomLogo}
               />
-              <Typography className={classes.subtitle}>
+
+              {/* <Typography className={classes.subtitle}>
                 Cryptonite came with a mission to provide actual real-time
                 crypto data for users to make their best, rewarding investment
                 decisions in the cryptocurrency world.
-              </Typography>
+              </Typography> */}
             </Container>
             <Container className={classes.footerTopRight}>
               <Container className={classes.column1}>
                 <Typography
-                  onClick={() => navigate('/about')}
+                  onClick={() => navigate("/about")}
                   className={classes.miniTitle}
                 >
                   About Us
                 </Typography>
                 <Typography
-                  onClick={() => navigate('/help')}
+                  onClick={() => navigate("/help")}
                   className={classes.miniTitle}
                 >
                   Contact Us
                 </Typography>
                 <Typography
-                  onClick={() => navigate('/help')}
+                  onClick={() => navigate("/help")}
                   className={classes.miniTitle}
                 >
                   Help
                 </Typography>
                 <Typography
-                  onClick={() => navigate('/careers')}
+                  onClick={() => navigate("/careers")}
                   className={classes.miniTitle}
                 >
                   Careers
@@ -195,25 +240,25 @@ const Footer = () => {
               </Container>
               <Container className={classes.column2}>
                 <Typography
-                  onClick={() => navigate('/market')}
+                  onClick={() => navigate("/market")}
                   className={classes.miniTitle}
                 >
                   Search Cryptocurrency
                 </Typography>
                 <Typography
-                  onClick={() => navigate('/')}
+                  onClick={() => navigate("/")}
                   className={classes.miniTitle}
                 >
                   Trending Markets
                 </Typography>
                 <Typography
-                  onClick={() => navigate('/help')}
+                  onClick={() => navigate("/help")}
                   className={classes.miniTitle}
                 >
                   Top Gainers & Losers
                 </Typography>
                 <Typography
-                  onClick={() => navigate('/news')}
+                  onClick={() => navigate("/news")}
                   className={classes.miniTitle}
                 >
                   Crypto News
@@ -222,17 +267,19 @@ const Footer = () => {
             </Container>
           </Container>
           <Container className={classes.footerBottom}>
-            <Typography className={classes.bottomTitle}>
-              Help Center | Contact | Bug Bounty | Disclaimer | Terms of Service
-              | Privacy Policy | Ad Policy
-            </Typography>
-            <Typography className={classes.bottomTitle}>
-              <FaRegCopyright /> Cryptonite. All Rights Reserved.
-            </Typography>
+            <Container className={classes.footerBottomLeft}>
+              <Typography className={classes.bottomTitle}>
+                Help Center | Contact | Bug Bounty | Disclaimer | Terms of
+                Service | Privacy Policy | Ad Policy
+              </Typography>
+              <Typography className={classes.bottomTitle}>
+                <FaRegCopyright /> Cryptonite. All Rights Reserved.
+              </Typography>
+            </Container>
           </Container>
         </BottomNavigation>
       </Container>
     </ThemeProvider>
-  )
-}
-export default Footer
+  );
+};
+export default Footer;

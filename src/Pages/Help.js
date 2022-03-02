@@ -1,23 +1,39 @@
 import React from "react";
 
-import { useState, useEffect } from "react";
+import "../components/Help/Help.css";
+
+import { makeStyles } from "@material-ui/core/styles";
+import FAQ from "../components/Help/FAQ.js";
+import Contact from "../components/Help/ContactUS.js";
+import Feedback from "../components/Help/Feedback.js";
+
+const useStyles = makeStyles((theme) => ({
+  // root: {
+  //   display: "flex",
+  //   flexDirection: "column",
+  //   alignItems: "center",
+  //   width: "100%",
+  //   padding: 20,
+  // },
+  // heading: {
+  //   fontSize: theme.typography.pxToRem(15),
+  //   fontWeight: theme.typography.fontWeightRegular,
+  // },
+  // wrapIcon: {
+  //   verticalAlign: "middle",
+  //   display: "flex",
+  // },
+}));
 
 export default function Help() {
-  const [post, setPost] = useState([]);
+  // const classes = useStyles();
 
-  //   useEffect(() => {
-  //     // invalid url will trigger an 404 error
-  //     axios
-  //       .get("https://min-api.cryptocompare.com/data/v2/news/?lang=EN")
-  //       .then((response) => {
-  //         console.log(response.data.Data);
-  //         setPost(response.data.Data.splice(0, 10));
-  //       })
-  //       .catch((error) => {
-  //         setError(error);
-  //       });
-  //     return () => {};
-  //   }, []);
-
-  return <div className="Help"></div>;
+  return (
+    // <div className="Help">
+    <div>
+      <FAQ />
+      <Contact />
+      <Feedback />
+    </div>
+  );
 }

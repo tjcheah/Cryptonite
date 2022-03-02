@@ -1,0 +1,67 @@
+import React from "react";
+import { makeStyles } from "@material-ui/core";
+import logo from "../Cryptonite Logo.png";
+import logoTitle from "./Cryptonite Title Cropped.png";
+
+const useStyles = makeStyles((theme) => ({
+  logoContainer: {
+    backgroundColor: "#f2f2f2",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingRight: 0,
+    paddingLeft: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    width: "100%",
+    height: 120,
+    // boxShadow: "0px -2px 2px 1px #aaa",
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: 20,
+      height: 100,
+      justifyContent: "flex-start",
+      alignItems: "flex-start",
+    },
+    [theme.breakpoints.down("xs")]: {
+      paddingTop: 30,
+      height: 100,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+  },
+  logo: {
+    width: 200,
+    height: 200,
+    zIndex: 2,
+    margin: "0px 50px",
+    [theme.breakpoints.down("sm")]: {
+      width: 150,
+      height: 150,
+      marginRight: 50,
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: 150,
+      height: 150,
+      // marginRight: 50,
+    },
+  },
+  logoTitle: {
+    // backgroundColor: "red",
+    width: 500,
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
+}));
+
+const LogoBanner = () => {
+  const classes = useStyles();
+  return (
+    <div className={classes.logoContainer}>
+      <img src={logo} alt="logo" className={classes.logo} />
+      <img src={logoTitle} alt="logoTitle" className={classes.logoTitle} />
+    </div>
+  );
+};
+
+export default LogoBanner;
