@@ -56,7 +56,7 @@ const CoinInfo = ({ coin }) => {
       {
         data: price,
         label: ``,
-        borderColor: "aquamarine",
+        borderColor: "#174f1a",
       },
     ],
   };
@@ -159,7 +159,11 @@ const CoinInfo = ({ coin }) => {
     <ThemeProvider theme={darkTheme}>
       <div className={classes.container}>
         {!historicData | (flag === false) ? (
-          <CircularProgress style={{ color: "red" }} size={250} thickness={1} />
+          <CircularProgress
+            style={{ color: "#c6cec6" }}
+            size={250}
+            thickness={1}
+          />
         ) : (
           <>
             <Line data={lineChart} options={chartOptions}></Line>
