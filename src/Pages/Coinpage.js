@@ -218,7 +218,7 @@ const Coinpage = () => {
     }
   }
 
-  const removeFromFavoriteslist = async (coin) => {
+  const removeFromFavoriteslist = async () => {
     const coinRef = doc(db, 'favoriteslist', user.uid)
     try {
       await setDoc(
