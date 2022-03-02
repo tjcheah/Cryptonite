@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   // -------------------------------------------------------------------------------------
   loginBtn: {
     // marginLeft: "50%",
-    width: 215,
+    width: 220,
     float: "right",
     backgroundColor: "#233c25",
     // backgroundColor: "blue",
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#233c25",
     [theme.breakpoints.down("sm")]: {
       // backgroundColor: "blue",
-      width: 145,
+      width: 150,
       height: 45,
       borderRadius: 50,
       display: "flex",
