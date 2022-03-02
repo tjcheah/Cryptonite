@@ -327,10 +327,6 @@ const Coinpage = () => {
                   .split(". ")[0]
                   .replace(/<\/?[^>]+(>|$)/g, "")}
                 .{" "}
-                {coin?.description.en
-                  .split(". ")[1]
-                  .replace(/<\/?[^>]+(>|$)/g, "")}
-                .
               </Typography>
               {user && (
                 <Button
