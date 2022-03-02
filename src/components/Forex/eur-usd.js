@@ -25,7 +25,7 @@ const EurUsd = ({ coin }) => {
       margin: "10px 10px",
       color: "black",
       fontFamily: "antonio",
-      padding: "0px 100px 50px 100px",
+      padding: "0px 100px 20px 100px",
       [theme.breakpoints.down("md")]: {
         // backgroundColor: "green",
         width: "90%",
@@ -41,6 +41,27 @@ const EurUsd = ({ coin }) => {
     containerLabel: {
       // backgroundColor: "purple",
       backgroundColor: "#fff",
+      fontFamily: "antonio",
+      fontSize: 30,
+      width: "90%",
+      // textAlign: "center",
+      padding: "10px 50px",
+      margin: "20px 10px",
+      boxShadow: "0px 2px 2px 1px #aaa",
+      borderRadius: 40,
+      [theme.breakpoints.down("md")]: {
+        // backgroundColor: "pink",
+        margin: "20px 10px",
+      },
+      [theme.breakpoints.down("xs")]: {
+        // backgroundColor: "red",
+        fontSize: 20,
+        margin: "10px 10px",
+      },
+    },
+    containerPrice: {
+      // backgroundColor: "purple",
+      // backgroundColor: "#fff",
       fontFamily: "antonio",
       fontSize: 30,
       width: "90%",
@@ -201,6 +222,10 @@ const EurUsd = ({ coin }) => {
             <Line data={lineChart} options={chartOptions}></Line>
           </>
         )}
+        <Typography className={classes.containerPrice} variant="h3">
+          {"Current Price: "}
+          {price[price.length - 1]}
+        </Typography>
       </div>
     </ThemeProvider>
   );
