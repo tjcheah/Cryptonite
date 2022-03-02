@@ -283,7 +283,8 @@ const Coinpage = () => {
           </div>
           {/* Description */}
           <Typography variant="subtitle1" className={classes.description}>
-            {coin?.description.en.split(". ")[0]}.
+            {coin?.description.en.split(". ")[0].replace(/(<([^>]+)>)/gi, "")}.{" "}
+            {coin?.description.en.split(". ")[1].replace(/(<([^>]+)>)/gi, "")}.
           </Typography>
           {user && (
             <Button
