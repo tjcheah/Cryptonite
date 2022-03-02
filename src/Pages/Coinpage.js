@@ -101,13 +101,13 @@ const Coinpage = () => {
       alignContent: "center",
 
       [theme.breakpoints.down("md")]: {
-        backgroundColor: "yello/w",
-        width: "90%",
+        // backgroundColor: "yellow",
+        width: "20%",
         margin: "20px 50px",
       },
       [theme.breakpoints.down("sm")]: {
         // backgroundColor: "green",
-        width: "50%",
+        width: "30%",
       },
       [theme.breakpoints.down("xs")]: {
         // backgroundColor: "indigo",
