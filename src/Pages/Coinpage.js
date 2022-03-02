@@ -10,7 +10,7 @@ import {
   Typography,
   Button,
 } from "@material-ui/core";
-import CoinInfo from "../components/Crypto/CoinInfo.js";
+import CoinInfo from "../components/Crypto/CoinInfo";
 import { numberWithCommas } from "../components/Crypto/CoinsTable.js";
 import { doc, setDoc } from "@firebase/firestore";
 import { db } from "../firebase";
@@ -101,13 +101,13 @@ const Coinpage = () => {
       alignContent: "center",
 
       [theme.breakpoints.down("md")]: {
-        backgroundColor: "yello/w",
-        width: "90%",
+        // backgroundColor: "yellow",
+        width: "20%",
         margin: "20px 50px",
       },
       [theme.breakpoints.down("sm")]: {
         // backgroundColor: "green",
-        width: "50%",
+        width: "30%",
       },
       [theme.breakpoints.down("xs")]: {
         // backgroundColor: "indigo",
@@ -218,7 +218,7 @@ const Coinpage = () => {
     }
   };
 
-  const removeFromFavoriteslist = async (coin) => {
+  const removeFromFavoriteslist = async () => {
     const coinRef = doc(db, "favoriteslist", user.uid);
     try {
       await setDoc(
@@ -326,7 +326,7 @@ const Coinpage = () => {
                 {coin?.description.en
                   .split(". ")[0]
                   .replace(/<\/?[^>]+(>|$)/g, "")}
-                .{" "}
+                .
               </Typography>
               {user && (
                 <Button

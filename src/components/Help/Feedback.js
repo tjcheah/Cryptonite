@@ -15,9 +15,21 @@ import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 
 const useStyles = makeStyles((theme) => ({
   feedbackForm: {
+    // backgroundColor: "green",
     padding: "20px 0px 30px 0px",
   },
+  stackCont: {
+    [theme.breakpoints.up("xs")]: {
+      width: "90%",
+      // backgroundColor: "red",
+    },
+    [theme.breakpoints.up("md")]: {
+      // backgroundColor: "pink",
+      width: 600,
+    },
+  },
   feedbackTitle: {
+    // backgroundColor: "yellow",
     display: "flex",
     justifyContent: "center",
     fontFamily: "Antonio",
@@ -25,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: 3,
   },
   feedbackText: {
+    // backgroundColor: "blue",
     display: "flex",
     justifyContent: "center",
     fontFamily: "Antonio",
@@ -36,22 +49,38 @@ const useStyles = makeStyles((theme) => ({
   },
   emeraldStone: {
     width: 100,
+    [theme.breakpoints.up("xs")]: {
+      width: "90%",
+    },
   },
   greyStone: {
     width: 100,
     filter: "grayscale(100%)",
+    [theme.breakpoints.up("xs")]: {
+      width: "90%",
+    },
   },
   goldCoin: {
     width: 60,
-    margin: "20px",
+    marginLeft: "20px",
+    [theme.breakpoints.up("xs")]: {
+      width: "70%",
+    },
   },
   greyCoin: {
     width: 60,
     filter: "grayscale(100%)",
-    margin: "20px",
+    marginLeft: "20px",
+    [theme.breakpoints.up("xs")]: {
+      width: "70%",
+    },
   },
   thumbs: {
     margin: "20px 50px 20px 50px",
+    [theme.breakpoints.up("xs")]: {
+      margin: "0px 20px",
+      width: "70%",
+    },
   },
 }));
 
@@ -69,7 +98,6 @@ export default function Feedback() {
   const [like, setLike] = useState("white");
   const [dislike, setDislike] = useState("white");
   const [submit, setSubmit] = useState();
-
   const dynamicLike = () => {
     if (like === "white" && dislike === "white") {
       setLike("#66ff00");
@@ -82,7 +110,6 @@ export default function Feedback() {
       setLike("white");
     }
   };
-
   const dynamicDisLike = () => {
     if (dislike === "white" && like === "white") {
       setDislike("red");
@@ -95,16 +122,12 @@ export default function Feedback() {
       setDislike("white");
     }
   };
-
   const dynamicSubmit = () => {
     if (
-      rating1 === 0 &&
-      rating2 === 0 &&
-      like === "white" &&
-      dislike === "white"
+      rating1 > 0 &&
+      rating2 > 0 &&
+      (like === "#66ff00" || dislike === "red")
     ) {
-      alert("Please complete the feedback form before submission!");
-    } else {
       alert(
         "Thank you for the feedback! We appreciate your feedback and will continue to improve in the future."
       );
@@ -112,6 +135,8 @@ export default function Feedback() {
       setRating2(0);
       setLike("white");
       setDislike("white");
+    } else {
+      alert("Please complete the feedback form before submission!");
     }
   };
   return (
@@ -122,7 +147,6 @@ export default function Feedback() {
           display: "flex",
           flexWrap: "wrap",
           flexDirection: "column",
-
           alignItems: "center",
           paddingTop: "30px",
           "& > :not(style)": {
@@ -130,11 +154,11 @@ export default function Feedback() {
           },
         }}
       >
-        {" "}
         <Typography className={classes.feedbackTitle} variant="h4">
           WE'D LOVE SOME FEEDBACK
         </Typography>
         <Stack
+          className={classes.stackCont}
           direction="column"
           spacing={2}
           justifyContent="center"
@@ -147,6 +171,8 @@ export default function Feedback() {
           <Rating
             name="rating1"
             value={rating1}
+            justifyContent="center"
+            alignItems="center"
             precision={1}
             onChange={(_, value) => {
               setRating1(value);
@@ -161,6 +187,8 @@ export default function Feedback() {
           <Rating
             name="rating2"
             value={rating2}
+            justifyContent="center"
+            alignItems="center"
             precision={1}
             onChange={(_, value) => {
               setRating2(value);
@@ -177,12 +205,16 @@ export default function Feedback() {
               style={{ color: like, fontSize: 45 }}
               onClick={dynamicLike}
               className={classes.thumbs}
+              justifyContent="center"
+              alignItems="center"
             />
 
             <ThumbDownOffAltIcon
               style={{ color: dislike, fontSize: 45 }}
               onClick={dynamicDisLike}
               className={classes.thumbs}
+              justifyContent="center"
+              alignItems="center"
             />
           </div>
         </Stack>
