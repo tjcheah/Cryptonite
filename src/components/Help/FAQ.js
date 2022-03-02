@@ -13,73 +13,80 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles((theme) => ({
   faqTitle: {
+    // backgroundColor: "orange",
     fontFamily: "Antonio",
-    fontWeight: 550,
+    fontWeight: 600,
     letterSpacing: 3,
+    lineHeight: 1,
+    marginBottom: 10,
   },
   rootContainer: {
+    // backgroundColor: "blue",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    width: "100%",
-    padding: "35px 0 35px 0",
-    margin: "50px 0px 50px 0px",
+    // alignItems: "center",
+    margin: "0px 15px",
+    width: 1150,
+    padding: "40px 60px",
+    // margin": "50px 0px 50px 0px",
   },
   heading: {
-    fontSize: 14,
+    // backgroundColor: "pink",
+    fontSize: 22,
+    lineHeight: 1,
     fontFamily: "Antonio",
+    padding: "0px 0px",
+    margin: "0px 0px",
   },
   textBody: {
-    fontFamily: "Antonio",
-    fontSize: 12,
+    // backgroundColor: "yellow",
+    padding: "20px 0px",
+    fontFamily: "garamond",
+    fontSize: 18,
     marginTop: 5,
-    fontWeight: theme.typography.fontWeightRegular,
+    lineHeight: 1.1,
+    textAlign: "justify",
+    // [theme.breakpoints.up("xs")]: {
+    //   // backgroundColor: "brown",
+    // },
+    // [theme.breakpoints.up("sm")]: {
+    //   // backgroundColor: "pink",
+    // },
+    // [theme.breakpoints.up("md")]: {
+    //   // backgroundColor: "green",
+    // },
+    // [theme.breakpoints.up("lg")]: {
+    //   // backgroundColor: "cyan",
+    // },
   },
   accordionSummary: {
-    backgroundColor: "white",
+    // backgroundColor: "red",
+    backgroundColor: "#fff",
+    padding: "0px 40px",
     color: "black",
   },
   decorativeLine: {
     width: "100%",
     backgroundColor: "#eee",
+    // backgroundColor: "indigo",
     justifyContent: "center",
     height: 1,
   },
 }));
 
 export default function FAQ() {
-  // const [post, setPost] = useState([]);
-
   const classes = useStyles();
-
-  //   useEffect(() => {
-  //     // invalid url will trigger an 404 error
-  //     axios
-  //       .get("https://min-api.cryptocompare.com/data/v2/news/?lang=EN")
-  //       .then((response) => {
-  //         console.log(response.data.Data);
-  //         setPost(response.data.Data.splice(0, 10));
-  //       })
-  //       .catch((error) => {
-  //         setError(error);
-  //       });
-  //     return () => {};
-  //   }, []);
 
   return (
     <Box
-      className="FAQ"
+      // className="FAQ"
       sx={{
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",
         backgroundColor: "#C6CEC6",
-        padding: "180px 0px 50px 0px",
-        marginTop:-20,
-        "& > :not(style)": {
-          width: "800px",
-          m: 1,
-        },
+        padding: "180px 0px 40px 0px",
+        marginTop: -20,
       }}
     >
       <Paper
@@ -90,6 +97,7 @@ export default function FAQ() {
         <Typography variant="h4" className={classes.faqTitle}>
           FREQUENTLY ASKED QUESTIONS (FAQ){" "}
         </Typography>
+
         <div className="accordion-list">
           <Accordion className="accordion-box">
             <AccordionSummary

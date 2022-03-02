@@ -1,27 +1,30 @@
 .FAQ-title {
+  background-color: green;
   font-family: Antonio;
   padding-top: 30px;
 }
 
 .accordion-list {
-  padding-top: 20px;
-  width: 80%;
+  /* background-color: red; */
+  padding-top: 10px;
+  width: 100%;
   padding-left: 0px;
   padding-right: 0px;
   justify-content: center;
 }
 .accordion-box {
+  background-color: sandybrown;
   margin-bottom: 10px;
 }
 
 .accordion {
+  background-color: fuchsia;
   width: 80%;
   justify-content: center;
 }
 
 .contact-us {
+  background-color: cornflowerblue;
   display: flex;
   justify-content: center;
 }
-
-
