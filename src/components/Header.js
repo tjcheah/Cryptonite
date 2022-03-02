@@ -266,7 +266,9 @@ const Header = () => {
                     'aria-labelledby': 'basic-button',
                   }}
                 >
-                  <MenuItem onClick={handleMinimize}>Cryptocurrency</MenuItem>
+                  <MenuItem onClick={() => navigate('/Crypto')}>
+                    Cryptocurrency
+                  </MenuItem>
                   <MenuItem onClick={() => navigate('/forex')}>Forex</MenuItem>
                 </Menu>
               </div>
