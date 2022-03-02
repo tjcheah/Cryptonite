@@ -1,6 +1,6 @@
 import React from 'react'
-import { CoinList } from '../../config/api'
-import { CryptoState } from '../../CryptoContext'
+import { CoinList } from '../config/api'
+import { CryptoState } from '../CryptoContext'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
