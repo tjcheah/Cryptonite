@@ -7,7 +7,6 @@ import Forex from "./Forex.js";
 const Homepage = () => {
   return (
     <div>
-      {/* {" "} */}
       <div
         style={{
           // margin: 0,
