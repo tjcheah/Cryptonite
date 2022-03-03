@@ -240,13 +240,13 @@ const Footer = () => {
               </Container>
               <Container className={classes.column2}>
                 <Typography
-                  onClick={() => navigate("/market")}
+                  onClick={() => navigate("/crypto")}
                   className={classes.miniTitle}
                 >
                   Search Cryptocurrency
                 </Typography>
                 <Typography
-                  onClick={() => navigate("/")}
+                  onClick={() => navigate("/crypto")}
                   className={classes.miniTitle}
                 >
                   Trending Markets
@@ -258,7 +258,7 @@ const Footer = () => {
                   Top Gainers & Losers
                 </Typography> */}
                 <Typography
-                  onClick={() => navigate("/news")}
+                  onClick={() => navigate("/crypto")}
                   className={classes.miniTitle}
                 >
                   Crypto News

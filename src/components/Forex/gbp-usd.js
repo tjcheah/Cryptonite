@@ -9,7 +9,7 @@ import {
 import "chart.js/auto";
 import { Typography } from "@material-ui/core";
 
-const NzdUsd = ({ coin }) => {
+const GbpUsd = ({ coin }) => {
   const [historicData, setHistoricData] = useState();
   const [flag, setflag] = useState(false);
 
@@ -107,7 +107,7 @@ const NzdUsd = ({ coin }) => {
     datasets: [
       {
         data: price,
-        label: `Tick Stream for EUR/USD`,
+        label: `Tick Stream for GBP/USD`,
         color: "black",
         borderColor: "#174f1a",
       },
@@ -163,7 +163,7 @@ const NzdUsd = ({ coin }) => {
     ws.onopen = (evt) => {
       ws.send(
         JSON.stringify({
-          ticks_history: "frxNZDUSD",
+          ticks_history: "frxGBPUSD",
           adjust_start_time: 1,
           count: 10,
           end: "latest",
@@ -171,7 +171,7 @@ const NzdUsd = ({ coin }) => {
           style: "ticks",
         })
       );
-      ws.send(JSON.stringify({ ticks: "frxNZDUSD" }));
+      ws.send(JSON.stringify({ ticks: "frxGBPUSD" }));
     };
 
     ws.onmessage = function (evt) {
@@ -209,7 +209,7 @@ const NzdUsd = ({ coin }) => {
     <ThemeProvider theme={darkTheme}>
       <div className={classes.container}>
         <Typography className={classes.containerLabel} variant="h3">
-          Tick Stream for NZD/USD
+          Tick Stream for GBP/USD
         </Typography>
         {!historicData | (flag === false) ? (
           <CircularProgress
@@ -231,4 +231,4 @@ const NzdUsd = ({ coin }) => {
   );
 };
 
-export default NzdUsd;
+export default GbpUsd;
