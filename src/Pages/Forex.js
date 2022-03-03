@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import EurUsd from "../components/Forex/eur-usd.js";
-import NzdUsd from "../components/Forex/nzd-usd.js";
+import GbpUsd from "../components/Forex/gbp-usd.js";
 import UsdJpy from "../components/Forex/usd-jpy.js";
 import { Typography } from "@material-ui/core";
 
@@ -56,9 +56,9 @@ export default function Forex() {
     <div>
       <div className={classes.mainContainer}>
         <Typography className={classes.title}>
-          The Best Forex Currency Pairs
+          The Best Forex Currency Pairs to Trade
         </Typography>
-        <NzdUsd />
+        <GbpUsd />
         <UsdJpy />
         <EurUsd />
       </div>
