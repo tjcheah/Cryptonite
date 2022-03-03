@@ -24,7 +24,7 @@ const Crypto = () => {
   const classes = useStyles()
   return (
     <div>
-      <div>
+      <div className={classes.newsBar}>
         <div className="newsContainer">
           <NewsSlider />
         </div>
