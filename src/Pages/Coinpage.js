@@ -287,7 +287,9 @@ const Coinpage = () => {
                   &nbsp; &nbsp;
                   {/* Rank */}
                   <Typography className={classes.childContent} variant="h5">
-                    {numberWithCommas(coin?.market_cap_rank)}
+                    {coin?.market_cap_rank != null
+                      ? numberWithCommas(coin?.market_cap_rank)
+                      : "No ranking"}
                   </Typography>
                 </span>
 
