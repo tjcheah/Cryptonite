@@ -231,12 +231,12 @@ const Footer = () => {
                 >
                   Help
                 </Typography>
-                <Typography
+                {/* <Typography
                   onClick={() => navigate("/careers")}
                   className={classes.miniTitle}
                 >
                   Careers
-                </Typography>
+                </Typography> */}
               </Container>
               <Container className={classes.column2}>
                 <Typography
@@ -251,12 +251,12 @@ const Footer = () => {
                 >
                   Trending Markets
                 </Typography>
-                <Typography
+                {/* <Typography
                   onClick={() => navigate("/help")}
                   className={classes.miniTitle}
                 >
                   Top Gainers & Losers
-                </Typography>
+                </Typography> */}
                 <Typography
                   onClick={() => navigate("/news")}
                   className={classes.miniTitle}
