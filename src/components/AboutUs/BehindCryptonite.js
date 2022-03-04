@@ -237,7 +237,7 @@ const BehindCryptonite = () => {
             <div className={classes.otherPotrait2}>
               <img src={tati} alt="member" className={classes.potrait2} />
               <Typography className={classes.otherMember}>
-                Tatianna Cheah
+                Tatiana Cheah
               </Typography>
             </div>
             <div className={classes.otherPotrait3}>
