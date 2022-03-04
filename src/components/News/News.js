@@ -19,7 +19,7 @@ export default function News() {
     axios
       .get("https://min-api.cryptocompare.com/data/v2/news/?lang=EN")
       .then((response) => {
-        console.log(response.data.Data);
+        //console.log(response.data.Data);
         setPost(response.data.Data.splice(0, 10));
       })
       .catch((error) => {
@@ -57,8 +57,8 @@ export default function News() {
   };
 
   const renderSlides = () =>
-    post.map((posts) => (
-      <div style={{ backgroundColor: "blue" }}>
+    post.map((posts, index) => (
+      <div key={index} style={{ backgroundColor: "blue" }}>
         <CardActionArea href={posts.url} target="_blank">
           <Card style={styles.card}>
             <CardMedia image={posts.imageurl} style={styles.media} />

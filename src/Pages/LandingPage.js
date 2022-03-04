@@ -1,13 +1,14 @@
 import React from "react";
 import {
   Footer,
-  Blog,
-  Possibility,
+  Testament,
   Features,
-  WhatGPT3,
+  Message,
   Header,
+  Statistics,
+  FAQ,
 } from "../components/LandingPage/containers";
-import { CTA, Brand, Navbar } from "../components/LandingPage/components";
+import { Navbar } from "../components/LandingPage/components";
 import "../components/LandingPage/LandingPage.css";
 import "../components/LandingPage/index.css";
 
@@ -18,13 +19,13 @@ const LandingPage = () => {
         <Navbar />
         <Header />
       </div>
-      <Brand />
-      <WhatGPT3 />
+      <Testament />
       <Features />
-      <Possibility />
-      <CTA />
-      <Blog />
-      <Footer />
+      <Statistics />
+      {/* //no need brands */}
+      <FAQ />
+      <Message />
+      {/* //no need cta */}
     </div>
   );
 };
