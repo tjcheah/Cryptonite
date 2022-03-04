@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 20,
     float: "right",
     cursor: "pointer",
-    backgroundColor: "aquamarine",
+    backgroundColor: "white",
     boxShadow: "0px 2px 2px 1px #aaa",
     [theme.breakpoints.down("sm")]: {
       marginRight: 0,
@@ -47,7 +47,8 @@ const useStyles = makeStyles((theme) => ({
   picture: {
     width: 150,
     height: 150,
-    backgroundColor: "aquamarine",
+    backgroundColor: "white",
+    boxShadow: "0px 2px 2px 1px #aaa",
     objectFit: "contain",
   },
   favorites: {
@@ -72,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: "white",
-    boxShadow: "0px 4px 4px 2px #aaa",
+    boxShadow: "0px 2px 2px 1px #aaa",
   },
   logout: {
     margin: 20,
@@ -225,8 +226,8 @@ export default function UserSidebar() {
                   style={{
                     height: 150,
                     width: 150,
-                    boxShadow: "0px 4px 4px 2px #aaa",
-                    // backgroundColor: "aquamarine",
+                    boxShadow: "0px 2px 2px 1px #aaa",
+                    backgroundColor: "white",
                   }}
                 >
                   {/* Profile Image */}
@@ -257,7 +258,7 @@ export default function UserSidebar() {
                   fontFamily: "antonio",
                   fontWeight: 400,
                   wordWrap: "break-word",
-                  boxShadow: "0px 4px 4px 2px #aaa",
+                  boxShadow: "0px 2px 2px 1px #aaa",
                 }}
               >
                 {user.displayName || user.email}
