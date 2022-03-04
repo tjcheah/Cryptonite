@@ -132,7 +132,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "#174f1a",
     },
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("lg")]: {
       display: "none",
     },
   },

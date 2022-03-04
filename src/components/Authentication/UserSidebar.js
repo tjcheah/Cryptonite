@@ -35,10 +35,14 @@ const useStyles = makeStyles((theme) => ({
   avtContainer: {
     height: 50,
     width: 50,
+    marginRight: 20,
     float: "right",
     cursor: "pointer",
     backgroundColor: "aquamarine",
-    boxShadow: "0px 4px 4px 2px #aaa",
+    boxShadow: "0px 2px 2px 1px #aaa",
+    [theme.breakpoints.down("sm")]: {
+      marginRight: 0,
+    },
   },
   picture: {
     width: 150,
