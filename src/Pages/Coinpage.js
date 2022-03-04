@@ -101,13 +101,13 @@ const Coinpage = () => {
       alignContent: "center",
 
       [theme.breakpoints.down("md")]: {
-        // backgroundColor: "yellow",
-        width: "20%",
+        backgroundColor: "yello/w",
+        width: "90%",
         margin: "20px 50px",
       },
       [theme.breakpoints.down("sm")]: {
         // backgroundColor: "green",
-        width: "30%",
+        width: "50%",
       },
       [theme.breakpoints.down("xs")]: {
         // backgroundColor: "indigo",
@@ -287,7 +287,9 @@ const Coinpage = () => {
                   &nbsp; &nbsp;
                   {/* Rank */}
                   <Typography className={classes.childContent} variant="h5">
-                    {numberWithCommas(coin?.market_cap_rank)}
+                    {coin?.market_cap_rank != null
+                      ? numberWithCommas(coin?.market_cap_rank)
+                      : "No ranking"}
                   </Typography>
                 </span>
 
@@ -300,7 +302,9 @@ const Coinpage = () => {
                   <Typography className={classes.childContent} variant="h5">
                     {symbol}{" "}
                     {numberWithCommas(
-                      coin?.market_data.current_price[currency.toLowerCase()]
+                      coin?.market_data.current_price[
+                        currency.toLowerCase()
+                      ].toFixed(2)
                     )}
                   </Typography>
                 </span>

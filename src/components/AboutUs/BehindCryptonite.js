@@ -1,5 +1,10 @@
 import React from "react";
 import { makeStyles, Typography } from "@material-ui/core";
+import thisyahlen from "./picture/thisyahlen.jpg";
+import zawir from "./picture/zawir.jpg";
+import tati from "./picture/tati.jpg";
+import zee from "./picture/zee.jpg";
+import haley from "./picture/haley.jpg";
 
 const useStyles = makeStyles((theme) => ({
   behindContainer: {
@@ -108,6 +113,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   potrait1: {
+    aspectRatio: 4 / 5,
     width: "30%",
     margin: 0,
   },
@@ -123,13 +129,41 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
     justifyContent: "space-between",
   },
-  otherPotrait: {
+  otherPotrait1: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     padding: 0,
     margin: 0,
     marginRight: 5,
+    flex: "calc(799/1024)",
+  },
+  otherPotrait2: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: 0,
+    margin: 0,
+    marginRight: 5,
+    flex: "calc(800/947)",
+  },
+  otherPotrait3: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: 0,
+    margin: 0,
+    marginRight: 5,
+    flex: "calc(3142/3820)",
+  },
+  otherPotrait4: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: 0,
+    margin: 0,
+    marginRight: 5,
+    flex: "calc(640/861)",
   },
   member1: {
     color: "#174f1a",
@@ -170,8 +204,7 @@ const useStyles = makeStyles((theme) => ({
 
 const BehindCryptonite = () => {
   const classes = useStyles();
-  const memberPic =
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Mona_Lisa-restored.jpg/1200px-Mona_Lisa-restored.jpg";
+
   return (
     <div className={classes.behindContainer}>
       <div className={classes.behindContent}>
@@ -180,12 +213,12 @@ const BehindCryptonite = () => {
             BEHIND CRYPTONITE
           </Typography>
           <Typography className={classes.behindText}>
-            Meet the team behind Cryptonite. Launching and maintaining a website
-            is not easy - especially only with five developers - they call
-            themselves team OnlyFive!
+            "Alone we can do so little; together we can do so much." – Helen
+            Keller.<br></br>Meet the team behind Cryptonite. They call
+            themselves OnlyFive!
           </Typography>
           <div className={classes.firstPotrait}>
-            <img src={memberPic} alt="member" className={classes.potrait1} />
+            <img src={thisyahlen} alt="member" className={classes.potrait1} />
             <div className={classes.member1Text}>
               <Typography className={classes.member1}>
                 Thisyahlen Nair
@@ -197,24 +230,24 @@ const BehindCryptonite = () => {
           </div>
           <div className={classes.decorativeLine}></div>
           <div className={classes.otherPotraits}>
-            <div className={classes.otherPotrait}>
-              <img src={memberPic} alt="member" className={classes.potrait2} />
+            <div className={classes.otherPotrait1}>
+              <img src={zawir} alt="member" className={classes.potrait2} />
               <Typography className={classes.otherMember}>Zawir</Typography>
             </div>
-            <div className={classes.otherPotrait}>
-              <img src={memberPic} alt="member" className={classes.potrait2} />
+            <div className={classes.otherPotrait2}>
+              <img src={tati} alt="member" className={classes.potrait2} />
               <Typography className={classes.otherMember}>
-                Tatianna Cheah
+                Tatiana Cheah
               </Typography>
             </div>
-            <div className={classes.otherPotrait}>
-              <img src={memberPic} alt="member" className={classes.potrait2} />
+            <div className={classes.otherPotrait3}>
+              <img src={zee} alt="member" className={classes.potrait2} />
               <Typography className={classes.otherMember}>
                 Amirul Hazwan
               </Typography>
             </div>
-            <div className={classes.otherPotrait}>
-              <img src={memberPic} alt="member" className={classes.potrait2} />
+            <div className={classes.otherPotrait4}>
+              <img src={haley} alt="member" className={classes.potrait2} />
               <Typography className={classes.otherMember}>Haley Gan</Typography>
             </div>
           </div>

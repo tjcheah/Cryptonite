@@ -9,6 +9,7 @@ import { numberWithCommas } from "../Crypto/CoinsTable";
 import { AiFillDelete } from "react-icons/ai";
 import { doc, setDoc } from "firebase/firestore";
 import { Select, MenuItem } from "@material-ui/core";
+import defaultProfile from "./profile.jpg";
 // -------------------------------------------------------------------------------------
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -225,11 +226,13 @@ export default function UserSidebar() {
                   }}
                 >
                   {/* Profile Image */}
-                  <img
-                    className={classes.picture}
-                    src={user.photoURL}
-                    alt={user.displayName || user.email}
-                  />
+                  <object data={defaultProfile} type="image/jpg">
+                    <img
+                      className={classes.picture}
+                      src={user.photoURL}
+                      alt={user.displayName || user.email}
+                    />
+                  </object>
                 </Avatar>
               </div>
               {/* ------------------------------------------------------ */}
