@@ -2,7 +2,7 @@ import NavLogo from "../media/Cryptonite Title Cropped.png";
 import UserSidebar from "./Authentication/UserSidebar";
 import AuthModal from "./Authentication/AuthModal";
 import loginStone from "../media/Gray Stone.png";
-
+import { ClickAwayListener } from "@mui/base";
 import React, { useState } from "react";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -59,10 +59,6 @@ const useStyles = makeStyles((theme) => ({
     borderBottomRightRadius: 35,
     boxShadow: "0px 2px 2px 1px #aaa",
   },
-  nav1: {
-    // backgroundColor: "red",
-    // padding: 0,
-  },
   navLogo: {
     display: "flex",
     width: 380,
@@ -93,20 +89,16 @@ const useStyles = makeStyles((theme) => ({
       // fontWeight: 1000,
     },
 
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       display: "none",
     },
   },
-  market: {
-    [theme.breakpoints.down("sm")]: {
-      display: "none",
-    },
-  },
+
   hamburger: {
     display: "none",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       display: "flex",
-      width: 20,
+      width: 40,
       height: 20,
       marginLeft: "auto",
     },
@@ -124,14 +116,15 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 10,
     flex: 1,
     width: 150,
+    padding: "20px 20px 60px 20px",
     [theme.breakpoints.up("md")]: {
-      display: "none",
+      // display: "none",
     },
   },
   burgerItem: {
     // border: "#aaa",
-    color: "#a9aaa9",
-    fontSize: 14,
+    color: "#555",
+    fontSize: 16,
     fontFamily: "Antonio",
     padding: 5,
     cursor: "pointer",
@@ -139,7 +132,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "#174f1a",
     },
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("lg")]: {
       display: "none",
     },
   },
@@ -225,7 +218,6 @@ const Header = () => {
       type: "dark",
     },
   });
-
   const expand = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -233,7 +225,6 @@ const Header = () => {
   const handleMinimize = () => {
     setAnchorEl(null);
   };
-
   return (
     <ThemeProvider theme={darkTheme}>
       <Container className={classes.navContainer}>
@@ -294,51 +285,55 @@ const Header = () => {
               />
 
               {openHamburger && (
-                <Container className={classes.burgerFrame}>
-                  <Typography>
-                    <AiFillCloseCircle
-                      onClick={() => setOpenHamburger(!openHamburger)}
-                      className={classes.close}
-                    />
-                  </Typography>
-                  <Typography
-                    style={{
-                      color: "#a9aaa9",
-                      fontSize: 14,
-                      fontFamily: "Antonio",
-                      fontWeight: 600,
-                      padding: 5,
-                      textAlign: "right",
-                    }}
-                  >
-                    MARKET
-                  </Typography>
-                  <Typography
-                    onClick={() => navigate("/crypto")}
-                    className={classes.burgerItem}
-                  >
-                    CRYPTO
-                  </Typography>
-                  <Typography
-                    onClick={() => navigate("/forex")}
-                    className={classes.burgerItem}
-                  >
-                    FOREX
-                  </Typography>
-                  <Typography
-                    onClick={() => navigate("/about")}
-                    className={classes.burgerItem}
-                  >
-                    ABOUT US
-                  </Typography>
-                  <Typography
-                    onClick={() => navigate("/help")}
-                    className={classes.burgerItem}
-                  >
-                    HELP
-                  </Typography>
-                  {/* <Typography className={classes.burgerItem}>LOGIN</Typography> */}
-                </Container>
+                <ClickAwayListener
+                  onClickAway={() => setOpenHamburger(!openHamburger)}
+                >
+                  <Container className={classes.burgerFrame}>
+                    {/* <Typography>
+                      <AiFillCloseCircle
+                        onClick={() => setOpenHamburger(!openHamburger)}
+                        className={classes.close}
+                      />
+                    </Typography> */}
+                    <Typography
+                      onClick={() => {
+                        navigate("/crypto");
+                        setOpenHamburger(!openHamburger);
+                      }}
+                      className={classes.burgerItem}
+                    >
+                      CRYPTO
+                    </Typography>
+                    <Typography
+                      onClick={() => {
+                        navigate("/forex");
+                        setOpenHamburger(!openHamburger);
+                      }}
+                      className={classes.burgerItem}
+                    >
+                      FOREX
+                    </Typography>
+                    <Typography
+                      onClick={() => {
+                        navigate("/about");
+                        setOpenHamburger(!openHamburger);
+                      }}
+                      className={classes.burgerItem}
+                    >
+                      ABOUT US
+                    </Typography>
+                    <Typography
+                      onClick={() => {
+                        navigate("/help");
+                        setOpenHamburger(!openHamburger);
+                      }}
+                      className={classes.burgerItem}
+                    >
+                      HELP
+                    </Typography>
+                    {/* <Typography className={classes.burgerItem}>LOGIN</Typography> */}
+                  </Container>
+                </ClickAwayListener>
               )}
             </Toolbar>
           </Container>

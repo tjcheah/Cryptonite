@@ -21,7 +21,6 @@ const CryptoContext = ({ children }) => {
     type: 'success',
   })
   const [favoriteslist, setFavoriteslist] = useState([])
-
   useEffect(() => {
     if (user) {
       const coinRef = doc(db, 'favoriteslist', user.uid)

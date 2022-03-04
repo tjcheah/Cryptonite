@@ -11,6 +11,7 @@ import Market from "./Pages/Forex";
 import Topo from "./media/topo.jpg";
 import Forex from "./Pages/Forex";
 import Help from "./Pages/Help";
+import Crypto from "./Pages/Crypto";
 import LandingPage from "./Pages/LandingPage";
 
 function App() {
@@ -48,16 +49,17 @@ function App() {
       <Router>
         <div className={classes.AppF2}>{/* <NavBar/> */}</div>
         <div className={classes.AppLgreen}>
-          <Routes></Routes>
+          <Header />
+          {/* <Routes></Routes> */}
         </div>
         <div className={classes.AppTopo}>
-          <Header />
           <Routes>
             <Route path="/" element={<Homepage />} exact />
             <Route path="/coins/:id" element={<Coinpage />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/help" element={<Help />} />
             <Route path="/forex" element={<Forex />} />
+            <Route path="/crypto" element={<Crypto />} />
             <Route path="/landing" element={<LandingPage />} />
           </Routes>
           <Footer />

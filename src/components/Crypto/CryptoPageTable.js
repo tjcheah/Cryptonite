@@ -62,31 +62,28 @@ const CoinsTable = () => {
     TableContainer: {
       // margin: 0,
       backgroundColor: "#f2f2f2",
+      // backgroundColor: "red",
       borderRadius: 40,
       // boxShadow: "0px 4px 4px 2px #aaa",
       // width: "80vw",
       textAlign: "center",
       paddingTop: 40,
+      width: "100%",
 
       [theme.breakpoints.up("xs")]: {
         // backgroundColor: "brown",
-        height: "75%",
-        width: "86%",
+        // height: "75%",
+        width: "90%",
       },
       [theme.breakpoints.up("sm")]: {
         // backgroundColor: "pink",
-        height: "75%",
-        width: "86%",
+        // height: "75%",
+        width: "90%",
       },
       [theme.breakpoints.up("md")]: {
         // backgroundColor: "green",
-        height: "65%",
-        width: "78%",
-      },
-      [theme.breakpoints.up("lg")]: {
-        // backgroundColor: "cyan",
-        height: "90%",
-        width: 999,
+        // height: "65%",
+        width: "90%",
       },
     },
     contTitle: {
@@ -201,7 +198,14 @@ const CoinsTable = () => {
               {/* Table Head */}
               <TableHead>
                 <TableRow>
-                  {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
+                  {[
+                    "Coin",
+                    "Price",
+                    "24h Change",
+                    "Circulating Supply",
+                    "Market Cap",
+                    "Overall Volume",
+                  ].map((head) => (
                     <TableCell
                       className={classes.tableHead}
                       key={head}
@@ -315,6 +319,20 @@ const CoinsTable = () => {
                           {profit && "+"}
                           {row.price_change_percentage_24h.toFixed(2)}%
                         </TableCell>
+                        <TableCell
+                          style={{
+                            // backgroundColor: "blue",
+                            paddingRight: 40,
+                            fontFamily: "antonio",
+                            fontSize: 22,
+                          }}
+                          align="right"
+                        >
+                          {symbol}{" "}
+                          {numberWithCommas(
+                            row.circulating_supply.toString().slice(0, -6)
+                          )}
+                        </TableCell>
                         {/* Market Capital Column */}
                         <TableCell
                           style={{
@@ -328,6 +346,20 @@ const CoinsTable = () => {
                           {symbol}{" "}
                           {numberWithCommas(
                             row.market_cap.toString().slice(0, -6)
+                          )}
+                        </TableCell>
+                        <TableCell
+                          style={{
+                            // backgroundColor: "blue",
+                            paddingRight: 40,
+                            fontFamily: "antonio",
+                            fontSize: 22,
+                          }}
+                          align="right"
+                        >
+                          {symbol}{" "}
+                          {numberWithCommas(
+                            row.total_volume.toString().slice(0, -6)
                           )}
                         </TableCell>
                       </TableRow>
@@ -349,7 +381,7 @@ const CoinsTable = () => {
           count={(handleSearch()?.length / 10).toFixed(0)}
           onChange={(_, value) => {
             setPage(value);
-            window.scroll(0, 500);
+            window.scroll(0, 800);
           }}
         ></Pagination>
       </Container>

@@ -12,22 +12,37 @@ import EmailIcon from "@mui/icons-material/Email";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 
 const useStyles = makeStyles((theme) => ({
+  title: {
+    // backgroundColor: "red",
+    width: 1100,
+    fontFamily: "Antonio",
+    fontWeight: 600,
+    letterSpacing: 3,
+    margin: "0 !important",
+    [theme.breakpoints.down("md")]: {
+      width: "90%",
+    },
+  },
+  subtitle: {
+    // backgroundColor: "green",
+    width: 1100,
+    fontFamily: "garamond",
+    fontSize: 18,
+    paddingBottom: 10,
+    [theme.breakpoints.down("md")]: {
+      width: "90%",
+    },
+  },
   wrapIcon: {
+    // backgroundColor: "orange",
+    width: 1100,
     display: "flex",
     alignItems: "center",
     fontFamily: "Antonio",
     margin: "0 !important",
-    paddingTop: 5,
-  },
-  title: {
-    fontFamily: "Antonio",
-    fontWeight: 550,
-    letterSpacing: 3,
-    margin: "0 !important",
-  },
-  subtitle: {
-    fontFamily: "Antonio",
-    paddingTop: 5,
+    [theme.breakpoints.down("md")]: {
+      width: "90%",
+    },
   },
 }));
 
@@ -48,11 +63,7 @@ export default function Contactus() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          padding: "30px 0px 40px 0px",
-          "& > :not(style)": {
-            width: "500px",
-            m: 1,
-          },
+          padding: "50px 0px 50px 0px",
         }}
       >
         {" "}
@@ -69,8 +80,8 @@ export default function Contactus() {
           <EmailIcon /> &nbsp;&nbsp;&nbsp;&nbsp;helpdesk@cryptonite.com.my
         </Typography>
         <Typography variant="subtitle1" className={classes.wrapIcon}>
-          <ApartmentIcon /> &nbsp;&nbsp;&nbsp;&nbsp;Level 20, iTech Tower,
-          Jalan Impact Cyber 6, 63000 Cyberjaya, Selangor
+          <ApartmentIcon /> &nbsp;&nbsp;&nbsp;&nbsp;Level 20, iTech Tower, Jalan
+          Impact Cyber 6, 63000 Cyberjaya, Selangor
         </Typography>
       </Box>
     </div>

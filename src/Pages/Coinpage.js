@@ -10,7 +10,7 @@ import {
   Typography,
   Button,
 } from "@material-ui/core";
-import CoinInfo from "../components/Crypto/CoinInfo.js";
+import CoinInfo from "../components/Crypto/CoinInfo";
 import { numberWithCommas } from "../components/Crypto/CoinsTable.js";
 import { doc, setDoc } from "@firebase/firestore";
 import { db } from "../firebase";
@@ -218,7 +218,7 @@ const Coinpage = () => {
     }
   };
 
-  const removeFromFavoriteslist = async (coin) => {
+  const removeFromFavoriteslist = async () => {
     const coinRef = doc(db, "favoriteslist", user.uid);
     try {
       await setDoc(
@@ -287,7 +287,9 @@ const Coinpage = () => {
                   &nbsp; &nbsp;
                   {/* Rank */}
                   <Typography className={classes.childContent} variant="h5">
-                    {numberWithCommas(coin?.market_cap_rank)}
+                    {coin?.market_cap_rank != null
+                      ? numberWithCommas(coin?.market_cap_rank)
+                      : "No ranking"}
                   </Typography>
                 </span>
 
@@ -300,7 +302,9 @@ const Coinpage = () => {
                   <Typography className={classes.childContent} variant="h5">
                     {symbol}{" "}
                     {numberWithCommas(
-                      coin?.market_data.current_price[currency.toLowerCase()]
+                      coin?.market_data.current_price[
+                        currency.toLowerCase()
+                      ].toFixed(2)
                     )}
                   </Typography>
                 </span>
@@ -326,7 +330,7 @@ const Coinpage = () => {
                 {coin?.description.en
                   .split(". ")[0]
                   .replace(/<\/?[^>]+(>|$)/g, "")}
-                .{" "}
+                .
               </Typography>
               {user && (
                 <Button
