@@ -274,6 +274,13 @@ const Header = () => {
               >
                 HELP
               </Typography>
+              <Typography
+                onClick={() => navigate("/landing")}
+                className={classes.title}
+                variant="h6"
+              >
+                Landing
+              </Typography>
 
               {/* --------------------------------------------------------------------- */}
               <div className={classes.loginBtn}>

@@ -11,6 +11,7 @@ import Market from "./Pages/Forex";
 import Topo from "./media/topo.jpg";
 import Forex from "./Pages/Forex";
 import Help from "./Pages/Help";
+import LandingPage from "./Pages/LandingPage";
 
 function App() {
   const useStyles = makeStyles(() => ({
@@ -57,6 +58,7 @@ function App() {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/help" element={<Help />} />
             <Route path="/forex" element={<Forex />} />
+            <Route path="/landing" element={<LandingPage />} />
           </Routes>
           <Footer />
         </div>
