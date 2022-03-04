@@ -230,13 +230,13 @@ export default function UserSidebar() {
                   }}
                 >
                   {/* Profile Image */}
-                  <object data={defaultProfile} type="image/jpg">
-                    <img
-                      className={classes.picture}
-                      src={user.photoURL}
-                      alt={user.displayName || user.email}
-                    />
-                  </object>
+                  {/* <object data={defaultProfile} type="image/jpg"> */}
+                  <img
+                    className={classes.picture}
+                    src={user.photoURL || defaultProfile}
+                    alt={user.displayName || user.email}
+                  />
+                  {/* </object> */}
                 </Avatar>
               </div>
               {/* ------------------------------------------------------ */}
