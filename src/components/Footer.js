@@ -231,12 +231,6 @@ const Footer = () => {
                 >
                   Help
                 </Typography>
-                <Typography
-                  onClick={() => navigate("/careers")}
-                  className={classes.miniTitle}
-                >
-                  Careers
-                </Typography>
               </Container>
               <Container className={classes.column2}>
                 <Typography
@@ -252,13 +246,7 @@ const Footer = () => {
                   Trending Markets
                 </Typography>
                 <Typography
-                  onClick={() => navigate("/help")}
-                  className={classes.miniTitle}
-                >
-                  Top Gainers & Losers
-                </Typography>
-                <Typography
-                  onClick={() => navigate("/news")}
+                  onClick={() => navigate("/")}
                   className={classes.miniTitle}
                 >
                   Crypto News
