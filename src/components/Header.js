@@ -59,10 +59,6 @@ const useStyles = makeStyles((theme) => ({
     borderBottomRightRadius: 35,
     boxShadow: "0px 2px 2px 1px #aaa",
   },
-  nav1: {
-    // backgroundColor: "red",
-    // padding: 0,
-  },
   navLogo: {
     display: "flex",
     width: 380,
@@ -93,20 +89,16 @@ const useStyles = makeStyles((theme) => ({
       // fontWeight: 1000,
     },
 
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       display: "none",
     },
   },
-  market: {
-    [theme.breakpoints.down("sm")]: {
-      display: "none",
-    },
-  },
+
   hamburger: {
     display: "none",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       display: "flex",
-      width: 20,
+      width: 40,
       height: 20,
       marginLeft: "auto",
     },
@@ -126,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
     width: 150,
     padding: "20px 20px 60px 20px",
     [theme.breakpoints.up("md")]: {
-      display: "none",
+      // display: "none",
     },
   },
   burgerItem: {
@@ -226,7 +218,6 @@ const Header = () => {
       type: "dark",
     },
   });
-
   const expand = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
