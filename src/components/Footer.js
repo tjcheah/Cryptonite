@@ -254,7 +254,7 @@ const Footer = () => {
                 <Typography
                   onClick={() => navigate("/crypto")}
                   className={classes.miniTitle}
-                  onChange={window.scroll(0, 0)}
+                  onChange={window.scroll(0, 500)}
                 >
                   Crypto News
                 </Typography>
@@ -263,10 +263,10 @@ const Footer = () => {
           </Container>
           <Container className={classes.footerBottom}>
             <Container className={classes.footerBottomLeft}>
-              <Typography className={classes.bottomTitle}>
+              {/* <Typography className={classes.bottomTitle}>
                 Help Center | Contact | Bug Bounty | Disclaimer | Terms of
                 Service | Privacy Policy | Ad Policy
-              </Typography>
+              </Typography> */}
               <Typography className={classes.bottomTitle}>
                 <FaRegCopyright /> Cryptonite. All Rights Reserved.
               </Typography>

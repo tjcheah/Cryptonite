@@ -148,9 +148,7 @@ const CoinsTable = () => {
   const classes = useStyles();
 
   return (
-    <ThemeProvider
-    // theme={darkTheme}
-    >
+    <ThemeProvider>
       <Container className={classes.TableContainer}>
         {/* Container Title */}
         <Typography className={classes.contTitle} variant="h4">
