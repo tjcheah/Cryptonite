@@ -58,7 +58,7 @@ export default function News() {
             </Typography>
           </div>
         </div>
-        <NewsSlider/>
+        <NewsSlider />
       </div>
     </div>
   );
