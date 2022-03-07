@@ -140,6 +140,13 @@ const CoinsTable = () => {
         // borderRadius: 40,
       },
     },
+    noMatch: {
+      width: "100%",
+      fontStyle: "italic",
+      fontFamily: "Antonio",
+      color: "#777",
+      margin: "30px 0px 30px 0px",
+    },
   }));
 
   const classes = useStyles();
@@ -367,6 +374,13 @@ const CoinsTable = () => {
                   })}
               </TableBody>
             </Table>
+          )}
+          {handleSearch().length === 0 ? (
+            <Typography className={classes.noMatch}>
+              No coins match your search!
+            </Typography>
+          ) : (
+            ""
           )}
         </TableContainer>
 

@@ -192,6 +192,30 @@ const Coinpage = () => {
         width: "100%",
       },
     },
+    graphWrapper: {
+      display: "flex",
+      flexDirection: "column",
+      width: "60%",
+      margin: "20px 0px 20px 0px",
+      [theme.breakpoints.down("lg")]: {
+        width: "80%",
+      },
+      [theme.breakpoints.down("md")]: {
+        width: "90%",
+      },
+      [theme.breakpoints.down("sm")]: {
+        width: "95%",
+        margin: 0,
+      },
+    },
+    graphTitle: {
+      color: "black",
+      fontSize: 45,
+      marginBottom: 10,
+      paddingLeft: 50,
+      fontFamily: "Antonio",
+      fontWeight: 550,
+    },
   }));
 
   const inFavoriteslist = favoriteslist.includes(coin?.id);
@@ -360,7 +384,12 @@ const Coinpage = () => {
             </div>
           </div>
           {/* Chart */}
-          <CoinInfo coin={coin} />
+          <div className={classes.graphWrapper}>
+            <Typography className={classes.graphTitle}>
+              {coin.name} ({coin.symbol.toUpperCase()}) to USD Chart
+            </Typography>
+            <CoinInfo coin={coin} />
+          </div>
         </div>
       </div>
     </div>
