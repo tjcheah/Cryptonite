@@ -14,18 +14,18 @@ const useStyles = makeStyles(() => ({
     width: "100%",
     height: 260,
     backgroundColor: "#f2f2f2",
+    // backgroundColor: "red",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
-
 }));
 
 const Crypto = () => {
   const classes = useStyles();
   return (
     <div>
-      <div className={classes.topContainer}></div>
+      {/* <div className={classes.topContainer}></div> */}
       <div className={classes.newsBar}>
         <div className="newsContainer">
           <NewsSlider />

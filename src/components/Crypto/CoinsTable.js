@@ -21,6 +21,7 @@ import {
 } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import { Pagination } from "@material-ui/lab";
+import { typography } from "@mui/system";
 
 export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -142,6 +143,13 @@ const CoinsTable = () => {
         boxShadow: "0px 4px 4px 1px #f2f2f2",
         // borderRadius: 40,
       },
+    },
+    noMatch: {
+      width: "100%",
+      fontStyle: "italic",
+      fontFamily: "Antonio",
+      color: "#777",
+      margin: "30px 0px 30px 0px",
     },
   }));
 
@@ -336,6 +344,13 @@ const CoinsTable = () => {
               </TableBody>
             </Table>
           )}
+          {handleSearch().length === 0 ? (
+            <Typography className={classes.noMatch}>
+              No coins match your search!
+            </Typography>
+          ) : (
+            ""
+          )}
         </TableContainer>
 
         <Pagination
@@ -350,6 +365,7 @@ const CoinsTable = () => {
           onChange={(_, value) => {
             setPage(value);
             window.scroll(0, 1000);
+            window.scroll(0, 500);
           }}
         ></Pagination>
       </Container>
