@@ -8,8 +8,10 @@ import { auth, db } from "../../firebase";
 import { numberWithCommas } from "../Crypto/CoinsTable";
 import { AiFillDelete } from "react-icons/ai";
 import { doc, setDoc } from "firebase/firestore";
+import { Select, MenuItem } from "@material-ui/core";
+import defaultProfile from "./profile.jpg";
 // -------------------------------------------------------------------------------------
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   container: {
     backgroundColor: "#c6cec6",
     width: 350,
@@ -33,15 +35,20 @@ const useStyles = makeStyles({
   avtContainer: {
     height: 50,
     width: 50,
+    marginRight: 20,
     float: "right",
     cursor: "pointer",
-    // backgroundColor: "aquamarine",
-    boxShadow: "0px 4px 4px 2px #aaa",
+    backgroundColor: "white",
+    boxShadow: "0px 2px 2px 1px #aaa",
+    [theme.breakpoints.down("sm")]: {
+      marginRight: 0,
+    },
   },
   picture: {
     width: 150,
     height: 150,
-    backgroundColor: "aquamarine",
+    backgroundColor: "white",
+    boxShadow: "0px 2px 2px 1px #aaa",
     objectFit: "contain",
   },
   favorites: {
@@ -66,7 +73,7 @@ const useStyles = makeStyles({
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: "white",
-    boxShadow: "0px 4px 4px 2px #aaa",
+    boxShadow: "0px 2px 2px 1px #aaa",
   },
   logout: {
     margin: 20,
@@ -84,9 +91,43 @@ const useStyles = makeStyles({
       fontWeight: 1000,
     },
   },
-});
+  // ----------------------------------------------------------------------------
+  currencyButton: {
+    borderRadius: 30,
+    fontSize: 15,
+    color: "#7c7c7c",
+    // backgroundColor: "red",
+    backgroundColor: "#f2f2f2",
+    letterSpacing: 2,
+    fontWeight: "bold",
+    fontFamily: "Antonio",
+    height: 35,
+    label: "#000000",
+    "& .MuiSvgIcon-root": {
+      color: "lightgray",
+    },
+    "&:hover": {
+      color: "#555",
+      fontWeight: 550,
+      "& .MuiSvgIcon-root": {
+        color: "gray",
+      },
+      [theme.breakpoints.down("sm")]: {
+        display: "flex",
+      },
+    },
+  },
+  menuItem: {
+    fontSize: 14,
+    color: "#f2f2f2",
+    letterSpacing: 1,
+    fontFamily: "Antonio",
+    fontWeight: "bold",
+  },
+}));
 // -------------------------------------------------------------------------------------
 export default function UserSidebar() {
+  const { currency, setcurrency } = CryptoState();
   const classes = useStyles();
   const [state, setState] = React.useState({
     right: false,
@@ -139,13 +180,39 @@ export default function UserSidebar() {
     <div>
       {["right"].map((anchor) => (
         <React.Fragment key={anchor}>
-          {/* Profile Homepage */}
-          <Avatar
-            className={classes.avtContainer}
-            onClick={toggleDrawer(anchor, true)}
-            src={user.photoURL}
-            alt={user.displayName || user.email}
-          />
+          <div
+            style={{
+              // backgroundColor: "blue",
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            {/* Currency Button */}
+            <Button>
+              <Select
+                variant="outlined"
+                className={classes.currencyButton}
+                value={currency}
+                onChange={(e) => setcurrency(e.target.value)}
+              >
+                <MenuItem className={classes.menuItem} value={"USD"}>
+                  USD
+                </MenuItem>
+                <MenuItem className={classes.menuItem} value={"MYR"}>
+                  MYR
+                </MenuItem>
+              </Select>
+            </Button>
+
+            {/* Profile Homepage */}
+            <Avatar
+              className={classes.avtContainer}
+              onClick={toggleDrawer(anchor, true)}
+              src={user.photoURL}
+              alt={user.displayName || user.email}
+            />
+          </div>
+
           <Drawer
             anchor={anchor}
             open={state[anchor]}
@@ -159,16 +226,18 @@ export default function UserSidebar() {
                   style={{
                     height: 150,
                     width: 150,
-                    boxShadow: "0px 4px 4px 2px #aaa",
-                    // backgroundColor: "aquamarine",
+                    boxShadow: "0px 2px 2px 1px #aaa",
+                    backgroundColor: "white",
                   }}
                 >
                   {/* Profile Image */}
+                  {/* <object data={defaultProfile} type="image/jpg"> */}
                   <img
                     className={classes.picture}
-                    src={user.photoURL}
+                    src={user.photoURL || defaultProfile}
                     alt={user.displayName || user.email}
                   />
+                  {/* </object> */}
                 </Avatar>
               </div>
               {/* ------------------------------------------------------ */}
@@ -189,7 +258,7 @@ export default function UserSidebar() {
                   fontFamily: "antonio",
                   fontWeight: 400,
                   wordWrap: "break-word",
-                  boxShadow: "0px 4px 4px 2px #aaa",
+                  boxShadow: "0px 2px 2px 1px #aaa",
                 }}
               >
                 {user.displayName || user.email}

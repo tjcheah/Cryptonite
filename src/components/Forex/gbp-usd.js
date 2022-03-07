@@ -9,24 +9,75 @@ import {
 import "chart.js/auto";
 import { Typography } from "@material-ui/core";
 
-const NzdUsd = ({ coin }) => {
+const GbpUsd = ({ coin }) => {
   const [historicData, setHistoricData] = useState();
   const [flag, setflag] = useState(false);
 
   const useStyles = makeStyles((theme) => ({
     container: {
-      width: "75%",
+      // backgroundColor: "yellow",
+      width: 1200,
+      height: "100%",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      margin: "40px 40px 40px 0px",
-      marginTop: 25,
-      padding: 20,
+      margin: "10px 10px",
+      color: "black",
+      fontFamily: "antonio",
+      padding: "0px 100px 20px 100px",
       [theme.breakpoints.down("md")]: {
+        // backgroundColor: "green",
         width: "90%",
-        margin: 0,
-        // padding: 20,
+        padding: 0,
+      },
+      [theme.breakpoints.down("xs")]: {
+        // backgroundColor: "blue",
+        width: "90%",
+        // margin: 0,
+        padding: 0,
+      },
+    },
+    containerLabel: {
+      // backgroundColor: "purple",
+      backgroundColor: "#fff",
+      fontFamily: "antonio",
+      fontSize: 30,
+      width: "90%",
+      // textAlign: "center",
+      padding: "10px 50px",
+      margin: "20px 10px",
+      boxShadow: "0px 2px 2px 1px #aaa",
+      borderRadius: 40,
+      [theme.breakpoints.down("md")]: {
+        // backgroundColor: "pink",
+        margin: "20px 10px",
+      },
+      [theme.breakpoints.down("xs")]: {
+        // backgroundColor: "red",
+        fontSize: 20,
+        margin: "10px 10px",
+      },
+    },
+    containerPrice: {
+      // backgroundColor: "purple",
+      // backgroundColor: "#fff",
+      fontFamily: "antonio",
+      fontSize: 30,
+      width: "90%",
+      textAlign: "center",
+      padding: 10,
+      margin: "20px 10px",
+      boxShadow: "0px 2px 2px 1px #aaa",
+      borderRadius: 40,
+      [theme.breakpoints.down("md")]: {
+        // backgroundColor: "pink",
+        margin: "20px 10px",
+      },
+      [theme.breakpoints.down("xs")]: {
+        // backgroundColor: "red",
+        fontSize: 20,
+        margin: "10px 10px",
       },
     },
   }));
@@ -56,8 +107,9 @@ const NzdUsd = ({ coin }) => {
     datasets: [
       {
         data: price,
-        label: `Tick Stream for NZD/USD`,
-        borderColor: "aquamarine",
+        label: `Tick Stream for GBP/USD`,
+        color: "black",
+        borderColor: "#174f1a",
       },
     ],
   };
@@ -111,7 +163,7 @@ const NzdUsd = ({ coin }) => {
     ws.onopen = (evt) => {
       ws.send(
         JSON.stringify({
-          ticks_history: "frxNZDUSD",
+          ticks_history: "frxGBPUSD",
           adjust_start_time: 1,
           count: 10,
           end: "latest",
@@ -119,7 +171,7 @@ const NzdUsd = ({ coin }) => {
           style: "ticks",
         })
       );
-      ws.send(JSON.stringify({ ticks: "frxNZDUSD" }));
+      ws.send(JSON.stringify({ ticks: "frxGBPUSD" }));
     };
 
     ws.onmessage = function (evt) {
@@ -150,26 +202,33 @@ const NzdUsd = ({ coin }) => {
       }
     };
 
-    return () =>
-      (ws.onclose = function (evt) {
-        console.log("connection close");
-      });
+    return () => ws.close();
   }, []);
 
   return (
     <ThemeProvider theme={darkTheme}>
       <div className={classes.container}>
-        <Typography variant="h3">Tick Stream for NZD/USD</Typography>
+        <Typography className={classes.containerLabel} variant="h3">
+          Tick Stream for GBP/USD
+        </Typography>
         {!historicData | (flag === false) ? (
-          <CircularProgress style={{ color: "red" }} size={250} thickness={1} />
+          <CircularProgress
+            style={{ color: "#c6cec6" }}
+            size={250}
+            thickness={1}
+          />
         ) : (
           <>
             <Line data={lineChart} options={chartOptions}></Line>
           </>
         )}
+        <Typography className={classes.containerPrice} variant="h3">
+          {"Current Price: "}
+          {price[price.length - 1]}
+        </Typography>
       </div>
     </ThemeProvider>
   );
 };
 
-export default NzdUsd;
+export default GbpUsd;

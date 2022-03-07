@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
   footerContainer: {
     // backgroundColor: "green",
     display: "flex",
-    // height: "239px",
+    position: "absolute",
+    bottom: 0,
     width: "100%",
     justifyContent: "center",
     flexWrap: "wrap",
@@ -28,15 +29,15 @@ const useStyles = makeStyles((theme) => ({
   // The footer itself
   footer: {
     // backgroundColor: "yellow",
+    backgroundColor: "#ffffff",
     display: "flex",
     flexDirection: "row",
     width: "95%",
-    height: "100%",
+    height: "10%",
     position: "static",
-    left: 0,
-    bottom: 0,
-    right: 0,
-    backgroundColor: "#ffffff",
+    // left: 0,
+    // bottom: 0,
+    // right: 0,
     color: "#000",
     bottom: 0,
     paddingTop: 25,
@@ -215,50 +216,45 @@ const Footer = () => {
                 <Typography
                   onClick={() => navigate("/about")}
                   className={classes.miniTitle}
+                  onChange={window.scroll(0, 0)}
                 >
                   About Us
                 </Typography>
                 <Typography
                   onClick={() => navigate("/help")}
                   className={classes.miniTitle}
+                  onChange={window.scroll(0, 300)}
                 >
                   Contact Us
                 </Typography>
                 <Typography
                   onClick={() => navigate("/help")}
                   className={classes.miniTitle}
+                  onChange={window.scroll(0, 0)}
                 >
                   Help
-                </Typography>
-                <Typography
-                  onClick={() => navigate("/careers")}
-                  className={classes.miniTitle}
-                >
-                  Careers
                 </Typography>
               </Container>
               <Container className={classes.column2}>
                 <Typography
-                  onClick={() => navigate("/market")}
+                  onClick={() => navigate("/crypto")}
                   className={classes.miniTitle}
+                  onChange={window.scroll(0, 500)}
                 >
                   Search Cryptocurrency
                 </Typography>
                 <Typography
                   onClick={() => navigate("/")}
                   className={classes.miniTitle}
+                  onChange={window.scroll(0, 0)}
                 >
                   Trending Markets
                 </Typography>
+
                 <Typography
-                  onClick={() => navigate("/help")}
+                  onClick={() => navigate("/crypto")}
                   className={classes.miniTitle}
-                >
-                  Top Gainers & Losers
-                </Typography>
-                <Typography
-                  onClick={() => navigate("/news")}
-                  className={classes.miniTitle}
+                  onChange={window.scroll(0, 0)}
                 >
                   Crypto News
                 </Typography>

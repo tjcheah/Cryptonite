@@ -48,10 +48,21 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 20,
   },
   // -------------------------------------------------------------------------------------
+  loginBody: {
+    // backgroundColor: "yellow",
+    marginRight: 20,
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+    [theme.breakpoints.down("sm")]: {
+      // backgroundColor: "red",
+      marginRight: 0,
+    },
+  },
   loginBtn: {
     // marginLeft: "50%",
-    width: 215,
-    float: "right",
+    width: 220,
+    // float: "right",
     backgroundColor: "#233c25",
     // backgroundColor: "blue",
     borderRadius: 50,
@@ -59,9 +70,10 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "blue",
       backgroundColor: "#f2f2f2",
+      boxShadow: "0px 2px 2px 1px #aaa",
       // fontWeight: 1000,
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       display: "none",
     },
   },
@@ -69,9 +81,16 @@ const useStyles = makeStyles((theme) => ({
     display: "none",
     // backgroundColor: "gold",
     backgroundColor: "#233c25",
-    [theme.breakpoints.down("sm")]: {
+    "&:hover": {
+      color: "blue",
+      backgroundColor: "#f2f2f2",
+      boxShadow: "0px 2px 2px 1px #aaa",
+      // fontWeight: 1000,
+    },
+
+    [theme.breakpoints.down("md")]: {
       // backgroundColor: "blue",
-      width: 145,
+      width: 150,
       height: 45,
       borderRadius: 50,
       display: "flex",
@@ -80,8 +99,8 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("xs")]: {
       // backgroundColor: "red",
-      width: 110,
-      height: 33,
+      width: 130,
+      height: 45,
       borderRadius: 50,
       display: "flex",
       justifyContent: "center",
@@ -107,7 +126,15 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "#7c7c7c",
       backgroundColor: "#f2f2f2",
+      boxShadow: "0px 2px 2px 1px #aaa",
       // fontWeight: 1000,
+    },
+  },
+  // -------------------------------------------------------------------------------------
+  currencyBody: {
+    // backgroundColor: "red",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: 20,
     },
   },
   currencyButton: {
@@ -130,6 +157,7 @@ const useStyles = makeStyles((theme) => ({
         color: "gray",
       },
       [theme.breakpoints.down("sm")]: {
+        // backgroundColor: "blue",
         display: "flex",
       },
     },
@@ -161,11 +189,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       backgroundColor: "transparent",
       cursor: "pointer",
-      height: 50,
+      height: 60,
       padding: 0,
-      margin: 0,
+      marginLeft: 0,
       "&:hover": {
-        height: 55,
+        height: 65,
       },
     },
   },
@@ -208,7 +236,7 @@ export default function AuthModal() {
   };
   // -------------------------------------------------------------------------------------
   return (
-    <div>
+    <div className={classes.loginBody}>
       <div className={classes.loginBtn}>
         <Button>
           <Select
@@ -237,7 +265,7 @@ export default function AuthModal() {
       </div>
       {/* ------------------------------------------------------------------------------------------- */}
       <div className={classes.smLoginBtn}>
-        <Button>
+        <Button className={classes.currencyBody}>
           <Select
             variant="outlined"
             className={classes.currencyButton}
