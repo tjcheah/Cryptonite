@@ -17,7 +17,7 @@ const Carousel = () => {
     console.log(data);
     setTrending(data);
   };
-
+  //retrieve trending coins and their details
   useEffect(() => {
     fetchTrendingCoins();
   }, [currency]);
@@ -26,7 +26,7 @@ const Carousel = () => {
 
   const items = trending.map((coin) => {
     let profit = coin?.price_change_percentage_24h >= 0;
-
+    //return a card with trending coin and details within the carousel
     return (
       <Link className={classes.carouselItem} to={`/coins/${coin.id}`}>
         <div className={classes.coinImage}>
@@ -67,7 +67,7 @@ const Carousel = () => {
       </Link>
     );
   });
-
+  //shows one card per slide of carousel
   const responsive = {
     0: {
       items: 1,

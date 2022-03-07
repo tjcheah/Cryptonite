@@ -216,21 +216,21 @@ const Footer = () => {
                 <Typography
                   onClick={() => navigate("/about")}
                   className={classes.miniTitle}
-                  onChange={window.scroll(0, 0)}
+                  onChange={window.scroll({ top: 0 })}
                 >
                   About Us
                 </Typography>
                 <Typography
                   onClick={() => navigate("/help")}
                   className={classes.miniTitle}
-                  onChange={window.scroll(0, 300)}
+                  onChange={window.scroll({ top: 0 })}
                 >
                   Contact Us
                 </Typography>
                 <Typography
                   onClick={() => navigate("/help")}
                   className={classes.miniTitle}
-                  onChange={window.scroll(0, 0)}
+                  onChange={window.scroll({ top: 0, behavior: "smooth" })}
                 >
                   Help
                 </Typography>
@@ -239,14 +239,14 @@ const Footer = () => {
                 <Typography
                   onClick={() => navigate("/crypto")}
                   className={classes.miniTitle}
-                  onChange={window.scroll(0, 500)}
+                  onChange={window.scroll({ top: 0 })}
                 >
                   Search Cryptocurrency
                 </Typography>
                 <Typography
                   onClick={() => navigate("/")}
                   className={classes.miniTitle}
-                  onChange={window.scroll(0, 0)}
+                  onChange={window.scroll({ top: 0 })}
                 >
                   Trending Markets
                 </Typography>
@@ -254,7 +254,7 @@ const Footer = () => {
                 <Typography
                   onClick={() => navigate("/crypto")}
                   className={classes.miniTitle}
-                  onChange={window.scroll(0, 500)}
+                  onChange={window.scroll({ top: 0 })}
                 >
                   Crypto News
                 </Typography>
