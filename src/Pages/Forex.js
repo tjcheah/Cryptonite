@@ -234,6 +234,11 @@ const GbpUsd = ({ coin }) => {
   const [ask, setAsk] = useState([]);
   const [bid, setBid] = useState([]);
 
+  // Error message when market closed on weekends
+  // const [error, setError] = useState();
+  // const errorMessage = () => {
+  //   return error;
+  // };
   // single forex
   // const [forex, setForex] = useState("cryBTCUSD");
 
@@ -361,7 +366,7 @@ const GbpUsd = ({ coin }) => {
       var active_symbol = data.active_symbols;
       if (active_symbol != null) {
         for (let marSym of active_symbol) {
-          if (marSym.market === "forex") {
+          if (marSym.symbol_type === "forex") {
             setForexSymbols((currentSymbols) => [
               ...currentSymbols,
               marSym.symbol,
