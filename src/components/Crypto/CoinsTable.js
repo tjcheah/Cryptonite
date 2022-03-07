@@ -365,6 +365,7 @@ const CoinsTable = () => {
           onChange={(_, value) => {
             setPage(value);
             window.scroll(0, 1000);
+            window.scroll(0, 500);
           }}
         ></Pagination>
       </Container>
