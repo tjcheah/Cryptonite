@@ -74,14 +74,16 @@ export default function Contactus() {
           Questions not answered? Call or email us directly here!
         </Typography>
         <Typography variant="subtitle1" className={classes.wrapIcon}>
-          <LocalPhoneIcon /> &nbsp;&nbsp;&nbsp;&nbsp;011-1114 9762
+          <LocalPhoneIcon style={{ marginRight: 15 }} />
+          011-1114 9762
         </Typography>
         <Typography variant="subtitle1" className={classes.wrapIcon}>
-          <EmailIcon /> &nbsp;&nbsp;&nbsp;&nbsp;helpdesk@cryptonite.com.my
+          <EmailIcon style={{ marginRight: 15 }} />
+          helpdesk@cryptonite.com.my
         </Typography>
         <Typography variant="subtitle1" className={classes.wrapIcon}>
-          <ApartmentIcon /> &nbsp;&nbsp;&nbsp;&nbsp;Level 20, iTech Tower, Jalan
-          Impact Cyber 6, 63000 Cyberjaya, Selangor
+          <ApartmentIcon style={{ marginRight: 15 }} />
+          Level 20, iTech Tower, Jalan Impact Cyber 6, 63000 Cyberjaya, Selangor
         </Typography>
       </Box>
     </div>

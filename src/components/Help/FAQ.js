@@ -19,16 +19,25 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: 3,
     lineHeight: 1,
     marginBottom: 10,
+    [theme.breakpoints.down("lg")]: {
+      fontSize: 30,
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: 25,
+    },
   },
   rootContainer: {
-    // backgroundColor: "blue",
     display: "flex",
     flexDirection: "column",
-    // alignItems: "center",
     margin: "0px 15px",
     width: 1150,
     padding: "40px 60px",
-    // margin": "50px 0px 50px 0px",
+    [theme.breakpoints.down("md")]: {
+      padding: "30px 45px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      padding: "40px 30px",
+    },
   },
   heading: {
     // backgroundColor: "pink",
@@ -37,6 +46,12 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Antonio",
     padding: "0px 0px",
     margin: "0px 0px",
+    [theme.breakpoints.down("lg")]: {
+      fontSize: 20,
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: 18,
+    },
   },
   textBody: {
     // backgroundColor: "yellow",
@@ -191,9 +206,8 @@ export default function FAQ() {
               <Typography className={classes.textBody}>
                 Cryptonite uses data adjusted to <b>local Timezones</b> on
                 charts displayed on each asset. To display the coin/market
-                information,
-                <b>hover your mouse over onto the line chart</b>. The time
-                displayed will be adjusted to your local timezone.
+                information, <b> hover your mouse over onto the line chart</b>.
+                The time displayed will be adjusted to your local timezone.
               </Typography>
             </AccordionDetails>
           </Accordion>
