@@ -156,10 +156,8 @@ const useStyles = makeStyles((theme) => ({
   // ----------------------------------------------------------------------------------
   loginBtn: {
     width: "100%",
-    // backgroundColor: "red",
 
     [theme.breakpoints.down("sm")]: {
-      // backgroundColor: "red",
       display: "flex",
       justifyContent: "flex-end",
       margin: "0px 20px",
