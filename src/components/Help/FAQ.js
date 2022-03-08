@@ -117,6 +117,7 @@ export default function FAQ() {
                 Cryptonite calculates a <b>volume-weighted average price</b> by
                 taking data from all major cryptocurrency exchanges and
                 cryptocurrency pairs worldwide. <br></br>
+                <br></br>
                 Some cryptocurrency prices are being driven up by large trading
                 volume by exchanges in certain geographical region trading them
                 at a large premium from other countries, or by decentralized
