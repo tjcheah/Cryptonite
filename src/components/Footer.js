@@ -216,50 +216,45 @@ const Footer = () => {
                 <Typography
                   onClick={() => navigate("/about")}
                   className={classes.miniTitle}
+                  onChange={window.scroll({ top: 0 })}
                 >
                   About Us
                 </Typography>
                 <Typography
                   onClick={() => navigate("/help")}
                   className={classes.miniTitle}
+                  onChange={window.scroll({ top: 0 })}
                 >
                   Contact Us
                 </Typography>
                 <Typography
                   onClick={() => navigate("/help")}
                   className={classes.miniTitle}
+                  onChange={window.scroll({ top: 0, behavior: "smooth" })}
                 >
                   Help
-                </Typography>
-                <Typography
-                  onClick={() => navigate("/careers")}
-                  className={classes.miniTitle}
-                >
-                  Careers
                 </Typography>
               </Container>
               <Container className={classes.column2}>
                 <Typography
-                  onClick={() => navigate("/market")}
+                  onClick={() => navigate("/crypto")}
                   className={classes.miniTitle}
+                  onChange={window.scroll({ top: 0 })}
                 >
                   Search Cryptocurrency
                 </Typography>
                 <Typography
                   onClick={() => navigate("/")}
                   className={classes.miniTitle}
+                  onChange={window.scroll({ top: 0 })}
                 >
                   Trending Markets
                 </Typography>
+
                 <Typography
-                  onClick={() => navigate("/help")}
+                  onClick={() => navigate("/crypto")}
                   className={classes.miniTitle}
-                >
-                  Top Gainers & Losers
-                </Typography>
-                <Typography
-                  onClick={() => navigate("/news")}
-                  className={classes.miniTitle}
+                  onChange={window.scroll({ top: 0 })}
                 >
                   Crypto News
                 </Typography>
@@ -268,10 +263,10 @@ const Footer = () => {
           </Container>
           <Container className={classes.footerBottom}>
             <Container className={classes.footerBottomLeft}>
-              <Typography className={classes.bottomTitle}>
+              {/* <Typography className={classes.bottomTitle}>
                 Help Center | Contact | Bug Bounty | Disclaimer | Terms of
                 Service | Privacy Policy | Ad Policy
-              </Typography>
+              </Typography> */}
               <Typography className={classes.bottomTitle}>
                 <FaRegCopyright /> Cryptonite. All Rights Reserved.
               </Typography>

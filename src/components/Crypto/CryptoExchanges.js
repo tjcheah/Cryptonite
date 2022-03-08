@@ -22,36 +22,53 @@ import { CryptoState } from "../../CryptoContext";
 
 const CryptoExchanges = () => {
   const [exchanges, setExchanges] = useState([]);
-
   const fetchCoin = async () => {
     const { data } = await axios.get(GetExchanges());
     setExchanges(data);
   };
-
   useEffect(() => {
     fetchCoin();
   }, []);
-
   const { symbol, loading } = CryptoState();
-
   const useStyles = makeStyles((theme) => ({
-    themeContainer: {
-      margin: 0,
-      padding: 0,
-    },
     container: {
+      // backgroundColor: "red",
       display: "flex",
       width: "100%",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      padding: 60,
+      marginTop: 20,
+      marginBottom: 20,
+      padding: 0,
+      [theme.breakpoints.up("xs")]: {
+        // backgroundColor: "brown",
+        // height: "75%",
+        width: "90%",
+      },
+      [theme.breakpoints.up("sm")]: {
+        // backgroundColor: "pink",
+        // height: "75%",
+        width: "90%",
+      },
+      [theme.breakpoints.up("md")]: {
+        // backgroundColor: "green",
+        // height: "65%",
+        width: "90%",
+      },
     },
     title: {
-      fontFamily: "Antonio",
-      fontWeight: 550,
+      // backgroundColor: "gold",
+      margin: " 20px 0px 20px 0px",
+      fontFamily: "antonio",
+      fontWeight: "bold",
+      width: "100%",
+      color: "white",
+      textTransform: "uppercase",
+      textAlign: "start",
+      fontSize: 45,
       letterSpacing: 3,
-      padding: 10,
+      lineHeight: 1,
     },
     pagination: {
       "& .MuiPaginationItem-root": {
@@ -63,32 +80,14 @@ const CryptoExchanges = () => {
     TableContainer: {
       display: "flex",
       backgroundColor: "#f2f2f2",
+      // width: "100%",
+      // backgroundColor: "brown",
       borderRadius: 40,
       textAlign: "center",
       paddingTop: 40,
-
-      // [theme.breakpoints.up("xs")]: {
-      //   // backgroundColor: "brown",
-      //   height: "75%",
-      //   width: "86%",
-      // },
-      // [theme.breakpoints.up("sm")]: {
-      //   // backgroundColor: "pink",
-      //   height: "75%",
-      //   width: "86%",
-      // },
-      // [theme.breakpoints.up("md")]: {
-      //   // backgroundColor: "green",
-      //   height: "65%",
-      //   width: "78%",
-      // },
-      // [theme.breakpoints.up("lg")]: {
-      //   // backgroundColor: "cyan",
-      //   height: "90%",
-      //   width: 999,
-      // },
     },
     tableContainer: {
+      // backgroundColor: "blue",
       margin: "15px 0px",
       borderRadius: 30,
       boxShadow: "0px 2px 2px 1px #aaa",
@@ -104,12 +103,7 @@ const CryptoExchanges = () => {
       letterSpacing: 5,
       lineHeight: 1,
     },
-    contSearch: {
-      backgroundColor: "black",
-      boxShadow: "0px 2px 2px 1px #aaa",
-      marginBottom: 20,
-      width: "100%",
-    },
+
     tableHead: {
       backgroundColor: "white",
       textAlign: "center",
@@ -120,19 +114,6 @@ const CryptoExchanges = () => {
       fontFamily: "antonio",
       textTransform: "uppercase",
       padding: " 20px 40px",
-
-      // [theme.breakpoints.up("xs")]: {
-      //   // backgroundColor: "brown",
-      // },
-      // [theme.breakpoints.up("sm")]: {
-      //   // backgroundColor: "pink",
-      // },
-      // [theme.breakpoints.up("md")]: {
-      //   // backgroundColor: "green",
-      // },
-      // [theme.breakpoints.up("lg")]: {
-      //   // backgroundColor: "cyan",
-      // },
     },
     row: {
       backgroundColor: "white",
@@ -162,7 +143,7 @@ const CryptoExchanges = () => {
   const classes = useStyles();
 
   return (
-    <ThemeProvider className={classes.themeContainer}>
+    <ThemeProvider>
       <Container className={classes.container}>
         <Typography className={classes.title} variant="h3">
           Top 5 Exchanges for Cryptocurrencies
@@ -174,15 +155,17 @@ const CryptoExchanges = () => {
             <Table>
               {/* Table Head */}
               <TableHead>
-                {["Name", "Year Established", "URL"].map((head) => (
-                  <TableCell
-                    className={classes.tableHead}
-                    key={head}
-                    align={head === "Name" ? "" : "right"}
-                  >
-                    {head}
-                  </TableCell>
-                ))}
+                <TableRow>
+                  {["Name", "Year Established", "URL"].map((head) => (
+                    <TableCell
+                      className={classes.tableHead}
+                      key={head}
+                      align={head === "Name" ? "left" : "right"}
+                    >
+                      {head}
+                    </TableCell>
+                  ))}
+                </TableRow>
               </TableHead>
 
               {/* Table Body */}
@@ -219,6 +202,7 @@ const CryptoExchanges = () => {
                             width: "50%",
                             display: "flex",
                             flexDirection: "column",
+                            justifyContent: "center",
                           }}
                         >
                           {row.name}
@@ -243,7 +227,7 @@ const CryptoExchanges = () => {
                           paddingRight: 40,
                           fontFamily: "antonio",
                           fontSize: 20,
-                          textAlign: "center",
+                          textAlign: "start",
                         }}
                         align="right"
                       >

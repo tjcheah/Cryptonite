@@ -19,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
     padding: "20px 0px 30px 0px",
   },
   stackCont: {
+    justifyContent: "center",
+    alignItems: "center",
     [theme.breakpoints.up("xs")]: {
       width: "90%",
       // backgroundColor: "red",
@@ -36,16 +38,24 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 550,
     letterSpacing: 3,
   },
+  description: {
+    fontStyle: "italic",
+    fontFamily: "Antonio",
+    color: "#FCE883",
+    fontSize: 18,
+  },
   feedbackText: {
     // backgroundColor: "blue",
     display: "flex",
     justifyContent: "center",
     fontFamily: "Antonio",
-    fontSize: 18,
+    fontSize: 22,
     marginTop: 20,
+    padding: "20px 0 20px 0",
   },
   buttonFont: {
     fontFamily: "Antonio",
+    fontSize: 20,
   },
   emeraldStone: {
     width: 100,
@@ -82,55 +92,72 @@ const useStyles = makeStyles((theme) => ({
       width: "70%",
     },
   },
+  textArea: {
+    width: 800,
+    height: 200,
+    fontFamily: "Antonio",
+    marginTop: 50,
+    padding: 20,
+    fontSize: 20,
+    borderRadius: 15,
+  },
 }));
 
 export default function Feedback() {
   const classes = useStyles();
-  // const { register, handleSubmit } = useForm();
   const { register, handleSubmit, formState } = useForm({
     mode: "onChange",
   });
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+
   const [rating1, setRating1] = useState(0);
   const [rating2, setRating2] = useState(0);
   const [like, setLike] = useState("white");
   const [dislike, setDislike] = useState("white");
-  const [submit, setSubmit] = useState();
+  const [recommend, setRecommend] = useState();
+  const [input, setInput] = useState();
+
   const dynamicLike = () => {
     if (like === "white" && dislike === "white") {
       setLike("#66ff00");
+      setRecommend("yes");
     }
     if (like === "white" && dislike === "red") {
       setLike("#66ff00");
       setDislike("white");
+      setRecommend("yes");
     }
     if (like === "#66ff00") {
       setLike("white");
+      setRecommend();
     }
   };
   const dynamicDisLike = () => {
     if (dislike === "white" && like === "white") {
       setDislike("red");
+      setRecommend("no");
     }
     if (dislike === "white" && like === "#66ff00") {
       setDislike("red");
       setLike("white");
+      setRecommend("no");
     }
     if (dislike === "red") {
       setDislike("white");
+      setRecommend();
     }
   };
-  const dynamicSubmit = () => {
+  const onSubmit = (data) => {
     if (
       rating1 > 0 &&
       rating2 > 0 &&
-      (like === "#66ff00" || dislike === "red")
+      (like === "#66ff00" || dislike === "red") &&
+      input.length > 0
     ) {
+      console.log(formdata);
       alert(
         "Thank you for the feedback! We appreciate your feedback and will continue to improve in the future."
       );
+      setInput("");
       setRating1(0);
       setRating2(0);
       setLike("white");
@@ -139,6 +166,16 @@ export default function Feedback() {
       alert("Please complete the feedback form before submission!");
     }
   };
+
+  // data output stored in an object
+  const formdata = {
+    uxRating: rating1,
+    uiRating: rating2,
+    willRecommend: recommend,
+    feedback: input,
+  };
+
+  // const averageRating = formdata.uxRating + form
   return (
     <form className={classes.feedbackForm} onSubmit={handleSubmit(onSubmit)}>
       <Box
@@ -157,22 +194,21 @@ export default function Feedback() {
         <Typography className={classes.feedbackTitle} variant="h4">
           WE'D LOVE SOME FEEDBACK
         </Typography>
-        <Stack
-          className={classes.stackCont}
-          direction="column"
-          spacing={2}
-          justifyContent="center"
-          alignItems="center"
-        >
+        <Typography className={classes.description}>
+          ---------------- <b>XXX</b> users had rated Cryptonite <b>X</b> out of{" "}
+          <b>5</b>!
+        </Typography>
+        <Stack className={classes.stackCont} direction="column" spacing={2}>
           <Typography className={classes.feedbackText} variant="subtitle1">
-            How likely will you comeback?
+            How would you rate the overall experience using our website?
           </Typography>
-
           <Rating
             name="rating1"
             value={rating1}
-            justifyContent="center"
-            alignItems="center"
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+            }}
             precision={1}
             onChange={(_, value) => {
               setRating1(value);
@@ -181,14 +217,17 @@ export default function Feedback() {
             emptyIcon={<img src={stone} className={classes.greyStone} />}
             className={classes.rating}
           />
+
           <Typography className={classes.feedbackText} variant="subtitle1">
-            How would you rate our website?
+            How would you rate the overall design of our website?
           </Typography>
           <Rating
             name="rating2"
             value={rating2}
-            justifyContent="center"
-            alignItems="center"
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+            }}
             precision={1}
             onChange={(_, value) => {
               setRating2(value);
@@ -197,26 +236,48 @@ export default function Feedback() {
             emptyIcon={<img src={coin} className={classes.greyCoin} />}
             className={classes.rating}
           />
+
           <Typography className={classes.feedbackText} variant="subtitle1">
             Would you recommend us to your friends?
           </Typography>
           <div>
             <ThumbUpOffAltIcon
-              style={{ color: like, fontSize: 45 }}
+              style={{
+                color: like,
+                fontSize: 45,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
               onClick={dynamicLike}
               className={classes.thumbs}
-              justifyContent="center"
-              alignItems="center"
+              value={recommend}
             />
-
             <ThumbDownOffAltIcon
-              style={{ color: dislike, fontSize: 45 }}
+              style={{
+                color: dislike,
+                fontSize: 45,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
               onClick={dynamicDisLike}
               className={classes.thumbs}
-              justifyContent="center"
-              alignItems="center"
+              value={recommend}
             />
           </div>
+          <Typography className={classes.feedbackText} variant="subtitle1">
+            Private Feedback:
+          </Typography>
+          <textarea
+            type="text"
+            className={classes.textArea}
+            placeholder="Give us your thoughts on how we can improve our website! The message will be sent to our tech support team directly."
+            maxLength="500"
+            minLength="20"
+            value={input}
+            onChange={(e) => {
+              setInput(e.target.value);
+            }}
+          />
         </Stack>
         <Box
           sx={{
@@ -238,8 +299,7 @@ export default function Feedback() {
             className={classes.feedbackButton}
             variant="contained"
             color="success"
-            style={{ borderRadius: 50 }}
-            onClick={dynamicSubmit}
+            style={{ borderRadius: 50, margin: 20 }}
           >
             <Typography className={classes.buttonFont}>
               Submit Feedback
