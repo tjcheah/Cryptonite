@@ -42,8 +42,10 @@ const CoinsTable = () => {
   const handleSearch = () => {
     return coins.filter(
       (coin) =>
-        coin.name.toLowerCase().includes(search) ||
-        coin.symbol.toLowerCase().includes(search)
+        coin.name.toLowerCase().includes(search.toLowerCase()) ||
+        coin.symbol.toLowerCase().includes(search.toLowerCase()) ||
+        coin.name.toUpperCase().includes(search.toUpperCase()) ||
+        coin.symbol.toUpperCase().includes(search.toUpperCase())
     );
   };
 
@@ -216,7 +218,7 @@ const CoinsTable = () => {
                     <TableCell
                       className={classes.tableHead}
                       key={head}
-                      align={head === "Coin" ? "" : "right"}
+                      align={head === "Coin" ? "left" : "right"}
                     >
                       {head}
                     </TableCell>
@@ -392,10 +394,10 @@ const CoinsTable = () => {
             justifyContent: "center",
           }}
           classes={{ ul: classes.pagination }}
-          count={(handleSearch()?.length / 10).toFixed(0)}
+          count={parseInt((handleSearch()?.length / 10).toFixed(0))}
           onChange={(_, value) => {
             setPage(value);
-            window.scroll(0, 800);
+            window.scroll({ top: 800, behavior: "smooth" });
           }}
         ></Pagination>
       </Container>

@@ -5,6 +5,7 @@ import {
   createTheme,
   makeStyles,
   ThemeProvider,
+  Typography,
 } from "@material-ui/core";
 import "chart.js/auto";
 import { CryptoState } from "../../CryptoContext";
@@ -39,6 +40,7 @@ const CoinInfo = ({ coin }) => {
     },
   });
 
+  //revert Epoch to timestamp
   function EpochToDate(epoch) {
     if (epoch < 10000000000) epoch *= 1000; // convert to milliseconds (Epoch is usually expressed in seconds, but Javascript uses Milliseconds)
     var epoch = epoch + new Date().getTimezoneOffset() * -1;
@@ -91,6 +93,10 @@ const CoinInfo = ({ coin }) => {
   const [price, setPrice] = useState([]);
   const [tick, setTick] = useState([]);
 
+  // Error message when market closed on weekends, or when Deriv API not working
+  const [marketStatus, setMarketStatus] = useState();
+
+  //chart data
   var lineChart = {
     labels: tick,
     datasets: [
@@ -161,6 +167,7 @@ const CoinInfo = ({ coin }) => {
   useEffect(() => {
     var ws = new WebSocket(api_call);
 
+    //request for BTC/USD tick history and tick stream
     ws.onopen = (evt) => {
       ws.send(
         JSON.stringify({
@@ -175,6 +182,7 @@ const CoinInfo = ({ coin }) => {
       ws.send(JSON.stringify({ ticks: "cryBTCUSD" }));
     };
 
+    //set tick data to tick and price states
     ws.onmessage = function (evt) {
       var data = JSON.parse(evt.data);
       if (data.history != null) {
@@ -201,13 +209,37 @@ const CoinInfo = ({ coin }) => {
           setPrice((currentPrice) => [...currentPrice, tickInfo.quote]);
         }
       }
+
+      // when market open but Deriv API not responding
+      if (data.error === null && data.tick === null) {
+        setMarketStatus(() => {
+          return (
+            <Typography
+              className={classes.marketStatus}
+              style={{
+                color: "#FF5F1F",
+                fontStyle: "italic",
+                fontWeight: 550,
+                lineHeight: 1.4,
+                textAlign: "center",
+              }}
+            >
+              Slow data update due to server maintenance. Please come back in a
+              while.
+            </Typography>
+          );
+        });
+      }
     };
 
+    //close connection
     return () => ws.close();
   }, []);
 
+  //return tick stream graph
   return (
     <ThemeProvider theme={darkTheme}>
+      {marketStatus}
       <div className={classes.container}>
         {!historicData | (flag === false) ? (
           <CircularProgress

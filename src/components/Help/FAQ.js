@@ -2,7 +2,6 @@ import React from "react";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import "./Help.css";
-import { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Typography from "@material-ui/core/Typography";
@@ -19,16 +18,25 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: 3,
     lineHeight: 1,
     marginBottom: 10,
+    [theme.breakpoints.down("lg")]: {
+      fontSize: 30,
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: 25,
+    },
   },
   rootContainer: {
-    // backgroundColor: "blue",
     display: "flex",
     flexDirection: "column",
-    // alignItems: "center",
     margin: "0px 15px",
     width: 1150,
     padding: "40px 60px",
-    // margin": "50px 0px 50px 0px",
+    [theme.breakpoints.down("md")]: {
+      padding: "30px 45px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      padding: "40px 30px",
+    },
   },
   heading: {
     // backgroundColor: "pink",
@@ -37,6 +45,12 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Antonio",
     padding: "0px 0px",
     margin: "0px 0px",
+    [theme.breakpoints.down("lg")]: {
+      fontSize: 20,
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: 18,
+    },
   },
   textBody: {
     // backgroundColor: "yellow",
@@ -46,6 +60,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 5,
     lineHeight: 1.1,
     textAlign: "justify",
+    width: "100%",
+    whiteSpace: "pre-line",
     // [theme.breakpoints.up("xs")]: {
     //   // backgroundColor: "brown",
     // },
@@ -115,15 +131,13 @@ export default function FAQ() {
               <Typography className={classes.textBody}>
                 Cryptonite calculates a <b>volume-weighted average price</b> by
                 taking data from all major cryptocurrency exchanges and
-                cryptocurrency pairs worldwide.
-                <Typography className={classes.textBody}>
-                  Some cryptocurrency prices are being driven up by large
-                  trading volume by exchanges in certain geographical region
-                  trading them at a large premium from other countries, or by
-                  decentralized exchanges. This may explain why you may see a
-                  difference between our volume-weighted average price as
-                  compared to US exchanges.
-                </Typography>
+                cryptocurrency pairs worldwide. <br></br>
+                <br></br>
+                Some cryptocurrency prices are being driven up by large trading
+                volume by exchanges in certain geographical region trading them
+                at a large premium from other countries, or by decentralized
+                exchanges. This may explain why you may see a difference between
+                our volume-weighted average price as compared to US exchanges.
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -191,9 +205,8 @@ export default function FAQ() {
               <Typography className={classes.textBody}>
                 Cryptonite uses data adjusted to <b>local Timezones</b> on
                 charts displayed on each asset. To display the coin/market
-                information,
-                <b>hover your mouse over onto the line chart</b>. The time
-                displayed will be adjusted to your local timezone.
+                information, <b> hover your mouse over onto the line chart</b>.
+                The time displayed will be adjusted to your local timezone.
               </Typography>
             </AccordionDetails>
           </Accordion>
