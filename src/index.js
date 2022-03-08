@@ -10,7 +10,6 @@ ReactDOM.render(
     <CryptoContext>
       <App />
     </CryptoContext>
-    {/* <LandingPage /> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
