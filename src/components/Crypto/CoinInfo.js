@@ -5,6 +5,7 @@ import {
   createTheme,
   makeStyles,
   ThemeProvider,
+  Typography,
 } from "@material-ui/core";
 import "chart.js/auto";
 import { CryptoState } from "../../CryptoContext";
@@ -91,6 +92,9 @@ const CoinInfo = ({ coin }) => {
 
   const [price, setPrice] = useState([]);
   const [tick, setTick] = useState([]);
+
+  // Error message when market closed on weekends, or when Deriv API not working
+  const [marketStatus, setMarketStatus] = useState();
 
   //chart data
   var lineChart = {
@@ -205,7 +209,29 @@ const CoinInfo = ({ coin }) => {
           setPrice((currentPrice) => [...currentPrice, tickInfo.quote]);
         }
       }
+
+      // when market open but Deriv API not responding
+      if (data.error === null && data.tick === null) {
+        setMarketStatus(() => {
+          return (
+            <Typography
+              className={classes.marketStatus}
+              style={{
+                color: "#FF5F1F",
+                fontStyle: "italic",
+                fontWeight: 550,
+                lineHeight: 1.4,
+                textAlign: "center",
+              }}
+            >
+              Slow data update due to server maintenance. Please come back in a
+              while.
+            </Typography>
+          );
+        });
+      }
     };
+
     //close connection
     return () => ws.close();
   }, []);
@@ -213,6 +239,7 @@ const CoinInfo = ({ coin }) => {
   //return tick stream graph
   return (
     <ThemeProvider theme={darkTheme}>
+      {marketStatus}
       <div className={classes.container}>
         {!historicData | (flag === false) ? (
           <CircularProgress

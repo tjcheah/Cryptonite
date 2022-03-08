@@ -118,7 +118,6 @@ const CryptoExchanges = () => {
     row: {
       backgroundColor: "white",
       fontFamily: "antonio",
-      cursor: "pointer",
       "&:hover": {
         backgroundColor: "#f2f2f2",
         boxShadow: "0px 4px 4px 1px #f2f2f2",
@@ -128,6 +127,7 @@ const CryptoExchanges = () => {
     link: {
       color: "blue",
       textDecoration: "underline",
+      cursor: "pointer",
       "&:hover": {
         color: "#0645AD",
       },

@@ -9,16 +9,15 @@ const Testament = () => (
       <div className="crypto__testament-content">
         {" "}
         <h1>
-          In my experience, I've found you can <br /> never have to much
-          information
-          <br /> -Lex Luthor
+          In my experience, I've found you can never have to much information
         </h1>
+        <h2>Lex Luthor</h2>
       </div>
     </div>
 
-    <div className="crypto__testament-logo">
+    {/* <div className="crypto__testament-logo">
       <img src={logo} alt="logo" />
-    </div>
+    </div> */}
   </div>
 );
 

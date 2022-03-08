@@ -2,108 +2,54 @@
   display: flex;
   flex-direction: column;
   background-image: url("../../../../media/1304090.png");
-  padding: 2rem;
 }
-
 .crypto__feature-box {
-  padding-top: 10px;
-}
-
-.crypto__feature-feature {
+  /* background-color: aqua; */
   display: flex;
-}
-
-/* Customizing feature component as per needs */
-.crypto__feature-feature .crypto__features-container__feature {
-  margin: 0;
-}
-
-/* Customizing feature component as per needs */
-.crypto__feature-feature .crypto__features-container_feature-text {
-  max-width: 700px;
-}
-
-.crypto__feature-heading {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-
-  margin: 4rem 0 2rem;
+  align-content: center;
+  justify-content: center;
+  margin: 50px 0px;
+  width: 70%;
 }
-
-.crypto__feature-heading h1 {
+.crypto__feature h1 {
+  width: 500px;
+  margin: 30px 0px;
   font-size: 34px;
   line-height: 45px;
   font-weight: 800;
   font-family: var(--font-family);
-  max-width: 510px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  color: white;
 }
-
-.crypto__feature-heading p {
-  font-family: var(--font-family);
+.crypto__feature p {
+  width: 500px;
+  margin: 20px 0px;
+  padding: 20px 40px;
+  background-color: black;
+  font-family: garamond;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 30px;
-  color: var(--color-subtext);
+  color: #f2f2f2;
+  border-radius: 40px;
+  box-shadow: 0px 1px 1px 0px #aaa;
   cursor: pointer;
 }
 
-.crypto__feature-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-
-  margin-top: 2rem;
-}
-
-/* Customizing feature component as per needs */
-.crypto__feature-container .crypto__features-container__feature {
-  flex: 1;
-  margin: 1rem;
-  min-width: 210px;
-  display: unset;
-  flex-direction: column;
-}
-
-/* Customizing feature component as per needs */
-.crypto__feature-container .crypto__features-container_feature-text {
-  margin-top: 0.5rem;
-}
-
-@media screen and (max-width: 850px) {
-  .crypto__feature-heading {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 0rem;
+/* ------------------------------------------------------------------------------------------------------------------------- */
+@media screen and (max-width: 900px) {
+  .crypto__feature-box {
+    /* background-color: antiquewhite; */
+    width: 100%;
   }
-
-  .crypto__feature-heading p {
-    margin-top: 1rem;
+  /* .crypto__feature h1 {
+    width: 80%;
   }
+  .crypto__feature p {
+    width: 80%;
+  } */
 }
-
-@media screen and (max-width: 650px) {
-  /* Customizing feature component as per needs */
-  .crypto__feature-feature .crypto__features-container__feature {
-    flex-direction: column;
-  }
-
-  /* Customizing feature component as per needs */
-  .crypto__feature-feature .crypto__features-container_feature-text {
-    margin-top: 0.5rem;
-  }
-
-  .crypto__feature-heading h1 {
-    font-size: 28px;
-    line-height: 40px;
-  }
-}
-
-@media screen and (max-width: 350px) {
-  /* Customizing feature component as per needs */
-  .crypto__feature-container .crypto__features-container__feature {
-    margin: 1rem 0;
-    min-width: 100%;
-  }
-}
+/* ------------------------------------------------------------------------------- */
