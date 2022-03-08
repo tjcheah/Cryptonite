@@ -156,9 +156,7 @@ const CoinsTable = () => {
   const classes = useStyles();
 
   return (
-    <ThemeProvider
-    // theme={darkTheme}
-    >
+    <ThemeProvider>
       <Container className={classes.TableContainer}>
         {/* Container Title */}
         <Typography className={classes.contTitle} variant="h4">
@@ -213,7 +211,7 @@ const CoinsTable = () => {
                     <TableCell
                       className={classes.tableHead}
                       key={head}
-                      align={head === "Coin" ? "" : "right"}
+                      align={head === "Coin" ? "left" : "right"}
                     >
                       {head}
                     </TableCell>
@@ -361,11 +359,10 @@ const CoinsTable = () => {
             justifyContent: "center",
           }}
           classes={{ ul: classes.pagination }}
-          count={(handleSearch()?.length / 10).toFixed(0)}
+          count={parseInt((handleSearch()?.length / 10).toFixed(0))}
           onChange={(_, value) => {
             setPage(value);
-            window.scroll(0, 1000);
-            window.scroll(0, 500);
+            window.scroll({ top: 800, behavior: "smooth" });
           }}
         ></Pagination>
       </Container>

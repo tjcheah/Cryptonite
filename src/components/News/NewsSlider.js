@@ -8,7 +8,6 @@ import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia'
 import Slider from 'react-slick'
 import './News.css'
-import { Container, makeStyles, Typography } from '@material-ui/core'
 
 const NewsSlider = () => {
   const [post, setPost] = useState([])
@@ -57,8 +56,8 @@ const NewsSlider = () => {
   }
 
   const renderSlides = () =>
-    post.map((posts) => (
-      <div style={{ backgroundColor: 'blue' }}>
+    post.map((posts, i) => (
+      <div style={{ backgroundColor: 'blue' }} key={i}>
         <CardActionArea href={posts.url} target="_blank">
           <Card style={styles.card}>
             <CardMedia image={posts.imageurl} style={styles.media} />

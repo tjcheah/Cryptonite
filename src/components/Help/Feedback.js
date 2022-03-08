@@ -12,7 +12,6 @@ import stone from "./stone.png";
 import coin from "./Cryptonite Logo (Gold).png";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
-import { TextField } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   feedbackForm: {
@@ -20,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
     padding: "20px 0px 30px 0px",
   },
   stackCont: {
+    justifyContent: "center",
+    alignItems: "center",
     [theme.breakpoints.up("xs")]: {
       width: "90%",
       // backgroundColor: "red",
@@ -197,21 +198,17 @@ export default function Feedback() {
           ---------------- <b>XXX</b> users had rated Cryptonite <b>X</b> out of{" "}
           <b>5</b>!
         </Typography>
-        <Stack
-          className={classes.stackCont}
-          direction="column"
-          spacing={2}
-          justifyContent="center"
-          alignItems="center"
-        >
+        <Stack className={classes.stackCont} direction="column" spacing={2}>
           <Typography className={classes.feedbackText} variant="subtitle1">
             How would you rate the overall experience using our website?
           </Typography>
           <Rating
             name="rating1"
             value={rating1}
-            justifyContent="center"
-            alignItems="center"
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+            }}
             precision={1}
             onChange={(_, value) => {
               setRating1(value);
@@ -227,8 +224,10 @@ export default function Feedback() {
           <Rating
             name="rating2"
             value={rating2}
-            justifyContent="center"
-            alignItems="center"
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+            }}
             precision={1}
             onChange={(_, value) => {
               setRating2(value);
@@ -243,19 +242,25 @@ export default function Feedback() {
           </Typography>
           <div>
             <ThumbUpOffAltIcon
-              style={{ color: like, fontSize: 45 }}
+              style={{
+                color: like,
+                fontSize: 45,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
               onClick={dynamicLike}
               className={classes.thumbs}
-              justifyContent="center"
-              alignItems="center"
               value={recommend}
             />
             <ThumbDownOffAltIcon
-              style={{ color: dislike, fontSize: 45 }}
+              style={{
+                color: dislike,
+                fontSize: 45,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
               onClick={dynamicDisLike}
               className={classes.thumbs}
-              justifyContent="center"
-              alignItems="center"
               value={recommend}
             />
           </div>
@@ -266,8 +271,8 @@ export default function Feedback() {
             type="text"
             className={classes.textArea}
             placeholder="Give us your thoughts on how we can improve our website! The message will be sent to our tech support team directly."
-            maxlength="500"
-            minlength="20"
+            maxLength="500"
+            minLength="20"
             value={input}
             onChange={(e) => {
               setInput(e.target.value);
