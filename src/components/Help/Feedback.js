@@ -38,16 +38,13 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 550,
     letterSpacing: 3,
   },
-  description: {
-    fontStyle: "italic",
-    fontFamily: "Antonio",
-    color: "#FCE883",
-    fontSize: 18,
-  },
+
   feedbackText: {
     // backgroundColor: "blue",
     display: "flex",
     justifyContent: "center",
+    flexWrap: "wrap",
+    textAlign: "center",
     fontFamily: "Antonio",
     fontSize: 22,
     marginTop: 20,
@@ -93,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   textArea: {
-    width: 800,
+    width: "100%",
     height: 200,
     fontFamily: "Antonio",
     marginTop: 50,
@@ -193,10 +190,6 @@ export default function Feedback() {
       >
         <Typography className={classes.feedbackTitle} variant="h4">
           WE'D LOVE SOME FEEDBACK
-        </Typography>
-        <Typography className={classes.description}>
-          ---------------- <b>XXX</b> users had rated Cryptonite <b>X</b> out of{" "}
-          <b>5</b>!
         </Typography>
         <Stack className={classes.stackCont} direction="column" spacing={2}>
           <Typography className={classes.feedbackText} variant="subtitle1">
