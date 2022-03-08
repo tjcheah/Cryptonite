@@ -2,7 +2,6 @@ import React from "react";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import "./Help.css";
-import { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Typography from "@material-ui/core/Typography";
@@ -46,6 +45,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 5,
     lineHeight: 1.1,
     textAlign: "justify",
+    width: "100%",
+    whiteSpace: "pre-line",
     // [theme.breakpoints.up("xs")]: {
     //   // backgroundColor: "brown",
     // },
@@ -115,15 +116,12 @@ export default function FAQ() {
               <Typography className={classes.textBody}>
                 Cryptonite calculates a <b>volume-weighted average price</b> by
                 taking data from all major cryptocurrency exchanges and
-                cryptocurrency pairs worldwide.
-                <Typography className={classes.textBody}>
-                  Some cryptocurrency prices are being driven up by large
-                  trading volume by exchanges in certain geographical region
-                  trading them at a large premium from other countries, or by
-                  decentralized exchanges. This may explain why you may see a
-                  difference between our volume-weighted average price as
-                  compared to US exchanges.
-                </Typography>
+                cryptocurrency pairs worldwide. <br></br>
+                Some cryptocurrency prices are being driven up by large trading
+                volume by exchanges in certain geographical region trading them
+                at a large premium from other countries, or by decentralized
+                exchanges. This may explain why you may see a difference between
+                our volume-weighted average price as compared to US exchanges.
               </Typography>
             </AccordionDetails>
           </Accordion>
