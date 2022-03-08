@@ -195,7 +195,7 @@ const Footer = () => {
   return (
     <ThemeProvider theme={darkTheme}>
       <Container className={classes.footerContainer}>
-        <BottomNavigation className={classes.footer}>
+        <Container className={classes.footer}>
           <Container className={classes.footerTop}>
             <Container className={classes.footerTopLeft}>
               <img
@@ -216,21 +216,21 @@ const Footer = () => {
                 <Typography
                   onClick={() => navigate("/about")}
                   className={classes.miniTitle}
-                  onChange={window.scroll(0, 0)}
+                  onChange={window.scroll({ top: 0 })}
                 >
                   About Us
                 </Typography>
                 <Typography
                   onClick={() => navigate("/help")}
                   className={classes.miniTitle}
-                  onChange={window.scroll(0, 300)}
+                  onChange={window.scroll({ top: 0 })}
                 >
                   Contact Us
                 </Typography>
                 <Typography
                   onClick={() => navigate("/help")}
                   className={classes.miniTitle}
-                  onChange={window.scroll(0, 0)}
+                  onChange={window.scroll({ top: 0, behavior: "smooth" })}
                 >
                   Help
                 </Typography>
@@ -239,14 +239,14 @@ const Footer = () => {
                 <Typography
                   onClick={() => navigate("/crypto")}
                   className={classes.miniTitle}
-                  onChange={window.scroll(0, 500)}
+                  onChange={window.scroll({ top: 0 })}
                 >
                   Search Cryptocurrency
                 </Typography>
                 <Typography
                   onClick={() => navigate("/")}
                   className={classes.miniTitle}
-                  onChange={window.scroll(0, 0)}
+                  onChange={window.scroll({ top: 0 })}
                 >
                   Trending Markets
                 </Typography>
@@ -254,7 +254,7 @@ const Footer = () => {
                 <Typography
                   onClick={() => navigate("/crypto")}
                   className={classes.miniTitle}
-                  onChange={window.scroll(0, 0)}
+                  onChange={window.scroll({ top: 0 })}
                 >
                   Crypto News
                 </Typography>
@@ -263,16 +263,16 @@ const Footer = () => {
           </Container>
           <Container className={classes.footerBottom}>
             <Container className={classes.footerBottomLeft}>
-              <Typography className={classes.bottomTitle}>
+              {/* <Typography className={classes.bottomTitle}>
                 Help Center | Contact | Bug Bounty | Disclaimer | Terms of
                 Service | Privacy Policy | Ad Policy
-              </Typography>
+              </Typography> */}
               <Typography className={classes.bottomTitle}>
                 <FaRegCopyright /> Cryptonite. All Rights Reserved.
               </Typography>
             </Container>
           </Container>
-        </BottomNavigation>
+        </Container>
       </Container>
     </ThemeProvider>
   );

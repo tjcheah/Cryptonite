@@ -5,27 +5,26 @@ import {
   createTheme,
   makeStyles,
   ThemeProvider,
+  Typography,
 } from "@material-ui/core";
 import "chart.js/auto";
+import { CryptoState } from "../../CryptoContext";
 
 const CoinInfo = ({ coin }) => {
   const [historicData, setHistoricData] = useState();
   const [flag, setflag] = useState(false);
-
+  const { currency, symbol } = CryptoState();
   const useStyles = makeStyles((theme) => ({
     container: {
-      // backgroundColor: "pink",
-      // color: "black",
       marginBottom: 30,
-      width: 1200,
+      width: "100%",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
       padding: 20,
-      [theme.breakpoints.down("md")]: {
-        width: "90%",
-        marginBottom: 20,
+      [theme.breakpoints.down("sm")]: {
+        padding: 0,
       },
     },
   }));
@@ -41,15 +40,63 @@ const CoinInfo = ({ coin }) => {
     },
   });
 
+  //revert Epoch to timestamp
   function EpochToDate(epoch) {
     if (epoch < 10000000000) epoch *= 1000; // convert to milliseconds (Epoch is usually expressed in seconds, but Javascript uses Milliseconds)
     var epoch = epoch + new Date().getTimezoneOffset() * -1;
     var date = new Date(epoch); //for timeZone
-    return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var seconds = date.getSeconds();
+    if (hours < 10) {
+      hours = "0" + hours;
+    }
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+
+    var time = hours + ":" + minutes + ":" + seconds;
+    return time;
   }
+  var today = new Date();
+  var year = today.getFullYear();
+  var month = today.getMonth();
+  var date = today.getDate();
+  var day = today.getDay();
+
+  const dayOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  if (date < 10) {
+    date = "0" + date;
+  }
+  const monthOfYear = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  var formatDate =
+    dayOfWeek[day] + " " + date + " " + monthOfYear[month] + " " + year;
+
   const [price, setPrice] = useState([]);
   const [tick, setTick] = useState([]);
 
+  // Error message when market closed on weekends, or when Deriv API not working
+  const [marketStatus, setMarketStatus] = useState();
+
+  //chart data
   var lineChart = {
     labels: tick,
     datasets: [
@@ -68,6 +115,7 @@ const CoinInfo = ({ coin }) => {
       duration: "speed * 1.5",
       easing: "linear",
     },
+    layout: { padding: 20 },
     elements: {
       line: {
         tension: 0.5,
@@ -87,6 +135,15 @@ const CoinInfo = ({ coin }) => {
         min: tick[tick.length - 11],
         max: tick[tick.length - 1],
       },
+      y: {
+        afterDataLimits(scale) {
+          // add 5% to both ends of range
+          var range = scale.max - scale.min;
+          var grace = range * 0.05;
+          scale.max += grace;
+          scale.min -= grace;
+        },
+      },
     },
     plugins: {
       legend: {
@@ -95,8 +152,11 @@ const CoinInfo = ({ coin }) => {
       tooltip: {
         displayColors: false,
         callbacks: {
+          title: function (context) {
+            return `${formatDate}, ${context[0].label}`;
+          },
           label: function (context) {
-            return `Price: ${context.parsed.y}`;
+            return `Price: $${context.parsed.y}`;
           },
         },
       },
@@ -107,6 +167,7 @@ const CoinInfo = ({ coin }) => {
   useEffect(() => {
     var ws = new WebSocket(api_call);
 
+    //request for BTC/USD tick history and tick stream
     ws.onopen = (evt) => {
       ws.send(
         JSON.stringify({
@@ -121,6 +182,7 @@ const CoinInfo = ({ coin }) => {
       ws.send(JSON.stringify({ ticks: "cryBTCUSD" }));
     };
 
+    //set tick data to tick and price states
     ws.onmessage = function (evt) {
       var data = JSON.parse(evt.data);
       if (data.history != null) {
@@ -147,13 +209,37 @@ const CoinInfo = ({ coin }) => {
           setPrice((currentPrice) => [...currentPrice, tickInfo.quote]);
         }
       }
+
+      // when market open but Deriv API not responding
+      if (data.error === null && data.tick === null) {
+        setMarketStatus(() => {
+          return (
+            <Typography
+              className={classes.marketStatus}
+              style={{
+                color: "#FF5F1F",
+                fontStyle: "italic",
+                fontWeight: 550,
+                lineHeight: 1.4,
+                textAlign: "center",
+              }}
+            >
+              Slow data update due to server maintenance. Please come back in a
+              while.
+            </Typography>
+          );
+        });
+      }
     };
 
+    //close connection
     return () => ws.close();
   }, []);
 
+  //return tick stream graph
   return (
     <ThemeProvider theme={darkTheme}>
+      {marketStatus}
       <div className={classes.container}>
         {!historicData | (flag === false) ? (
           <CircularProgress
