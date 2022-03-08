@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./navbar.css";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import logo from "../../../../media/Cryptonite Title Cropped.png";
+
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
