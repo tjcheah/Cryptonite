@@ -10,13 +10,12 @@ import {
 } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import { FaRegCopyright } from "react-icons/fa";
+import { BottomNavigationAction } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   footerContainer: {
     // backgroundColor: "green",
     display: "flex",
-    position: "absolute",
-    bottom: 0,
     width: "100%",
     justifyContent: "center",
     flexWrap: "wrap",
@@ -46,9 +45,6 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0px -2px 2px 1px #aaa",
     lineHeight: 18,
     flexWrap: "wrap",
-    [theme.breakpoints.down("sm")]: {
-      // paddingBottom: 300,
-    },
   },
   footerTop: {
     // backgroundColor: "green",
@@ -195,7 +191,7 @@ const Footer = () => {
   return (
     <ThemeProvider theme={darkTheme}>
       <Container className={classes.footerContainer}>
-        <BottomNavigation className={classes.footer}>
+        <Container className={classes.footer}>
           <Container className={classes.footerTop}>
             <Container className={classes.footerTopLeft}>
               <img
@@ -272,7 +268,7 @@ const Footer = () => {
               </Typography>
             </Container>
           </Container>
-        </BottomNavigation>
+        </Container>
       </Container>
     </ThemeProvider>
   );
