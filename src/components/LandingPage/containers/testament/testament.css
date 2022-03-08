@@ -1,0 +1,65 @@
+.crypto__testament {
+  display: flex;
+  flex-direction: row;
+  background-color: #f2f2f2;
+  padding-top: 40px;
+}
+.crypto__testament-image {
+  /* background-color: aqua; */
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* margin-right: 2rem; */
+}
+.crypto__testament-image img {
+  width: 500px;
+  border-radius: 40px;
+  box-shadow: 0px 2px 2px 0px #aaa;
+}
+.crypto__testament-content {
+  /* background-color: crimson; */
+  width: 500px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 30px 20px;
+}
+.crypto__testament-content h1 {
+  font-family: garamond;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  color: black;
+}
+.crypto__testament-content h2 {
+  width: 100%;
+  /* font-family: garamond; */
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: right;
+  text-transform: uppercase;
+  color: black;
+}
+.crypto__testament-content p {
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+
+  margin-bottom: 2rem;
+}
+.crypto__testament-logo img {
+  width: 900px;
+}
+/* ---------------------------------------------------------------- */
+@media screen and (max-width: 900px) {
+  .crypto__testament-image {
+    /* background-color: blue; */
+    width: 100%;
+  }
+}

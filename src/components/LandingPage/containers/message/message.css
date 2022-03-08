@@ -1,0 +1,57 @@
+.crypto__message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: white;
+}
+.crypto__message-content {
+  /* background-color: aqua; */
+  width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.crypto__message-content h4 {
+  /* background-color: blue; */
+  color: black;
+  font-family: var(--font-family);
+  margin: 20px 0px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+  text-transform: uppercase;
+  justify-content: center;
+  align-items: center;
+}
+
+.crypto__message-content p {
+  /* background-color: gold; */
+  color: black;
+  font-family: garamond;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  margin: 10px 0px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1300px) {
+  .crypto__message {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .crypto__message-content {
+    /* background-color: aqua; */
+    width: 80%;
+  }
+
+  .crypto__message-content p {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}

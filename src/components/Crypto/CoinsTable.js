@@ -21,6 +21,7 @@ import {
 } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import { Pagination } from "@material-ui/lab";
+import { typography } from "@mui/system";
 
 export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -42,8 +43,10 @@ const CoinsTable = () => {
   const handleSearch = () => {
     return coins.filter(
       (coin) =>
-        coin.name.toLowerCase().includes(search) ||
-        coin.symbol.toLowerCase().includes(search)
+        coin.name.toLowerCase().includes(search.toLowerCase()) ||
+        coin.symbol.toLowerCase().includes(search.toLowerCase()) ||
+        coin.name.toUpperCase().includes(search.toUpperCase()) ||
+        coin.symbol.toUpperCase().includes(search.toUpperCase())
     );
   };
 
@@ -143,14 +146,19 @@ const CoinsTable = () => {
         // borderRadius: 40,
       },
     },
+    noMatch: {
+      width: "100%",
+      fontStyle: "italic",
+      fontFamily: "Antonio",
+      color: "#777",
+      margin: "30px 0px 30px 0px",
+    },
   }));
 
   const classes = useStyles();
 
   return (
-    <ThemeProvider
-    // theme={darkTheme}
-    >
+    <ThemeProvider>
       <Container className={classes.TableContainer}>
         {/* Container Title */}
         <Typography className={classes.contTitle} variant="h4">
@@ -205,7 +213,7 @@ const CoinsTable = () => {
                     <TableCell
                       className={classes.tableHead}
                       key={head}
-                      align={head === "Coin" ? "" : "right"}
+                      align={head === "Coin" ? "left" : "right"}
                     >
                       {head}
                     </TableCell>
@@ -336,6 +344,13 @@ const CoinsTable = () => {
               </TableBody>
             </Table>
           )}
+          {handleSearch().length === 0 ? (
+            <Typography className={classes.noMatch}>
+              No coins match your search!
+            </Typography>
+          ) : (
+            ""
+          )}
         </TableContainer>
 
         <Pagination
@@ -346,10 +361,10 @@ const CoinsTable = () => {
             justifyContent: "center",
           }}
           classes={{ ul: classes.pagination }}
-          count={(handleSearch()?.length / 10).toFixed(0)}
+          count={parseInt((handleSearch()?.length / 10).toFixed(0))}
           onChange={(_, value) => {
             setPage(value);
-            window.scroll(0, 500);
+            window.scroll({ top: 800, behavior: "smooth" });
           }}
         ></Pagination>
       </Container>
