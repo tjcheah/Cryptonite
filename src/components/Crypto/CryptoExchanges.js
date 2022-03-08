@@ -31,10 +31,6 @@ const CryptoExchanges = () => {
   }, []);
   const { symbol, loading } = CryptoState();
   const useStyles = makeStyles((theme) => ({
-    themeContainer: {
-      margin: 0,
-      padding: 0,
-    },
     container: {
       // backgroundColor: "red",
       display: "flex",
@@ -147,7 +143,7 @@ const CryptoExchanges = () => {
   const classes = useStyles();
 
   return (
-    <ThemeProvider className={classes.themeContainer}>
+    <ThemeProvider>
       <Container className={classes.container}>
         <Typography className={classes.title} variant="h3">
           Top 5 Exchanges for Cryptocurrencies
@@ -159,15 +155,17 @@ const CryptoExchanges = () => {
             <Table>
               {/* Table Head */}
               <TableHead>
-                {["Name", "Year Established", "URL"].map((head) => (
-                  <TableCell
-                    className={classes.tableHead}
-                    key={head}
-                    align={head === "Name" ? "" : "right"}
-                  >
-                    {head}
-                  </TableCell>
-                ))}
+                <TableRow>
+                  {["Name", "Year Established", "URL"].map((head) => (
+                    <TableCell
+                      className={classes.tableHead}
+                      key={head}
+                      align={head === "Name" ? "left" : "right"}
+                    >
+                      {head}
+                    </TableCell>
+                  ))}
+                </TableRow>
               </TableHead>
 
               {/* Table Body */}

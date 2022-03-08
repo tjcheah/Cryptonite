@@ -398,6 +398,7 @@ const GbpUsd = ({ coin }) => {
           window.location.href = `/forex?forex=${forexSymbol}`;
         }}
         className={classes.forexItem}
+        key={key}
       >
         {displayNames[key]}
       </div>

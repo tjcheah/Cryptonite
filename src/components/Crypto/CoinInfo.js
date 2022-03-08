@@ -39,6 +39,7 @@ const CoinInfo = ({ coin }) => {
     },
   });
 
+  //revert Epoch to timestamp
   function EpochToDate(epoch) {
     if (epoch < 10000000000) epoch *= 1000; // convert to milliseconds (Epoch is usually expressed in seconds, but Javascript uses Milliseconds)
     var epoch = epoch + new Date().getTimezoneOffset() * -1;
@@ -91,6 +92,7 @@ const CoinInfo = ({ coin }) => {
   const [price, setPrice] = useState([]);
   const [tick, setTick] = useState([]);
 
+  //chart data
   var lineChart = {
     labels: tick,
     datasets: [
@@ -161,6 +163,7 @@ const CoinInfo = ({ coin }) => {
   useEffect(() => {
     var ws = new WebSocket(api_call);
 
+    //request for BTC/USD tick history and tick stream
     ws.onopen = (evt) => {
       ws.send(
         JSON.stringify({
@@ -175,6 +178,7 @@ const CoinInfo = ({ coin }) => {
       ws.send(JSON.stringify({ ticks: "cryBTCUSD" }));
     };
 
+    //set tick data to tick and price states
     ws.onmessage = function (evt) {
       var data = JSON.parse(evt.data);
       if (data.history != null) {
@@ -202,10 +206,11 @@ const CoinInfo = ({ coin }) => {
         }
       }
     };
-
+    //close connection
     return () => ws.close();
   }, []);
 
+  //return tick stream graph
   return (
     <ThemeProvider theme={darkTheme}>
       <div className={classes.container}>
