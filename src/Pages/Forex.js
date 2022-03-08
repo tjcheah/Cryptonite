@@ -78,7 +78,7 @@ const GbpUsd = ({ coin }) => {
     forexList: {
       height: 650,
       width: "10%",
-      minWidth: 100,
+      minWidth: 80,
       overflowY: "scroll",
       [theme.breakpoints.down("md")]: {
         height: 550,
@@ -200,14 +200,14 @@ const GbpUsd = ({ coin }) => {
     var time = hours + ":" + minutes + ":" + seconds;
     return time;
   }
+
+  // current date to be displayed at tooltip
   var today = new Date();
   var year = today.getFullYear();
   var month = today.getMonth();
   var date = today.getDate();
   var day = today.getDay();
-
   const dayOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
   if (date < 10) {
     date = "0" + date;
   }
@@ -225,17 +225,17 @@ const GbpUsd = ({ coin }) => {
     "Nov",
     "Dec",
   ];
-
   var formatDate =
     dayOfWeek[day] + " " + date + " " + monthOfYear[month] + " " + year;
 
+  // tick stream data status
   const [price, setPrice] = useState([]);
   const [tick, setTick] = useState([]);
   const [ask, setAsk] = useState([]);
   const [bid, setBid] = useState([]);
 
-  // single forex
-  // const [forex, setForex] = useState("cryBTCUSD");
+  // Error message when market closed on weekends, or when Deriv API not working
+  const [marketStatus, setMarketStatus] = useState();
 
   var lineChart = {
     labels: tick,
@@ -249,6 +249,7 @@ const GbpUsd = ({ coin }) => {
     ],
   };
 
+  // chart display configuration
   var chartOptions = {
     responsive: true,
     showLine: true,
@@ -304,8 +305,9 @@ const GbpUsd = ({ coin }) => {
       },
     },
   };
-  var api_call = "wss://ws.binaryws.com/websockets/v3?app_id=1089";
 
+  // receive data via websocket
+  var api_call = "wss://ws.binaryws.com/websockets/v3?app_id=1089";
   useEffect(() => {
     var ws = new WebSocket(api_call);
     ws.onopen = (evt) => {
@@ -354,14 +356,54 @@ const GbpUsd = ({ coin }) => {
           setAsk((currentAsk) => [...currentAsk, tickInfo.ask]);
           setBid((currentBid) => [...currentBid, tickInfo.bid]);
         }
-      } else if (data.error != null) {
-        console.log(data.error);
+      }
+      // when market close
+      if (data.error != null) {
+        setMarketStatus(() => {
+          return (
+            <Typography
+              style={{
+                color: "red",
+                fontStyle: "italic",
+                marginLeft: "auto",
+                fontWeight: 550,
+                lineHeight: 1.4,
+                padding: 5,
+              }}
+            >
+              Important notice! Market is closed at the moment. Data displayed
+              is the last active market data before closing.
+            </Typography>
+          );
+        });
       }
 
+      // when market open but Deriv API not responding
+      if (data.error === null && data.tick === null) {
+        setMarketStatus(() => {
+          return (
+            <Typography
+              style={{
+                color: "#FF5F1F",
+                fontStyle: "italic",
+                marginLeft: "auto",
+                fontWeight: 550,
+                lineHeight: 1.4,
+                padding: 5,
+              }}
+            >
+              Slow data update due to server maintenance. Please come back in a
+              while.
+            </Typography>
+          );
+        });
+      }
+
+      // get market for scrollbar
       var active_symbol = data.active_symbols;
       if (active_symbol != null) {
         for (let marSym of active_symbol) {
-          if (marSym.market === "forex") {
+          if (marSym.symbol_type === "forex") {
             setForexSymbols((currentSymbols) => [
               ...currentSymbols,
               marSym.symbol,
@@ -393,6 +435,7 @@ const GbpUsd = ({ coin }) => {
           window.location.href = `/forex?forex=${forexSymbol}`;
         }}
         className={classes.forexItem}
+        key={key}
       >
         {displayNames[key]}
       </div>
@@ -417,6 +460,7 @@ const GbpUsd = ({ coin }) => {
             <div className={classes.forexList}>{forexList}</div>
             <div className={classes.container}>
               <div className={classes.textContainer}>
+                {marketStatus}
                 <Typography className={classes.containerLabel} variant="h3">
                   {displayName}
                 </Typography>
