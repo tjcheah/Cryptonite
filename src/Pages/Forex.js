@@ -358,7 +358,7 @@ const GbpUsd = ({ coin }) => {
         }
       }
       // when market close
-      if (data.tick) {
+      if (data.error != null) {
         setMarketStatus(() => {
           return (
             <Typography
