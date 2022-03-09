@@ -212,9 +212,15 @@ const Coinpage = () => {
       color: "black",
       fontSize: 45,
       marginBottom: 10,
-      paddingLeft: 50,
+      textAlign: "center",
       fontFamily: "Antonio",
       fontWeight: 550,
+      [theme.breakpoints.down("md")]: {
+        fontSize: 40,
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: 30,
+      },
     },
   }));
 

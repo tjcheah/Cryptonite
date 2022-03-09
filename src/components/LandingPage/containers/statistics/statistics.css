@@ -2,116 +2,80 @@
   display: flex;
   flex-direction: row;
   background-color: #c6cec6;
-  padding: 40px;
+  padding: 50px 40px;
 }
-
 .crypto__statistics-content {
-  flex: 1;
+  /* background-color: aqua; */
+  width: 40%;
   display: flex;
+  margin-right: 100px;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
-
-  margin-right: 5rem;
 }
-
-.crypto__statistics-content h1 {
-  font-family: var(--font-family);
-  font-weight: 800;
-  font-size: 62px;
-  line-height: 75px;
-  letter-spacing: -0.04em;
-}
-
 .crypto__statistics-content p {
-  font-family: var(--font-family);
+  /* background-color: pink; */
+  width: 80%;
+  padding: 20px;
+  margin: 0px 20px;
+  font-family: garamond;
   font-weight: 400;
   font-size: 30px;
   line-height: 28px;
   color: black;
-
-  margin-top: 1.5rem;
-  padding-bottom: 40px;
 }
-
 .crypto__statistics-content__input {
+  /* background-color: chartreuse; */
+  width: 350px;
   justify-content: center;
   align-items: center;
 }
-
 .crypto__statistics-content__input button {
-  flex: 0.6;
   width: 100%;
-  min-height: 50px;
+  padding: 5px 0px;
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 20px;
+  font-size: 25px;
   line-height: 28px;
-  font-weight: bolder;
-  padding: 0 1rem;
+  text-transform: uppercase;
+  background: #174f1a;
+  border: 2px solid #174f1a;
   color: #fff;
   cursor: pointer;
   outline: none;
-
-  background: green;
-  border: 2px solid green;
-
-  border-radius: 20px;
+  border-radius: 40px;
+  margin-top: 10px;
+  box-shadow: 0px 2px 2px 1px #aaa;
 }
-
 .crypto__statistics-image {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .crypto__statistics-image img {
-  width: 100%;
-  height: 100%;
+  width: 90%;
 }
-
+/* --------------------------------------------------------------------- */
 @media screen and (max-width: 1050px) {
   .crypto__statistics {
     flex-direction: column;
   }
-
   .crypto__statistics-content {
-    margin: 0 0 3rem;
+    /* background-color: yellow; */
+    width: 100%;
+    margin-right: 0px;
+  }
+  .crypto__statistics-content p {
+    /* background-color: pink; */
+
+    font-size: 25px;
+    line-height: 25px;
   }
 }
-
-@media screen and (max-width: 650px) {
-  .crypto__statistics-content h1 {
-    font-size: 48px;
-    line-height: 60px;
-  }
-
-  .crypto__statistics-content p {
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  .crypto__statistics-content__input button {
-    font-size: 16px;
-    line-height: 24px;
-  }
-}
-
-@media screen and (max-width: 490px) {
-  .crypto__statistics-content h1 {
-    font-size: 36px;
-    line-height: 48px;
-  }
-
-  .crypto__statistics-content p {
-    font-size: 14px;
-    line-height: 24px;
-  }
-
-  .crypto__statistics-content__input input,
-  .crypto__statistics-content__input button {
-    font-size: 12px;
-    line-height: 16px;
+@media screen and (max-width: 1200px) {
+  .crypto__statistics-content {
+    /* background-color: yellow; */
+    margin-right: 0px;
   }
 }
