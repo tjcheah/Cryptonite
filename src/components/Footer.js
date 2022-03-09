@@ -195,7 +195,7 @@ const Footer = () => {
   return (
     <ThemeProvider theme={darkTheme}>
       <Container className={classes.footerContainer}>
-        <BottomNavigation className={classes.footer}>
+        <Container className={classes.footer}>
           <Container className={classes.footerTop}>
             <Container className={classes.footerTopLeft}>
               <img
@@ -272,7 +272,7 @@ const Footer = () => {
               </Typography>
             </Container>
           </Container>
-        </BottomNavigation>
+        </Container>
       </Container>
     </ThemeProvider>
   );
