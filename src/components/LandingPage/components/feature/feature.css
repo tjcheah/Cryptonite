@@ -1,5 +1,6 @@
+/* ------------------------------------------------------------------ */
+/* Feature component structure */
 .crypto__features-container__feature {
-  /* background-color: aqua; */
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -45,6 +46,7 @@
   color: white;
 }
 /* ------------------------------------------------------------------ */
+/* Responsiveness */
 @media screen and (max-width: 550px) {
   .crypto__features-container__feature-title h1 {
     font-size: 14px;

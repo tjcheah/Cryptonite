@@ -248,11 +248,11 @@ const Footer = () => {
                 </Typography>
 
                 <Typography
-                  onClick={() => navigate("/crypto")}
+                  onClick={() => navigate("/landing")}
                   className={classes.miniTitle}
                   onChange={window.scroll({ top: 0 })}
                 >
-                  Crypto News
+                  Promotional
                 </Typography>
               </Container>
             </Container>
