@@ -1,5 +1,10 @@
+//---------------------------------------------------------------------------
+//imports
 import React from "react";
 import "./feature.css";
+
+//---------------------------------------------------------------------------
+//Feature component structure
 const Feature = ({ title, text }) => (
   <div className="crypto__features-container__feature">
     <div className="crypto__features-container__feature-title">
@@ -12,4 +17,6 @@ const Feature = ({ title, text }) => (
   </div>
 );
 
+//---------------------------------------------------------------------------
+//export
 export default Feature;

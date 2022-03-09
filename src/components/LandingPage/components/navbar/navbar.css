@@ -1,5 +1,6 @@
+/* ------------------------------------------------------------------ */
+/* Navbar component structure*/
 .crypto__navbar {
-  /* background-color: blueviolet; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,20 +9,17 @@
   top: 0;
 }
 .crypto__navbar-links {
-  /* background-color: pink; */
   flex: 1;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-.crypto__navbar-links_logo {
-}
+
 .crypto__navbar-links_logo img {
   width: 350px;
   margin: 0px 30px;
 }
 .crypto__navbar-links_container {
-  /* background-color: orange; */
   display: flex;
   flex-direction: row;
 }
@@ -90,6 +88,7 @@
   display: none;
 }
 /* ------------------------------------------------------------------------------------------- */
+/* Responsiveness*/
 @media screen and (max-width: 1625px) {
   .crypto__navbar {
     /* background-color: blue; */
