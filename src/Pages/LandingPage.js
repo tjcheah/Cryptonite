@@ -16,6 +16,18 @@ import logo from "../media/Cryptonite Logo (Silver Coin).png";
 import zIndex from "@material-ui/core/styles/zIndex";
 
 const useStyles = makeStyles((theme) => ({
+  "@keyframes spin": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(2000px)",
+    },
+    "60%": {
+      opacity: 1,
+      transform: "translateX(-30px)",
+    },
+    "80%": { transform: "translateX(10px)" },
+    "100%": { transform: "translateX(0)" },
+  },
   logoCont: {
     // backgroundColor: "pink",
     position: "absolute",
@@ -23,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
     right: -100,
     top: 650,
     zIndex: 9999,
+    animation: "$spin 2s linear",
     [theme.breakpoints.down("md")]: {
       // backgroundColor: "red",
       paddingLeft: 40,
