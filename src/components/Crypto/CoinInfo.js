@@ -211,7 +211,7 @@ const CoinInfo = ({ coin }) => {
       }
 
       // when market open but Deriv API not responding
-      if (data.error === null && data.tick === null) {
+      if (!data.tick) {
         setMarketStatus(() => {
           return (
             <Typography
