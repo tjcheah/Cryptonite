@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "./navbar.css";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import logo from "../../../../media/Cryptonite Title Cropped.png";
-
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
-
+  const navigate = useNavigate();
   const Menu = () => (
     <>
       {" "}
@@ -41,7 +41,9 @@ const Navbar = () => {
         </div>
       </div>
       <div className="crypto__navbar-sign">
-        <button type="button">Conquer the market</button>
+        <button type="button" onClick={() => navigate("/")}>
+          Conquer the market
+        </button>
       </div>
       <div className="crypto__navbar-menu">
         {toggleMenu ? (
@@ -63,7 +65,9 @@ const Navbar = () => {
               <Menu />
             </div>
             <div className="crypto__navbar-menu_container-links-sign">
-              <button type="button">Conquer the market</button>
+              <button type="button" onClick={() => navigate("/")}>
+                Conquer the market
+              </button>
             </div>
           </div>
         )}
