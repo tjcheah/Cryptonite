@@ -254,7 +254,7 @@ const Footer = () => {
                 <Typography
                   onClick={() => navigate("/landing")}
                   className={classes.miniTitle}
-                  onChange={window.scroll({ top: 120 })}
+                  onChange={window.scroll({ top: 0 })}
                 >
                   Promotional
                 </Typography>
