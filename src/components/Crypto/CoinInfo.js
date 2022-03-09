@@ -111,9 +111,15 @@ const CoinInfo = ({ coin }) => {
     responsive: true,
     showLine: true,
     showtooltip: true,
-    animation: {
-      duration: "speed * 1.5",
-      easing: "linear",
+    animations: {
+      tension: { duration: "speed", easing: "linear" },
+      borderWidth: { duration: 3000, from: 1, to: 3 },
+      borderColor: {
+        type: "color",
+        duration: 3000,
+        from: "grey",
+        to: "#174f1a",
+      },
     },
     layout: { padding: 20 },
     elements: {
