@@ -4,7 +4,7 @@ import customer from "../../../../media/lex Luthor.jpg";
 import logo from "../../../../media/Cryptonite Logo (Silver Coin).png";
 const Testament = () => (
   <div className="crypto__testament section__padding" id="testament">
-    <div className="crypto__testament-image">
+    <div className="crypto__testament-image ">
       <img src={customer} alt="customer" />
       <div className="crypto__testament-content">
         {" "}

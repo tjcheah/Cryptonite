@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <div className="crypto__header" id="home">
       <div className="crypto__header-content">
-        <div className="crypto__header-image">
+        <div className="crypto__header-image ">
           <img src={logo} alt="logo" />
         </div>
 

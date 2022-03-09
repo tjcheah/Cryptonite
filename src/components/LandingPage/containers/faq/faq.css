@@ -1,3 +1,5 @@
+/* ------------------------------------------------------------------ */
+/* FAQ container structure*/
 .crypto__FAQ {
   display: flex;
   flex-direction: column;
@@ -22,7 +24,6 @@
   color: black;
 }
 .crypto__FAQ-content p {
-  /* background-color: aqua; */
   font-family: garamond;
   font-weight: 400;
   font-size: 24px;
@@ -35,6 +36,9 @@
   color: black;
   opacity: 0.2;
 }
+
+/* ------------------------------------------------------------------ */
+/* Responsiveness */
 @media screen and (max-width: 1050px) {
   .crypto__FAQ-content {
     width: 80%;
