@@ -230,7 +230,7 @@ const CoinsTable = () => {
             {/* Table Body */}
             <TableBody>
               {handleSearch()
-                .slice((page - 1) * 10, (page - 1) * 10 + 10)
+                .slice((page - 1 - 10) * 10, (page - 1) * 10 + 10)
                 .map((row) => {
                   const profit = row.price_change_percentage_24h > 0
 
