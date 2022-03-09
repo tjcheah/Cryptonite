@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
+import { Hidden, makeStyles } from "@material-ui/core";
 import logo from "../Cryptonite Logo.png";
 import logoTitle from "./Cryptonite Title Cropped.png";
 
@@ -29,11 +29,25 @@ const useStyles = makeStyles((theme) => ({
       alignItems: "center",
     },
   },
+  "@keyframes float": {
+    "0%": {
+      transform: "translatey(0px)",
+    },
+    "50%": {
+      transform: "translatey(-20px)",
+    },
+    "100%": {
+      transform: "translatey(0px)",
+    },
+  },
   logo: {
     width: 200,
     height: 200,
     zIndex: 2,
     margin: "0px 50px",
+    transform: "translatey(0px)",
+    animation: `$float 4s ${theme.transitions.easing.easeInOut}`,
+    animationIterationCount: "infinite",
     [theme.breakpoints.down("sm")]: {
       width: 150,
       height: 150,
@@ -58,7 +72,7 @@ const LogoBanner = () => {
   const classes = useStyles();
   return (
     <div className={classes.logoContainer}>
-      <img src={logo} alt="logo" className={classes.logo} />
+      <img src={logo} alt="logo" className={`${classes.logo}`} />
       <img src={logoTitle} alt="logoTitle" className={classes.logoTitle} />
     </div>
   );
