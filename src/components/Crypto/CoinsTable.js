@@ -27,6 +27,7 @@ export function numberWithCommas(x) {
 }
 
 const CoinsTable = () => {
+  const countPerPage = 10;
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const { currency, symbol, coins, loading, fetchCoins } = CryptoState();
@@ -52,6 +53,12 @@ const CoinsTable = () => {
   useEffect(() => {
     fetchCoins();
   }, [currency]);
+
+  const updatePage = (p) => {
+    setPage(p);
+    const to = countPerPage * p;
+    const from = to - countPerPage;
+  };
 
   const useStyles = makeStyles((theme) => ({
     pagination: {
@@ -222,7 +229,7 @@ const CoinsTable = () => {
             {/* Table Body */}
             <TableBody>
               {handleSearch()
-                .slice((page - 1) * 10, (page - 1) * 10 + 10)
+                .slice((page - 1 - 10) * 10, (page - 1) * 10 + 10)
                 .map((row) => {
                   const profit = row.price_change_percentage_24h > 0;
 
@@ -362,7 +369,7 @@ const CoinsTable = () => {
         count={parseInt((handleSearch()?.length / 10).toFixed(0))}
         onChange={(_, value) => {
           setPage(value);
-          window.scroll({ top: 800, behavior: "smooth" });
+          window.scroll({ top: 1100, behavior: "smooth" });
         }}
       ></Pagination>
     </Container>
