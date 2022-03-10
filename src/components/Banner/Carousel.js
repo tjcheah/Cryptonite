@@ -5,16 +5,15 @@ import { Link } from "react-router-dom";
 import { TrendingCoins } from "../../config/api";
 import { CryptoState } from "../../CryptoContext";
 import { numberWithCommas } from "../Crypto/CoinsTable";
+import { CircularProgress } from "@material-ui/core";
 import { useStyles } from "./trendStyle.js";
 
 const Carousel = () => {
   const [trending, setTrending] = useState([]);
-  const { currency, symbol } = CryptoState();
+  const { currency, symbol, loading } = CryptoState();
 
   const fetchTrendingCoins = async () => {
     const { data } = await axios.get(TrendingCoins(currency));
-
-    console.log(data);
     setTrending(data);
   };
   //retrieve trending coins and their details
@@ -76,18 +75,26 @@ const Carousel = () => {
 
   return (
     <div className={classes.carousel}>
-      <AliceCarousel
-        mouseTracking
-        infinite
-        autoPlayInterval={1000}
-        animationType="slide"
-        animationDuration={1500}
-        disableDotsControls
-        disableButtonsControls
-        responsive={responsive}
-        items={items}
-        autoPlay
-      />
+      {loading ? (
+        <CircularProgress
+          style={{ color: "#c6cec6" }}
+          size={250}
+          thickness={1}
+        />
+      ) : (
+        <AliceCarousel
+          mouseTracking
+          infinite
+          autoPlayInterval={1000}
+          animationType="slide"
+          animationDuration={1500}
+          disableDotsControls
+          disableButtonsControls
+          responsive={responsive}
+          items={items}
+          autoPlay
+        />
+      )}
     </div>
   );
 };

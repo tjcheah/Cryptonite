@@ -117,8 +117,9 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     width: 150,
     padding: "20px 20px 60px 20px",
-    [theme.breakpoints.up("md")]: {
-      // display: "none",
+    //when screen is big, hamburger disappears
+    [theme.breakpoints.up("lg")]: {
+      display: "none",
     },
   },
   burgerItem: {
