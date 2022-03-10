@@ -123,6 +123,7 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor: "blue",
     width: "75%",
     height: "auto",
+    cursor: "pointer",
     [theme.breakpoints.down("sm")]: {
       width: 260,
       height: 60,

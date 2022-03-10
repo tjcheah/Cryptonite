@@ -10,10 +10,12 @@ import { useStyles } from "./trendStyle.js";
 
 const Carousel = () => {
   const [trending, setTrending] = useState([]);
-  const { currency, symbol, loading } = CryptoState();
+  const [loading, setLoading] = useState(true);
+  const { currency, symbol } = CryptoState();
 
   const fetchTrendingCoins = async () => {
     const { data } = await axios.get(TrendingCoins(currency));
+    setLoading(false);
     setTrending(data);
   };
   //retrieve trending coins and their details
