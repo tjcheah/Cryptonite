@@ -1,3 +1,5 @@
+//---------------------------------------------------------------------------
+//imports
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -11,6 +13,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { Select, MenuItem } from "@material-ui/core";
 import defaultProfile from "./profile.jpg";
 // -------------------------------------------------------------------------------------
+//Styling and responsiveness
 const useStyles = makeStyles((theme) => ({
   container: {
     backgroundColor: "#c6cec6",
@@ -96,7 +99,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 30,
     fontSize: 15,
     color: "#7c7c7c",
-    // backgroundColor: "red",
     backgroundColor: "#f2f2f2",
     letterSpacing: 2,
     fontWeight: "bold",
@@ -126,7 +128,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 // -------------------------------------------------------------------------------------
+//Sidebar componenet structure
 export default function UserSidebar() {
+  //Variables and states
   const { currency, setcurrency } = CryptoState();
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -182,7 +186,6 @@ export default function UserSidebar() {
         <React.Fragment key={anchor}>
           <div
             style={{
-              // backgroundColor: "blue",
               display: "flex",
               justifyContent: "flex-end",
             }}
@@ -231,13 +234,12 @@ export default function UserSidebar() {
                   }}
                 >
                   {/* Profile Image */}
-                  {/* <object data={defaultProfile} type="image/jpg"> */}
+
                   <img
                     className={classes.picture}
                     src={user.photoURL || defaultProfile}
                     alt={user.displayName || user.email}
                   />
-                  {/* </object> */}
                 </Avatar>
               </div>
               {/* ------------------------------------------------------ */}
@@ -246,7 +248,6 @@ export default function UserSidebar() {
                 style={{
                   marginBottom: 10,
                   backgroundColor: "#f2f2f2",
-                  // backgroundColor: "red",
                   color: "black",
                   width: "100%",
                   height: 60,
@@ -289,7 +290,6 @@ export default function UserSidebar() {
                         <div
                           style={{
                             width: 50,
-                            // backgroundColor: "blue",
                           }}
                         >
                           <img src={coin.image} height="40" width="40" />
@@ -299,19 +299,9 @@ export default function UserSidebar() {
                         <div
                           style={{
                             width: "35%",
-                            // backgroundColor: "blue",
                           }}
                         >
-                          <span
-                            style={
-                              {
-                                // marginLeft: 20,
-                                // backgroundColor: "red",
-                              }
-                            }
-                          >
-                            {coin.name}
-                          </span>
+                          <span>{coin.name}</span>
                         </div>
 
                         {/* Coin Price */}
@@ -319,12 +309,10 @@ export default function UserSidebar() {
                           style={{
                             fontWeight: 600,
                             width: "35%",
-                            // backgroundColor: "cyan",
                           }}
                         >
                           <span
                             style={{
-                              // display: "flex",
                               gap: 10,
                             }}
                           ></span>
@@ -336,8 +324,6 @@ export default function UserSidebar() {
                         <AiFillDelete
                           style={{
                             cursor: "pointer",
-                            // display: "flex",
-                            // justifyContent: "flex-end",
                             right: 0,
                           }}
                           fontSize="20"

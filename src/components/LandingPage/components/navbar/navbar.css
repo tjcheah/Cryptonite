@@ -31,7 +31,7 @@
 .crypto__navbar-links_container p,
 .crypto__navbar-sign p,
 .crypto__navbar-menu_container p {
-  color: black;
+  color: grey;
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 24px;
@@ -39,6 +39,10 @@
   text-transform: uppercase;
   margin: 0 2rem;
   cursor: pointer;
+}
+
+.crypto__navbar-links_container p:hover {
+  color: black;
 }
 .crypto__navbar-sign button,
 .crypto__navbar-menu_container button {
@@ -56,6 +60,16 @@
   width: 250px;
   text-transform: uppercase;
 }
+
+.crypto__navbar-sign button:hover {
+  font-weight: 550;
+  background-color: #38783c;
+}
+.crypto__navbar-sign button:active {
+  font-weight: 550;
+  background-color: #509154;
+}
+
 .crypto__navbar-menu {
   margin-left: 1rem;
   display: none;
@@ -87,6 +101,7 @@
 .crypto__navbar-menu_container-links-sign {
   display: none;
 }
+
 /* ------------------------------------------------------------------------------------------- */
 /* Responsiveness*/
 @media screen and (max-width: 1625px) {
@@ -97,6 +112,10 @@
   .crypto__navbar-links_logo img {
     width: 250px;
     margin: 0px 30px;
+  }
+
+  .crypto__navbar-menu_container {
+    background-color: #f2f2f2;
   }
 }
 @media screen and (max-width: 1360px) {

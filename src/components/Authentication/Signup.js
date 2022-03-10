@@ -1,10 +1,15 @@
+//---------------------------------------------------------------------------
+//imports
 import { Box, Button, TextField } from "@material-ui/core";
 import { useState } from "react";
 import { CryptoState } from "../../CryptoContext";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 
+//---------------------------------------------------------------------------
+//Sign up component structure
 const Signup = ({ handleClose }) => {
+  //Variables and States
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -59,14 +64,12 @@ const Signup = ({ handleClose }) => {
         type="email"
         label="Enter Email"
         value={email}
-        style={{ fontFamily: "antonio" }}
         onChange={(e) => setEmail(e.target.value)}
         fullWidth
         InputLabelProps={{
           style: {
             color: "black",
             fontFamily: "antonio",
-            // backgroundColor: "beige",
             padding: "0px 20px",
           },
         }}
@@ -90,14 +93,12 @@ const Signup = ({ handleClose }) => {
         label="Enter Password"
         type="password"
         value={password}
-        style={{ fontFamily: "antonio" }}
         onChange={(e) => setPassword(e.target.value)}
         fullWidth
         InputLabelProps={{
           style: {
             color: "black",
             fontFamily: "antonio",
-            // backgroundColor: "beige",
             padding: "0px 20px",
           },
         }}
@@ -120,7 +121,6 @@ const Signup = ({ handleClose }) => {
         variant="filled"
         label="Confirm Password"
         type="password"
-        style={{ fontFamily: "antonio" }}
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
         fullWidth
@@ -128,7 +128,6 @@ const Signup = ({ handleClose }) => {
           style: {
             color: "black",
             fontFamily: "antonio",
-            // backgroundColor: "beige",
             padding: "0px 20px",
           },
         }}
@@ -166,4 +165,6 @@ const Signup = ({ handleClose }) => {
   );
 };
 
+//---------------------------------------------------------------------------
+//export
 export default Signup;

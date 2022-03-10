@@ -20,12 +20,14 @@ import logo from "../media/Cryptonite Logo (Silver Coin).png";
 const useStyles = makeStyles((theme) => ({
   logoCont: {
     position: "absolute",
+    overflowX: "hidden",
     width: "50%",
-    right: -100,
+    paddingLeft:100,
+    right: 0,
     top: 650,
-    zIndex: 9999,
+    zIndex: 2,
     [theme.breakpoints.down("md")]: {
-      paddingLeft: 40,
+      paddingLeft:180,
     },
     [theme.breakpoints.down("sm")]: {
       backgroundColor: "orange",
@@ -49,10 +51,13 @@ const LandingPage = () => {
         <Navbar />
         <Header />
       </div>
-      <div className={classes.logoCont}>
-        <img src={logo} alt="logo" />
+      <div>
+        <Testament />
+        <div className={classes.logoCont}>
+          <img src={logo} alt="logo" />
+        </div>
       </div>
-      <Testament />
+
       <Features />
       <Statistics />
       <FAQ />
