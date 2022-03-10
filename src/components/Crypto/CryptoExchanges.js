@@ -118,7 +118,6 @@ const CryptoExchanges = () => {
     row: {
       backgroundColor: "white",
       fontFamily: "antonio",
-      cursor: "pointer",
       "&:hover": {
         backgroundColor: "#f2f2f2",
         boxShadow: "0px 4px 4px 1px #f2f2f2",
@@ -128,6 +127,7 @@ const CryptoExchanges = () => {
     link: {
       color: "blue",
       textDecoration: "underline",
+      cursor: "pointer",
       "&:hover": {
         color: "#0645AD",
       },
@@ -143,107 +143,105 @@ const CryptoExchanges = () => {
   const classes = useStyles();
 
   return (
-    <ThemeProvider>
-      <Container className={classes.container}>
-        <Typography className={classes.title} variant="h3">
-          Top 5 Exchanges for Cryptocurrencies
-        </Typography>
-        <TableContainer className={classes.tableContainer}>
-          {loading ? (
-            <LinearProgress style={{ backgroundColor: "gold" }} />
-          ) : (
-            <Table>
-              {/* Table Head */}
-              <TableHead>
-                <TableRow>
-                  {["Name", "Year Established", "URL"].map((head) => (
+    <Container className={classes.container}>
+      <Typography className={classes.title} variant="h3">
+        Top 5 Exchanges for Cryptocurrencies
+      </Typography>
+      <TableContainer className={classes.tableContainer}>
+        {loading ? (
+          <LinearProgress style={{ backgroundColor: "gold" }} />
+        ) : (
+          <Table>
+            {/* Table Head */}
+            <TableHead>
+              <TableRow>
+                {["Name", "Year Established", "URL"].map((head) => (
+                  <TableCell
+                    className={classes.tableHead}
+                    key={head}
+                    align={head === "Name" ? "left" : "right"}
+                  >
+                    {head}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+
+            {/* Table Body */}
+            <TableBody>
+              {exchanges.map((row) => {
+                return (
+                  <TableRow className={classes.row} key={row.name}>
+                    {/* Coin Logo */}
                     <TableCell
-                      className={classes.tableHead}
-                      key={head}
-                      align={head === "Name" ? "left" : "right"}
+                      component="th"
+                      scope="row"
+                      style={{
+                        display: "flex",
+                        fontSize: 20,
+                        fontFamily: "Antonio",
+                      }}
                     >
-                      {head}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-
-              {/* Table Body */}
-              <TableBody>
-                {exchanges.map((row) => {
-                  return (
-                    <TableRow className={classes.row} key={row.name}>
-                      {/* Coin Logo */}
-                      <TableCell
-                        component="th"
-                        scope="row"
+                      <div
                         style={{
+                          // backgroundColor: "gray",
+                          width: "50%",
                           display: "flex",
-                          fontSize: 20,
-                          fontFamily: "Antonio",
+                          justifyContent: "center",
+                          alignItems: "center",
                         }}
                       >
-                        <div
-                          style={{
-                            // backgroundColor: "gray",
-                            width: "50%",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                          }}
-                        >
-                          <img src={row?.image} height="50" />
-                        </div>
+                        <img src={row?.image} height="50" />
+                      </div>
 
-                        {/*  Coin Name */}
+                      {/*  Coin Name */}
 
-                        <div
-                          style={{
-                            width: "50%",
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {row.name}
-                        </div>
-                      </TableCell>
-
-                      {/* Year Established Column */}
-                      <TableCell
-                        align="right"
+                      <div
                         style={{
-                          fontWeight: 500,
-                          fontFamily: "antonio",
-                          fontSize: 20,
-                          textAlign: "center",
+                          width: "50%",
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
                         }}
                       >
-                        {row.year_established}
-                      </TableCell>
-                      {/* URL Column */}
-                      <TableCell
-                        style={{
-                          paddingRight: 40,
-                          fontFamily: "antonio",
-                          fontSize: 20,
-                          textAlign: "start",
-                        }}
-                        align="right"
-                      >
-                        <a href={row.url} className={classes.link}>
-                          {row.url}
-                        </a>
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          )}
-        </TableContainer>
-      </Container>
-    </ThemeProvider>
+                        {row.name}
+                      </div>
+                    </TableCell>
+
+                    {/* Year Established Column */}
+                    <TableCell
+                      align="right"
+                      style={{
+                        fontWeight: 500,
+                        fontFamily: "antonio",
+                        fontSize: 20,
+                        textAlign: "center",
+                      }}
+                    >
+                      {row.year_established}
+                    </TableCell>
+                    {/* URL Column */}
+                    <TableCell
+                      style={{
+                        paddingRight: 40,
+                        fontFamily: "antonio",
+                        fontSize: 20,
+                        textAlign: "start",
+                      }}
+                      align="right"
+                    >
+                      <a href={row.url} className={classes.link}>
+                        {row.url}
+                      </a>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        )}
+      </TableContainer>
+    </Container>
   );
 };
 

@@ -21,6 +21,7 @@ const Coinpage = () => {
   const { currency, symbol, user, favoriteslist, setAlert } = CryptoState();
   const fetchCoin = async () => {
     const { data } = await axios.get(SingleCoin(id));
+    console.log(data);
     setCoin(data);
   };
 
@@ -212,9 +213,15 @@ const Coinpage = () => {
       color: "black",
       fontSize: 45,
       marginBottom: 10,
-      paddingLeft: 50,
+      textAlign: "center",
       fontFamily: "Antonio",
       fontWeight: 550,
+      [theme.breakpoints.down("md")]: {
+        fontSize: 40,
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: 30,
+      },
     },
   }));
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "./faq.css";
 const FAQ = () => (
-  <div className="crypto__FAQ section__padding" id="faq">
+  <div className="crypto__FAQ " id="faq">
     <div className="crypto__FAQ-content">
       <h1>Frequently Asked Questions</h1>
       <p>

@@ -1,76 +1,50 @@
+/* ------------------------------------------------------------------ */
+/* FAQ container structure*/
 .crypto__FAQ {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 100px;
-  background: linear-gradient(to bottom, #f2f2f2 65%, white 35%);
+  padding-top: 60px;
+  background: linear-gradient(to bottom, #f2f2f2 73%, white 30%);
 }
-
 .crypto__FAQ-content {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  margin-right: 5rem;
 }
-
 .crypto__FAQ-content h1 {
   font-family: var(--font-family);
   font-weight: 800;
-  font-size: 62px;
-  line-height: 75px;
-  letter-spacing: -0.04em;
+  font-size: 40px;
+  line-height: 50px;
+  letter-spacing: 5px;
+  text-align: center;
   color: black;
 }
-
 .crypto__FAQ-content p {
-  font-family: var(--font-family);
+  font-family: garamond;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 28px;
   color: black;
-
-  margin-top: 1.5rem;
+  margin-top: 10px;
 }
-
 .crypto__FAQ-content-answer {
   font-size: 200px;
+  color: black;
   opacity: 0.2;
 }
 
+/* ------------------------------------------------------------------ */
+/* Responsiveness */
 @media screen and (max-width: 1050px) {
-  .crypto__FAQ {
-    flex-direction: column;
-  }
-
   .crypto__FAQ-content {
-    margin: 0 0 3rem;
+    width: 80%;
   }
-}
-
-@media screen and (max-width: 650px) {
-  .crypto__FAQ-content h1 {
-    font-size: 48px;
-    line-height: 60px;
-  }
-
   .crypto__FAQ-content p {
-    font-size: 16px;
-    line-height: 24px;
-  }
-}
-
-@media screen and (max-width: 490px) {
-  .crypto__FAQ-content h1 {
-    font-size: 36px;
-    line-height: 48px;
-  }
-
-  .crypto__FAQ-content p {
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 20px;
+    line-height: 20px;
   }
 }

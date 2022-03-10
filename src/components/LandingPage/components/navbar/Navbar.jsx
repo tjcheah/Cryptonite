@@ -1,10 +1,19 @@
+//---------------------------------------------------------------------------
+//imports
 import React, { useState } from "react";
 import "./navbar.css";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import logo from "../../../../media/Cryptonite Title Cropped.png";
-const Navbar = () => {
-  const [toggleMenu, setToggleMenu] = useState(false);
+import { useNavigate } from "react-router-dom";
 
+//---------------------------------------------------------------------------
+//navbar structure
+const Navbar = () => {
+  //variables
+  const [toggleMenu, setToggleMenu] = useState(false);
+  const navigate = useNavigate();
+
+  //navbar listing
   const Menu = () => (
     <>
       {" "}
@@ -40,7 +49,9 @@ const Navbar = () => {
         </div>
       </div>
       <div className="crypto__navbar-sign">
-        <button type="button">Conquer the market</button>
+        <button type="button" onClick={() => navigate("/")}>
+          Conquer the market
+        </button>
       </div>
       <div className="crypto__navbar-menu">
         {toggleMenu ? (
@@ -62,7 +73,9 @@ const Navbar = () => {
               <Menu />
             </div>
             <div className="crypto__navbar-menu_container-links-sign">
-              <button type="button">Conquer the market</button>
+              <button type="button" onClick={() => navigate("/")}>
+                Conquer the market
+              </button>
             </div>
           </div>
         )}
@@ -71,4 +84,6 @@ const Navbar = () => {
   );
 };
 
+//---------------------------------------------------------------------------
+//export
 export default Navbar;
