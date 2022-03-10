@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     width: "50%",
     right: -100,
     top: 650,
-    zIndex: 9999,
+    zIndex: 2,
     [theme.breakpoints.down("md")]: {
       paddingLeft: 40,
     },
@@ -49,10 +49,13 @@ const LandingPage = () => {
         <Navbar />
         <Header />
       </div>
-      <div className={classes.logoCont}>
-        <img src={logo} alt="logo" />
+      <div>
+        <Testament />
+        <div className={classes.logoCont}>
+          <img src={logo} alt="logo" />
+        </div>
       </div>
-      <Testament />
+
       <Features />
       <Statistics />
       <FAQ />

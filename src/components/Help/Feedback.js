@@ -82,7 +82,17 @@ const useStyles = makeStyles((theme) => ({
       width: "70%",
     },
   },
-  thumbs: {
+  thumbsUp: {
+    margin: "20px 50px 20px 50px",
+    [theme.breakpoints.up("xs")]: {
+      margin: "0px 20px",
+      width: "70%",
+    },
+    "&:hover": {
+      color: "#66ff00",
+    },
+  },
+  thumbsDown: {
     margin: "20px 50px 20px 50px",
     [theme.breakpoints.up("xs")]: {
       margin: "0px 20px",
@@ -240,9 +250,10 @@ export default function Feedback() {
                 fontSize: 45,
                 justifyContent: "center",
                 alignItems: "center",
+                cursor: "pointer",
               }}
               onClick={dynamicLike}
-              className={classes.thumbs}
+              className={classes.thumbsUp}
               value={recommend}
             />
             <ThumbDownOffAltIcon
@@ -251,14 +262,15 @@ export default function Feedback() {
                 fontSize: 45,
                 justifyContent: "center",
                 alignItems: "center",
+                cursor: "pointer",
               }}
               onClick={dynamicDisLike}
-              className={classes.thumbs}
+              className={classes.thumbsDown}
               value={recommend}
             />
           </div>
           <Typography className={classes.feedbackText} variant="subtitle1">
-            Private Feedback:
+            Custom Feedback:
           </Typography>
           <textarea
             type="text"
