@@ -88,9 +88,6 @@ const useStyles = makeStyles((theme) => ({
       margin: "0px 20px",
       width: "70%",
     },
-    "&:hover": {
-      color: "#66ff00",
-    },
   },
   thumbsDown: {
     margin: "20px 50px 20px 50px",
@@ -216,8 +213,20 @@ export default function Feedback() {
             onChange={(_, value) => {
               setRating1(value);
             }}
-            icon={<img src={stone} className={classes.emeraldStone} />}
-            emptyIcon={<img src={stone} className={classes.greyStone} />}
+            icon={
+              <img
+                src={stone}
+                alt={"green-crystal"}
+                className={classes.emeraldStone}
+              />
+            }
+            emptyIcon={
+              <img
+                src={stone}
+                alt={"grey-crystal"}
+                className={classes.greyStone}
+              />
+            }
             className={classes.rating}
           />
 
@@ -235,8 +244,12 @@ export default function Feedback() {
             onChange={(_, value) => {
               setRating2(value);
             }}
-            icon={<img src={coin} className={classes.goldCoin} />}
-            emptyIcon={<img src={coin} className={classes.greyCoin} />}
+            icon={
+              <img src={coin} alt={"gold-coin"} className={classes.goldCoin} />
+            }
+            emptyIcon={
+              <img src={coin} alt={"grey-coin"} className={classes.greyCoin} />
+            }
             className={classes.rating}
           />
 

@@ -1,8 +1,12 @@
+//---------------------------------------------------------------------------
+//imports
 import React from "react";
 import { makeStyles } from "@material-ui/core";
 import logo from "../Cryptonite Logo.png";
 import logoTitle from "./Cryptonite Title Cropped.png";
 
+//---------------------------------------------------------------------------
+//Styling and responsiveness
 const useStyles = makeStyles((theme) => ({
   logoContainer: {
     backgroundColor: "#f2f2f2",
@@ -15,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 0,
     width: "100%",
     height: 120,
-    // boxShadow: "0px -2px 2px 1px #aaa",
+
     [theme.breakpoints.down("sm")]: {
       paddingTop: 20,
       height: 100,
@@ -42,11 +46,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       width: 150,
       height: 150,
-      // marginRight: 50,
     },
   },
   logoTitle: {
-    // backgroundColor: "red",
     width: 500,
     [theme.breakpoints.down("sm")]: {
       display: "none",
@@ -54,8 +56,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+//---------------------------------------------------------------------------
+//About us logo component structure
 const LogoBanner = () => {
+  //variable
   const classes = useStyles();
+
   return (
     <div className={classes.logoContainer}>
       <img src={logo} alt="logo" className={classes.logo} />
@@ -64,4 +70,6 @@ const LogoBanner = () => {
   );
 };
 
+//---------------------------------------------------------------------------
+//export
 export default LogoBanner;

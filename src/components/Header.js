@@ -35,9 +35,6 @@ import { auth } from "../firebase";
 
 const useStyles = makeStyles((theme) => ({
   navContainer: {
-    // margin: 0,
-    // padding: 0,
-    // backgroundColor: "red",
     position: "static",
     display: "flex",
     top: 0,
@@ -53,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: 10,
     paddingBottom: 10,
     backgroundColor: "#ffffff",
-    // backgroundColor: "green",
+
     marginBottom: 25,
     borderBottomLeftRadius: 35,
     borderBottomRightRadius: 35,
@@ -66,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 50,
     cursor: "pointer",
     [theme.breakpoints.down("sm")]: {
-      // backgroundColor: "red",
       float: "left",
       padding: 0,
       width: "40%",
@@ -86,7 +82,6 @@ const useStyles = makeStyles((theme) => ({
 
     "&:hover": {
       color: "#233c25",
-      // fontWeight: 1000,
     },
 
     [theme.breakpoints.down("md")]: {
@@ -96,6 +91,7 @@ const useStyles = makeStyles((theme) => ({
 
   hamburger: {
     display: "none",
+    cursor: "pointer",
     [theme.breakpoints.down("md")]: {
       display: "flex",
       width: 40,
@@ -109,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "flex-end",
     position: "absolute",
     boxShadow: "1px 1px 1px 1px #888",
-    top: 15,
+    top: 25,
     right: 5,
     borderRadius: 20,
     backgroundColor: "#f2f2f2",
@@ -118,7 +114,7 @@ const useStyles = makeStyles((theme) => ({
     width: 150,
     padding: "20px 20px 60px 20px",
     [theme.breakpoints.up("md")]: {
-      // display: "none",
+      display: "none",
     },
   },
   burgerItem: {
@@ -280,12 +276,12 @@ const Header = () => {
                   onClickAway={() => setOpenHamburger(!openHamburger)}
                 >
                   <Container className={classes.burgerFrame}>
-                    {/* <Typography>
+                    <Typography>
                       <AiFillCloseCircle
                         onClick={() => setOpenHamburger(!openHamburger)}
                         className={classes.close}
                       />
-                    </Typography> */}
+                    </Typography>
                     <Typography
                       onClick={() => {
                         navigate("/crypto");
