@@ -47,6 +47,15 @@
   margin-top: 10px;
   box-shadow: 0px 2px 2px 1px #aaa;
 }
+
+.crypto__statistics-content__input button:hover {
+  font-weight: 550;
+  background-color: #38783c;
+}
+.crypto__statistics-content__input button:active {
+  font-weight: 550;
+  background-color: #509154;
+}
 .crypto__statistics-image {
   flex: 1;
   display: flex;
