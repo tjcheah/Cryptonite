@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
       alignItems: "center",
     },
   },
+  //make coin float
   "@keyframes float": {
     "0%": {
       transform: "translatey(0px)",
