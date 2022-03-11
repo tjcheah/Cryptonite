@@ -40,7 +40,6 @@
   justify-content: center;
 }
 .crypto-newsDesc {
-  /* background-color: blue; */
   text-align: start;
   padding-top: 10px;
   display: flex;
@@ -51,6 +50,12 @@
   /* background-color: aquamarine; */
   height: auto;
   width: 50vw;
+}
+
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* -------------------------------------------------------------------- */
 .slick-prev,

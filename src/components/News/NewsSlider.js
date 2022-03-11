@@ -69,7 +69,7 @@ const NewsSlider = () => {
           <span></span>
         </CardActionArea>
       </div>
-    ));
+    ));d
   return (
     //return news slides
     <div className="sliderContainer">
