@@ -81,24 +81,13 @@ const NewsSlider = () => {
           <span></span>
         </CardActionArea>
       </div>
-    ));
+    ));d
   return (
     //return news slides
     <div className="sliderContainer">
-      {!post | (flag === false) ? (
-        <div className="loading-indicator">
-          <CircularProgress
-            className={classes.loading}
-            style={{ color: "#c6cec6", justifyContent: "center" }}
-            size={250}
-            thickness={1}
-          />
-        </div>
-      ) : (
-        <Slider className="sliderWrapper" {...sliderSettings}>
-          {renderSlides()}
-        </Slider>
-      )}
+      <Slider className="sliderWrapper" {...sliderSettings}>
+        {renderSlides()}
+      </Slider>
     </div>
   );
 };
