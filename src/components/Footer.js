@@ -215,21 +215,21 @@ const Footer = () => {
                 <Typography
                   onClick={() => navigate("/about")}
                   className={classes.miniTitle}
-                  onChange={window.scroll({ top: 0 })}
+                  onChange={window.scroll({ top: 0, behavior: "smooth" })}
                 >
                   About Us
                 </Typography>
                 <Typography
                   onClick={() => navigate("/help")}
                   className={classes.miniTitle}
-                  onChange={window.scroll({ top: 0 })}
+                  onChange={window.scroll({ top: 0, behavior: "smooth" })}
                 >
                   Contact Us
                 </Typography>
                 <Typography
                   onClick={() => navigate("/help")}
                   className={classes.miniTitle}
-                  onChange={window.scroll({ top: 0 })}
+                  onChange={window.scroll({ top: 0, behavior: "smooth" })}
                 >
                   Help
                 </Typography>
@@ -238,14 +238,14 @@ const Footer = () => {
                 <Typography
                   onClick={() => navigate("/crypto")}
                   className={classes.miniTitle}
-                  onChange={window.scroll({ top: 0 })}
+                  onChange={window.scroll({ top: 0, behavior: "smooth" })}
                 >
                   Search Cryptocurrency
                 </Typography>
                 <Typography
                   onClick={() => navigate("/")}
                   className={classes.miniTitle}
-                  onChange={window.scroll({ top: 0 })}
+                  onChange={window.scroll({ top: 0, behavior: "smooth" })}
                 >
                   Trending Markets
                 </Typography>
@@ -253,7 +253,7 @@ const Footer = () => {
                 <Typography
                   onClick={() => navigate("/landing")}
                   className={classes.miniTitle}
-                  onChange={window.scroll({ top: 0 })}
+                  onChange={window.scroll({ top: 0, behavior: "smooth" })}
                 >
                   Promotional
                 </Typography>
