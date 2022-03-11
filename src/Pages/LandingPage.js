@@ -18,6 +18,18 @@ import logo from "../media/Cryptonite Logo (Silver Coin).png";
 //---------------------------------------------------------------------------
 //Landing page structure styles
 const useStyles = makeStyles((theme) => ({
+  "@keyframes spin": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(2000px)",
+    },
+    "60%": {
+      opacity: 1,
+      transform: "translateX(-30px)",
+    },
+    "80%": { transform: "translateX(10px)" },
+    "100%": { transform: "translateX(0)" },
+  },
   logoCont: {
     position: "absolute",
     overflowX: "hidden",
@@ -25,7 +37,8 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft:100,
     right: 0,
     top: 650,
-    zIndex: 2,
+    zIndex: 9999,
+    animation: "$spin 2s linear",
     [theme.breakpoints.down("md")]: {
       paddingLeft:180,
     },

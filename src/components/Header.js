@@ -113,7 +113,8 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     width: 150,
     padding: "20px 20px 60px 20px",
-    [theme.breakpoints.up("md")]: {
+    //when screen is big, hamburger disappears
+    [theme.breakpoints.up("lg")]: {
       display: "none",
     },
   },
@@ -170,7 +171,6 @@ const Header = () => {
   const { currency, setcurrency, user } = CryptoState();
   const [openHamburger, setOpenHamburger] = useState(false);
   // ----------------------------------------------------------------------------------
-  // const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);

@@ -200,13 +200,13 @@ const CoinInfo = ({ coin }) => {
             EpochToDate(tickHist.times[i]),
           ]);
         }
-        console.log("ticks: %o", tick);
+        // console.log("ticks: %o", tick);
         setPrice(tickHist.prices);
         setflag(true);
       }
       if (data.tick != null) {
         var tickInfo = data.tick;
-        console.log(tickInfo);
+        // console.log(tickInfo);
         if (tickInfo.quote != null && tickInfo.epoch != null) {
           setTick((currentTick) => [
             ...currentTick,

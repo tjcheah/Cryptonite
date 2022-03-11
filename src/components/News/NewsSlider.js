@@ -8,21 +8,10 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Slider from "react-slick";
 import "./News.css";
-import { CircularProgress } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
-  loading: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-}));
 
 const NewsSlider = () => {
   const [post, setPost] = useState([]);
   const [error, setError] = useState([]);
-  const [flag, setFlag] = useState(false);
-  const classes = useStyles();
 
   useEffect(() => {
     // invalid url will trigger an 404 error
@@ -31,7 +20,6 @@ const NewsSlider = () => {
       .then((response) => {
         console.log(response.data.Data);
         setPost(response.data.Data.splice(0, 10));
-        setFlag(true);
       })
       .catch((error) => {
         setError(error);

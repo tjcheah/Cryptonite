@@ -9,12 +9,12 @@ import {
 } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import { FaRegCopyright } from "react-icons/fa";
+import { BottomNavigationAction } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   footerContainer: {
     // backgroundColor: "green",
     display: "flex",
-
     width: "100%",
     justifyContent: "center",
     flexWrap: "wrap",
@@ -44,9 +44,6 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0px -2px 2px 1px #aaa",
     lineHeight: 18,
     flexWrap: "wrap",
-    [theme.breakpoints.down("sm")]: {
-      // paddingBottom: 300,
-    },
   },
   footerTop: {
     // backgroundColor: "green",
@@ -126,6 +123,7 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor: "blue",
     width: "75%",
     height: "auto",
+    cursor: "pointer",
     [theme.breakpoints.down("sm")]: {
       width: 260,
       height: 60,
