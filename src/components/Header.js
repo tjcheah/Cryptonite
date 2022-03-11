@@ -113,8 +113,7 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     width: 150,
     padding: "20px 20px 60px 20px",
-    //when screen is big, hamburger disappears
-    [theme.breakpoints.up("lg")]: {
+    [theme.breakpoints.up("md")]: {
       display: "none",
     },
   },
