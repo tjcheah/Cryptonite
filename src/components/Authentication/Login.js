@@ -1,12 +1,16 @@
+//---------------------------------------------------------------------------
+//imports
 import React from "react";
 import { useState } from "react";
 import { Box, TextField, Button } from "@material-ui/core";
 import { CryptoState } from "../../CryptoContext";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
-import { Classnames } from "react-alice-carousel";
 
+//---------------------------------------------------------------------------
+//Login component structure
 const Login = ({ handleClose }) => {
+  //Variables and States
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setAlert } = CryptoState();
@@ -36,6 +40,7 @@ const Login = ({ handleClose }) => {
       return;
     }
   };
+
   return (
     <Box
       p={3}
@@ -43,8 +48,6 @@ const Login = ({ handleClose }) => {
         display: "flex",
         flexDirection: "column",
         gap: "20px",
-        // color: "black",
-        // backgroundColor: "yellow",
       }}
     >
       {/* Email text field */}
@@ -53,14 +56,12 @@ const Login = ({ handleClose }) => {
         type="email"
         label="Enter Email"
         value={email}
-        style={{ fontFamily: "antonio" }}
         onChange={(e) => setEmail(e.target.value)}
         fullWidth
         InputLabelProps={{
           style: {
             color: "black",
             fontFamily: "antonio",
-            // backgroundColor: "beige",
             padding: "0px 20px",
           },
         }}
@@ -86,14 +87,12 @@ const Login = ({ handleClose }) => {
         label="Enter Your Password"
         value={password}
         color="primary"
-        // borderRadius="30"
         onChange={(e) => setPassword(e.target.value)}
         fullWidth
         InputLabelProps={{
           style: {
             color: "black",
             fontFamily: "antonio",
-            // backgroundColor: "beige",
             padding: "0px 20px",
           },
         }}
@@ -132,4 +131,6 @@ const Login = ({ handleClose }) => {
   );
 };
 
+//---------------------------------------------------------------------------
+//export
 export default Login;
