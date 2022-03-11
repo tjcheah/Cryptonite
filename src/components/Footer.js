@@ -1,7 +1,6 @@
 import React from "react";
 import bottomLogo from "../media/Cryptonite Title 2.png";
 import {
-  BottomNavigation,
   Container,
   Typography,
   makeStyles,
@@ -10,13 +9,13 @@ import {
 } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import { FaRegCopyright } from "react-icons/fa";
+import { BottomNavigationAction } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   footerContainer: {
     // backgroundColor: "green",
     display: "flex",
-    position: "absolute",
-    bottom: 0,
+
     width: "100%",
     justifyContent: "center",
     flexWrap: "wrap",
@@ -46,9 +45,6 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0px -2px 2px 1px #aaa",
     lineHeight: 18,
     flexWrap: "wrap",
-    [theme.breakpoints.down("sm")]: {
-      // paddingBottom: 300,
-    },
   },
   footerTop: {
     // backgroundColor: "green",
@@ -68,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     width: "50%",
+    cursor: "pointer",
     // marginLeft: 50,
     [theme.breakpoints.down("sm")]: {
       width: "100%",
@@ -127,6 +124,7 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor: "blue",
     width: "75%",
     height: "auto",
+    cursor: "pointer",
     [theme.breakpoints.down("sm")]: {
       width: 260,
       height: 60,
@@ -216,14 +214,14 @@ const Footer = () => {
                 <Typography
                   onClick={() => navigate("/about")}
                   className={classes.miniTitle}
-                  onChange={window.scroll({ top: 0 })}
+                  onChange={window.scroll({ top: 0, behavior: "smooth" })}
                 >
                   About Us
                 </Typography>
                 <Typography
                   onClick={() => navigate("/help")}
                   className={classes.miniTitle}
-                  onChange={window.scroll({ top: 0 })}
+                  onChange={window.scroll({ top: 0, behavior: "smooth" })}
                 >
                   Contact Us
                 </Typography>
@@ -239,14 +237,14 @@ const Footer = () => {
                 <Typography
                   onClick={() => navigate("/crypto")}
                   className={classes.miniTitle}
-                  onChange={window.scroll({ top: 0 })}
+                  onChange={window.scroll({ top: 0, behavior: "smooth" })}
                 >
                   Search Cryptocurrency
                 </Typography>
                 <Typography
                   onClick={() => navigate("/")}
                   className={classes.miniTitle}
-                  onChange={window.scroll({ top: 0 })}
+                  onChange={window.scroll({ top: 0, behavior: "smooth" })}
                 >
                   Trending Markets
                 </Typography>
@@ -254,7 +252,7 @@ const Footer = () => {
                 <Typography
                   onClick={() => navigate("/landing")}
                   className={classes.miniTitle}
-                  onChange={window.scroll({ top: 0 })}
+                  onChange={window.scroll({ top: 0, behavior: "smooth" })}
                 >
                   Promotional
                 </Typography>
@@ -268,7 +266,7 @@ const Footer = () => {
                 Service | Privacy Policy | Ad Policy
               </Typography> */}
               <Typography className={classes.bottomTitle}>
-                <FaRegCopyright /> Cryptonite. All Rights Reserved.
+                <FaRegCopyright /> Cryptonite 2021. All Rights Reserved.
               </Typography>
             </Container>
           </Container>

@@ -21,6 +21,7 @@ const Coinpage = () => {
   const { currency, symbol, user, favoriteslist, setAlert } = CryptoState();
   const fetchCoin = async () => {
     const { data } = await axios.get(SingleCoin(id));
+    console.log(data);
     setCoin(data);
   };
 

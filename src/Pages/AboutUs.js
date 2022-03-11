@@ -6,6 +6,7 @@ import OurStory from "../components/AboutUs/OurStory";
 import BehindCryptonite from "../components/AboutUs/BehindCryptonite";
 
 const useStyles = makeStyles((theme) => ({
+  // about: { scrollBehavior: "smooth" },
   dummy: {
     height: 160,
     backgroundColor: "#c6cec6",
@@ -71,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
 const AboutUs = () => {
   const classes = useStyles();
   return (
-    <div>
+    <div className={classes.about}>
       <div className={classes.dummy}></div>
       <LogoBanner />
       <div className={classes.background}>
