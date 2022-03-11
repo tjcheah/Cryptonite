@@ -52,6 +52,12 @@
   height: auto;
   width: 50vw;
 }
+
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* -------------------------------------------------------------------- */
 .slick-prev,
 .slick-next {
