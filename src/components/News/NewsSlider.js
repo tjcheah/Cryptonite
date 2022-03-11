@@ -71,6 +71,7 @@ const NewsSlider = () => {
       </div>
     ));
   return (
+    //return news slides
     <div className="sliderContainer">
       <Slider className="sliderWrapper" {...sliderSettings}>
         {renderSlides()}
