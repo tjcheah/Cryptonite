@@ -6,7 +6,7 @@ import OurStory from "../components/AboutUs/OurStory";
 import BehindCryptonite from "../components/AboutUs/BehindCryptonite";
 
 const useStyles = makeStyles((theme) => ({
-  about: { scrollBehavior: " smooth" },
+  // about: { scrollBehavior: "smooth" },
   dummy: {
     height: 160,
     backgroundColor: "#c6cec6",

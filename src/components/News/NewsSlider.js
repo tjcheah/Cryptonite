@@ -74,12 +74,14 @@ const NewsSlider = () => {
     //return news slides
     <div className="sliderContainer">
       {!post | (flag === false) ? (
-        <CircularProgress
-          className={classes.loading}
-          style={{ color: "#c6cec6", justifyContent: "center" }}
-          size={250}
-          thickness={1}
-        />
+        <div className="loading-indicator">
+          <CircularProgress
+            className={classes.loading}
+            style={{ color: "#c6cec6", justifyContent: "center" }}
+            size={250}
+            thickness={1}
+          />
+        </div>
       ) : (
         <Slider className="sliderWrapper" {...sliderSettings}>
           {renderSlides()}
