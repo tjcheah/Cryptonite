@@ -363,9 +363,7 @@ const CoinsTable = () => {
           </Table>
         )}
         {handleSearch().length === 0 ? (
-          <Typography className={classes.noMatch}>
-            No coins match your search!
-          </Typography>
+          <Typography className={classes.noMatch}>Invalid Search </Typography>
         ) : (
           ''
         )}
