@@ -73,18 +73,9 @@ const NewsSlider = () => {
   return (
     //return news slides
     <div className="sliderContainer">
-      {!post | (flag === false) ? (
-        <CircularProgress
-          className={classes.loading}
-          style={{ color: "#c6cec6", justifyContent: "center" }}
-          size={250}
-          thickness={1}
-        />
-      ) : (
-        <Slider className="sliderWrapper" {...sliderSettings}>
-          {renderSlides()}
-        </Slider>
-      )}
+      <Slider className="sliderWrapper" {...sliderSettings}>
+        {renderSlides()}
+      </Slider>
     </div>
   );
 };
