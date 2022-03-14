@@ -1,3 +1,5 @@
+//---------------------------------------------------------------------------
+//imports
 import React from "react";
 import { makeStyles, Typography } from "@material-ui/core";
 import thisyahlen from "./picture/thisyahlen.jpg";
@@ -6,16 +8,16 @@ import tati from "./picture/tati.jpg";
 import zee from "./picture/zee.jpg";
 import haley from "./picture/haley.jpg";
 
+//---------------------------------------------------------------------------
+//Styling and responsiveness
 const useStyles = makeStyles((theme) => ({
   behindContainer: {
-    // backgroundColor: "blue",
     display: "flex",
     zIndex: 0,
   },
   behindContent: {
-    // backgroundColor: "pink",
     backgroundColor: "white",
-    // height: "auto",
+
     borderTopRightRadius: 40,
     borderBottomRightRadius: 40,
     display: "flex",
@@ -24,53 +26,33 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     width: 1450,
     padding: 40,
-    // paddingLeft: 100,
-    // zIndex: -1,
+
     boxShadow: "0px 2px 2px 1px #aaa",
-    [theme.breakpoints.down("xs")]: {
-      // backgroundColor: "blue",
-      // justifyContent: "center",
-      // alignContent: "center",
-    },
+
     [theme.breakpoints.down("sm")]: {
-      // backgroundColor: "pink",
       width: "90%",
-      // justifyContent: "center",
-      // alignContent: "center",
+
       padding: "40px 30px",
     },
-    [theme.breakpoints.down("md")]: {
-      // backgroundColor: "lightblue",
-      // paddingLeft: 30,
-    },
+    [theme.breakpoints.down("md")]: {},
   },
   anotherContent: {
-    // backgroundColor: "indigo",
     width: "18%",
-    [theme.breakpoints.down("xs")]: {
-      // backgroundColor: "blue",
-    },
-    [theme.breakpoints.down("sm")]: {
-      // backgroundColor: "green",
-    },
+    [theme.breakpoints.down("xs")]: {},
+    [theme.breakpoints.down("sm")]: {},
     [theme.breakpoints.down("md")]: {
-      // backgroundColor: "gray",
       width: "10%",
     },
   },
   innerContent: {
-    // backgroundColor: "yellow",
     width: 900,
     [theme.breakpoints.down("md")]: {
-      // backgroundColor: "red",
       width: "90%",
     },
     [theme.breakpoints.down("sm")]: {
-      // backgroundColor: "green",
       width: "90%",
     },
     [theme.breakpoints.down("xs")]: {
-      // backgroundColor: "gray",
       width: "87%",
     },
   },
@@ -83,8 +65,6 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: 1,
     width: "100%",
     [theme.breakpoints.down("xs")]: {
-      // backgroundColor: "yellow",
-      // textAlign: "center",
       fontSize: 30,
     },
   },
@@ -101,16 +81,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   firstPotrait: {
-    // backgroundColor: "yellow",
     width: "100%",
     display: "flex",
     margin: "50px 0px 25px 0px",
-    // padding: 50,
     color: "#000",
-
-    [theme.breakpoints.down("xs")]: {
-      // backgroundColor: "gray",
-    },
   },
   potrait1: {
     aspectRatio: 4 / 5,
@@ -118,7 +92,6 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
   },
   potrait2: {
-    // display: "block",
     width: "100%",
     margin: 0,
   },
@@ -174,7 +147,6 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: 2,
     textTransform: "uppercase",
     [theme.breakpoints.down("xs")]: {
-      // backgroundColor: "gray",
       fontSize: 20,
     },
   },
@@ -183,14 +155,12 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   otherMember: {
-    // backgroundColor: "red",
     color: "#5c5c5c",
     margin: 0,
     fontSize: 25,
     fontFamily: "antonio",
     textTransform: "uppercase",
     [theme.breakpoints.down("xs")]: {
-      // backgroundColor: "gray",
       fontSize: 12,
     },
   },
@@ -202,7 +172,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+//---------------------------------------------------------------------------
+//Team members component structure
 const BehindCryptonite = () => {
+  //variable
   const classes = useStyles();
 
   return (
@@ -258,4 +231,6 @@ const BehindCryptonite = () => {
   );
 };
 
+//---------------------------------------------------------------------------
+//export
 export default BehindCryptonite;

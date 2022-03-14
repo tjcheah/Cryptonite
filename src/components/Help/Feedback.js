@@ -82,7 +82,14 @@ const useStyles = makeStyles((theme) => ({
       width: "70%",
     },
   },
-  thumbs: {
+  thumbsUp: {
+    margin: "20px 50px 20px 50px",
+    [theme.breakpoints.up("xs")]: {
+      margin: "0px 20px",
+      width: "70%",
+    },
+  },
+  thumbsDown: {
     margin: "20px 50px 20px 50px",
     [theme.breakpoints.up("xs")]: {
       margin: "0px 20px",
@@ -206,8 +213,20 @@ export default function Feedback() {
             onChange={(_, value) => {
               setRating1(value);
             }}
-            icon={<img src={stone} className={classes.emeraldStone} />}
-            emptyIcon={<img src={stone} className={classes.greyStone} />}
+            icon={
+              <img
+                src={stone}
+                alt={"green-crystal"}
+                className={classes.emeraldStone}
+              />
+            }
+            emptyIcon={
+              <img
+                src={stone}
+                alt={"grey-crystal"}
+                className={classes.greyStone}
+              />
+            }
             className={classes.rating}
           />
 
@@ -225,8 +244,12 @@ export default function Feedback() {
             onChange={(_, value) => {
               setRating2(value);
             }}
-            icon={<img src={coin} className={classes.goldCoin} />}
-            emptyIcon={<img src={coin} className={classes.greyCoin} />}
+            icon={
+              <img src={coin} alt={"gold-coin"} className={classes.goldCoin} />
+            }
+            emptyIcon={
+              <img src={coin} alt={"grey-coin"} className={classes.greyCoin} />
+            }
             className={classes.rating}
           />
 
@@ -240,9 +263,10 @@ export default function Feedback() {
                 fontSize: 45,
                 justifyContent: "center",
                 alignItems: "center",
+                cursor: "pointer",
               }}
               onClick={dynamicLike}
-              className={classes.thumbs}
+              className={classes.thumbsUp}
               value={recommend}
             />
             <ThumbDownOffAltIcon
@@ -251,14 +275,15 @@ export default function Feedback() {
                 fontSize: 45,
                 justifyContent: "center",
                 alignItems: "center",
+                cursor: "pointer",
               }}
               onClick={dynamicDisLike}
-              className={classes.thumbs}
+              className={classes.thumbsDown}
               value={recommend}
             />
           </div>
           <Typography className={classes.feedbackText} variant="subtitle1">
-            Private Feedback:
+            Custom Feedback:
           </Typography>
           <textarea
             type="text"

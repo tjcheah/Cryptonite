@@ -1,3 +1,5 @@
+//---------------------------------------------------------------------------
+//imports
 import React from "react";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -6,7 +8,6 @@ import Login from "./Login";
 import Signup from "../Authentication/Signup";
 import GoogleButton from "react-google-button";
 import loginStone from "../../media/Gray Stone.png";
-
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Button,
@@ -20,8 +21,9 @@ import {
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../firebase";
 import { CryptoState } from "../../CryptoContext";
-// import { endAt } from "firebase/firestore";
 
+//---------------------------------------------------------------------------
+//Styling and responsiveness
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
@@ -31,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     width: 400,
     fontFamily: "antonio",
-    // backgroundColor: theme.palette.background.paper,
     backgroundColor: "#f2f2f2",
     color: "black",
     borderRadius: 10,
@@ -49,29 +50,23 @@ const useStyles = makeStyles((theme) => ({
   },
   // -------------------------------------------------------------------------------------
   loginBody: {
-    // backgroundColor: "yellow",
     marginRight: 20,
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "flex-end",
     [theme.breakpoints.down("sm")]: {
-      // backgroundColor: "red",
       marginRight: 0,
     },
   },
   loginBtn: {
-    // marginLeft: "50%",
     width: 220,
-    // float: "right",
     backgroundColor: "#233c25",
-    // backgroundColor: "blue",
     borderRadius: 50,
 
     "&:hover": {
       color: "blue",
       backgroundColor: "#f2f2f2",
       boxShadow: "0px 2px 2px 1px #aaa",
-      // fontWeight: 1000,
     },
     [theme.breakpoints.down("md")]: {
       display: "none",
@@ -79,17 +74,14 @@ const useStyles = makeStyles((theme) => ({
   },
   smLoginBtn: {
     display: "none",
-    // backgroundColor: "gold",
     backgroundColor: "#233c25",
     "&:hover": {
       color: "blue",
       backgroundColor: "#f2f2f2",
       boxShadow: "0px 2px 2px 1px #aaa",
-      // fontWeight: 1000,
     },
 
     [theme.breakpoints.down("md")]: {
-      // backgroundColor: "blue",
       width: 150,
       height: 45,
       borderRadius: 50,
@@ -98,7 +90,6 @@ const useStyles = makeStyles((theme) => ({
       alignItems: "center",
     },
     [theme.breakpoints.down("xs")]: {
-      // backgroundColor: "red",
       width: 130,
       height: 45,
       borderRadius: 50,
@@ -112,7 +103,6 @@ const useStyles = makeStyles((theme) => ({
     height: 35,
     paddingLeft: 30,
     marginRight: 5,
-    // backgroundColor: "transparent",
     backgroundColor: "#174f1a",
     borderRadius: 50,
     letterSpacing: 2,
@@ -127,12 +117,10 @@ const useStyles = makeStyles((theme) => ({
       color: "#7c7c7c",
       backgroundColor: "#f2f2f2",
       boxShadow: "0px 2px 2px 1px #aaa",
-      // fontWeight: 1000,
     },
   },
   // -------------------------------------------------------------------------------------
   currencyBody: {
-    // backgroundColor: "red",
     [theme.breakpoints.down("xs")]: {
       marginLeft: 20,
     },
@@ -157,7 +145,6 @@ const useStyles = makeStyles((theme) => ({
         color: "gray",
       },
       [theme.breakpoints.down("sm")]: {
-        // backgroundColor: "blue",
         display: "flex",
       },
     },
@@ -200,6 +187,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 // -------------------------------------------------------------------------------------
 export default function AuthModal() {
+  //variables and states
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const { currency, setcurrency } = CryptoState();
@@ -281,11 +269,7 @@ export default function AuthModal() {
           </Select>
         </Button>
 
-        <Button
-          // className={classes.login}
-          // variant="contained"
-          onClick={handleOpen}
-        >
+        <Button onClick={handleOpen}>
           <img className={classes.loginStone} src={loginStone} alt="login" />
         </Button>
       </div>
@@ -359,7 +343,6 @@ export default function AuthModal() {
                   fontWeight: 600,
                   textTransform: "uppercase",
                   boxShadow: "0px 4px 4px 2px #aaa",
-                  // borderRadius: 30,
                 }}
                 onClick={signInWithGoogle}
               ></GoogleButton>

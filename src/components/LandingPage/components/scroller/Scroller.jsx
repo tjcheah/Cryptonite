@@ -41,7 +41,7 @@ const Scroller = () => {
       <FaArrowCircleUp
         className="scrollToTop heartbeat"
         onClick={scrolling}
-        style={{ height: 50, display: isVisible ? "flex" : "none" }}
+        style={{ height: 60, display: isVisible ? "flex" : "none" }}
       />
     </div>
   );
