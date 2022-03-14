@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: 100,
     right: 0,
     top: 650,
-    zIndex: 2,
+    zIndex: 4,
     animation: "$spin 2s linear",
     [theme.breakpoints.down("md")]: {
       paddingLeft: 180,
