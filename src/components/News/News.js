@@ -3,10 +3,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { CardActionArea } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import Slider from "react-slick";
 import "./News.css";
 import { Container, makeStyles, Typography } from "@material-ui/core";
 import NewsSlider from "./NewsSlider";
@@ -26,6 +22,7 @@ export default function News() {
                 width: "100%",
                 fontWeight: "bold",
                 marginBottom: 10,
+                paddingBottom: 10,
                 color: "black",
                 fontFamily: "Antonio",
                 textTransform: "uppercase",
@@ -46,7 +43,6 @@ export default function News() {
                 fontSize: 18,
                 textAlign: "justify",
                 lineHeight: 1,
-                paddingTop: 5,
                 paddingBottom: 20,
                 justifyContent: "center",
               }}

@@ -6,7 +6,6 @@ import { useState } from 'react'
 import axios from 'axios'
 import {
   createTheme,
-  ThemeProvider,
   Container,
   Typography,
   TextField,
@@ -44,22 +43,24 @@ const CoinsTable = () => {
   const handleSearch = () => {
     return coins.filter(
       (coin) =>
-        coin.name.toLowerCase().includes(search.toLowerCase()) ||
-        coin.symbol.toLowerCase().includes(search.toLowerCase()) ||
-        coin.name.toUpperCase().includes(search.toUpperCase()) ||
-        coin.symbol.toUpperCase().includes(search.toUpperCase()),
+        coin.name
+          .toLowerCase()
+          .includes(search.toLowerCase().replace(/\s+/g, '')) ||
+        coin.symbol
+          .toLowerCase()
+          .includes(search.toLowerCase().replace(/\s+/g, '')) ||
+        coin.name
+          .toUpperCase()
+          .includes(search.toUpperCase().replace(/\s+/g, '')) ||
+        coin.symbol
+          .toUpperCase()
+          .includes(search.toUpperCase().replace(/\s+/g, '')),
     )
   }
 
   useEffect(() => {
     fetchCoins()
   }, [currency])
-
-  const updatePage = (p) => {
-    setPage(p)
-    const to = countPerPage * p
-    const from = to - countPerPage
-  }
 
   const useStyles = makeStyles((theme) => ({
     pagination: {
@@ -164,6 +165,16 @@ const CoinsTable = () => {
 
   const classes = useStyles()
 
+  const onInputChange = (e) => {
+    const { value } = e.target
+    console.log('Input value: ', value)
+
+    const re = /^[A-Za-z]+$/
+    if (value === '' || re.test(value)) {
+      setSearch(value)
+    }
+  }
+
   return (
     <Container className={classes.TableContainer}>
       {/* Container Title */}
@@ -197,7 +208,8 @@ const CoinsTable = () => {
             fontFamily: 'antonio',
           },
         }}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={onInputChange}
+        value={search}
       />
 
       {/* Table Container */}
@@ -351,9 +363,7 @@ const CoinsTable = () => {
           </Table>
         )}
         {handleSearch().length === 0 ? (
-          <Typography className={classes.noMatch}>
-            No coins match your search!
-          </Typography>
+          <Typography className={classes.noMatch}>Invalid Search </Typography>
         ) : (
           ''
         )}

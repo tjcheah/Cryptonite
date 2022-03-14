@@ -18,16 +18,29 @@ import logo from "../media/Cryptonite Logo (Silver Coin).png";
 //---------------------------------------------------------------------------
 //Landing page structure styles
 const useStyles = makeStyles((theme) => ({
+  "@keyframes spin": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(2000px)",
+    },
+    "60%": {
+      opacity: 1,
+      transform: "translateX(-30px)",
+    },
+    "80%": { transform: "translateX(10px)" },
+    "100%": { transform: "translateX(0)" },
+  },
   logoCont: {
     position: "absolute",
     overflowX: "hidden",
     width: "50%",
-    paddingLeft:100,
+    paddingLeft: 100,
     right: 0,
     top: 650,
-    zIndex: 9999,
+    zIndex: 4,
+    animation: "$spin 2s linear",
     [theme.breakpoints.down("md")]: {
-      paddingLeft:180,
+      paddingLeft: 180,
     },
     [theme.breakpoints.down("sm")]: {
       backgroundColor: "orange",
@@ -51,10 +64,13 @@ const LandingPage = () => {
         <Navbar />
         <Header />
       </div>
-      <div className={classes.logoCont}>
-        <img src={logo} alt="logo" />
+      <div>
+        <Testament />
+        <div className={classes.logoCont}>
+          <img src={logo} alt="logo" />
+        </div>
       </div>
-      <Testament />
+
       <Features />
       <Statistics />
       <FAQ />
