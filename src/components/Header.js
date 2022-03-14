@@ -55,7 +55,9 @@ const useStyles = makeStyles((theme) => ({
     borderBottomLeftRadius: 35,
     borderBottomRightRadius: 35,
     boxShadow: "0px 2px 2px 1px #aaa",
+    [theme.breakpoints.up("xs")]: {},
   },
+
   navLogo: {
     display: "flex",
     width: 380,
@@ -67,6 +69,10 @@ const useStyles = makeStyles((theme) => ({
       padding: 0,
       width: "40%",
       height: "100%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginRight: 0,
+      width: "27%",
     },
   },
   title: {
