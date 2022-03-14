@@ -11,7 +11,29 @@ import "./News.css";
 import { Container, makeStyles, Typography } from "@material-ui/core";
 import NewsSlider from "./NewsSlider";
 
+const useStyles = makeStyles((theme) => ({
+  newsTitle: {
+    width: "100%",
+    fontWeight: "bold",
+    marginBottom: 10,
+    color: "black",
+    fontFamily: "Antonio",
+    textTransform: "uppercase",
+    fontSize: 45,
+    letterSpacing: 5,
+    lineHeight: 0.9,
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 30,
+    },
+  },
+}));
+
+// [theme.breakpoints.down("xs")]: {
+//                   fontSize: 30,
+//                 },
+
 export default function News() {
+  const classes = useStyles();
   return (
     <div className="newsContContainer">
       <div className="newsContainer">
@@ -19,21 +41,7 @@ export default function News() {
           {/* News title and foreword */}
           <div className="news-text">
             {" "}
-            <Typography
-              variant="h3"
-              style={{
-                // backgroundColor: "green",
-                width: "100%",
-                fontWeight: "bold",
-                marginBottom: 10,
-                color: "black",
-                fontFamily: "Antonio",
-                textTransform: "uppercase",
-                fontSize: 45,
-                letterSpacing: 5,
-                lineHeight: 0.9,
-              }}
-            >
+            <Typography className={classes.newsTitle} variant="h3">
               Crypto News
             </Typography>
             <Typography
@@ -49,6 +57,7 @@ export default function News() {
                 paddingTop: 5,
                 paddingBottom: 20,
                 justifyContent: "center",
+                letterSpacing: 1,
               }}
             >
               Get the latest financial news and updates on cryptocurrency
