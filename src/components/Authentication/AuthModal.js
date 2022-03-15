@@ -18,7 +18,6 @@ import {
   Select,
   MenuItem,
 } from '@material-ui/core'
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { auth } from '../../firebase'
 import { CryptoState } from '../../CryptoContext'
 
