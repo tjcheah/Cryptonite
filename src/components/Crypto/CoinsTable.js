@@ -1,9 +1,9 @@
+//---------------------------------------------------------------------------
+//imports
 import React from 'react'
-import { CoinList } from '../../config/api'
 import { CryptoState } from '../../CryptoContext'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import axios from 'axios'
 import {
   createTheme,
   Container,
@@ -20,18 +20,23 @@ import {
 } from '@material-ui/core'
 import { useNavigate } from 'react-router-dom'
 import { Pagination } from '@material-ui/lab'
-import { typography } from '@mui/system'
 
+//adding commas to seperate groups of thousands
 export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
+//---------------------------------------------------------------------------
+//Coin table componenet structure
 const CoinsTable = () => {
+  //Variables and states
   const countPerPage = 10
   const [search, setSearch] = useState('')
   const [page, setPage] = useState(1)
   const { currency, symbol, coins, loading, fetchCoins } = CryptoState()
   const history = useNavigate()
+
+  //theme for dark mode
   const darkTheme = createTheme({
     palette: {
       primary: {
@@ -40,28 +45,31 @@ const CoinsTable = () => {
       type: 'dark',
     },
   })
+
+  //searchbar validation
   const handleSearch = () => {
     return coins.filter(
       (coin) =>
-        coin.name
-          .toLowerCase()
-          .includes(search.toLowerCase().replace(/\s+/g, '')) ||
-        coin.symbol
-          .toLowerCase()
-          .includes(search.toLowerCase().replace(/\s+/g, '')) ||
-        coin.name
-          .toUpperCase()
-          .includes(search.toUpperCase().replace(/\s+/g, '')) ||
-        coin.symbol
-          .toUpperCase()
-          .includes(search.toUpperCase().replace(/\s+/g, '')),
+        coin.name.toLowerCase().includes(search.toLowerCase()) ||
+        coin.symbol.toLowerCase().includes(search.toLowerCase()) ||
+        coin.name.toUpperCase().includes(search.toUpperCase()) ||
+        coin.symbol.toUpperCase().includes(search.toUpperCase()),
     )
   }
 
+  //coin update
   useEffect(() => {
     fetchCoins()
   }, [currency])
 
+  //page update
+  const updatePage = (p) => {
+    setPage(p)
+    const to = countPerPage * p
+    const from = to - countPerPage
+  }
+
+  //Styling and responsiveness
   const useStyles = makeStyles((theme) => ({
     pagination: {
       '& .MuiPaginationItem-root': {
@@ -69,39 +77,34 @@ const CoinsTable = () => {
         fontFamily: 'antonio',
         marginBottom: 10,
       },
+      [theme.breakpoints.up('xs')]: {
+        flexWrap: 'nowrap',
+      },
     },
     TableContainer: {
-      // margin: 0,
       backgroundColor: '#f2f2f2',
       borderRadius: 40,
-      // boxShadow: "0px 4px 4px 2px #aaa",
-      // width: "80vw",
       textAlign: 'center',
       paddingTop: 40,
 
       [theme.breakpoints.up('xs')]: {
-        // backgroundColor: "brown",
         height: '75%',
         width: '86%',
       },
       [theme.breakpoints.up('sm')]: {
-        // backgroundColor: "pink",
         height: '75%',
         width: '86%',
       },
       [theme.breakpoints.up('md')]: {
-        // backgroundColor: "green",
         height: '65%',
         width: '78%',
       },
       [theme.breakpoints.up('lg')]: {
-        // backgroundColor: "cyan",
         height: '90%',
         width: 999,
       },
     },
     contTitle: {
-      // backgroundColor: "gold",
       margin: ' 0px 0px 20px 0px',
       fontFamily: 'antonio',
       fontWeight: 'bold',
@@ -111,12 +114,12 @@ const CoinsTable = () => {
       fontSize: 45,
       letterSpacing: 5,
       lineHeight: 1,
+      [theme.breakpoints.up('xs')]: {
+        fontSize: '30px',
+      },
     },
     contSearch: {
-      // backgroundColor: "#a9aaa9",
       backgroundColor: 'black',
-      // color: "red",
-      // borderRadius: 40,
       boxShadow: '0px 2px 2px 1px #aaa',
       marginBottom: 20,
       width: '100%',
@@ -127,22 +130,8 @@ const CoinsTable = () => {
       color: 'black',
       fontSize: 24,
       fontWeight: '700',
-      fontFamily: 'antonio',
       textTransform: 'uppercase',
       padding: ' 20px 40px',
-
-      [theme.breakpoints.up('xs')]: {
-        // backgroundColor: "brown",
-      },
-      [theme.breakpoints.up('sm')]: {
-        // backgroundColor: "pink",
-      },
-      [theme.breakpoints.up('md')]: {
-        // backgroundColor: "green",
-      },
-      [theme.breakpoints.up('lg')]: {
-        // backgroundColor: "cyan",
-      },
     },
     row: {
       backgroundColor: 'white',
@@ -151,7 +140,6 @@ const CoinsTable = () => {
       '&:hover': {
         backgroundColor: '#f2f2f2',
         boxShadow: '0px 4px 4px 1px #f2f2f2',
-        // borderRadius: 40,
       },
     },
     noMatch: {
@@ -190,15 +178,12 @@ const CoinsTable = () => {
           style: {
             color: 'black',
             fontFamily: 'antonio',
-            // backgroundColor: "beige",
             padding: '0px 50px',
           },
         }}
         style={{
           fontFamily: 'antonio',
           backgroundColor: '#fff',
-          // backgroundColor: "black",
-          // boxShadow: "0px 4px 4px 2px #aaa",
           borderRadius: 40,
           padding: '0px 50px',
         }}
@@ -257,35 +242,23 @@ const CoinsTable = () => {
                         component="th"
                         scope="row"
                         style={{
-                          // backgroundColor: "red",
                           display: 'flex',
                           gap: 20,
                         }}
                       >
                         <div
                           style={{
-                            // backgroundColor: "gray",
                             width: '50%',
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
                           }}
                         >
-                          <img
-                            src={row?.image}
-                            alt={row.name}
-                            height="50"
-                            style={
-                              {
-                                // backgroundColor: "green",
-                              }
-                            }
-                          />
+                          <img src={row?.image} alt={row.name} height="50" />
                         </div>
                         {/*  Coin Details */}
                         <div
                           style={{
-                            // backgroundColor: "pi`nk",
                             width: '50%',
                             display: 'flex',
                             flexDirection: 'column',
@@ -293,7 +266,6 @@ const CoinsTable = () => {
                         >
                           <span
                             style={{
-                              // backgroundColor: "purple",
                               fontFamily: 'antonio',
                               fontWeight: 400,
                               textTransform: 'uppercase',
@@ -304,7 +276,6 @@ const CoinsTable = () => {
                           </span>
                           <span
                             style={{
-                              // backgroundColor: "indigo",
                               color: '#a9aaa9',
                               fontFamily: 'antonio',
                               fontWeight: 600,
@@ -318,7 +289,6 @@ const CoinsTable = () => {
                       {/* Price Column */}
                       <TableCell
                         style={{
-                          // backgroundColor: "indigo",
                           fontFamily: 'antonio',
                           fontSize: 22,
                         }}
@@ -331,7 +301,6 @@ const CoinsTable = () => {
                       <TableCell
                         align="right"
                         style={{
-                          // backgroundColor: "gray",
                           color: profit > 0 ? 'rgb(14, 203, 129)' : 'red',
                           fontWeight: 500,
                           fontFamily: 'antonio',
@@ -344,7 +313,6 @@ const CoinsTable = () => {
                       {/* Market Capital Column */}
                       <TableCell
                         style={{
-                          // backgroundColor: "blue",
                           paddingRight: 40,
                           fontFamily: 'antonio',
                           fontSize: 22,
@@ -371,7 +339,6 @@ const CoinsTable = () => {
 
       <Pagination
         style={{
-          // backgroundColor: "red",
           width: '100%',
           display: 'flex',
           justifyContent: 'center',
@@ -387,4 +354,6 @@ const CoinsTable = () => {
   )
 }
 
+//---------------------------------------------------------------------------
+//export
 export default CoinsTable

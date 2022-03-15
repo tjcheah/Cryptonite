@@ -103,7 +103,6 @@ const GbpUsd = ({ coin }) => {
       fontFamily: 'Antonio',
       fontSize: 22,
       padding: 20,
-      // fontWeight: 550,
     },
     forexList: {
       display: 'flex',
@@ -131,13 +130,22 @@ const GbpUsd = ({ coin }) => {
       [theme.breakpoints.down('lg')]: {
         fontSize: 18,
         margin: 4,
+        display: 'flex',
+        justifyContent: 'center',
         '&:hover': {
           fontSize: 19,
+          fontWeight: 350,
+        },
+      },
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 15,
+        margin: 4,
+        '&:hover': {
+          fontSize: 15,
         },
       },
     },
     container: {
-      // backgroundColor: "yellow",
       width: '80%',
       display: 'flex',
       flexDirection: 'column',
@@ -151,12 +159,10 @@ const GbpUsd = ({ coin }) => {
       },
     },
     textContainer: {
-      // margin: "20px 20px",
       display: 'flex',
       width: '100%',
       flexDirection: 'column',
       alignItems: 'center',
-      // padding: "0px 40px",
       color: 'black',
       fontFamily: 'antonio',
       textAlign: 'center',
@@ -188,7 +194,6 @@ const GbpUsd = ({ coin }) => {
       borderRadius: 10,
       color: '#000',
       cursor: 'pointer',
-      // backgroundColor: "#9dab9d",
       textAlign: 'center',
       padding: '10px 0px',
       justifyContent: 'center',

@@ -1,14 +1,13 @@
+//---------------------------------------------------------------------------
+//imports
 import React from 'react'
 import { GetExchanges } from '../../config/api'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import {
-  createTheme,
-  ThemeProvider,
   Container,
   Typography,
-  TextField,
   TableContainer,
   LinearProgress,
   Table,
@@ -20,8 +19,13 @@ import {
 } from '@material-ui/core'
 import { CryptoState } from '../../CryptoContext'
 
+//---------------------------------------------------------------------------
+//CryptoExchange component structure
 const CryptoExchanges = () => {
+  //Variables and states
   const [exchanges, setExchanges] = useState([])
+
+  //API call
   const fetchCoin = async () => {
     const { data } = await axios.get(GetExchanges())
     setExchanges(data)
@@ -30,9 +34,10 @@ const CryptoExchanges = () => {
     fetchCoin()
   }, [])
   const { symbol, loading } = CryptoState()
+
+  //Styling and responsiveness
   const useStyles = makeStyles((theme) => ({
     container: {
-      // backgroundColor: "red",
       display: 'flex',
       width: '100%',
       flexDirection: 'column',
@@ -42,23 +47,16 @@ const CryptoExchanges = () => {
       marginBottom: 20,
       padding: 0,
       [theme.breakpoints.up('xs')]: {
-        // backgroundColor: "brown",
-        // height: "75%",
         width: '90%',
       },
       [theme.breakpoints.up('sm')]: {
-        // backgroundColor: "pink",
-        // height: "75%",
         width: '90%',
       },
       [theme.breakpoints.up('md')]: {
-        // backgroundColor: "green",
-        // height: "65%",
         width: '90%',
       },
     },
     title: {
-      // backgroundColor: "gold",
       margin: ' 20px 0px 20px 0px',
       fontFamily: 'antonio',
       fontWeight: 'bold',
@@ -69,6 +67,9 @@ const CryptoExchanges = () => {
       fontSize: 45,
       letterSpacing: 3,
       lineHeight: 1,
+      [theme.breakpoints.up('xs')]: {
+        fontSize: '30px',
+      },
     },
     pagination: {
       '& .MuiPaginationItem-root': {
@@ -80,14 +81,11 @@ const CryptoExchanges = () => {
     TableContainer: {
       display: 'flex',
       backgroundColor: '#f2f2f2',
-      // width: "100%",
-      // backgroundColor: "brown",
       borderRadius: 40,
       textAlign: 'center',
       paddingTop: 40,
     },
     tableContainer: {
-      // backgroundColor: "blue",
       margin: '15px 0px',
       borderRadius: 30,
       boxShadow: '0px 2px 2px 1px #aaa',
@@ -111,9 +109,34 @@ const CryptoExchanges = () => {
       color: 'black',
       fontSize: 24,
       fontWeight: '700',
-      fontFamily: 'antonio',
       textTransform: 'uppercase',
       padding: ' 20px 40px',
+    },
+    nameColumn: {
+      display: 'flex',
+      fontSize: 20,
+      fontFamily: 'Antonio',
+      [theme.breakpoints.up('xs')]: {
+        fontSize: '18px',
+      },
+    },
+    yearEstablishedColumn: {
+      fontWeight: 500,
+      fontFamily: 'antonio',
+      fontSize: 20,
+      textAlign: 'center',
+      [theme.breakpoints.up('xs')]: {
+        fontSize: '18px',
+      },
+    },
+    linkColumn: {
+      paddingRight: 40,
+      fontFamily: 'antonio',
+      fontSize: 20,
+      textAlign: 'start',
+      [theme.breakpoints.up('xs')]: {
+        fontSize: '18px',
+      },
     },
     row: {
       backgroundColor: 'white',
@@ -121,7 +144,6 @@ const CryptoExchanges = () => {
       '&:hover': {
         backgroundColor: '#f2f2f2',
         boxShadow: '0px 4px 4px 1px #f2f2f2',
-        // borderRadius: 40,
       },
     },
     link: {
@@ -174,24 +196,19 @@ const CryptoExchanges = () => {
                   <TableRow className={classes.row} key={row.name}>
                     {/* Coin Logo */}
                     <TableCell
+                      className={classes.nameColumn}
                       component="th"
                       scope="row"
-                      style={{
-                        display: 'flex',
-                        fontSize: 20,
-                        fontFamily: 'Antonio',
-                      }}
                     >
                       <div
                         style={{
-                          // backgroundColor: "gray",
                           width: '50%',
                           display: 'flex',
                           justifyContent: 'center',
                           alignItems: 'center',
                         }}
                       >
-                        <img src={row?.image} height="50" />
+                        <img src={row?.image} alt={row.name} height="50" />
                       </div>
 
                       {/*  Coin Name */}
@@ -211,30 +228,13 @@ const CryptoExchanges = () => {
                     {/* Year Established Column */}
                     <TableCell
                       align="right"
-                      style={{
-                        fontWeight: 500,
-                        fontFamily: 'antonio',
-                        fontSize: 20,
-                        textAlign: 'center',
-                      }}
+                      className={classes.yearEstablishedColumn}
                     >
                       {row?.year_established}
                     </TableCell>
                     {/* URL Column */}
-                    <TableCell
-                      style={{
-                        paddingRight: 40,
-                        fontFamily: 'antonio',
-                        fontSize: 20,
-                        textAlign: 'start',
-                      }}
-                      align="right"
-                    >
-                      <a
-                        href={row.url}
-                        className={classes.link}
-                        target={'_blank'}
-                      >
+                    <TableCell className={classes.linkColumn} align="right">
+                      <a href={row.url} className={classes.link}>
                         {row.url}
                       </a>
                     </TableCell>
@@ -249,4 +249,6 @@ const CryptoExchanges = () => {
   )
 }
 
+//---------------------------------------------------------------------------
+//export
 export default CryptoExchanges
