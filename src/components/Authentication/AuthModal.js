@@ -75,6 +75,7 @@ const useStyles = makeStyles((theme) => ({
   smLoginBtn: {
     display: "none",
     backgroundColor: "#233c25",
+
     "&:hover": {
       color: "blue",
       backgroundColor: "#f2f2f2",
@@ -96,6 +97,7 @@ const useStyles = makeStyles((theme) => ({
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      backgroundColor: "transparent",
     },
   },
   login: {
@@ -148,6 +150,10 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
       },
     },
+
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: 20,
+    },
   },
   menuItem: {
     fontSize: 14,
@@ -176,11 +182,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       backgroundColor: "transparent",
       cursor: "pointer",
-      height: 60,
+      height: 45,
       padding: 0,
       marginLeft: 0,
       "&:hover": {
-        height: 65,
+        height: 55,
       },
     },
   },
