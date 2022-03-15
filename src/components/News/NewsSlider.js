@@ -1,3 +1,5 @@
+//---------------------------------------------------------------------------
+//imports
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -11,6 +13,8 @@ import "./News.css";
 import { CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
+//---------------------------------------------------------------------------
+//Styling and responsiveness
 const useStyles = makeStyles((theme) => ({
   loading: {
     justifyContent: "center",
@@ -18,12 +22,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+//---------------------------------------------------------------------------
+//News Slider component structure
 const NewsSlider = () => {
+  //Variables and states
   const [post, setPost] = useState([]);
   const [error, setError] = useState([]);
   const [flag, setFlag] = useState(false);
   const classes = useStyles();
 
+  //API call
   useEffect(() => {
     // invalid url will trigger an 404 error
     axios
@@ -44,8 +52,8 @@ const NewsSlider = () => {
     sm: 576,
   };
 
+  //Slider settings
   const sliderSettings = {
-    // removes default buttons
     arrows: true,
     dots: true,
     slidesToShow: 3,
@@ -56,7 +64,7 @@ const NewsSlider = () => {
     pauseOnHover: true,
     infinite: true,
     swipeToSlide: true,
-    mobileFirst: true, //add this one
+    mobileFirst: true,
     responsive: [
       {
         breakpoint: breakpoint.sm,
@@ -70,6 +78,8 @@ const NewsSlider = () => {
       },
     ],
   };
+
+  //Styling
   const styles = {
     media: {
       height: 0,
@@ -85,6 +95,7 @@ const NewsSlider = () => {
     },
   };
 
+  //Slider structure
   const renderSlides = () =>
     post.map((posts, i) => (
       <div style={{ backgroundColor: "blue" }} key={i}>
@@ -120,4 +131,6 @@ const NewsSlider = () => {
   );
 };
 
+//---------------------------------------------------------------------------
+//export
 export default NewsSlider;
