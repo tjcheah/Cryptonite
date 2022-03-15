@@ -39,6 +39,11 @@ const NewsSlider = () => {
     return () => {};
   }, []);
 
+  const breakpoint = {
+    // Small screen / phone
+    sm: 576,
+  };
+
   const sliderSettings = {
     // removes default buttons
     arrows: true,
@@ -51,6 +56,19 @@ const NewsSlider = () => {
     pauseOnHover: true,
     infinite: true,
     swipeToSlide: true,
+    mobileFirst: true, //add this one
+    responsive: [
+      {
+        breakpoint: breakpoint.sm,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+          arrows: false,
+          autoplaySpeed: 5000,
+        },
+      },
+    ],
   };
   const styles = {
     media: {
@@ -74,7 +92,7 @@ const NewsSlider = () => {
           <Card style={styles.card}>
             <CardMedia image={posts.imageurl} style={styles.media} />
 
-            <div>
+            <div className="overlay-box">
               <div className="overlay">{posts.title}</div>
             </div>
           </Card>
@@ -90,7 +108,7 @@ const NewsSlider = () => {
           <CircularProgress
             className={classes.loading}
             style={{ color: "#c6cec6", justifyContent: "center" }}
-            size={250}
+            size={200}
             thickness={1}
           />
         </div>
