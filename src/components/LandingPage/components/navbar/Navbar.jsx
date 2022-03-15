@@ -18,22 +18,34 @@ const Navbar = () => {
     <>
       {" "}
       <p>
-        <a href="#home">Home</a>
+        <a href="javascript:document.getElementById('home').scrollIntoView(true);">
+          Home
+        </a>
       </p>
       <p>
-        <a href="#testament">Testament</a>
+        <a href="javascript:document.getElementById('testament').scrollIntoView(true);">
+          Testament
+        </a>
       </p>
       <p>
-        <a href="#features">Features</a>
+        <a href="javascript:document.getElementById('features').scrollIntoView(true);">
+          Features
+        </a>
       </p>
       <p>
-        <a href="#statistics">Statistics</a>
+        <a href="javascript:document.getElementById('statistics').scrollIntoView(true);">
+          Statistics
+        </a>
       </p>
       <p>
-        <a href="#faq">FAQ</a>
+        <a href="javascript:document.getElementById('faq').scrollIntoView(true);">
+          FAQ
+        </a>
       </p>
       <p>
-        <a href="#from-us">From us</a>
+        <a href="javascript:document.getElementById('from-us').scrollIntoView(true);">
+          From us
+        </a>
       </p>
     </>
   );
