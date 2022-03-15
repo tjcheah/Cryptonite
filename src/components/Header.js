@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     borderBottomLeftRadius: 35,
     borderBottomRightRadius: 35,
     boxShadow: "0px 2px 2px 1px #aaa",
-    [theme.breakpoints.up("xs")]: {},
+    [theme.breakpoints.up("xs")]: { flexDirection: "column", flexWrap: "wrap" },
   },
 
   navLogo: {

@@ -18,22 +18,34 @@ const Navbar = () => {
     <>
       {" "}
       <p>
-        <a href="#home">Home</a>
+        <a href="#home" onClick={() => setToggleMenu(false)}>
+          Home
+        </a>
       </p>
       <p>
-        <a href="#testament">Testament</a>
+        <a href="#testament" onClick={() => setToggleMenu(false)}>
+          Testament
+        </a>
       </p>
       <p>
-        <a href="#features">Features</a>
+        <a href="#features" onClick={() => setToggleMenu(false)}>
+          Features
+        </a>
       </p>
       <p>
-        <a href="#statistics">Statistics</a>
+        <a href="#statistics" onClick={() => setToggleMenu(false)}>
+          Statistics
+        </a>
       </p>
       <p>
-        <a href="#faq">FAQ</a>
+        <a href="#faq" onClick={() => setToggleMenu(false)}>
+          FAQ
+        </a>
       </p>
       <p>
-        <a href="#from-us">From us</a>
+        <a href="#from-us" onClick={() => setToggleMenu(false)}>
+          From us
+        </a>
       </p>
     </>
   );

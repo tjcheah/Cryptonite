@@ -67,6 +67,9 @@ const CryptoExchanges = () => {
       fontSize: 45,
       letterSpacing: 3,
       lineHeight: 1,
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "30px",
+      },
     },
     pagination: {
       "& .MuiPaginationItem-root": {
@@ -108,6 +111,32 @@ const CryptoExchanges = () => {
       fontWeight: "700",
       textTransform: "uppercase",
       padding: " 20px 40px",
+    },
+    nameColumn: {
+      display: "flex",
+      fontSize: 20,
+      fontFamily: "Antonio",
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "18px",
+      },
+    },
+    yearEstablishedColumn: {
+      fontWeight: 500,
+      fontFamily: "antonio",
+      fontSize: 20,
+      textAlign: "center",
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "18px",
+      },
+    },
+    linkColumn: {
+      paddingRight: 40,
+      fontFamily: "antonio",
+      fontSize: 20,
+      textAlign: "start",
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "18px",
+      },
     },
     row: {
       backgroundColor: "white",
@@ -167,13 +196,9 @@ const CryptoExchanges = () => {
                   <TableRow className={classes.row} key={row.name}>
                     {/* Coin Logo */}
                     <TableCell
+                      className={classes.nameColumn}
                       component="th"
                       scope="row"
-                      style={{
-                        display: "flex",
-                        fontSize: 20,
-                        fontFamily: "Antonio",
-                      }}
                     >
                       <div
                         style={{
@@ -203,25 +228,12 @@ const CryptoExchanges = () => {
                     {/* Year Established Column */}
                     <TableCell
                       align="right"
-                      style={{
-                        fontWeight: 500,
-                        fontFamily: "antonio",
-                        fontSize: 20,
-                        textAlign: "center",
-                      }}
+                      className={classes.yearEstablishedColumn}
                     >
                       {row.year_established}
                     </TableCell>
                     {/* URL Column */}
-                    <TableCell
-                      style={{
-                        paddingRight: 40,
-                        fontFamily: "antonio",
-                        fontSize: 20,
-                        textAlign: "start",
-                      }}
-                      align="right"
-                    >
+                    <TableCell className={classes.linkColumn} align="right">
                       <a href={row.url} className={classes.link}>
                         {row.url}
                       </a>

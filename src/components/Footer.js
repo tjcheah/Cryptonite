@@ -1,3 +1,5 @@
+//---------------------------------------------------------------------------
+//imports
 import React from "react";
 import bottomLogo from "../media/Cryptonite Title 2.png";
 import {
@@ -10,11 +12,11 @@ import {
 import { useNavigate } from "react-router-dom";
 import { FaRegCopyright } from "react-icons/fa";
 
+//---------------------------------------------------------------------------
+//Styling and responsiveness
 const useStyles = makeStyles((theme) => ({
   footerContainer: {
-    // backgroundColor: "green",
     display: "flex",
-
     width: "100%",
     justifyContent: "center",
     flexWrap: "wrap",
@@ -26,16 +28,12 @@ const useStyles = makeStyles((theme) => ({
   },
   // The footer itself
   footer: {
-    // backgroundColor: "yellow",
     backgroundColor: "#ffffff",
     display: "flex",
     flexDirection: "row",
     width: "95%",
     height: "10%",
     position: "static",
-    // left: 0,
-    // bottom: 0,
-    // right: 0,
     color: "#000",
     bottom: 0,
     paddingTop: 25,
@@ -44,12 +42,8 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0px -2px 2px 1px #aaa",
     lineHeight: 18,
     flexWrap: "wrap",
-    [theme.breakpoints.down("sm")]: {
-      // paddingBottom: 300,
-    },
   },
   footerTop: {
-    // backgroundColor: "green",
     display: "flex",
     flexDirection: "row",
     width: "100%",
@@ -59,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   footerTopLeft: {
-    // backgroundColor: "cyan",
     display: "flex",
     flexDirection: "column",
     alignContent: "center",
@@ -67,15 +60,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     width: "50%",
     cursor: "pointer",
-    // marginLeft: 50,
     [theme.breakpoints.down("sm")]: {
       width: "100%",
       marginLeft: 0,
     },
   },
   footerTopRight: {
-    // backgroundColor: "violet",
-    // paddingTop: 20,
     width: "50%",
     display: "flex",
     flexDirection: "row",
@@ -84,42 +74,29 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     [theme.breakpoints.down("sm")]: {
       width: "100%",
-      // marginTop: 20,
       paddingLeft: 40,
       marginLeft: 0,
     },
   },
   footerBottom: {
-    // backgroundColor: "yellow",
     display: "flex",
     justifyContent: "center",
     alignContent: "center",
     flexDirection: "column",
     width: "100%",
-    // height: 80,
-    // marginBottom: 30,
-    // paddingTop: 25,
-    // paddingBottom: 30,
-    // marginLeft: 75,
     [theme.breakpoints.down("sm")]: {
       marginLeft: 15,
       marginRight: 25,
     },
   },
   footerBottomLeft: {
-    // backgroundColor: "pink",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     paddingTop: 10,
     paddingBottom: 10,
-
     width: "100%",
-    [theme.breakpoints.down("sm")]: {
-      // marginLeft: 15,
-      // marginRight: 25,
-    },
   },
 
   bottomLogo: {
