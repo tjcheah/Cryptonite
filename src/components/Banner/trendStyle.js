@@ -35,22 +35,18 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 40,
     marginBottom: 40,
     [theme.breakpoints.up("xs")]: {
-      backgroundColor: "brown",
       height: "75%",
       width: "90%",
     },
     [theme.breakpoints.up("sm")]: {
-      backgroundColor: "pink",
       height: "75%",
       width: "90%",
     },
     [theme.breakpoints.up("md")]: {
-      backgroundColor: "green",
       height: "65%",
       width: "80%",
     },
     [theme.breakpoints.up("lg")]: {
-      backgroundColor: "cyan",
       height: "90%",
       width: "80%",
     },

@@ -68,6 +68,9 @@ const CoinsTable = () => {
         fontFamily: "antonio",
         marginBottom: 10,
       },
+      [theme.breakpoints.up("xs")]: {
+        flexWrap: "nowrap",
+      },
     },
     TableContainer: {
       backgroundColor: "#f2f2f2",
@@ -96,6 +99,48 @@ const CoinsTable = () => {
       fontSize: 45,
       letterSpacing: 5,
       lineHeight: 1,
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "30px",
+      },
+    },
+    priceColumn: {
+      fontFamily: "antonio",
+      fontSize: 22,
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "14.5px",
+      },
+    },
+    dailyChangeColumn: {
+      fontWeight: 500,
+      fontFamily: "antonio",
+      fontSize: 22,
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "14.5px",
+      },
+    },
+    circulatingSupplyColumn: {
+      paddingRight: 40,
+      fontFamily: "antonio",
+      fontSize: 22,
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "14.5px",
+      },
+    },
+    marketCapColumn: {
+      paddingRight: 40,
+      fontFamily: "antonio",
+      fontSize: 22,
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "14.5px",
+      },
+    },
+    overallVolumeColumn: {
+      paddingRight: 40,
+      fontFamily: "antonio",
+      fontSize: 22,
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "14.5px",
+      },
     },
     contSearch: {
       backgroundColor: "black",
@@ -262,35 +307,24 @@ const CoinsTable = () => {
                         </div>
                       </TableCell>
                       {/* Price Column */}
-                      <TableCell
-                        style={{
-                          fontFamily: "antonio",
-                          fontSize: 22,
-                        }}
-                        align="right"
-                      >
+                      <TableCell className={classes.priceColumn} align="right">
                         {symbol}{" "}
                         {numberWithCommas(row.current_price.toFixed(2))}
                       </TableCell>
                       {/* 24H Change Column */}
                       <TableCell
                         align="right"
+                        className={classes.dailyChangeColumn}
                         style={{
                           color: profit > 0 ? "rgb(14, 203, 129)" : "red",
-                          fontWeight: 500,
-                          fontFamily: "antonio",
-                          fontSize: 22,
                         }}
                       >
                         {profit && "+"}
                         {row.price_change_percentage_24h.toFixed(2)}%
                       </TableCell>
+                      {/* Circulating Supply Column */}
                       <TableCell
-                        style={{
-                          paddingRight: 40,
-                          fontFamily: "antonio",
-                          fontSize: 22,
-                        }}
+                        className={classes.circulatingSupplyColumn}
                         align="right"
                       >
                         {symbol}{" "}
@@ -298,21 +332,13 @@ const CoinsTable = () => {
                       </TableCell>
                       {/* Market Capital Column */}
                       <TableCell
-                        style={{
-                          paddingRight: 40,
-                          fontFamily: "antonio",
-                          fontSize: 22,
-                        }}
+                        className={classes.marketCapColumn}
                         align="right"
                       >
                         {symbol} {numberWithCommas(row.market_cap.toString())}
                       </TableCell>
                       <TableCell
-                        style={{
-                          paddingRight: 40,
-                          fontFamily: "antonio",
-                          fontSize: 22,
-                        }}
+                        className={classes.overallVolumeColumn}
                         align="right"
                       >
                         {symbol} {numberWithCommas(row.total_volume.toString())}

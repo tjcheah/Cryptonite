@@ -107,7 +107,7 @@ const NewsSlider = () => {
           <CircularProgress
             className={classes.loading}
             style={{ color: "#c6cec6", justifyContent: "center" }}
-            size={200}
+            size={150}
             thickness={1}
           />
         </div>

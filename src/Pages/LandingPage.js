@@ -22,12 +22,12 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     overflowX: "hidden",
     width: "50%",
-    paddingLeft:100,
+    paddingLeft: 100,
     right: 0,
     top: 650,
     zIndex: 2,
     [theme.breakpoints.down("md")]: {
-      paddingLeft:180,
+      paddingLeft: 180,
     },
     [theme.breakpoints.down("sm")]: {
       backgroundColor: "orange",
