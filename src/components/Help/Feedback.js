@@ -1,3 +1,5 @@
+//---------------------------------------------------------------------------
+//imports
 import React from "react";
 import { useForm } from "react-hook-form";
 import Box from "@mui/material/Box";
@@ -13,9 +15,10 @@ import coin from "./Cryptonite Logo (Gold).png";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 
+//---------------------------------------------------------------------------
+//Styling and responsiveness
 const useStyles = makeStyles((theme) => ({
   feedbackForm: {
-    // backgroundColor: "green",
     padding: "20px 0px 30px 0px",
   },
   stackCont: {
@@ -23,15 +26,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     [theme.breakpoints.up("xs")]: {
       width: "90%",
-      // backgroundColor: "red",
     },
     [theme.breakpoints.up("md")]: {
-      // backgroundColor: "pink",
       width: 600,
     },
   },
   feedbackTitle: {
-    // backgroundColor: "yellow",
     display: "flex",
     justifyContent: "center",
     fontFamily: "Antonio",
@@ -40,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
   feedbackText: {
-    // backgroundColor: "blue",
     display: "flex",
     justifyContent: "center",
     flexWrap: "wrap",
@@ -107,7 +106,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+//---------------------------------------------------------------------------
+//Feedback component structure
 export default function Feedback() {
+  //Variables and states
   const classes = useStyles();
   const { register, handleSubmit, formState } = useForm({
     mode: "onChange",
@@ -150,6 +152,8 @@ export default function Feedback() {
       setRecommend();
     }
   };
+
+  //to validate user feedback
   const onSubmit = (data) => {
     if (
       rating1 > 0 &&

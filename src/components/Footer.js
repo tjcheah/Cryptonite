@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
   footerContainer: {
     // backgroundColor: "green",
     display: "flex",
-
     width: "100%",
     justifyContent: "center",
     flexWrap: "wrap",
