@@ -112,6 +112,7 @@ const NewsSlider = () => {
       </div>
     ));
   return (
+    //return news slides
     <div className="sliderContainer">
       {!post | (flag === false) ? (
         <div className="loading-indicator">

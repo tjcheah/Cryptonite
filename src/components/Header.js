@@ -174,7 +174,6 @@ const Header = () => {
   const { currency, setcurrency, user } = CryptoState();
   const [openHamburger, setOpenHamburger] = useState(false);
   // ----------------------------------------------------------------------------------
-  // const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);

@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import { FaRegCopyright } from "react-icons/fa";
+import { BottomNavigationAction } from "@mui/material";
 
 //---------------------------------------------------------------------------
 //Styling and responsiveness
@@ -103,6 +104,7 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor: "blue",
     width: "75%",
     height: "auto",
+    cursor: "pointer",
     [theme.breakpoints.down("sm")]: {
       width: 260,
       height: 60,
