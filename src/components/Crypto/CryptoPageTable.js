@@ -177,6 +177,16 @@ const CoinsTable = () => {
 
   const classes = useStyles();
 
+  const onInputChange = (e) => {
+    const { value } = e.target
+    console.log('Input value: ', value)
+
+    const re = /^[A-Za-z]+$/
+    if (value === '' || re.test(value)) {
+      setSearch(value)
+    }
+  }
+
   return (
     <Container className={classes.TableContainer}>
       {/* Container Title */}
@@ -207,7 +217,8 @@ const CoinsTable = () => {
             fontFamily: "antonio",
           },
         }}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={onInputChange}
+        value={search}
       />
 
       {/* Table Container */}
