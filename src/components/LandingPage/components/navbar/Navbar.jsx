@@ -18,32 +18,32 @@ const Navbar = () => {
     <>
       {" "}
       <p>
-        <a href="#home" onClick={() => setToggleMenu(false)}>
+        <a href="javascript:document.getElementById('home').scrollIntoView(true);">
           Home
         </a>
       </p>
       <p>
-        <a href="#testament" onClick={() => setToggleMenu(false)}>
+        <a href="javascript:document.getElementById('testament').scrollIntoView(true);">
           Testament
         </a>
       </p>
       <p>
-        <a href="#features" onClick={() => setToggleMenu(false)}>
+        <a href="javascript:document.getElementById('features').scrollIntoView(true);">
           Features
         </a>
       </p>
       <p>
-        <a href="#statistics" onClick={() => setToggleMenu(false)}>
+        <a href="javascript:document.getElementById('statistics').scrollIntoView(true);">
           Statistics
         </a>
       </p>
       <p>
-        <a href="#faq" onClick={() => setToggleMenu(false)}>
+        <a href="javascript:document.getElementById('faq').scrollIntoView(true);">
           FAQ
         </a>
       </p>
       <p>
-        <a href="#from-us" onClick={() => setToggleMenu(false)}>
+        <a href="javascript:document.getElementById('from-us').scrollIntoView(true);">
           From us
         </a>
       </p>

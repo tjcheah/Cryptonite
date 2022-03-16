@@ -281,11 +281,11 @@ export default function UserSidebar() {
                 </span>
                 {/* ------------------------------------------------------- */}
                 {/* Favourite details */}
-                {coins.map((coin) => {
+                {coins.map((coin, i) => {
                   if (favoriteslist.includes(coin.id))
                     return (
                       // Card container
-                      <div className={classes.coin}>
+                      <div className={classes.coin} key={i}>
                         {/* Coin image */}
                         <div
                           style={{
