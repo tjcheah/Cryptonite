@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------
 //imports
-import React from 'react'
-import { GetExchanges } from '../../config/api'
-import { useEffect } from 'react'
-import { useState } from 'react'
-import axios from 'axios'
+import React from "react";
+import { GetExchanges } from "../../config/api";
+import { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
 import {
   Container,
   Typography,
@@ -16,153 +16,127 @@ import {
   TableCell,
   TableBody,
   makeStyles,
-} from '@material-ui/core'
-import { CryptoState } from '../../CryptoContext'
+} from "@material-ui/core";
+import { CryptoState } from "../../CryptoContext";
 
 //---------------------------------------------------------------------------
 //CryptoExchange component structure
 const CryptoExchanges = () => {
   //Variables and states
-  const [exchanges, setExchanges] = useState([])
+  const [exchanges, setExchanges] = useState([]);
 
   //API call
   const fetchCoin = async () => {
-    const { data } = await axios.get(GetExchanges())
-    setExchanges(data)
-  }
+    const { data } = await axios.get(GetExchanges());
+    setExchanges(data);
+  };
   useEffect(() => {
-    fetchCoin()
-  }, [])
-  const { symbol, loading } = CryptoState()
+    fetchCoin();
+  }, []);
+  const { symbol, loading } = CryptoState();
 
   //Styling and responsiveness
   const useStyles = makeStyles((theme) => ({
     container: {
-      display: 'flex',
-      width: '100%',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
+      display: "flex",
+      width: "100%",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
       marginTop: 20,
       marginBottom: 20,
       padding: 0,
-      [theme.breakpoints.up('xs')]: {
-        width: '90%',
+      [theme.breakpoints.up("xs")]: {
+        width: "90%",
       },
-      [theme.breakpoints.up('sm')]: {
-        width: '90%',
+      [theme.breakpoints.up("sm")]: {
+        width: "90%",
       },
-      [theme.breakpoints.up('md')]: {
-        width: '90%',
+      [theme.breakpoints.up("md")]: {
+        width: "90%",
       },
     },
     title: {
-      margin: ' 20px 0px 20px 0px',
-      fontFamily: 'antonio',
-      fontWeight: 'bold',
-      width: '100%',
-      color: 'white',
-      textTransform: 'uppercase',
-      textAlign: 'start',
+      margin: " 20px 0px 20px 0px",
+      fontFamily: "antonio",
+      fontWeight: "bold",
+      width: "100%",
+      color: "white",
+      textTransform: "uppercase",
+      textAlign: "start",
       fontSize: 45,
       letterSpacing: 3,
       lineHeight: 1,
-      [theme.breakpoints.up('xs')]: {
-        fontSize: '30px',
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "30px",
       },
     },
     pagination: {
-      '& .MuiPaginationItem-root': {
-        color: 'black',
-        fontFamily: 'antonio',
+      "& .MuiPaginationItem-root": {
+        color: "black",
+        fontFamily: "antonio",
         marginBottom: 10,
       },
     },
     TableContainer: {
-      display: 'flex',
-      backgroundColor: '#f2f2f2',
+      display: "flex",
+      backgroundColor: "#f2f2f2",
       borderRadius: 40,
-      textAlign: 'center',
+      textAlign: "center",
       paddingTop: 40,
     },
     tableContainer: {
-      margin: '15px 0px',
+      margin: "15px 0px",
       borderRadius: 30,
-      boxShadow: '0px 2px 2px 1px #aaa',
+      boxShadow: "0px 2px 2px 1px #aaa",
     },
     contTitle: {
-      margin: ' 0px 0px 20px 0px',
-      fontFamily: 'antonio',
-      fontWeight: 'bold',
-      color: 'black',
-      textTransform: 'uppercase',
-      textAlign: 'start',
+      margin: " 0px 0px 20px 0px",
+      fontFamily: "antonio",
+      fontWeight: "bold",
+      color: "black",
+      textTransform: "uppercase",
+      textAlign: "start",
       fontSize: 45,
       letterSpacing: 5,
       lineHeight: 1,
     },
 
     tableHead: {
-      backgroundColor: 'white',
-      textAlign: 'center',
-      fontFamily: 'antonio',
-      color: 'black',
+      backgroundColor: "white",
+      textAlign: "center",
+      fontFamily: "antonio",
+      color: "black",
       fontSize: 24,
-      fontWeight: '700',
-      textTransform: 'uppercase',
-      padding: ' 20px 40px',
-    },
-    nameColumn: {
-      display: 'flex',
-      fontSize: 20,
-      fontFamily: 'Antonio',
-      [theme.breakpoints.up('xs')]: {
-        fontSize: '18px',
-      },
-    },
-    yearEstablishedColumn: {
-      fontWeight: 500,
-      fontFamily: 'antonio',
-      fontSize: 20,
-      textAlign: 'center',
-      [theme.breakpoints.up('xs')]: {
-        fontSize: '18px',
-      },
-    },
-    linkColumn: {
-      paddingRight: 40,
-      fontFamily: 'antonio',
-      fontSize: 20,
-      textAlign: 'start',
-      [theme.breakpoints.up('xs')]: {
-        fontSize: '18px',
-      },
+      fontWeight: "700",
+      textTransform: "uppercase",
+      padding: " 20px 40px",
     },
     row: {
-      backgroundColor: 'white',
-      fontFamily: 'antonio',
-      '&:hover': {
-        backgroundColor: '#f2f2f2',
-        boxShadow: '0px 4px 4px 1px #f2f2f2',
+      backgroundColor: "white",
+      fontFamily: "antonio",
+      "&:hover": {
+        backgroundColor: "#f2f2f2",
+        boxShadow: "0px 4px 4px 1px #f2f2f2",
       },
     },
     link: {
-      color: 'blue',
-      textDecoration: 'underline',
-      cursor: 'pointer',
-      '&:hover': {
-        color: '#0645AD',
+      color: "blue",
+      textDecoration: "underline",
+      cursor: "pointer",
+      "&:hover": {
+        color: "#0645AD",
       },
-      '&:visited': {
-        color: '#0B0080',
+      "&:visited": {
+        color: "#0B0080",
       },
-      '&:active': {
-        color: 'purple',
+      "&:active": {
+        color: "purple",
       },
     },
-  }))
+  }));
 
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <Container className={classes.container}>
@@ -171,17 +145,17 @@ const CryptoExchanges = () => {
       </Typography>
       <TableContainer className={classes.tableContainer}>
         {loading ? (
-          <LinearProgress style={{ backgroundColor: 'gold' }} />
+          <LinearProgress style={{ backgroundColor: "gold" }} />
         ) : (
           <Table>
             {/* Table Head */}
             <TableHead>
               <TableRow>
-                {['Name', 'Year Established', 'URL'].map((head) => (
+                {["Name", "Year Established", "URL"].map((head) => (
                   <TableCell
                     className={classes.tableHead}
                     key={head}
-                    align={head === 'Name' ? 'left' : 'right'}
+                    align={head === "Name" ? "left" : "right"}
                   >
                     {head}
                   </TableCell>
@@ -199,13 +173,18 @@ const CryptoExchanges = () => {
                       className={classes.nameColumn}
                       component="th"
                       scope="row"
+                      style={{
+                        display: "flex",
+                        fontSize: 20,
+                        fontFamily: "Antonio",
+                      }}
                     >
                       <div
                         style={{
-                          width: '50%',
-                          display: 'flex',
-                          justifyContent: 'center',
-                          alignItems: 'center',
+                          width: "50%",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
                         }}
                       >
                         <img src={row?.image} alt={row.name} height="50" />
@@ -215,10 +194,10 @@ const CryptoExchanges = () => {
 
                       <div
                         style={{
-                          width: '50%',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          justifyContent: 'center',
+                          width: "50%",
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
                         }}
                       >
                         {row.name}
@@ -228,27 +207,44 @@ const CryptoExchanges = () => {
                     {/* Year Established Column */}
                     <TableCell
                       align="right"
-                      className={classes.yearEstablishedColumn}
+                      style={{
+                        fontWeight: 500,
+                        fontFamily: "antonio",
+                        fontSize: 20,
+                        textAlign: "center",
+                      }}
                     >
                       {row?.year_established}
                     </TableCell>
                     {/* URL Column */}
-                    <TableCell className={classes.linkColumn} align="right">
-                      <a href={row.url} className={classes.link}>
+                    <TableCell
+                      style={{
+                        paddingRight: 40,
+                        fontFamily: "antonio",
+                        fontSize: 20,
+                        textAlign: "start",
+                      }}
+                      align="right"
+                    >
+                      <a
+                        href={row.url}
+                        className={classes.link}
+                        target={"_blank"}
+                      >
                         {row.url}
                       </a>
                     </TableCell>
                   </TableRow>
-                )
+                );
               })}
             </TableBody>
           </Table>
         )}
       </TableContainer>
     </Container>
-  )
-}
+  );
+};
 
 //---------------------------------------------------------------------------
 //export
-export default CryptoExchanges
+export default CryptoExchanges;

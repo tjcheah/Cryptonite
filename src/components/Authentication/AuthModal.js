@@ -90,13 +90,16 @@ const useStyles = makeStyles((theme) => ({
       alignItems: "center",
     },
     [theme.breakpoints.down("xs")]: {
-      width: 130,
+      width: 110,
       height: 45,
       borderRadius: 50,
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
       backgroundColor: "transparent",
+      "&:hover": {
+        backgroundColor: "white",
+      },
     },
   },
   login: {
