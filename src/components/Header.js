@@ -121,7 +121,6 @@ const useStyles = makeStyles((theme) => ({
     padding: "20px 20px 60px 20px",
   },
   burgerItem: {
-    // border: "#aaa",
     color: "#555",
     fontSize: 16,
     fontFamily: "Antonio",
@@ -174,7 +173,6 @@ const Header = () => {
   const { currency, setcurrency, user } = CryptoState();
   const [openHamburger, setOpenHamburger] = useState(false);
   // ----------------------------------------------------------------------------------
-  // const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);

@@ -120,7 +120,6 @@ const CoinInfo = ({ coin }) => {
     showLine: true,
     showtooltip: true,
     animations: {
-      tension: { duration: "speed", easing: "linear" },
       borderWidth: { duration: 3000, from: 1, to: 3 },
       borderColor: {
         type: "color",
@@ -128,6 +127,10 @@ const CoinInfo = ({ coin }) => {
         from: "grey",
         to: "#174f1a",
       },
+    },
+    animation: {
+      duration: "speed * 1.5",
+      easing: "linear",
     },
     layout: { padding: 20 },
     elements: {
@@ -208,13 +211,13 @@ const CoinInfo = ({ coin }) => {
             EpochToDate(tickHist.times[i]),
           ]);
         }
-        console.log("ticks: %o", tick);
+        // console.log("ticks: %o", tick);
         setPrice(tickHist.prices);
         setflag(true);
       }
       if (data.tick != null) {
         var tickInfo = data.tick;
-        console.log(tickInfo);
+        // console.log(tickInfo);
         if (tickInfo.quote != null && tickInfo.epoch != null) {
           setTick((currentTick) => [
             ...currentTick,

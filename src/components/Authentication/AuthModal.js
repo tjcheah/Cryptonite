@@ -18,7 +18,6 @@ import {
   Select,
   MenuItem,
 } from "@material-ui/core";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../firebase";
 import { CryptoState } from "../../CryptoContext";
 
@@ -209,25 +208,7 @@ export default function AuthModal() {
     setValue(newValue);
   };
   const { setAlert } = CryptoState();
-  const googleProvider = new GoogleAuthProvider();
-  const signInWithGoogle = () => {
-    signInWithPopup(auth, googleProvider)
-      .then((res) => {
-        setAlert({
-          open: true,
-          message: `Sign up Successful. Welcome ${res.user.email}`,
-          type: "success",
-        });
-        handleClose();
-      })
-      .catch((error) => {
-        setAlert({
-          open: true,
-          message: error.message,
-          type: "error",
-        });
-      });
-  };
+
   // -------------------------------------------------------------------------------------
   return (
     <div className={classes.loginBody}>
@@ -335,24 +316,6 @@ export default function AuthModal() {
 
             {value === 0 && <Login handleClose={handleClose} />}
             {value === 1 && <Signup handleClose={handleClose} />}
-
-            <Box className={classes.google}>
-              <span>OR</span>
-              <GoogleButton
-                type="light"
-                style={{
-                  width: "100%",
-                  outline: "none",
-                  color: "#a9aaa9",
-                  fontFamily: "antonio",
-                  fontSize: 20,
-                  fontWeight: 600,
-                  textTransform: "uppercase",
-                  boxShadow: "0px 4px 4px 2px #aaa",
-                }}
-                onClick={signInWithGoogle}
-              ></GoogleButton>
-            </Box>
           </div>
         </Fade>
       </Modal>
