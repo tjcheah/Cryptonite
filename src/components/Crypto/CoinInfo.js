@@ -120,7 +120,6 @@ const CoinInfo = ({ coin }) => {
     showLine: true,
     showtooltip: true,
     animations: {
-      tension: { duration: "speed", easing: "linear" },
       borderWidth: { duration: 3000, from: 1, to: 3 },
       borderColor: {
         type: "color",
@@ -128,6 +127,10 @@ const CoinInfo = ({ coin }) => {
         from: "grey",
         to: "#174f1a",
       },
+    },
+    animation: {
+      duration: "speed * 1.5",
+      easing: "linear",
     },
     layout: { padding: 20 },
     elements: {
