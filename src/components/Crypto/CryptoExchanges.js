@@ -67,6 +67,9 @@ const CryptoExchanges = () => {
       fontSize: 45,
       letterSpacing: 3,
       lineHeight: 1,
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "30px",
+      },
     },
     pagination: {
       "& .MuiPaginationItem-root": {
@@ -167,6 +170,7 @@ const CryptoExchanges = () => {
                   <TableRow className={classes.row} key={row.name}>
                     {/* Coin Logo */}
                     <TableCell
+                      className={classes.nameColumn}
                       component="th"
                       scope="row"
                       style={{
