@@ -1,12 +1,14 @@
+//---------------------------------------------------------------------------
+//imports
 import React from "react";
-import axios from "axios";
-import { useState, useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./News.css";
-import { Container, makeStyles, Typography } from "@material-ui/core";
+import { makeStyles, Typography } from "@material-ui/core";
 import NewsSlider from "./NewsSlider";
 
+//---------------------------------------------------------------------------
+//styling and responsiveness
 const useStyles = makeStyles((theme) => ({
   newsTitle: {
     width: "100%",
@@ -24,26 +26,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// [theme.breakpoints.down("xs")]: {
-//                   fontSize: 30,
-//                 },
-
+//---------------------------------------------------------------------------
+//News container structure
 export default function News() {
   const classes = useStyles();
   return (
     <div className="newsContContainer">
       <div className="newsContainer">
         <div className="News">
-          {/* News title and foreword */}
+          {/* News title and description */}
           <div className="news-text">
             {" "}
             <Typography className={classes.newsTitle} variant="h3">
               Crypto News
             </Typography>
             <Typography
-              // variant="subtitle2"
               style={{
-                // backgroundColor: "pink",
                 fontweight: "light",
                 fontFamily: "garamond",
                 color: "black",

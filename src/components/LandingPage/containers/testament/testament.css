@@ -21,8 +21,8 @@
 .crypto__testament-content {
   width: 500px;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   padding: 30px 20px;
 }
@@ -58,5 +58,24 @@
 @media screen and (max-width: 900px) {
   .crypto__testament-image {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .crypto__testament-image img {
+    width: 300px;
+  }
+
+  .crypto__testament-content {
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+  }
+
+  .crypto__testament-content h1 {
+    font-size: 18px;
+  }
+  .crypto__testament-content h2 {
+    font-size: 18px;
   }
 }
