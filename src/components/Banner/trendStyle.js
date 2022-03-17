@@ -318,7 +318,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
 
     [theme.breakpoints.up("xs")]: {
-      fontSize: 20,
+      fontSize: 17,
     },
     [theme.breakpoints.up("sm")]: {
       fontSize: 24,
@@ -359,9 +359,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     justifyContent: "flex-end",
     alignItems: "center",
-
     [theme.breakpoints.up("xs")]: {
-      fontSize: 20,
+      fontSize: 17,
     },
     [theme.breakpoints.up("sm")]: {
       fontSize: 24,
