@@ -18,32 +18,50 @@ const Navbar = () => {
     <>
       {" "}
       <p>
-        <a href="javascript:document.getElementById('home').scrollIntoView(true);">
+        <a
+          href="javascript:document.getElementById('home').scrollIntoView(true);"
+          onClick={() => setToggleMenu(false)}
+        >
           Home
         </a>
       </p>
       <p>
-        <a href="javascript:document.getElementById('testament').scrollIntoView(true);">
+        <a
+          href="javascript:document.getElementById('testament').scrollIntoView(true);"
+          onClick={() => setToggleMenu(false)}
+        >
           Testament
         </a>
       </p>
       <p>
-        <a href="javascript:document.getElementById('features').scrollIntoView(true);">
+        <a
+          href="javascript:document.getElementById('features').scrollIntoView(true);"
+          onClick={() => setToggleMenu(false)}
+        >
           Features
         </a>
       </p>
       <p>
-        <a href="javascript:document.getElementById('statistics').scrollIntoView(true);">
+        <a
+          href="javascript:document.getElementById('statistics').scrollIntoView(true);"
+          onClick={() => setToggleMenu(false)}
+        >
           Statistics
         </a>
       </p>
       <p>
-        <a href="javascript:document.getElementById('faq').scrollIntoView(true);">
+        <a
+          href="javascript:document.getElementById('faq').scrollIntoView(true);"
+          onClick={() => setToggleMenu(false)}
+        >
           FAQ
         </a>
       </p>
       <p>
-        <a href="javascript:document.getElementById('from-us').scrollIntoView(true);">
+        <a
+          href="javascript:document.getElementById('from-us').scrollIntoView(true);"
+          onClick={() => setToggleMenu(false)}
+        >
           From us
         </a>
       </p>

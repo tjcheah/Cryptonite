@@ -35,6 +35,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#f2f2f2",
     color: "black",
     borderRadius: 10,
+
+    [theme.breakpoints.down("xs")]: {
+      borderRadius: 0,
+    },
+    [theme.breakpoints.down("lg")]: {
+      borderRadius: 10,
+    },
   },
   google: {
     fontFamily: "antonio",
