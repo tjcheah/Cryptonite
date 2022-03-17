@@ -245,7 +245,7 @@ const Footer = () => {
                 Service | Privacy Policy | Ad Policy
               </Typography> */}
               <Typography className={classes.bottomTitle}>
-                <FaRegCopyright /> Cryptonite 2021. All Rights Reserved.
+                <FaRegCopyright /> Cryptonite 2021-2022. All Rights Reserved.
               </Typography>
             </Container>
           </Container>
