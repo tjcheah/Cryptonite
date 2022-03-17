@@ -118,6 +118,32 @@ const CoinsTable = () => {
         fontSize: "30px",
       },
     },
+    priceColumn: {
+      fontFamily: "antonio",
+      fontSize: 22,
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "14.5px",
+      },
+      [theme.breakpoints.up("lg")]: { fontSize: "22px" },
+    },
+    dailyChangeColumn: {
+      fontWeight: 500,
+      fontFamily: "antonio",
+      fontSize: 22,
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "14.5px",
+      },
+      [theme.breakpoints.up("lg")]: { fontSize: "22px" },
+    },
+    marketCapColumn: {
+      paddingRight: 40,
+      fontFamily: "antonio",
+      fontSize: 22,
+      [theme.breakpoints.up("xs")]: {
+        fontSize: "14.5px",
+      },
+      [theme.breakpoints.up("lg")]: { fontSize: "22px" },
+    },
     contSearch: {
       backgroundColor: "black",
       boxShadow: "0px 2px 2px 1px #aaa",
@@ -287,24 +313,16 @@ const CoinsTable = () => {
                         </div>
                       </TableCell>
                       {/* Price Column */}
-                      <TableCell
-                        style={{
-                          fontFamily: "antonio",
-                          fontSize: 22,
-                        }}
-                        align="right"
-                      >
+                      <TableCell className={classes.priceColumn} align="right">
                         {symbol}{" "}
                         {numberWithCommas(row.current_price.toFixed(2))}
                       </TableCell>
                       {/* 24H Change Column */}
                       <TableCell
                         align="right"
+                        className={classes.dailyChangeColumn}
                         style={{
                           color: profit > 0 ? "rgb(14, 203, 129)" : "red",
-                          fontWeight: 500,
-                          fontFamily: "antonio",
-                          fontSize: 22,
                         }}
                       >
                         {profit && "+"}
@@ -312,11 +330,7 @@ const CoinsTable = () => {
                       </TableCell>
                       {/* Market Capital Column */}
                       <TableCell
-                        style={{
-                          paddingRight: 40,
-                          fontFamily: "antonio",
-                          fontSize: 22,
-                        }}
+                        className={classes.marketCapColumn}
                         align="right"
                       >
                         {symbol}{" "}

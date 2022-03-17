@@ -271,6 +271,7 @@ const Header = () => {
               <FaBars
                 onClick={() => setOpenHamburger(!openHamburger)}
                 className={classes.hamburger}
+                id="hamburger"
               />
 
               {openHamburger && (
