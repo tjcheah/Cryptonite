@@ -16,7 +16,7 @@ import "../components/LandingPage/index.css";
 import logo from "../media/Cryptonite Logo (Silver Coin).png";
 
 //---------------------------------------------------------------------------
-//Landing page structure styles
+//Styling and responsiveness
 const useStyles = makeStyles((theme) => ({
   "@keyframes spin": {
     "0%": {
@@ -37,17 +37,15 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: 100,
     right: 0,
     top: 650,
-    zIndex: 2,
+    zIndex: 4,
     animation: "$spin 2s linear",
     [theme.breakpoints.down("md")]: {
       paddingLeft: 180,
     },
     [theme.breakpoints.down("sm")]: {
-      backgroundColor: "orange",
       display: "none",
     },
     [theme.breakpoints.down("xs")]: {
-      backgroundColor: "yellow",
       display: "none",
     },
   },
