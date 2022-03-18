@@ -15,7 +15,8 @@ import coin from "./Cryptonite Logo (Gold).png";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import { db } from "../../firebase";
-import { collection, doc, setDoc, addDoc } from "@firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
+import { CryptoState } from "../../CryptoContext";
 
 //---------------------------------------------------------------------------
 //Styling and responsiveness
