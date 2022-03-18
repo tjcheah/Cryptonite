@@ -14,6 +14,8 @@ import stone from "./stone.png";
 import coin from "./Cryptonite Logo (Gold).png";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
+import { db } from "../../firebase";
+import { collection, doc, setDoc, addDoc } from "@firebase/firestore";
 
 //---------------------------------------------------------------------------
 //Styling and responsiveness
@@ -121,6 +123,8 @@ export default function Feedback() {
   const [dislike, setDislike] = useState("white");
   const [recommend, setRecommend] = useState();
   const [input, setInput] = useState();
+  // const querySnapshot = getDocs(collection(db, "formList"));
+  // console.log(" => ", doc.data());
 
   const dynamicLike = () => {
     if (like === "white" && dislike === "white") {
@@ -154,7 +158,16 @@ export default function Feedback() {
   };
 
   //to validate user feedback
-  const onSubmit = (data) => {
+  const newForm = async () => {
+    const formRef = collection(db, "formlist");
+    try {
+      await addDoc(formRef, formdata);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //to validate if user feedback form is complete
+  const onSubmit = () => {
     if (
       rating1 > 0 &&
       rating2 > 0 &&
@@ -170,6 +183,7 @@ export default function Feedback() {
       setRating2(0);
       setLike("white");
       setDislike("white");
+      newForm();
     } else {
       alert("Please complete the feedback form before submission!");
     }
