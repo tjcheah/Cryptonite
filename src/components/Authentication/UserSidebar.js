@@ -43,8 +43,14 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     backgroundColor: "white",
     boxShadow: "0px 2px 2px 1px #aaa",
+    [theme.breakpoints.down("lg")]: {
+      width: 50,
+    },
     [theme.breakpoints.down("sm")]: {
       marginRight: 0,
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "41%",
     },
   },
   picture: {

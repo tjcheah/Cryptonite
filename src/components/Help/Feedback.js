@@ -123,8 +123,8 @@ export default function Feedback() {
   const [dislike, setDislike] = useState("white");
   const [recommend, setRecommend] = useState();
   const [input, setInput] = useState();
-  // const querySnapshot = getDocs(collection(db, "formList"));
-  // console.log(" => ", doc.data());
+  const [feedbackform, setFeedbackform] = useState();
+  const { setAlert } = CryptoState();
 
   const dynamicLike = () => {
     if (like === "white" && dislike === "white") {
@@ -175,17 +175,23 @@ export default function Feedback() {
       input.length > 0
     ) {
       console.log(formdata);
-      alert(
-        "Thank you for the feedback! We appreciate your feedback and will continue to improve in the future."
-      );
       setInput("");
       setRating1(0);
       setRating2(0);
       setLike("white");
       setDislike("white");
       newForm();
+      setAlert({
+        open: true,
+        message: `Your feedback has been submitted. Thank You`,
+        type: "success",
+      });
     } else {
-      alert("Please complete the feedback form before submission!");
+      setAlert({
+        open: true,
+        message: `Feedback submission error. Please make sure to fill all fields`,
+        type: "error",
+      });
     }
   };
 
